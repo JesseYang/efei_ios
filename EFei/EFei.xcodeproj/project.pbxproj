@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D7A6B466F9D1A89691CA409 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0C56EE660008A4E4B0D34B /* libPods.a */; };
+		FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C11A18D0D800B3DC24 /* main.m */; };
+		FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C41A18D0D800B3DC24 /* AppDelegate.m */; };
+		FCC2B8CB1A18D0D800B3DC24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC2B8C91A18D0D800B3DC24 /* Main.storyboard */; };
+		FCC2B8CD1A18D0D800B3DC24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCC2B8CC1A18D0D800B3DC24 /* Images.xcassets */; };
+		FCC2B8D01A18D0D800B3DC24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC2B8CE1A18D0D800B3DC24 /* LaunchScreen.xib */; };
+		FCC2B8DC1A18D0D800B3DC24 /* EFeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8DB1A18D0D800B3DC24 /* EFeiTests.m */; };
+		FCC2B94D1A1988D200B3DC24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B94C1A1988D200B3DC24 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCC2B8D61A18D0D800B3DC24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCC2B8B41A18D0D800B3DC24 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCC2B8BB1A18D0D800B3DC24;
+			remoteInfo = EFei;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		126DD9D665867BC5FC29904D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		89DD7216BEBCFF5172A63059 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BA0C56EE660008A4E4B0D34B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC2B8BC1A18D0D800B3DC24 /* EFei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFei.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC2B8C01A18D0D800B3DC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCC2B8C11A18D0D800B3DC24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FCC2B8C31A18D0D800B3DC24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FCC2B8C41A18D0D800B3DC24 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FCC2B8CA1A18D0D800B3DC24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FCC2B8CC1A18D0D800B3DC24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCC2B8CF1A18D0D800B3DC24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FCC2B8D51A18D0D800B3DC24 /* EFeiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EFeiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC2B8DA1A18D0D800B3DC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCC2B8DB1A18D0D800B3DC24 /* EFeiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EFeiTests.m; sourceTree = "<group>"; };
+		FCC2B94B1A1988D200B3DC24 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FCC2B94C1A1988D200B3DC24 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FCC2B8B91A18D0D800B3DC24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D7A6B466F9D1A89691CA409 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC2B8D21A18D0D800B3DC24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED5C3066379F23FDA4FF2322 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				126DD9D665867BC5FC29904D /* Pods.debug.xcconfig */,
+				89DD7216BEBCFF5172A63059 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F3854C72366A50ECB36BA2F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA0C56EE660008A4E4B0D34B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCC2B8B31A18D0D800B3DC24 = {
+			isa = PBXGroup;
+			children = (
+				FCC2B8BE1A18D0D800B3DC24 /* EFei */,
+				FCC2B8D81A18D0D800B3DC24 /* EFeiTests */,
+				FCC2B8BD1A18D0D800B3DC24 /* Products */,
+				ED5C3066379F23FDA4FF2322 /* Pods */,
+				F3854C72366A50ECB36BA2F8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FCC2B8BD1A18D0D800B3DC24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCC2B8BC1A18D0D800B3DC24 /* EFei.app */,
+				FCC2B8D51A18D0D800B3DC24 /* EFeiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FCC2B8BE1A18D0D800B3DC24 /* EFei */ = {
+			isa = PBXGroup;
+			children = (
+				FCC2B9481A19889C00B3DC24 /* Controller */,
+				FCC2B9491A19889C00B3DC24 /* Model */,
+				FCC2B94A1A19889C00B3DC24 /* View */,
+				FCC2B8C31A18D0D800B3DC24 /* AppDelegate.h */,
+				FCC2B8C41A18D0D800B3DC24 /* AppDelegate.m */,
+				FCC2B8C91A18D0D800B3DC24 /* Main.storyboard */,
+				FCC2B8CC1A18D0D800B3DC24 /* Images.xcassets */,
+				FCC2B8CE1A18D0D800B3DC24 /* LaunchScreen.xib */,
+				FCC2B8BF1A18D0D800B3DC24 /* Supporting Files */,
+			);
+			path = EFei;
+			sourceTree = "<group>";
+		};
+		FCC2B8BF1A18D0D800B3DC24 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCC2B8C01A18D0D800B3DC24 /* Info.plist */,
+				FCC2B8C11A18D0D800B3DC24 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCC2B8D81A18D0D800B3DC24 /* EFeiTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCC2B8DB1A18D0D800B3DC24 /* EFeiTests.m */,
+				FCC2B8D91A18D0D800B3DC24 /* Supporting Files */,
+			);
+			path = EFeiTests;
+			sourceTree = "<group>";
+		};
+		FCC2B8D91A18D0D800B3DC24 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCC2B8DA1A18D0D800B3DC24 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCC2B9481A19889C00B3DC24 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FCC2B9491A19889C00B3DC24 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FCC2B94A1A19889C00B3DC24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCC2B94B1A1988D200B3DC24 /* ViewController.h */,
+				FCC2B94C1A1988D200B3DC24 /* ViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FCC2B8BB1A18D0D800B3DC24 /* EFei */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCC2B8DF1A18D0D800B3DC24 /* Build configuration list for PBXNativeTarget "EFei" */;
+			buildPhases = (
+				14C4B9A975BFFC3A8F6B5205 /* Check Pods Manifest.lock */,
+				FCC2B8B81A18D0D800B3DC24 /* Sources */,
+				FCC2B8B91A18D0D800B3DC24 /* Frameworks */,
+				FCC2B8BA1A18D0D800B3DC24 /* Resources */,
+				3D7D2830E67A27C14C9D8735 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EFei;
+			productName = EFei;
+			productReference = FCC2B8BC1A18D0D800B3DC24 /* EFei.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FCC2B8D41A18D0D800B3DC24 /* EFeiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCC2B8E21A18D0D800B3DC24 /* Build configuration list for PBXNativeTarget "EFeiTests" */;
+			buildPhases = (
+				FCC2B8D11A18D0D800B3DC24 /* Sources */,
+				FCC2B8D21A18D0D800B3DC24 /* Frameworks */,
+				FCC2B8D31A18D0D800B3DC24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCC2B8D71A18D0D800B3DC24 /* PBXTargetDependency */,
+			);
+			name = EFeiTests;
+			productName = EFeiTests;
+			productReference = FCC2B8D51A18D0D800B3DC24 /* EFeiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCC2B8B41A18D0D800B3DC24 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					FCC2B8BB1A18D0D800B3DC24 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					FCC2B8D41A18D0D800B3DC24 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = FCC2B8BB1A18D0D800B3DC24;
+					};
+				};
+			};
+			buildConfigurationList = FCC2B8B71A18D0D800B3DC24 /* Build configuration list for PBXProject "EFei" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FCC2B8B31A18D0D800B3DC24;
+			productRefGroup = FCC2B8BD1A18D0D800B3DC24 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCC2B8BB1A18D0D800B3DC24 /* EFei */,
+				FCC2B8D41A18D0D800B3DC24 /* EFeiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FCC2B8BA1A18D0D800B3DC24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC2B8CB1A18D0D800B3DC24 /* Main.storyboard in Resources */,
+				FCC2B8D01A18D0D800B3DC24 /* LaunchScreen.xib in Resources */,
+				FCC2B8CD1A18D0D800B3DC24 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC2B8D31A18D0D800B3DC24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14C4B9A975BFFC3A8F6B5205 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3D7D2830E67A27C14C9D8735 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCC2B8B81A18D0D800B3DC24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC2B94D1A1988D200B3DC24 /* ViewController.m in Sources */,
+				FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */,
+				FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC2B8D11A18D0D800B3DC24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC2B8DC1A18D0D800B3DC24 /* EFeiTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCC2B8D71A18D0D800B3DC24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCC2B8BB1A18D0D800B3DC24 /* EFei */;
+			targetProxy = FCC2B8D61A18D0D800B3DC24 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FCC2B8C91A18D0D800B3DC24 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCC2B8CA1A18D0D800B3DC24 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FCC2B8CE1A18D0D800B3DC24 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCC2B8CF1A18D0D800B3DC24 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FCC2B8DD1A18D0D800B3DC24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FCC2B8DE1A18D0D800B3DC24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FCC2B8E01A18D0D800B3DC24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 126DD9D665867BC5FC29904D /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EFei/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FCC2B8E11A18D0D800B3DC24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89DD7216BEBCFF5172A63059 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EFei/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FCC2B8E31A18D0D800B3DC24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EFeiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EFei.app/EFei";
+			};
+			name = Debug;
+		};
+		FCC2B8E41A18D0D800B3DC24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EFeiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EFei.app/EFei";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FCC2B8B71A18D0D800B3DC24 /* Build configuration list for PBXProject "EFei" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCC2B8DD1A18D0D800B3DC24 /* Debug */,
+				FCC2B8DE1A18D0D800B3DC24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCC2B8DF1A18D0D800B3DC24 /* Build configuration list for PBXNativeTarget "EFei" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCC2B8E01A18D0D800B3DC24 /* Debug */,
+				FCC2B8E11A18D0D800B3DC24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCC2B8E21A18D0D800B3DC24 /* Build configuration list for PBXNativeTarget "EFeiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCC2B8E31A18D0D800B3DC24 /* Debug */,
+				FCC2B8E41A18D0D800B3DC24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCC2B8B41A18D0D800B3DC24 /* Project object */;
+}
