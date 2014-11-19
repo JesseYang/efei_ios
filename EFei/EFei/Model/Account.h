@@ -11,7 +11,9 @@
 
 @interface Account : NSObject
 
-@property (nonatomic, copy) NSString* authKey;
+@property (nonatomic, copy) NSString* token;
 @property (nonatomic, readonly) NSString* client;
+@property (nonatomic, copy) NSString* username;
+@property (nonatomic, copy) NSString* password;
 
 @end
