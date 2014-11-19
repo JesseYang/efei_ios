@@ -4,7 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-ASIHTTPRequest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SBJson.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0EF682D05F8E61300E1FC577</key>
+		<key>2972DC1364BAAACFF6959BB4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1069B118950C9195D3F5F86A</key>
+		<key>5C68E34220CFB3EFA40E2BD5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>678E0D0A46EC488B1360CB33</key>
+		<key>AA4381C2F4E1350E71E6961F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2F4EF2F098EC90F4F2F33FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BDA3C5FE644D7D7DB1A7F54F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB66EB09796AADCCC04A2055</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB7B93E552F277DA4A3BB1F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

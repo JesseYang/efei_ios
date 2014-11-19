@@ -13,6 +13,7 @@
 #import "Question.h"
 #import "NoteBook.h"
 #import "Settings.h"
+#import "Infos.h"
 
 // Access point of data model
 

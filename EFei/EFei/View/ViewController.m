@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "NotebookCommand.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        NSLog(@"task : %d", success);
+    };
+    
+    [GetUpdateTimeCommand executeWithCompleteHandler:handler];
 }
 
 - (void)didReceiveMemoryWarning {
