@@ -27,3 +27,43 @@
 @property (nonatomic, copy) NSString* password;
 
 @end
+
+
+
+@interface ResetPasswordInfo : NSObject
+
+@property (nonatomic, copy) NSString* phoneNumber;
+@property (nonatomic, copy) NSString* verifyCode;
+@property (nonatomic, copy) NSString* password;
+@property (nonatomic, copy) NSString* token;
+
+@end
+
+
+@interface ChangePasswordInfo : NSObject
+
+@property (nonatomic, copy) NSString* password;
+@property (nonatomic, copy) NSString* passwordNew;
+
+@end
+
+
+@interface GetTeacherInfo : NSObject
+
+@property (nonatomic, assign) NSInteger scope;
+@property (nonatomic, copy) NSString* subject;
+@property (nonatomic, copy) NSString* name;
+
+@property (nonatomic, strong) NSArray* results;
+
+@end
+
+
+
+
+@interface AddRemoveTeacherInfo : NSObject
+
+@property (nonatomic, assign) NSInteger teacherId;
+@property (nonatomic, assign) NSInteger classId;
+
+@end

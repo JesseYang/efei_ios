@@ -192,6 +192,21 @@ static NSString* kBaseReqeustMessageKey = @"message";
 
 - (void) startPost
 {
+    [self doPost:@"POST"];
+}
+
+- (void) startPut
+{
+    [self doPost:@"PUT"];
+}
+
+- (void) startDelete
+{
+    [self doPost:@"DELETE"];
+}
+
+- (void) doPost:(NSString*)method
+{
     NSMutableString* urlString = [NSMutableString stringWithFormat:@"%@/%@",kBaseUrl, self.path];
     
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -199,7 +214,7 @@ static NSString* kBaseReqeustMessageKey = @"message";
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:url];
     [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
     [request addRequestHeader:@"Accept" value:@"application/json"];
-    [request setRequestMethod:@"POST"];
+    [request setRequestMethod:method];
     [request setTimeOutSeconds:60];
     
     NSString* token = [EFei instance].account.token;
@@ -229,16 +244,6 @@ static NSString* kBaseReqeustMessageKey = @"message";
     
     [request setUseCookiePersistence:YES];
     [request startAsynchronous];
-}
-
-- (void) startPut
-{
-    
-}
-
-- (void) startDelete
-{
-    
 }
 
 @end

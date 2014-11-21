@@ -14,6 +14,7 @@
 #import "NoteBook.h"
 #import "Settings.h"
 #import "Infos.h"
+#import "Teacher.h"
 
 // Access point of data model
 
