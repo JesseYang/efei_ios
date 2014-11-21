@@ -19,6 +19,7 @@ static NSString* kBaseResponseCodeKey = @"code";
 
 static NSString* kBaseRequestTokenKey = @"auth_key";
 static NSString* kBaseReqeustClientKey = @"client";
+static NSString* kBaseReqeustMessageKey = @"message";
 
 @interface NetWorkTask()
 {
@@ -99,6 +100,8 @@ static NSString* kBaseReqeustClientKey = @"client";
 
 - (void) failed
 {
+    NSLog(@"NetworkTask failed. Error code: %ld. %@", self.errorCode, self.error);
+    
     if (self.completionBlock != nil)
     {
         self.completionBlock(self.taskType, NO);
@@ -137,6 +140,7 @@ static NSString* kBaseReqeustClientKey = @"client";
     else
     {
         self.errorCode = [[jsonDic objectForKey:kBaseResponseCodeKey] integerValue];
+        self.error = [jsonDic objectForKey:kBaseReqeustMessageKey];
         [self failed];
     }
 }

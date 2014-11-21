@@ -33,10 +33,18 @@ static NSString* kResponseUpdateTimeKey        = @"note_update_time";
 
 - (BOOL) parseResultDict:(NSDictionary *)dict
 {
-    NSString* time = [dict objectForKey:kResponseUpdateTimeKey];
-    NSLog(@"NetWorkTaskGetUpdateTime:  %@", time);
+    NSDictionary* updateTimeDict = [dict objectForKey:kResponseUpdateTimeKey];
     
-    return time.length > 0;
+    if (![updateTimeDict isKindOfClass:[NSDictionary class]])
+    {
+        return NO;
+    }
+    
+    NSString* subject = [updateTimeDict.allKeys firstObject];
+    NSInteger time = [[updateTimeDict objectForKey:subject] integerValue];
+    NSLog(@"NetWorkTaskGetUpdateTime:  %@  %ld", subject, time);
+    
+    return time > 0;
 }
 
 

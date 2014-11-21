@@ -8,13 +8,19 @@
 
 #import "NetworkTaskSignIn.h"
 #import "EFei.h"
+#import "TaskManager.h"
 
 // Request keys.
 static NSString* kRequestUsernameKey      = @"email_mobile";
-static NSString* kRequestPasswdKey        = @"password";
+static NSString* kRequestPasswordKey      = @"password";
 
 
 @implementation NetworkTaskSignIn
+
++ (void) load
+{
+    [[TaskManager instance] registeTaskClass:[self class] withType:NetWorkTaskTypeSignin];
+}
 
 - (id) init
 {
@@ -33,7 +39,7 @@ static NSString* kRequestPasswdKey        = @"password";
     SignUpInfo* info = (SignUpInfo*)self.data;
     
     [self.parameterDict setValue:info.username forKey:kRequestUsernameKey];
-    [self.parameterDict setValue:info.password forKey:kRequestUsernameKey];
+    [self.parameterDict setValue:info.password forKey:kRequestPasswordKey];
 }
 
 
