@@ -25,6 +25,8 @@
 		FC3809021A1C6DDD007A73E4 /* NotebookCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3809011A1C6DDD007A73E4 /* NotebookCommand.m */; };
 		FC3809051A1C6EE5007A73E4 /* Infos.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3809041A1C6EE5007A73E4 /* Infos.m */; };
 		FC3809081A1C738F007A73E4 /* NetWorkTaskSignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3809071A1C738F007A73E4 /* NetWorkTaskSignUp.m */; };
+		FC4311C21A1DAB960020EA31 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4311C11A1DAB960020EA31 /* SignInViewController.m */; };
+		FC4311C51A1DABA40020EA31 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4311C41A1DABA40020EA31 /* SignUpViewController.m */; };
 		FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C11A18D0D800B3DC24 /* main.m */; };
 		FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C41A18D0D800B3DC24 /* AppDelegate.m */; };
 		FCC2B8CB1A18D0D800B3DC24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC2B8C91A18D0D800B3DC24 /* Main.storyboard */; };
@@ -84,6 +86,10 @@
 		FC3809041A1C6EE5007A73E4 /* Infos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Infos.m; sourceTree = "<group>"; };
 		FC3809061A1C738F007A73E4 /* NetWorkTaskSignUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskSignUp.h; sourceTree = "<group>"; };
 		FC3809071A1C738F007A73E4 /* NetWorkTaskSignUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskSignUp.m; sourceTree = "<group>"; };
+		FC4311C01A1DAB960020EA31 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		FC4311C11A1DAB960020EA31 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		FC4311C31A1DABA40020EA31 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		FC4311C41A1DABA40020EA31 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		FCC2B8BC1A18D0D800B3DC24 /* EFei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC2B8C01A18D0D800B3DC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCC2B8C11A18D0D800B3DC24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -221,6 +227,17 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		FC4311BF1A1DAB800020EA31 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FC4311C01A1DAB960020EA31 /* SignInViewController.h */,
+				FC4311C11A1DAB960020EA31 /* SignInViewController.m */,
+				FC4311C31A1DABA40020EA31 /* SignUpViewController.h */,
+				FC4311C41A1DABA40020EA31 /* SignUpViewController.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		FCC2B8B31A18D0D800B3DC24 = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +329,7 @@
 		FCC2B94A1A19889C00B3DC24 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC4311BF1A1DAB800020EA31 /* Account */,
 				FCC2B94B1A1988D200B3DC24 /* ViewController.h */,
 				FCC2B94C1A1988D200B3DC24 /* ViewController.m */,
 			);
@@ -459,6 +477,7 @@
 				FC3809021A1C6DDD007A73E4 /* NotebookCommand.m in Sources */,
 				FC3808CE1A1B4409007A73E4 /* DataBase.m in Sources */,
 				FC3808DA1A1B4453007A73E4 /* NoteBook.m in Sources */,
+				FC4311C21A1DAB960020EA31 /* SignInViewController.m in Sources */,
 				FC3809051A1C6EE5007A73E4 /* Infos.m in Sources */,
 				FC3808F91A1C6CB5007A73E4 /* NetWorkTaskGetUpdateTime.m in Sources */,
 				FC3809081A1C738F007A73E4 /* NetWorkTaskSignUp.m in Sources */,
@@ -471,6 +490,7 @@
 				FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */,
 				FC3808F61A1C61B0007A73E4 /* NetworkTaskSignIn.m in Sources */,
 				FC3808E01A1B4A50007A73E4 /* Note.m in Sources */,
+				FC4311C51A1DABA40020EA31 /* SignUpViewController.m in Sources */,
 				FC3808FF1A1C6DB8007A73E4 /* UserCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

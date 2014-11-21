@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "NotebookCommand.h"
+#import "SignInViewController.h"
 
 @interface ViewController ()
 
@@ -24,11 +25,21 @@
     };
     
     [GetUpdateTimeCommand executeWithCompleteHandler:handler];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    
+    [self performSegueWithIdentifier:@"ShowSignInViewController" sender:self];
 }
 
 @end
