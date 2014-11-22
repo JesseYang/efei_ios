@@ -48,7 +48,7 @@ static NSString* kResponseNotesKey        = @"notes";
     
     for (NSArray* nArray in notes)
     {
-        NSInteger noteId = [[nArray objectAtIndex:0] integerValue];
+        NSString* noteId = [nArray objectAtIndex:0];
         NSInteger updateTime = [[nArray objectAtIndex:1] integerValue];
         
         [[EFei instance].notebook addNoteWithId:noteId lastUpdateTime:updateTime];

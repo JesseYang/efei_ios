@@ -31,16 +31,16 @@
 {
     [_notes addObject:note];
 }
-- (void) addNoteWithId:(NSInteger)noteId lastUpdateTime:(NSInteger)updateTime
+- (void) addNoteWithId:(NSString*)noteId lastUpdateTime:(NSInteger)updateTime
 {
     Note* note = [[Note alloc] initWithNoteId:noteId updateTime:updateTime];
     [self addNote:note];
 }
-- (Note*) noteWithId:(NSInteger)noteId
+- (Note*) noteWithId:(NSString*)noteId
 {
     for (Note* note in _notes)
     {
-        if (note.noteId == noteId)
+        if ([note.noteId isEqualToString:noteId])
         {
             return note;
         }

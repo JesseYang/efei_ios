@@ -14,8 +14,8 @@
 @property (nonatomic, readonly) NSArray* notes;
 
 - (void) addNote:(Note*)note;
-- (void) addNoteWithId:(NSInteger)noteId lastUpdateTime:(NSInteger)updateTime;
-- (Note*) noteWithId:(NSInteger)noteId;
+- (void) addNoteWithId:(NSString*)noteId lastUpdateTime:(NSInteger)updateTime;
+- (Note*) noteWithId:(NSString*)noteId;
 - (Note*) noteAtIndex:(NSInteger)index;
 
 @end

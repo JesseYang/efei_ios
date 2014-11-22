@@ -67,3 +67,18 @@
 @property (nonatomic, assign) NSInteger classId;
 
 @end
+
+////////////////////////////////////////////////////////////////
+
+
+@interface ExportInfo : NSObject
+
+@property (nonatomic, copy) NSString* fileType;
+@property (nonatomic, assign) BOOL hasAnswer;
+@property (nonatomic, assign) BOOL hadNote;
+@property (nonatomic, copy) NSString* noteIdStr;
+@property (nonatomic, copy) NSString* email;
+
+@end
+
+
