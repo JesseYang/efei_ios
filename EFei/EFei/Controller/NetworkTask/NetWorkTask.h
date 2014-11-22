@@ -30,7 +30,18 @@ typedef enum : NSUInteger
     NetWorkTaskTypeDeleteTeacher,
     NetWorkTaskTypeFeedback,
     
+    // Question
+    NetWorkTaskTypeParseShortUrl,
+    NetWorkTaskTypeGetQuestion,
+    NetWorkTaskTypeAddQuestion,
+    
     // Notebook
+    NetWorkTaskTypeGetTopics,
+    NetWorkTaskTypeGetNoteList,
+    NetWorkTaskTypeGetNote,
+    NetWorkTaskTypeDeleteNote,
+    NetWorkTaskTypeUpdateNote,
+    NetWorkTaskTypeExportNotes,
     NetWorkTaskTypeGetNotebookUpdateTime,
 } NetWorkTaskType;
 

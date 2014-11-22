@@ -41,6 +41,16 @@
 		FC43120C1A1F628F0020EA31 /* NetWorkTaskDeleteTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43120B1A1F628F0020EA31 /* NetWorkTaskDeleteTeacher.m */; };
 		FC43120F1A1F62A50020EA31 /* NetWorkTaskFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43120E1A1F62A50020EA31 /* NetWorkTaskFeedback.m */; };
 		FC4312121A1F691B0020EA31 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312111A1F691B0020EA31 /* Teacher.m */; };
+		FC4312151A2020A20020EA31 /* NetWorkTaskParseShortUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312141A2020A20020EA31 /* NetWorkTaskParseShortUrl.m */; };
+		FC4312181A2020BA0020EA31 /* NetWorkTaskGetQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312171A2020BA0020EA31 /* NetWorkTaskGetQuestion.m */; };
+		FC43121B1A2020E90020EA31 /* NetWorkTaskAddQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43121A1A2020E90020EA31 /* NetWorkTaskAddQuestion.m */; };
+		FC43121E1A2021040020EA31 /* NetWorkTaskGetTopics.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43121D1A2021040020EA31 /* NetWorkTaskGetTopics.m */; };
+		FC4312211A20213A0020EA31 /* NetWorkTaskGetNoteList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312201A20213A0020EA31 /* NetWorkTaskGetNoteList.m */; };
+		FC4312241A2021440020EA31 /* NetWorkTaskGetNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312231A2021440020EA31 /* NetWorkTaskGetNote.m */; };
+		FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312261A2021770020EA31 /* NetWorkTaskDeleteNote.m */; };
+		FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312291A2021820020EA31 /* NetWorkTaskUpdateNote.m */; };
+		FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */; };
+		FC4312301A2022D10020EA31 /* Topics.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122F1A2022D10020EA31 /* Topics.m */; };
 		FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C11A18D0D800B3DC24 /* main.m */; };
 		FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C41A18D0D800B3DC24 /* AppDelegate.m */; };
 		FCC2B8CB1A18D0D800B3DC24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC2B8C91A18D0D800B3DC24 /* Main.storyboard */; };
@@ -132,6 +142,26 @@
 		FC43120E1A1F62A50020EA31 /* NetWorkTaskFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskFeedback.m; sourceTree = "<group>"; };
 		FC4312101A1F691B0020EA31 /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
 		FC4312111A1F691B0020EA31 /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
+		FC4312131A2020A20020EA31 /* NetWorkTaskParseShortUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskParseShortUrl.h; sourceTree = "<group>"; };
+		FC4312141A2020A20020EA31 /* NetWorkTaskParseShortUrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskParseShortUrl.m; sourceTree = "<group>"; };
+		FC4312161A2020BA0020EA31 /* NetWorkTaskGetQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskGetQuestion.h; sourceTree = "<group>"; };
+		FC4312171A2020BA0020EA31 /* NetWorkTaskGetQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskGetQuestion.m; sourceTree = "<group>"; };
+		FC4312191A2020E90020EA31 /* NetWorkTaskAddQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskAddQuestion.h; sourceTree = "<group>"; };
+		FC43121A1A2020E90020EA31 /* NetWorkTaskAddQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskAddQuestion.m; sourceTree = "<group>"; };
+		FC43121C1A2021040020EA31 /* NetWorkTaskGetTopics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskGetTopics.h; sourceTree = "<group>"; };
+		FC43121D1A2021040020EA31 /* NetWorkTaskGetTopics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskGetTopics.m; sourceTree = "<group>"; };
+		FC43121F1A20213A0020EA31 /* NetWorkTaskGetNoteList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskGetNoteList.h; sourceTree = "<group>"; };
+		FC4312201A20213A0020EA31 /* NetWorkTaskGetNoteList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskGetNoteList.m; sourceTree = "<group>"; };
+		FC4312221A2021440020EA31 /* NetWorkTaskGetNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskGetNote.h; sourceTree = "<group>"; };
+		FC4312231A2021440020EA31 /* NetWorkTaskGetNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskGetNote.m; sourceTree = "<group>"; };
+		FC4312251A2021770020EA31 /* NetWorkTaskDeleteNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskDeleteNote.h; sourceTree = "<group>"; };
+		FC4312261A2021770020EA31 /* NetWorkTaskDeleteNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskDeleteNote.m; sourceTree = "<group>"; };
+		FC4312281A2021820020EA31 /* NetWorkTaskUpdateNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskUpdateNote.h; sourceTree = "<group>"; };
+		FC4312291A2021820020EA31 /* NetWorkTaskUpdateNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskUpdateNote.m; sourceTree = "<group>"; };
+		FC43122B1A20218C0020EA31 /* NetWorkTaskExportNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskExportNotes.h; sourceTree = "<group>"; };
+		FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskExportNotes.m; sourceTree = "<group>"; };
+		FC43122E1A2022D10020EA31 /* Topics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topics.h; sourceTree = "<group>"; };
+		FC43122F1A2022D10020EA31 /* Topics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topics.m; sourceTree = "<group>"; };
 		FCC2B8BC1A18D0D800B3DC24 /* EFei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC2B8C01A18D0D800B3DC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCC2B8C11A18D0D800B3DC24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -264,6 +294,24 @@
 			children = (
 				FC3808F71A1C6CB5007A73E4 /* NetWorkTaskGetUpdateTime.h */,
 				FC3808F81A1C6CB5007A73E4 /* NetWorkTaskGetUpdateTime.m */,
+				FC4312131A2020A20020EA31 /* NetWorkTaskParseShortUrl.h */,
+				FC4312141A2020A20020EA31 /* NetWorkTaskParseShortUrl.m */,
+				FC4312161A2020BA0020EA31 /* NetWorkTaskGetQuestion.h */,
+				FC4312171A2020BA0020EA31 /* NetWorkTaskGetQuestion.m */,
+				FC4312191A2020E90020EA31 /* NetWorkTaskAddQuestion.h */,
+				FC43121A1A2020E90020EA31 /* NetWorkTaskAddQuestion.m */,
+				FC43121C1A2021040020EA31 /* NetWorkTaskGetTopics.h */,
+				FC43121D1A2021040020EA31 /* NetWorkTaskGetTopics.m */,
+				FC43121F1A20213A0020EA31 /* NetWorkTaskGetNoteList.h */,
+				FC4312201A20213A0020EA31 /* NetWorkTaskGetNoteList.m */,
+				FC4312221A2021440020EA31 /* NetWorkTaskGetNote.h */,
+				FC4312231A2021440020EA31 /* NetWorkTaskGetNote.m */,
+				FC4312251A2021770020EA31 /* NetWorkTaskDeleteNote.h */,
+				FC4312261A2021770020EA31 /* NetWorkTaskDeleteNote.m */,
+				FC4312281A2021820020EA31 /* NetWorkTaskUpdateNote.h */,
+				FC4312291A2021820020EA31 /* NetWorkTaskUpdateNote.m */,
+				FC43122B1A20218C0020EA31 /* NetWorkTaskExportNotes.h */,
+				FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */,
 			);
 			path = Notebook;
 			sourceTree = "<group>";
@@ -392,6 +440,8 @@
 				FC3808DC1A1B445E007A73E4 /* Settings.m */,
 				FC3809031A1C6EE5007A73E4 /* Infos.h */,
 				FC3809041A1C6EE5007A73E4 /* Infos.m */,
+				FC43122E1A2022D10020EA31 /* Topics.h */,
+				FC43122F1A2022D10020EA31 /* Topics.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,11 +591,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC4311F11A1F45F40020EA31 /* NetWorkTaskResetPassword.m in Sources */,
+				FC4312151A2020A20020EA31 /* NetWorkTaskParseShortUrl.m in Sources */,
 				FC3808F01A1C60F4007A73E4 /* TaskManager.m in Sources */,
 				FCC2B94D1A1988D200B3DC24 /* ViewController.m in Sources */,
 				FC3808D41A1B4423007A73E4 /* User.m in Sources */,
 				FC3808DD1A1B445E007A73E4 /* Settings.m in Sources */,
 				FC3809021A1C6DDD007A73E4 /* NotebookCommand.m in Sources */,
+				FC4312301A2022D10020EA31 /* Topics.m in Sources */,
 				FC3808CE1A1B4409007A73E4 /* DataBase.m in Sources */,
 				FC4311F41A1F60BA0020EA31 /* NetWorkTaskGetUserInfo.m in Sources */,
 				FC3808DA1A1B4453007A73E4 /* NoteBook.m in Sources */,
@@ -555,12 +607,15 @@
 				FC4311FA1A1F60DB0020EA31 /* NetWorkTaskChangePassword.m in Sources */,
 				FC4312091A1F62860020EA31 /* NetWorkTaskAddTeacher.m in Sources */,
 				FC4311FD1A1F61BF0020EA31 /* NetWorkTaskChangeEmail.m in Sources */,
+				FC4312241A2021440020EA31 /* NetWorkTaskGetNote.m in Sources */,
 				FC3809081A1C738F007A73E4 /* NetWorkTaskSignUp.m in Sources */,
 				FC3808FC1A1C6DAF007A73E4 /* AccountCommand.m in Sources */,
 				FC4311F71A1F60CC0020EA31 /* NetWorkTaskRename.m in Sources */,
 				FC3808ED1A1C60B8007A73E4 /* NetWorkTask.m in Sources */,
+				FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */,
 				FC4312031A1F62100020EA31 /* NetWorkTaskVerifyMobile.m in Sources */,
 				FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */,
+				FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */,
 				FC3808D11A1B4418007A73E4 /* Account.m in Sources */,
 				FC4311EB1A1F45710020EA31 /* NetWorkTaskSendVerifyCode.m in Sources */,
 				FC3808D71A1B4440007A73E4 /* Question.m in Sources */,
@@ -568,10 +623,15 @@
 				FC3808CB1A1B4317007A73E4 /* EFei.m in Sources */,
 				FC43120C1A1F628F0020EA31 /* NetWorkTaskDeleteTeacher.m in Sources */,
 				FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */,
+				FC4312211A20213A0020EA31 /* NetWorkTaskGetNoteList.m in Sources */,
 				FC3808F61A1C61B0007A73E4 /* NetworkTaskSignIn.m in Sources */,
+				FC4312181A2020BA0020EA31 /* NetWorkTaskGetQuestion.m in Sources */,
 				FC43120F1A1F62A50020EA31 /* NetWorkTaskFeedback.m in Sources */,
+				FC43121E1A2021040020EA31 /* NetWorkTaskGetTopics.m in Sources */,
+				FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */,
 				FC3808E01A1B4A50007A73E4 /* Note.m in Sources */,
 				FC4311EE1A1F45E10020EA31 /* NetWorkTaskGetResetPasswordToken.m in Sources */,
+				FC43121B1A2020E90020EA31 /* NetWorkTaskAddQuestion.m in Sources */,
 				FC4311C51A1DABA40020EA31 /* SignUpViewController.m in Sources */,
 				FC3808FF1A1C6DB8007A73E4 /* UserCommand.m in Sources */,
 				FC4312001A1F61D80020EA31 /* NetWorkTaskChangeMobile.m in Sources */,

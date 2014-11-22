@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Note.h"
 
 @interface NoteBook : NSObject
+
+@property (nonatomic, readonly) NSArray* notes;
+
+- (void) addNote:(Note*)note;
+- (void) addNoteWithId:(NSInteger)noteId lastUpdateTime:(NSInteger)updateTime;
+- (Note*) noteWithId:(NSInteger)noteId;
+- (Note*) noteAtIndex:(NSInteger)index;
 
 @end
