@@ -7,20 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef enum : NSUInteger
-{
-    SubjectTypeChinese      = 1,
-    SubjectTypeMathematics  = 2,
-    SubjectTypeEnglish      = 4,
-    SubjectTypePhysics      = 8,
-    SubjectTypeChemistry    = 16,
-    SubjectTypeBiology      = 32,
-    SubjectTypeHistroy      = 64,
-    SubjectTypeGeography    = 128,
-    SubjectTypePolitics     = 256,
-    SubjectTypeOther        = 512,
-} SubjectType;
+#import "Topics.h"
 
 typedef enum : NSUInteger
 {

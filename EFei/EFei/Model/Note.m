@@ -10,4 +10,16 @@
 
 @implementation Note
 
+- (id) initWithNoteId:(NSString*)noteId updateTime:(NSInteger)updateTime
+{
+    self = [super init];
+    if (self)
+    {
+        self.noteId = noteId;
+        self.updateTime = updateTime;
+    }
+    
+    return self;
+}
+
 @end

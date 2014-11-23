@@ -15,9 +15,33 @@ typedef enum : NSUInteger
     NetWorkTaskTypeSignup,
     NetWorkTaskTypeSignout,
     NetWorkTaskTypeSendVerifyCode,
+    NetWorkTaskTypeGetResetPasswordToken,
     NetWorkTaskTypeResetPassword,
     
+    // User
+    NetWorkTaskTypeGetUserInfo,
+    NetWorkTaskTypeRename,
+    NetWorkTaskTypeChangePassword,
+    NetWorkTaskTypeChangeEmail,
+    NetWorkTaskTypeChangeMobile,
+    NetWorkTaskTypeVerifyMobile,
+    NetWorkTaskTypeGetTeachers,
+    NetWorkTaskTypeAddTeacher,
+    NetWorkTaskTypeDeleteTeacher,
+    NetWorkTaskTypeFeedback,
+    
+    // Question
+    NetWorkTaskTypeParseShortUrl,
+    NetWorkTaskTypeGetQuestion,
+    NetWorkTaskTypeAddQuestion,
+    
     // Notebook
+    NetWorkTaskTypeGetTopics,
+    NetWorkTaskTypeGetNoteList,
+    NetWorkTaskTypeGetNote,
+    NetWorkTaskTypeDeleteNote,
+    NetWorkTaskTypeUpdateNote,
+    NetWorkTaskTypeExportNotes,
     NetWorkTaskTypeGetNotebookUpdateTime,
 } NetWorkTaskType;
 

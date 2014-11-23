@@ -35,11 +35,12 @@
     self = [super init];
     if (self)
     {
-        _database      = [[DataBase alloc] init];
-        self.account   = [[Account alloc] init];
-        self.user      = [[User alloc] init];
-        self.notebook  = [[NoteBook alloc] init];
-        self.settings  = [[Settings alloc] init];
+        _database           = [[DataBase alloc] init];
+        self.account        = [[Account alloc] init];
+        self.user           = [[User alloc] init];
+        self.notebook       = [[NoteBook alloc] init];
+        self.settings       = [[Settings alloc] init];
+        self.subjectManager = [[SubjectManager alloc] init];
         
         [self load];
     }

@@ -20,3 +20,25 @@
 @implementation SignUpInfo
 
 @end
+
+@implementation ResetPasswordInfo
+
+@end
+
+
+@implementation ChangePasswordInfo
+
+@end
+
+@implementation GetTeacherInfo
+
+@end
+
+@implementation AddRemoveTeacherInfo
+
+@end
+
+///////////////////////////////////////////////////
+@implementation ExportInfo
+
+@end
