@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TaskManager.h"
+#import "Controller.h"
 
 @interface NotebookCommand : NSObject
 
@@ -17,10 +18,46 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-@interface GetUpdateTimeCommand : NSObject
+@interface ParseShortUrlCommand : NSObject
+
++ (void) executeWithUrl:(NSString*)url completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+@interface GetQuestionContentCommand : NSObject
+
++ (void) executeWithCompleteHandler:(CompletionBlock)handler;
++ (void) executeWithShortUrl:(NSString*)url completeHandler:(ControllerCompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+@interface AddQuestionToNotebookCommand : NSObject
 
 + (void) executeWithCompleteHandler:(CompletionBlock)handler;
 
 @end
 
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface GetTopicsCommand : NSObject
+
++ (void) executeWithCompleteHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+@interface GetUpdateTimeCommand : NSObject
+
++ (void) executeWithCompleteHandler:(CompletionBlock)handler;
+
+@end
 //////////////////////////////////////////////////////////////////////////////////////

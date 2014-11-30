@@ -9,36 +9,53 @@
 #import "NetWorkTaskGetQuestion.h"
 #import "EFei.h"
 #import "TaskManager.h"
+#import "GetQuestionController.h"
 
-static NSString* kResponseNoteIdKey        = @"note_id";
-static NSString* kResponseQuestionKey        = @"question";
-
-static NSString* kResponseIdKey                = @"_id";
-static NSString* kResponseIdOidKey             = @"$oid";
-static NSString* kResponseQuestionIdKey        = @"question_id";
-static NSString* kResponseAFiguresKey          = @"a_figures";
+static NSString* kResponseNoteIdKey            = @"note_id";
+static NSString* kResponseIdKey                = @"id";
+static NSString* kResponseSubjectKey           = @"subject";
+static NSString* kResponseQuestionTypeKey      = @"type";
+static NSString* kResponseContentKey           = @"content";
+static NSString* kResponseItemsKey             = @"items";
 static NSString* kResponseAnswerKey            = @"answer";
 static NSString* kResponseAnswerContentKey     = @"answer_content";
-static NSString* kResponseContentKey           = @"content";
-static NSString* kResponseCreatedAtKey         = @"created_at";
-static NSString* kResponseInlineImagesKey      = @"inline_images";
-static NSString* kResponseItemsKey             = @"items";
-static NSString* kResponseLastUpdateTimeKey    = @"last_update_time";
-static NSString* kResponsePreviewKey           = @"preview";
-static NSString* kResponseQFiguresKey          = @"q_figures";
-static NSString* kResponseQuestionStrKey       = @"question_str";
-static NSString* kResponseQuestionTypeKey      = @"question_type";
-static NSString* kResponseSubjectKey           = @"subject";
-static NSString* kResponseSummaryKey           = @"summary";
-static NSString* kResponseTagKey               = @"tag";
 static NSString* kResponseTagSetKey            = @"tag_set";
-static NSString* kResponseTopicIdsKey          = @"topic_ids";
-static NSString* kResponseTypeKey              = @"type";
-static NSString* kResponseUpdatedAtKey         = @"updated_at";
-static NSString* kResponseUserIdKey            = @"user_id";
 
 
 
+
+//static NSString* kResponseAFiguresKey          = @"a_figures";
+//static NSString* kResponseCreatedAtKey         = @"created_at";
+//static NSString* kResponseInlineImagesKey      = @"inline_images";
+//static NSString* kResponseLastUpdateTimeKey    = @"last_update_time";
+//static NSString* kResponsePreviewKey           = @"preview";
+//static NSString* kResponseQFiguresKey          = @"q_figures";
+//static NSString* kResponseQuestionStrKey       = @"question_str";
+//static NSString* kResponseQuestionTypeKey      = @"question_type";
+//static NSString* kResponseSummaryKey           = @"summary";
+//static NSString* kResponseTagKey               = @"tag";
+//static NSString* kResponseTopicIdsKey          = @"topic_ids";
+//static NSString* kResponseUpdatedAtKey         = @"updated_at";
+//static NSString* kResponseUserIdKey            = @"user_id";
+
+/*
+ 
+ Example
+
+{
+ "id":"5471b33e692d3556421c0000",
+ "subject":2,
+ "type":"choice",
+ "content":["（1）已知集合$$math_a42a8ed0-84d0-4956-93a2-bfbc4170c0ce*72*20.15$$，$$math_156c196e-f13a-4a3e-a47d-7054ee766e19*43.2*17.3$$. 若$$math_0fdba542-306d-4f1a-8e09-268b5fc2c9f3*50.1*13.8$$，则$$math_381141c9-c167-465d-a8f6-55b829da0cdb*9.2*9.8$$的取值范围是"],
+ "items":["$$math_425b1362-e9fb-415e-8db7-27964afe9a41*48.95*15$$","$$math_fee42357-09f0-4200-bdc0-440c67a3c234*38*15$$","$$math_01e99f6e-5205-4758-bbc8-8e97e2260dd4*32.85*15$$","$$math_38bd632d-b9ad-4914-959d-310ade2c39ed*91*15$$"],
+ "answer":null,
+ "answer_content":[],
+ "tag_set":"不懂,不会,不对,典型题",
+ "success":true,
+ "auth_key":"9eWXA9uQgH2YKPrOkoo2wsL9C2PwSY-cJzweEzAPDuh6ayI4uD_9Y_pOm-tx-Rnj"
+ }
+
+*/
 @implementation NetWorkTaskGetQuestion
 
 + (void) load
@@ -61,8 +78,8 @@ static NSString* kResponseUserIdKey            = @"user_id";
 
 - (void) prepareParameter
 {
-    Question* question = (Question*)self.data;
-    self.path = [NSString stringWithFormat:@"%@/%@", self.path, question.questionId];
+    GetQuestionController* controller = (GetQuestionController*)self.data;
+    self.path = [NSString stringWithFormat:@"%@/%@", self.path, controller.questionId];
 }
 
 
@@ -72,27 +89,25 @@ static NSString* kResponseUserIdKey            = @"user_id";
     if (noteId.length > 0)
     {
         NSLog(@"NetWorkTaskGetQuestion: note id: %@", noteId);
-        return YES;
     }
     
+    GetQuestionController* controller = (GetQuestionController*)self.data;
     
-    Question* question = (Question*)self.data;
-    
-    NSDictionary* noteDict = [dict objectForKey:kResponseNoteIdKey];
-    if (![noteDict isKindOfClass:[NSDictionary class]])
+    Question* question = [[Question alloc] init];
+    question.questionId = [dict objectForKey:kResponseIdKey];
+    if([dict objectForKey:kResponseAnswerKey] != [NSNull null])
     {
-        return NO;
+        question.answer = [[dict objectForKey:kResponseAnswerKey] integerValue];
     }
+    question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
+    question.items = [dict objectForKey:kResponseItemsKey];
+    question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
+    question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
+    question.questionTypeString = [dict objectForKey:kResponseQuestionTypeKey];
+    question.subjectType = [[dict objectForKey:kResponseSubjectKey] integerValue];
+    question.tags = [dict objectForKey:kResponseTagSetKey];
     
-    question.questionId = [[noteDict objectForKey:kResponseIdKey] objectForKey:kResponseIdOidKey];
-    question.answer = [[noteDict objectForKey:kResponseAnswerKey] integerValue];
-    question.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
-    question.items = [noteDict objectForKey:kResponseItemsKey];
-    question.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
-    question.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
-    question.questionType = [[noteDict objectForKey:kResponseQuestionTypeKey] integerValue];
-    question.subjectType = [[noteDict objectForKey:kResponseSubjectKey] integerValue];
-    question.tags = [noteDict objectForKey:kResponseTagSetKey];
+    [controller.questionList addQuestion:question];
     
     return YES;
 }

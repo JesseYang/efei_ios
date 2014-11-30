@@ -121,7 +121,7 @@ static NSString* kBaseReqeustMessageKey = @"message";
     BOOL success = [[jsonDic objectForKey:kBaseResponseSuccessKey] boolValue];
     NSString* token = [jsonDic objectForKey:kBaseResponseTokenKey];
     
-    if (success && token.length > 0)
+    if (success)
     {
         [EFei instance].account.token = token;
         [jsonDic removeObjectForKey:kBaseResponseSuccessKey];
@@ -156,33 +156,42 @@ static NSString* kBaseReqeustMessageKey = @"message";
 {
     NSMutableString* urlString = [NSMutableString stringWithFormat:@"%@/%@?",kBaseUrl, self.path];
     
-    NSString* token = [EFei instance].account.token;
-    NSString* client = [EFei instance].account.client;
-    if (token.length > 0)
+    if (self.taskType != NetWorkTaskTypeParseShortUrl)
     {
-        [urlString appendFormat:@"%@=%@&", kBaseRequestTokenKey, token];
+        NSString* token = [EFei instance].account.token;
+        NSString* client = [EFei instance].account.client;
+        if (token.length > 0)
+        {
+            [urlString appendFormat:@"%@=%@&", kBaseRequestTokenKey, token];
+        }
+        [urlString appendFormat:@"%@=%@&", kBaseReqeustClientKey, client];
+        
+        for (NSString* key in self.parameterDict.allKeys)
+        {
+            NSString* value = [self.parameterDict objectForKey:key];
+            [urlString appendFormat:@"%@=%@&", key, value];
+        }
     }
-    [urlString appendFormat:@"%@=%@&", kBaseReqeustClientKey, client];
     
-    for (NSString* key in self.parameterDict.allKeys)
-    {
-        NSString* value = [self.parameterDict objectForKey:key];
-        [urlString appendFormat:@"%@=%@&", key, value];
-    }
     [urlString deleteCharactersInRange:NSMakeRange(urlString.length-1, 1)];
     
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"url: %@", url);
     
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:url];
     request.timeOutSeconds = 60;
+    [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
+    [request addRequestHeader:@"Accept" value:@"application/json"];
     ASIHTTPRequest* __weak weakRequest = request;
     [request setCompletionBlock:^{
         
         NSString *responseString = [weakRequest responseString];
+        NSLog(@"ResponseString : %@", responseString);
         [self parseResult:responseString];
     }];
     
     [request setFailedBlock:^{
+        NSLog(@"ASIHTTPRequest error: %@", weakRequest.error);
         [self failed];
     }];
     
