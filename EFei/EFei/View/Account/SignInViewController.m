@@ -23,6 +23,19 @@
 
 @implementation SignInViewController
 
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (IBAction)onSignIn:(id)sender
 {
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {

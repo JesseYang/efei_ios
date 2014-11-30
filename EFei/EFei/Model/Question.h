@@ -21,6 +21,7 @@ typedef enum : NSUInteger
 @property (nonatomic, copy) NSString* questionId;
 @property (nonatomic, assign) SubjectType subjectType;
 @property (nonatomic, assign) QuestionType questionType;
+@property (nonatomic, copy) NSString* questionTypeString;
 @property (nonatomic, strong) NSArray* contents;
 @property (nonatomic, strong) NSArray* items;
 @property (nonatomic, assign) NSInteger answer;
@@ -30,3 +31,12 @@ typedef enum : NSUInteger
 
 @end
 
+@interface QuestionList : NSObject
+
+@property (nonatomic, strong) NSArray* questions;
+
+- (void) addQuestion:(Question*)question;
+
+- (void) clearAllQuestion;
+
+@end
