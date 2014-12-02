@@ -119,7 +119,7 @@
     label.selectable = NO;
     label.attributedText = string;
     label.delegate = self;
-    [self.view addSubview:label];
+//    [self.view addSubview:label];
     
     NoteViewTapGestureRecognizer* recongnizer = [[NoteViewTapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapped:)];
     [label addGestureRecognizer:recongnizer];
@@ -197,7 +197,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return 0;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
