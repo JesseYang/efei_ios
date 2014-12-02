@@ -99,6 +99,7 @@ static NSString* kResponseTagSetKey            = @"tag_set";
     {
         question.answer = [[dict objectForKey:kResponseAnswerKey] integerValue];
     }
+    question.contents = [dict objectForKey:kResponseContentKey];
     question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
     question.items = [dict objectForKey:kResponseItemsKey];
     question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
