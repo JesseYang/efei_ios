@@ -4,4 +4,4 @@ pod 'ZXingObjC'
 pod 'SDWebImage', '~>3.6'
 pod 'ASIHTTPRequest'
 pod 'SBJson', '3.1'
-
+pod 'FMDB'

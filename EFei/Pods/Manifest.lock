@@ -12,8 +12,13 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - FMDB (2.4):
+    - FMDB/standard
+  - FMDB/common (2.4)
+  - FMDB/standard (2.4):
+    - FMDB/common
   - IQKeyboardManager (3.2.0.2)
-  - Reachability (3.1.1)
+  - Reachability (3.2)
   - SBJson (3.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
@@ -24,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - ASIHTTPRequest
+  - FMDB
   - IQKeyboardManager
   - SBJson (= 3.1)
   - SDWebImage (~> 3.6)
@@ -31,8 +37,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: 2c8335b49410c0e2ad42829c438e74d454b77590
+  FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
   IQKeyboardManager: f30f3e98fa36ca1599042c9d0cea2fb4f4ac3df9
-  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
   SBJson: aa76eec7a683de372cdf36282ec575d28a885c9a
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   ZXingObjC: 1eebdf4334b7de660ae42ddd23bd97b6d777b07d
