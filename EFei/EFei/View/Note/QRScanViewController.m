@@ -10,7 +10,7 @@
 #import <ZXingObjC.h>
 #import "NotebookCommand.h"
 
-#define ShowResultSegueId @"ShowScanResultViewController"
+#define ShowResultSegueId @"ShowQuestionViewController"
 
 @interface QRScanViewController ()<ZXCaptureDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
@@ -72,7 +72,10 @@
     _capture.layer.frame = self.view.bounds;
     
     CGAffineTransform captureSizeTransform = CGAffineTransformMakeScale(320 / self.view.frame.size.width, 480 / self.view.frame.size.height);
-    _scanRect = CGRectMake(30, 120, 260, 260);
+    
+    float size = 260;
+    
+    _scanRect = CGRectMake((self.view.frame.size.width-size)/2, 180, size, size);
     _capture.scanRect = CGRectApplyAffineTransform(_scanRect, captureSizeTransform);
     
     _scaning = YES;
@@ -94,7 +97,7 @@
     CGRect indicatorRect = _scanRect;
     indicatorRect.size.height = 2;
     _indicatorView = [[UIView alloc] initWithFrame:indicatorRect];
-    _indicatorView.backgroundColor = [UIColor greenColor];
+    _indicatorView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_indicatorView];
 }
 
@@ -146,6 +149,9 @@
     
     ControllerCompletionBlock handler = ^(BOOL success) {
         NSLog(@"get question %d", success);
+        
+        [self performSegueWithIdentifier:ShowResultSegueId sender:self];
+        
     };
     [GetQuestionContentCommand executeWithShortUrl:content completeHandler:handler];
 }

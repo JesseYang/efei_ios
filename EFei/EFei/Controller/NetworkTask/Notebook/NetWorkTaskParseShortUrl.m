@@ -40,6 +40,9 @@ static NSString* kResponseQuestionIdKey        = @"question_id";
 {
     GetQuestionController* controller = (GetQuestionController*)self.data;
     self.path = [NSString stringWithFormat:@"~%@", controller.shortUrl];
+    
+    //QR code changed, will be a string like http://dev.efei.org/~vON7R.
+    self.path = controller.shortUrl.lastPathComponent;
 }
 
 

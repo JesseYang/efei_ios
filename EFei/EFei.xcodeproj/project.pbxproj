@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5D7A6B466F9D1A89691CA409 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0C56EE660008A4E4B0D34B /* libPods.a */; };
 		FC2E81601A2AB6DE0032D9AA /* GetQuestionController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2E815F1A2AB6DE0032D9AA /* GetQuestionController.m */; };
+		FC2E81691A2AF2AF0032D9AA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2E81681A2AF2AF0032D9AA /* MainViewController.m */; };
+		FC2E816C1A2AF30D0032D9AA /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2E816B1A2AF30D0032D9AA /* NoteCell.m */; };
 		FC3808CB1A1B4317007A73E4 /* EFei.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3808CA1A1B4317007A73E4 /* EFei.m */; };
 		FC3808CE1A1B4409007A73E4 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3808CD1A1B4409007A73E4 /* DataBase.m */; };
 		FC3808D11A1B4418007A73E4 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3808D01A1B4418007A73E4 /* Account.m */; };
@@ -63,6 +65,7 @@
 		FCC2B8D01A18D0D800B3DC24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC2B8CE1A18D0D800B3DC24 /* LaunchScreen.xib */; };
 		FCC2B8DC1A18D0D800B3DC24 /* EFeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8DB1A18D0D800B3DC24 /* EFeiTests.m */; };
 		FCC2B94D1A1988D200B3DC24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B94C1A1988D200B3DC24 /* ViewController.m */; };
+		FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,10 @@
 		FC2E815E1A2AB6DE0032D9AA /* GetQuestionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetQuestionController.h; sourceTree = "<group>"; };
 		FC2E815F1A2AB6DE0032D9AA /* GetQuestionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetQuestionController.m; sourceTree = "<group>"; };
 		FC2E81661A2ABB8B0032D9AA /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		FC2E81671A2AF2AF0032D9AA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		FC2E81681A2AF2AF0032D9AA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		FC2E816A1A2AF30D0032D9AA /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
+		FC2E816B1A2AF30D0032D9AA /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		FC3808C91A1B4317007A73E4 /* EFei.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFei.h; sourceTree = "<group>"; };
 		FC3808CA1A1B4317007A73E4 /* EFei.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFei.m; sourceTree = "<group>"; };
 		FC3808CC1A1B4409007A73E4 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
@@ -188,6 +195,8 @@
 		FCC2B8DB1A18D0D800B3DC24 /* EFeiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EFeiTests.m; sourceTree = "<group>"; };
 		FCC2B94B1A1988D200B3DC24 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FCC2B94C1A1988D200B3DC24 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FCD8290D1A2D5EC700F6E0CA /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +387,12 @@
 			children = (
 				FCA7F8801A28BC970037167C /* QRScanViewController.h */,
 				FCA7F8811A28BC970037167C /* QRScanViewController.m */,
+				FC2E81671A2AF2AF0032D9AA /* MainViewController.h */,
+				FC2E81681A2AF2AF0032D9AA /* MainViewController.m */,
+				FC2E816A1A2AF30D0032D9AA /* NoteCell.h */,
+				FC2E816B1A2AF30D0032D9AA /* NoteCell.m */,
+				FCD8290D1A2D5EC700F6E0CA /* QuestionViewController.h */,
+				FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -647,6 +662,8 @@
 				FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */,
 				FC4312031A1F62100020EA31 /* NetWorkTaskVerifyMobile.m in Sources */,
 				FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */,
+				FC2E81691A2AF2AF0032D9AA /* MainViewController.m in Sources */,
+				FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */,
 				FCA7F8821A28BC970037167C /* QRScanViewController.m in Sources */,
 				FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */,
 				FC3808D11A1B4418007A73E4 /* Account.m in Sources */,
@@ -656,6 +673,7 @@
 				FC4312121A1F691B0020EA31 /* Teacher.m in Sources */,
 				FC3808CB1A1B4317007A73E4 /* EFei.m in Sources */,
 				FC43120C1A1F628F0020EA31 /* NetWorkTaskDeleteTeacher.m in Sources */,
+				FC2E816C1A2AF30D0032D9AA /* NoteCell.m in Sources */,
 				FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */,
 				FC4312211A20213A0020EA31 /* NetWorkTaskGetNoteList.m in Sources */,
 				FC3808F61A1C61B0007A73E4 /* NetworkTaskSignIn.m in Sources */,
