@@ -21,5 +21,6 @@
 
 - (void) startGetQuestion;
 
+- (BOOL) questionExist:(NSString*)showUrl;
 
 @end

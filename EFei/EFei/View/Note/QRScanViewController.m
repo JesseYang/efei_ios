@@ -9,6 +9,7 @@
 #import "QRScanViewController.h"
 #import <ZXingObjC.h>
 #import "NotebookCommand.h"
+#import "GetQuestionController.h"
 
 #define ShowResultSegueId @"ShowQuestionViewController"
 
@@ -137,6 +138,12 @@
 - (void) scanSuccessWithContent:(NSString *)content
 {
     if (!_scaning)
+    {
+        return;
+    }
+    
+    // Ignore scaned question.
+    if ([[GetQuestionController instance] questionExist:content])
     {
         return;
     }

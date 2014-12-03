@@ -68,6 +68,7 @@
 		FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */; };
 		FCD829131A2D616000F6E0CA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829121A2D616000F6E0CA /* MainViewController.m */; };
 		FCD829161A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829151A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m */; };
+		FCD8291A1A2EB0FD00F6E0CA /* NoteTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829191A2EB0FD00F6E0CA /* NoteTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,8 @@
 		FCD829121A2D616000F6E0CA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		FCD829141A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewTapGestureRecognizer.h; sourceTree = "<group>"; };
 		FCD829151A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewTapGestureRecognizer.m; sourceTree = "<group>"; };
+		FCD829181A2EB0FD00F6E0CA /* NoteTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTextView.h; sourceTree = "<group>"; };
+		FCD829191A2EB0FD00F6E0CA /* NoteTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,6 +503,7 @@
 		FCC2B94A1A19889C00B3DC24 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FCD829171A2EB0EC00F6E0CA /* CustomView */,
 				FCD829101A2D614D00F6E0CA /* Main */,
 				FCA7F87F1A28BC660037167C /* Note */,
 				FC4311BF1A1DAB800020EA31 /* Account */,
@@ -516,6 +520,15 @@
 				FCD829121A2D616000F6E0CA /* MainViewController.m */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		FCD829171A2EB0EC00F6E0CA /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				FCD829181A2EB0FD00F6E0CA /* NoteTextView.h */,
+				FCD829191A2EB0FD00F6E0CA /* NoteTextView.m */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -684,6 +697,7 @@
 				FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */,
 				FCA7F8821A28BC970037167C /* QRScanViewController.m in Sources */,
 				FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */,
+				FCD8291A1A2EB0FD00F6E0CA /* NoteTextView.m in Sources */,
 				FC3808D11A1B4418007A73E4 /* Account.m in Sources */,
 				FCD829161A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m in Sources */,
 				FC4311EB1A1F45710020EA31 /* NetWorkTaskSendVerifyCode.m in Sources */,

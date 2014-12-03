@@ -96,7 +96,7 @@
                         <segue destination="CrY-oc-hvx" kind="relationship" relationship="viewControllers" id="hPj-ca-8jv"/>
                         <segue destination="RQe-bI-TXh" kind="relationship" relationship="viewControllers" id="39f-Qk-MpY"/>
                         <segue destination="Eed-Tw-mzv" kind="relationship" relationship="viewControllers" id="68F-hE-gzY"/>
-                        <segue destination="KhO-UC-VOt" kind="presentation" identifier="ShowQRScanViewController" id="ZWM-ru-1rE"/>
+                        <segue destination="lQu-AQ-4SG" kind="presentation" identifier="ShowQRScanViewController" id="Yx6-i2-jvJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zp9-MQ-b9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -545,6 +545,22 @@
             </objects>
             <point key="canvasLocation" x="1667" y="-423"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W3i-G1-dUC">
+            <objects>
+                <navigationController id="lQu-AQ-4SG" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fuM-4n-JdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KhO-UC-VOt" kind="relationship" relationship="rootViewController" id="cfN-1Z-KvW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j0c-zL-4C3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1920" y="-925"/>
+        </scene>
         <!--Scan View Controller-->
         <scene sceneID="G7k-t8-wG3">
             <objects>
@@ -574,7 +590,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gds-S0-Rfv">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gds-S0-Rfv">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -605,13 +621,14 @@
                             <constraint firstItem="Gds-S0-Rfv" firstAttribute="top" secondItem="QT7-Wn-yZu" secondAttribute="bottom" id="yUI-1F-rlA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UZH-CL-r11"/>
                     <connections>
                         <segue destination="vjj-4v-RHh" kind="show" identifier="ShowQuestionViewController" id="t8D-XZ-r4T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnU-0X-bG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1920" y="-913"/>
+            <point key="canvasLocation" x="-1178" y="-925"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="i4c-m8-AoS">
@@ -634,10 +651,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="d2Y-x9-KFD"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="MuV-g8-QaV">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="inH-yb-EoY">
+                            <connections>
+                                <action selector="onDone:" destination="vjj-4v-RHh" id="L8a-nY-LxN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUU-fd-Zcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1214" y="-913"/>
+            <point key="canvasLocation" x="-472" y="-925"/>
         </scene>
     </scenes>
     <resources>
