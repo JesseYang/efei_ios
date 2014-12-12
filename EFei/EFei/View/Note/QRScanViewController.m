@@ -43,6 +43,9 @@
     [self initViews];
     
     [self startIndicatorAnimation];
+    
+    // for test
+    [self scanSuccessWithContent:@"dev.efei.org/~QZRJs"];
 }
 
 - (void)didReceiveMemoryWarning

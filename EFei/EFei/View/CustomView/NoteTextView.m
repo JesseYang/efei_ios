@@ -54,6 +54,17 @@
     return self;
 }
 
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [self setupUI];
+    }
+    
+    return self;
+}
+
 - (void) setupUI
 {
     self.editable = NO;

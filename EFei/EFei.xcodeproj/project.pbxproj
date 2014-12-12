@@ -67,8 +67,16 @@
 		FCC2B94D1A1988D200B3DC24 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B94C1A1988D200B3DC24 /* ViewController.m */; };
 		FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */; };
 		FCD829131A2D616000F6E0CA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829121A2D616000F6E0CA /* MainViewController.m */; };
-		FCD829161A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829151A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m */; };
 		FCD8291A1A2EB0FD00F6E0CA /* NoteTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829191A2EB0FD00F6E0CA /* NoteTextView.m */; };
+		FCF3D1411A371C7C009D8722 /* NoteViewTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D1401A371C7C009D8722 /* NoteViewTapGestureRecognizer.m */; };
+		FCF3D1441A371CA4009D8722 /* QuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D1431A371CA4009D8722 /* QuestionView.m */; };
+		FCF3D1481A3AE699009D8722 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D1471A3AE699009D8722 /* UIColor+Hex.m */; };
+		FCF3D17D1A3B22AF009D8722 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D17C1A3B22AE009D8722 /* TagViewController.m */; };
+		FCF3D1801A3B22FF009D8722 /* KnowledgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D17F1A3B22FF009D8722 /* KnowledgeViewController.m */; };
+		FCF3D1831A3B3142009D8722 /* TagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D1821A3B3142009D8722 /* TagTableViewCell.m */; };
+		FCF3D1861A3B42A0009D8722 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D1851A3B42A0009D8722 /* SearchView.m */; };
+		FCF3D1891A3B4FB7009D8722 /* TagCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D1881A3B4FB7009D8722 /* TagCollectionView.m */; };
+		FCF3D18C1A3B4FCF009D8722 /* TagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D18B1A3B4FCF009D8722 /* TagCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,10 +210,26 @@
 		FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		FCD829111A2D616000F6E0CA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		FCD829121A2D616000F6E0CA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		FCD829141A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewTapGestureRecognizer.h; sourceTree = "<group>"; };
-		FCD829151A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewTapGestureRecognizer.m; sourceTree = "<group>"; };
 		FCD829181A2EB0FD00F6E0CA /* NoteTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTextView.h; sourceTree = "<group>"; };
 		FCD829191A2EB0FD00F6E0CA /* NoteTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTextView.m; sourceTree = "<group>"; };
+		FCF3D13F1A371C7C009D8722 /* NoteViewTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewTapGestureRecognizer.h; sourceTree = "<group>"; };
+		FCF3D1401A371C7C009D8722 /* NoteViewTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewTapGestureRecognizer.m; sourceTree = "<group>"; };
+		FCF3D1421A371CA4009D8722 /* QuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView.h; sourceTree = "<group>"; };
+		FCF3D1431A371CA4009D8722 /* QuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView.m; sourceTree = "<group>"; };
+		FCF3D1461A3AE699009D8722 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		FCF3D1471A3AE699009D8722 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		FCF3D17B1A3B22AE009D8722 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
+		FCF3D17C1A3B22AE009D8722 /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
+		FCF3D17E1A3B22FF009D8722 /* KnowledgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeViewController.h; sourceTree = "<group>"; };
+		FCF3D17F1A3B22FF009D8722 /* KnowledgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeViewController.m; sourceTree = "<group>"; };
+		FCF3D1811A3B3142009D8722 /* TagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTableViewCell.h; sourceTree = "<group>"; };
+		FCF3D1821A3B3142009D8722 /* TagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagTableViewCell.m; sourceTree = "<group>"; };
+		FCF3D1841A3B42A0009D8722 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		FCF3D1851A3B42A0009D8722 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		FCF3D1871A3B4FB7009D8722 /* TagCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionView.h; sourceTree = "<group>"; };
+		FCF3D1881A3B4FB7009D8722 /* TagCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionView.m; sourceTree = "<group>"; };
+		FCF3D18A1A3B4FCF009D8722 /* TagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionViewCell.h; sourceTree = "<group>"; };
+		FCF3D18B1A3B4FCF009D8722 /* TagCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,8 +426,12 @@
 				FC2E816B1A2AF30D0032D9AA /* NoteCell.m */,
 				FCD8290D1A2D5EC700F6E0CA /* QuestionViewController.h */,
 				FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */,
-				FCD829141A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.h */,
-				FCD829151A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m */,
+				FCF3D17B1A3B22AE009D8722 /* TagViewController.h */,
+				FCF3D17C1A3B22AE009D8722 /* TagViewController.m */,
+				FCF3D1811A3B3142009D8722 /* TagTableViewCell.h */,
+				FCF3D1821A3B3142009D8722 /* TagTableViewCell.m */,
+				FCF3D17E1A3B22FF009D8722 /* KnowledgeViewController.h */,
+				FCF3D17F1A3B22FF009D8722 /* KnowledgeViewController.m */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -431,6 +459,7 @@
 		FCC2B8BE1A18D0D800B3DC24 /* EFei */ = {
 			isa = PBXGroup;
 			children = (
+				FCF3D1451A3AE682009D8722 /* Utility */,
 				FC3808E11A1B4AD5007A73E4 /* Controller */,
 				FCC2B9491A19889C00B3DC24 /* Model */,
 				FCC2B94A1A19889C00B3DC24 /* View */,
@@ -525,10 +554,29 @@
 		FCD829171A2EB0EC00F6E0CA /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				FCF3D13F1A371C7C009D8722 /* NoteViewTapGestureRecognizer.h */,
+				FCF3D1401A371C7C009D8722 /* NoteViewTapGestureRecognizer.m */,
 				FCD829181A2EB0FD00F6E0CA /* NoteTextView.h */,
 				FCD829191A2EB0FD00F6E0CA /* NoteTextView.m */,
+				FCF3D1421A371CA4009D8722 /* QuestionView.h */,
+				FCF3D1431A371CA4009D8722 /* QuestionView.m */,
+				FCF3D1841A3B42A0009D8722 /* SearchView.h */,
+				FCF3D1851A3B42A0009D8722 /* SearchView.m */,
+				FCF3D1871A3B4FB7009D8722 /* TagCollectionView.h */,
+				FCF3D1881A3B4FB7009D8722 /* TagCollectionView.m */,
+				FCF3D18A1A3B4FCF009D8722 /* TagCollectionViewCell.h */,
+				FCF3D18B1A3B4FCF009D8722 /* TagCollectionViewCell.m */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		FCF3D1451A3AE682009D8722 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				FCF3D1461A3AE699009D8722 /* UIColor+Hex.h */,
+				FCF3D1471A3AE699009D8722 /* UIColor+Hex.m */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -671,6 +719,7 @@
 				FC4311F11A1F45F40020EA31 /* NetWorkTaskResetPassword.m in Sources */,
 				FC4312151A2020A20020EA31 /* NetWorkTaskParseShortUrl.m in Sources */,
 				FC3808F01A1C60F4007A73E4 /* TaskManager.m in Sources */,
+				FCF3D18C1A3B4FCF009D8722 /* TagCollectionViewCell.m in Sources */,
 				FCC2B94D1A1988D200B3DC24 /* ViewController.m in Sources */,
 				FC3808D41A1B4423007A73E4 /* User.m in Sources */,
 				FC3808DD1A1B445E007A73E4 /* Settings.m in Sources */,
@@ -687,6 +736,7 @@
 				FC4311FD1A1F61BF0020EA31 /* NetWorkTaskChangeEmail.m in Sources */,
 				FC4312241A2021440020EA31 /* NetWorkTaskGetNote.m in Sources */,
 				FC3809081A1C738F007A73E4 /* NetWorkTaskSignUp.m in Sources */,
+				FCF3D1801A3B22FF009D8722 /* KnowledgeViewController.m in Sources */,
 				FC3808FC1A1C6DAF007A73E4 /* AccountCommand.m in Sources */,
 				FC4311F71A1F60CC0020EA31 /* NetWorkTaskRename.m in Sources */,
 				FC3808ED1A1C60B8007A73E4 /* NetWorkTask.m in Sources */,
@@ -696,14 +746,15 @@
 				FC2E81691A2AF2AF0032D9AA /* NotebookViewController.m in Sources */,
 				FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */,
 				FCA7F8821A28BC970037167C /* QRScanViewController.m in Sources */,
+				FCF3D1411A371C7C009D8722 /* NoteViewTapGestureRecognizer.m in Sources */,
 				FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */,
 				FCD8291A1A2EB0FD00F6E0CA /* NoteTextView.m in Sources */,
 				FC3808D11A1B4418007A73E4 /* Account.m in Sources */,
-				FCD829161A2DB26100F6E0CA /* NoteViewTapGestureRecognizer.m in Sources */,
 				FC4311EB1A1F45710020EA31 /* NetWorkTaskSendVerifyCode.m in Sources */,
 				FC3808D71A1B4440007A73E4 /* Question.m in Sources */,
 				FC2E81601A2AB6DE0032D9AA /* GetQuestionController.m in Sources */,
 				FC4312121A1F691B0020EA31 /* Teacher.m in Sources */,
+				FCF3D17D1A3B22AF009D8722 /* TagViewController.m in Sources */,
 				FC3808CB1A1B4317007A73E4 /* EFei.m in Sources */,
 				FC43120C1A1F628F0020EA31 /* NetWorkTaskDeleteTeacher.m in Sources */,
 				FC2E816C1A2AF30D0032D9AA /* NoteCell.m in Sources */,
@@ -713,13 +764,18 @@
 				FC4312181A2020BA0020EA31 /* NetWorkTaskGetQuestion.m in Sources */,
 				FC43120F1A1F62A50020EA31 /* NetWorkTaskFeedback.m in Sources */,
 				FC43121E1A2021040020EA31 /* NetWorkTaskGetTopics.m in Sources */,
+				FCF3D1441A371CA4009D8722 /* QuestionView.m in Sources */,
+				FCF3D1861A3B42A0009D8722 /* SearchView.m in Sources */,
 				FCD829131A2D616000F6E0CA /* MainViewController.m in Sources */,
 				FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */,
+				FCF3D1831A3B3142009D8722 /* TagTableViewCell.m in Sources */,
 				FC3808E01A1B4A50007A73E4 /* Note.m in Sources */,
 				FC4311EE1A1F45E10020EA31 /* NetWorkTaskGetResetPasswordToken.m in Sources */,
 				FC43121B1A2020E90020EA31 /* NetWorkTaskAddQuestion.m in Sources */,
 				FC4311C51A1DABA40020EA31 /* SignUpViewController.m in Sources */,
 				FC3808FF1A1C6DB8007A73E4 /* UserCommand.m in Sources */,
+				FCF3D1481A3AE699009D8722 /* UIColor+Hex.m in Sources */,
+				FCF3D1891A3B4FB7009D8722 /* TagCollectionView.m in Sources */,
 				FC4312001A1F61D80020EA31 /* NetWorkTaskChangeMobile.m in Sources */,
 				FC4312061A1F626F0020EA31 /* NetWorkTaskGetTeachers.m in Sources */,
 			);
