@@ -11,6 +11,7 @@
 
 @interface GetQuestionController()
 {
+    NSMutableDictionary* _questionDcit;
     
 }
 
@@ -40,8 +41,15 @@
     if (self)
     {
         self.questionList = [[QuestionList alloc] init];
+        
+        _questionDcit = [[NSMutableDictionary alloc] init];
     }
     return self;
+}
+
+- (BOOL) questionExist:(NSString *)showUrl
+{
+    return [_questionDcit objectForKey:showUrl] != nil;
 }
 
 - (void) startGetQuestion
@@ -74,6 +82,9 @@
         CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success){
             
             NSLog(@"get question: %@", self.questionId);
+            
+            [_questionDcit setObject:self.questionId forKey:self.shortUrl];
+            
             self.completionBlock(success);
         };
         

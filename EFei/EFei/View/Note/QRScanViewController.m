@@ -9,6 +9,7 @@
 #import "QRScanViewController.h"
 #import <ZXingObjC.h>
 #import "NotebookCommand.h"
+#import "GetQuestionController.h"
 
 #define ShowResultSegueId @"ShowQuestionViewController"
 
@@ -42,6 +43,9 @@
     [self initViews];
     
     [self startIndicatorAnimation];
+    
+    // for test
+    [self scanSuccessWithContent:@"dev.efei.org/~QZRJs"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -137,6 +141,12 @@
 - (void) scanSuccessWithContent:(NSString *)content
 {
     if (!_scaning)
+    {
+        return;
+    }
+    
+    // Ignore scaned question.
+    if ([[GetQuestionController instance] questionExist:content])
     {
         return;
     }

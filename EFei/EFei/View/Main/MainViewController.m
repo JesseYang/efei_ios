@@ -7,6 +7,9 @@
 //
 
 #import "MainViewController.h"
+#import "UIColor+Hex.h"
+
+#define NavigationBarBackgroundColor @"#4979BD"
 
 #define ShowQRScanViewControllerSegueId @"ShowQRScanViewController"
 
@@ -26,6 +29,25 @@
     self.selectedIndex = 1;
     
     self.delegate = self;
+    
+    UIColor* efeiColor = [UIColor colorWithHexString:NavigationBarBackgroundColor];
+    
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : efeiColor }
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : efeiColor }
+                                             forState:UIControlStateSelected];
+    
+    for (UITabBarItem  *tab in self.tabBar.items)
+    {
+        tab.image = [tab.image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        tab.selectedImage = [tab.image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+    }
+    
+    [[UINavigationBar appearance] setBarTintColor:efeiColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]}];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
