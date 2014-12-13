@@ -82,7 +82,7 @@
     _searchBar.translatesAutoresizingMaskIntoConstraints = NO;
     
     
-    UIImageView* iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_logo.png"]];
+    UIImageView* iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_knowledge_tag_add.png"]];
     iconView.translatesAutoresizingMaskIntoConstraints = NO;
     [_searchBar addSubview:iconView];
     

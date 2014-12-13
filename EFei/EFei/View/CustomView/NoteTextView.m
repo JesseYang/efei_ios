@@ -190,7 +190,7 @@
 - (NSAttributedString*) attributedStringWithImageTag:(NSString*)tag content:(NSString*)content
 {
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-    textAttachment.image = [UIImage imageNamed:@"icon_logo.png"];
+    textAttachment.image = [UIImage imageNamed:@"icon_question_image_placeholder.png"];
     
     NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
     return attrStringWithImage;

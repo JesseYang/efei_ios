@@ -8,6 +8,9 @@
 
 #import "EFei.h"
 #import "DataBase.h"
+#import "UIColor+Hex.h"
+
+#define EFeiColorString @"#4979BD"
 
 @interface EFei()
 {
@@ -41,6 +44,8 @@
         self.notebook       = [[NoteBook alloc] init];
         self.settings       = [[Settings alloc] init];
         self.subjectManager = [[SubjectManager alloc] init];
+        
+        self.efeiColor = [UIColor colorWithHexString:EFeiColorString];
         
         [self load];
     }

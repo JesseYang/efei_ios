@@ -10,8 +10,17 @@
 
 @class Question;
 
+@class QuestionView;
+
+@protocol QuestionViewDelegate <NSObject>
+
+- (void) questionView:(QuestionView*)question showHideAnswer:(BOOL)show withHeightChange:(float)delta;
+
+@end
+
 @interface QuestionView : UIView
 
 @property (nonatomic, strong) Question* question;
+@property (nonatomic, weak) id<QuestionViewDelegate> delegate;
 
 @end

@@ -7,13 +7,17 @@
 //
 
 #import "TagViewController.h"
+#import "Note.h"
 
 @interface TagViewController()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray* _tagTitles;
+    
+    NSInteger _selectedTagIndex;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 
 @end
@@ -24,6 +28,31 @@
 {
     [super viewDidLoad];
     
+    [self setupNavigator];
+    [self setupViews];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    CGRect frame = self.tableView.frame;
+    frame.size.height = 136 + _tagTitles.count * 44;
+    self.tableView.frame = frame;
+}
+
+
+- (void) setupNavigator
+{
+    self.navigationItem.title = @"标签编辑";
+    
+    UIBarButtonItem* doneBBI = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(onDone:)];
+    
+    self.navigationItem.rightBarButtonItem = doneBBI;
+}
+
+- (void) setupViews
+{
     _tagTitles = [NSArray arrayWithObjects:
                   @"不懂",
                   @"不会",
@@ -32,9 +61,24 @@
                   @"计算错误",
                   @"概念错误",nil];
     
-    self.navigationItem.title = @"标签编辑";
+    _tagTitles = self.note.tags;
+    
+    _selectedTagIndex = -1;
+    
+    _titleLabel.text = @"请选择一个您想添加的标签";
     
 }
+
+- (void) onDone:(id)sender
+{
+    if (_selectedTagIndex >= 0)
+    {
+        self.note.tag = [_tagTitles objectAtIndex:_selectedTagIndex];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 -(void)viewDidLayoutSubviews
 {
@@ -52,20 +96,20 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return _tagTitles.count;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"TagTableViewCell" forIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageNamed:@"icon_logo.png"];
+    cell.imageView.image = [UIImage imageNamed:@"icon_question_tag.jpg"];
     cell.textLabel.text = [_tagTitles objectAtIndex:indexPath.row];
     
     if (cell.accessoryView == nil)
     {
         UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         imageView.image = nil;
-        imageView.highlightedImage = [UIImage imageNamed:@"icon_logo.png"];
+        imageView.highlightedImage = [UIImage imageNamed:@"icon_question_tag_selected.jpg"];
         cell.accessoryView = imageView;
     }
     
@@ -88,10 +132,21 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_selectedTagIndex >= 0)
+    {
+        NSIndexPath *preIndexPath = [NSIndexPath indexPathForRow:_selectedTagIndex inSection:0];
+        UITableViewCell* cell = [tableView cellForRowAtIndexPath:preIndexPath];
+        UIImageView* imageView = (UIImageView*)cell.accessoryView;
+        
+        imageView.highlighted = NO;
+    }
+    
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     UIImageView* imageView = (UIImageView*)cell.accessoryView;
     
     imageView.highlighted = !imageView.highlighted;
+    
+    _selectedTagIndex = imageView.highlighted ? indexPath.row : -1;
 }
 
 //- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

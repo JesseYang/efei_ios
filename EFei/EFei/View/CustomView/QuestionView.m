@@ -9,6 +9,8 @@
 #import "QuestionView.h"
 #import "Question.h"
 #import "NoteTextView.h"
+#import "EFei.h"
+
 
 @interface QuestionView()
 {
@@ -17,6 +19,11 @@
 }
 
 - (void) setupUI;
+
+- (void) onAnswerButton:(id)sender;
+
+- (void) showAnswer;
+- (void) hideAnswer;
 
 @end
 
@@ -49,15 +56,15 @@
     
     UILabel* titleLabel = [UILabel new];
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    titleLabel.backgroundColor = [UIColor colorWithRed:0.95 green:0.47 blue:0.48 alpha:1.0];
     titleLabel.text = @"题目";
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:titleLabel];
     
     UIButton* answerButton = [UIButton new];
     answerButton.translatesAutoresizingMaskIntoConstraints = NO;
-    answerButton.backgroundColor = [UIColor colorWithRed:0.95 green:0.47 blue:0.48 alpha:1.0];
+    [answerButton setTitleColor:[EFei instance].efeiColor forState:UIControlStateNormal];
     [answerButton setTitle:@"答案" forState:UIControlStateNormal];
+    [answerButton addTarget:self action:@selector(onAnswerButton:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:answerButton];
     
     CGRect separatorRect = CGRectMake(10, 50, 320, 1);
@@ -75,7 +82,6 @@
     CGRect contentRect = CGRectMake(0, 55, 320, 100);
     _questionContentView = [[NoteTextView alloc] initWithFrame:contentRect];
     _questionContentView.translatesAutoresizingMaskIntoConstraints = NO;
-    _questionContentView.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:_questionContentView];
     
     CGRect answerRect = CGRectMake(0, 55, 320, 100);
@@ -228,7 +234,53 @@
 {
     _question = question;
     
+//    NSMutableArray* array = [[NSMutableArray alloc] initWithArray:_question.contents];
+//    for (NSString* str in _question.items)
+//    {
+//        [array addObject:str];
+//    }
+    
     [_questionContentView setNoteContent:_question.contents];
+}
+
+- (void) onAnswerButton:(id)sender
+{
+    if (_questionAnswerView.hidden)
+    {
+        [self showAnswer];
+    }
+    else
+    {
+        [self hideAnswer];
+    }
+}
+
+- (void) showAnswer
+{
+    CGRect rect = self.frame;
+    rect.size.height += _questionAnswerView.frame.size.height;
+    self.frame = rect;
+    
+    _questionAnswerView.hidden = NO;
+    
+    if ([self.delegate respondsToSelector:@selector(questionView:showHideAnswer:withHeightChange:)])
+    {
+        [self.delegate questionView:self showHideAnswer:YES withHeightChange:_questionAnswerView.frame.size.height];
+    }
+}
+
+- (void) hideAnswer
+{
+    CGRect rect = self.frame;
+    rect.size.height -= _questionAnswerView.frame.size.height;
+    self.frame = rect;
+    
+    _questionAnswerView.hidden = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(questionView:showHideAnswer:withHeightChange:)])
+    {
+        [self.delegate questionView:self showHideAnswer:NO withHeightChange:-1*_questionAnswerView.frame.size.height];
+    }
 }
 
 

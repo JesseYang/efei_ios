@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Note;
+
 @interface KnowledgeViewController : UIViewController
+
+@property (nonatomic, weak) Note* note;
 
 @end

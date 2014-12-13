@@ -16,6 +16,8 @@
     NSMutableArray* _titles;
 }
 
+- (void) onDeleteTag:(id)sender event:(UIEvent*)event;
+
 @end
 
 @implementation TagCollectionView
@@ -53,6 +55,16 @@
     [self reloadData];
 }
 
+- (void) onDeleteTag:(id)sender event:(UIEvent *)event
+{
+    UITouch* touch = [event.allTouches anyObject];
+    CGPoint point = [touch locationInView:self];
+    NSIndexPath* indexPath = [self indexPathForItemAtPoint:point];
+    [_titles removeObjectAtIndex:indexPath.row];
+    
+    [self reloadData];
+}
+
 #pragma mark Delegate
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -65,6 +77,8 @@
     TagCollectionViewCell* cell = (TagCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:TagCollectionViewCellId forIndexPath:indexPath];
     NSString* tilte = [_titles objectAtIndex:indexPath.row];
     cell.contentLabel.text = tilte;
+    [cell.deleteButton addTarget:self action:@selector(onDeleteTag:event:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
