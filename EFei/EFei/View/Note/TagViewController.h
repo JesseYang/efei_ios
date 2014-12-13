@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Note;
+
 @interface TagViewController : UIViewController
+
+@property (nonatomic, weak) Note* note;
 
 @end

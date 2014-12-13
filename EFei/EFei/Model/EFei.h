@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NoteBook* notebook;
 @property (nonatomic, strong) Settings* settings;
 @property (nonatomic, strong) SubjectManager* subjectManager;
+@property (nonatomic, copy) UIColor* efeiColor;
 
 + (EFei*) instance;
 

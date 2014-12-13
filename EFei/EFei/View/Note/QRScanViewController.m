@@ -152,7 +152,7 @@
     }
     
     // Vibrate
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+//    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     [_capture stop];
     _scaning = NO;
     

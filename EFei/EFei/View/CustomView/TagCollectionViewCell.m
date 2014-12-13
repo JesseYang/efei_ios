@@ -38,7 +38,7 @@
                                            attributes:attributes
                                               context:nil];
     
-    return CGSizeMake(rect.size.width+CellPadding*2, CellHeight);
+    return CGSizeMake(rect.size.width+CellPadding*2+CellHeight, CellHeight);
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder
@@ -74,10 +74,28 @@
     _contentLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_contentLabel];
     
-    NSDictionary *viewsDictionary = @{@"contentLabel":_contentLabel
+    _deleteButton = [UIButton new];
+    [_deleteButton setImage:[UIImage imageNamed:@"icon_knowledge_tag_delete.jpg"] forState:UIControlStateNormal];
+    _deleteButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_deleteButton];
+    
+    NSDictionary *viewsDictionary = @{@"contentLabel":_contentLabel,
+                                      @"deleteButton":_deleteButton
                                       };
-    NSArray *constraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentLabel]|"
+    
+    NSArray *buttonConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[deleteButton(30)]"
                                                                       options:0
+                                                                      metrics:nil
+                                                                        views:viewsDictionary];
+    NSArray *buttonConstraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[deleteButton(30)]"
+                                                                         options:0
+                                                                         metrics:nil
+                                                                           views:viewsDictionary];
+    [_deleteButton addConstraints:buttonConstraintH];
+    [_deleteButton addConstraints:buttonConstraintV];
+    
+    NSArray *constraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentLabel]-5-[deleteButton]|"
+                                                                      options:NSLayoutFormatAlignAllTop
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
@@ -88,6 +106,8 @@
     
     [self addConstraints:constraintPosH];
     [self addConstraints:constraintPosV];
+    
+    
 }
 
 @end

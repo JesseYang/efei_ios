@@ -9,6 +9,7 @@
 #import "KnowledgeViewController.h"
 #import "SearchView.h"
 #import "TagCollectionView.h"
+#import "Note.h"
 
 @interface KnowledgeViewController()<SearchViewDelegate>
 {
@@ -18,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet SearchView *searchView;
 @property (weak, nonatomic) IBOutlet TagCollectionView *tagCollectionView;
 
+- (void) setupNavigator;
+- (void) setupViews;
+
+- (void) onDone:(id)sender;
 
 @end
 
@@ -27,24 +32,45 @@
 {
     [super viewDidLoad];
     
-    self.searchView.delegate = self;
+    [self setupNavigator];
+    [self setupViews];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    CGRect rect = self.searchView.frame;
-    NSLog(@"%f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-    
-    rect = self.searchView.searchBar.frame;
-    NSLog(@"%f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-    
 }
+
+- (void) setupNavigator
+{
+    self.navigationItem.title = @"知识点编辑";
+    
+    UIBarButtonItem* doneBBI = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(onDone:)];
+    
+    self.navigationItem.rightBarButtonItem = doneBBI;
+}
+
+- (void) setupViews
+{
+    self.searchView.delegate = self;
+}
+
+- (void) onDone:(id)sender
+{
+    self.note.topics = [NSArray arrayWithArray:self.tagCollectionView.titles];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark - SearchView
 
 - (void) searchView:(SearchView *)searchView didAddContent:(NSString *)content
 {
     [self.tagCollectionView addTitle:content];
 }
+
+
 
 @end

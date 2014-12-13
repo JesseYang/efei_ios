@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSArray* topics;
 @property (nonatomic, copy) NSString* tag;
 
+- (id) initWithQuestion:(Question*)question;
 - (id) initWithNoteId:(NSString*)noteId updateTime:(NSInteger)updateTime;
 
 @end

@@ -21,7 +21,7 @@ static NSString* kResponseAnswerKey            = @"answer";
 static NSString* kResponseAnswerContentKey     = @"answer_content";
 static NSString* kResponseTagSetKey            = @"tag_set";
 
-
+static NSString* kResponseTagSetSeparator     = @",";
 
 
 //static NSString* kResponseAFiguresKey          = @"a_figures";
@@ -106,7 +106,9 @@ static NSString* kResponseTagSetKey            = @"tag_set";
     question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
     question.questionTypeString = [dict objectForKey:kResponseQuestionTypeKey];
     question.subjectType = [[dict objectForKey:kResponseSubjectKey] integerValue];
-    question.tags = [dict objectForKey:kResponseTagSetKey];
+    
+    NSString* tagSet = [dict objectForKey:kResponseTagSetKey];
+    question.tags = [tagSet componentsSeparatedByString:kResponseTagSetSeparator];
     
     [controller.questionList addQuestion:question];
     

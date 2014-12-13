@@ -10,6 +10,8 @@
 
 @interface TagCollectionView : UICollectionView
 
+@property (nonatomic, strong) NSArray* titles;
+
 - (void) addTitle:(NSString*)title;
 
 @end
