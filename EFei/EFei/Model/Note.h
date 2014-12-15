@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSInteger updateTime;
 @property (nonatomic, copy) NSString* summary;
 @property (nonatomic, strong) NSArray* topics;
+@property (nonatomic, copy) NSString* topicString;
 @property (nonatomic, copy) NSString* tag;
 
 - (id) initWithQuestion:(Question*)question;

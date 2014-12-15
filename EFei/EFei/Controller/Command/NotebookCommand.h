@@ -36,10 +36,11 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+@class Note;
 
 @interface AddQuestionToNotebookCommand : NSObject
 
-+ (void) executeWithCompleteHandler:(CompletionBlock)handler;
++ (void) executeWithNote:(Note*)note completeHandler:(CompletionBlock)handler;
 
 @end
 

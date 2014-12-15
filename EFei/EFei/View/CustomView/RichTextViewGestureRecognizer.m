@@ -6,10 +6,10 @@
 //
 //
 
-#import "NoteViewTapGestureRecognizer.h"
+#import "RichTextViewGestureRecognizer.h"
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
-@implementation NoteViewTapGestureRecognizer
+@implementation RichTextViewGestureRecognizer
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

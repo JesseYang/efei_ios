@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 - (IBAction)onSignUp:(id)sender;
+- (IBAction)onCancel:(id)sender;
 
 @end
 
@@ -37,10 +38,17 @@
     self.navigationController.navigationBarHidden = NO;
 }
 
+
 - (IBAction)onSignUp:(id)sender
 {
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         NSLog(@"");
+        
+        if (success)
+        {
+            [self onCancel:nil];
+        }
+        
     };
     
     [SignUpCommand executeWithUsername:self.usernameTextField.text
@@ -48,6 +56,13 @@
                                 idCode:nil phoneNumber:nil
                               authCode:nil password:self.passwordTextField.text
                        completeHandler:handler];
+}
+
+- (IBAction)onCancel:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 @end

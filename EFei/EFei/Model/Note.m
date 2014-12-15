@@ -41,4 +41,20 @@
     return self;
 }
 
+- (NSString*) topicString
+{
+    NSMutableString* res = [[NSMutableString alloc] init];
+    
+    for (NSString* t in self.topics)
+    {
+        [res appendString:t];
+        if (t != [self.topics lastObject])
+        {
+            [res appendString:@","];
+        }
+    }
+    
+    return res;
+}
+
 @end

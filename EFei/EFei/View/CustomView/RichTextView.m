@@ -6,8 +6,10 @@
 //
 //
 
-#import "NoteTextView.h"
-#import "NoteViewTapGestureRecognizer.h"
+#import "RichTextView.h"
+#import "RichTextViewGestureRecognizer.h"
+#import "UIImage+Resize.h"
+#import <SDWebImageManager.h>
 
 #define AttributeSeparator @"$$"
 
@@ -23,12 +25,15 @@
 #define ImageAttributeTagMath @"math"
 #define ImageAttributeTagFigure @"fig"
 
+#define TextFontSize 12
 
-@interface NoteTextView()
+
+@interface RichTextView()
 {
     NSMutableAttributedString* _attributedString;
     
     NSDictionary* _textAttributeDict;
+    NSDictionary* _imageAttributeDict;
 }
 
 - (void) setupUI;
@@ -40,7 +45,7 @@
 
 @end
 
-@implementation NoteTextView
+@implementation RichTextView
 
 
 - (id) initWithFrame:(CGRect)frame
@@ -74,7 +79,7 @@
     
     NSDictionary * attributesUnderLine = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [NSNumber numberWithInt:NSUnderlineStyleSingle], NSUnderlineStyleAttributeName,
-                                 [UIFont systemFontOfSize:15], NSFontAttributeName,
+                                 [UIFont systemFontOfSize:TextFontSize], NSFontAttributeName,
                                  nil];
     
     NSDictionary * attributesSub = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -86,19 +91,21 @@
                                     [UIFont systemFontOfSize:9], NSFontAttributeName, nil];
     
     NSDictionary * attributesIta = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont italicSystemFontOfSize:15], NSFontAttributeName,
+                                    [UIFont italicSystemFontOfSize:TextFontSize], NSFontAttributeName,
                                     nil];
     
-    _textAttributeDict = [NSDictionary dictionaryWithObjectsAndKeys:attributesUnderLine, TextAttributeTagUnderLine,
+    _textAttributeDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          attributesUnderLine, TextAttributeTagUnderLine,
                           attributesSub, TextAttributeTagSub,
                           attributesSup, TextAttributeTagSup,
                           attributesIta, TextAttributeTagIta,
                           nil];
     
 
-    NoteViewTapGestureRecognizer* recongnizer = [[NoteViewTapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapped:)];
+    RichTextViewGestureRecognizer* recongnizer = [[RichTextViewGestureRecognizer alloc] initWithTarget:self action:@selector(onTapped:)];
     [self addGestureRecognizer:recongnizer];
 }
+
 
 - (void) setNoteContent:(NSArray *)contents
 {
@@ -115,7 +122,7 @@
 
 - (void) onTapped:(id)sender
 {
-    NoteViewTapGestureRecognizer* recongnizer = (NoteViewTapGestureRecognizer*)sender;
+    RichTextViewGestureRecognizer* recongnizer = (RichTextViewGestureRecognizer*)sender;
     NSTextAttachment* attached = recongnizer.textAttachment;
     NSLog(@"%@", attached);
     
@@ -149,8 +156,9 @@
     {
         return;
     }
-    
-    NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:string];
+    NSDictionary * attributesNormal = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIFont systemFontOfSize:9], NSFontAttributeName, nil];
+    NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributesNormal];
     [_attributedString appendAttributedString:attributedString];
 }
 
@@ -189,13 +197,68 @@
 
 - (NSAttributedString*) attributedStringWithImageTag:(NSString*)tag content:(NSString*)content
 {
-    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-    textAttachment.image = [UIImage imageNamed:@"icon_question_image_placeholder.png"];
+    NSArray* array = [content componentsSeparatedByString:AttributeSeparatorImage];
+    NSString* fileName = [array objectAtIndex:0];
+    float width = [[array objectAtIndex:1] floatValue];
+    float height = [[array objectAtIndex:2] floatValue];
     
-    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
-    return attrStringWithImage;
+    NSString* urlString = [NSString stringWithFormat:@"http://dev.image.efei.org/public/download/%@.png", fileName];
+    NSURL* url = [NSURL URLWithString:urlString];
+    NSInteger index = _attributedString.length;
+    
+    SDWebImageManager* manager = [SDWebImageManager sharedManager];
+    [manager downloadImageWithURL:url options:SDWebImageAllowInvalidSSLCertificates progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        
+        NSLog(@"donwload success %d", finished);
+        float scale = [UIScreen mainScreen].scale;
+        UIImage* resizedImage = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width*scale, height*scale)];
+        NSAttributedString* realStr = [self attributedStringWithImage:resizedImage];
+        [_attributedString replaceCharactersInRange:NSMakeRange(index, 1) withAttributedString:realStr];
+        
+        self.attributedText = _attributedString;
+    }];
+    
+    float scale = [UIScreen mainScreen].scale;
+    UIImage* image = [UIImage imageNamed:@"icon_question_image_placeholder.png"];
+    UIImage* resizedImage = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width*scale, height*scale)];
+    return [self attributedStringWithImage:resizedImage];
+    
+//
+//    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+//    textAttachment.image = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width, height)];
+//    
+//    
+//    
+//    NSLog(@"filename: %@", urlString);
+//    SDWebImageManager* manager = [SDWebImageManager sharedManager];
+//    [manager downloadImageWithURL:url options:SDWebImageAllowInvalidSSLCertificates progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//        
+//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//        
+//        NSLog(@"donwload success %d", finished);
+//        
+//        textAttachment.image = image;
+//        
+//    }];
+    
+//    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+//    return attrStringWithImage;
 }
 
+
+- (NSAttributedString*) attributedStringWithImage:(UIImage*)image
+{
+    float scale = [UIScreen mainScreen].scale;
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    textAttachment.image = image;
+    textAttachment.bounds = CGRectMake(0, 0, image.size.width/scale, image.size.height/scale);
+    
+    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+    
+    return attrStringWithImage;
+}
 
 
 @end

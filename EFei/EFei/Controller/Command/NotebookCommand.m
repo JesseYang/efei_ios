@@ -52,19 +52,25 @@
 
 @implementation AddQuestionToNotebookCommand
 
-+ (void) executeWithCompleteHandler:(CompletionBlock)handler
++ (void) executeWithNote:(Note*)note completeHandler:(CompletionBlock)handler
 {
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeAddQuestion
+                                    withData:note
+                             completeHandler:handler];
 }
 
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
+
 
 @implementation GetTopicsCommand
 
 + (void) executeWithCompleteHandler:(CompletionBlock)handler
 {
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetTopics
+                                    withData:nil
+                             completeHandler:handler];
 }
 
 @end
@@ -81,5 +87,7 @@
 }
 
 @end
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////

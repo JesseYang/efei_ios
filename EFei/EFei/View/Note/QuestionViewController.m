@@ -8,11 +8,12 @@
 
 #import "QuestionViewController.h"
 #import "GetQuestionController.h"
-#import "NoteTextView.h"
+#import "RichTextView.h"
 #import "QuestionView.h"
 #import "TagViewController.h"
 #import "KnowledgeViewController.h"
 #import "Note.h"
+#import "NotebookCommand.h"
 
 #define EditTagSegueId @"ShowTagViewController"
 #define EditKnowledgeSegueId @"ShowKnowledgeViewController"
@@ -78,7 +79,20 @@
 
 - (IBAction)onDone:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    _note.summary = @"";
+    
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        if (success)
+        {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+    };
+    
+    [AddQuestionToNotebookCommand executeWithNote:_note completeHandler:handler];
 }
 
 #pragma mark - QuestionView

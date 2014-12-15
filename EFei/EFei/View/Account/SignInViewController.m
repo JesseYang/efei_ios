@@ -8,6 +8,7 @@
 
 #import "SignInViewController.h"
 #import "AccountCommand.h"
+#import "EFei.h"
 
 @interface SignInViewController()
 {
@@ -26,7 +27,9 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
+ 
+    self.usernameTextField.text = [EFei instance].account.username;
+    self.passwordTextField.text = [EFei instance].account.password;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -39,7 +42,14 @@
 - (IBAction)onSignIn:(id)sender
 {
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
-        NSLog(@"");
+        if (success)
+        {
+            [[EFei instance].account save];
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }
     };
     
     [SignInCommand executeWithUsername:self.usernameTextField.text

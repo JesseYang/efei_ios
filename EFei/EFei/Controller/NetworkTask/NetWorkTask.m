@@ -123,9 +123,14 @@ static NSString* kBaseReqeustMessageKey = @"message";
     
     if (success)
     {
-        [EFei instance].account.token = token;
+        if (token.length > 0)
+        {
+            [EFei instance].account.token = token;
+        }
+        
         [jsonDic removeObjectForKey:kBaseResponseSuccessKey];
         [jsonDic removeObjectForKey:kBaseResponseTokenKey];
+        
         
         if ([self parseResultDict:jsonDic])
         {
@@ -226,9 +231,13 @@ static NSString* kBaseReqeustMessageKey = @"message";
     [request setRequestMethod:method];
     [request setTimeOutSeconds:60];
     
+    
     NSString* token = [EFei instance].account.token;
     NSString* client = [EFei instance].account.client;
-    [self.parameterDict setObject:token forKey:kBaseRequestTokenKey];
+    if (token.length > 0)
+    {
+        [self.parameterDict setObject:token forKey:kBaseRequestTokenKey];
+    }
     [self.parameterDict setObject:client forKey:kBaseReqeustClientKey];
     
     if ([NSJSONSerialization isValidJSONObject:self.parameterDict])

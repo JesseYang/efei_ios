@@ -8,10 +8,12 @@
 
 #import "MainViewController.h"
 #import "UIColor+Hex.h"
+#import "EFei.h"
 
 #define NavigationBarBackgroundColor @"#4979BD"
 
 #define ShowQRScanViewControllerSegueId @"ShowQRScanViewController"
+#define ShowSignInViewControllerSegueId @"ShowSignInViewController"
 
 @interface MainViewController()<UITabBarControllerDelegate>
 {
@@ -54,6 +56,11 @@
 {
     [super viewDidAppear:animated];
     
+    
+    if ([EFei instance].account.needSignIn)
+    {
+        [self performSegueWithIdentifier:ShowSignInViewControllerSegueId sender:self];
+    }
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController

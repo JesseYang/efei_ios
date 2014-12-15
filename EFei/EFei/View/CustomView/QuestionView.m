@@ -8,14 +8,18 @@
 
 #import "QuestionView.h"
 #import "Question.h"
-#import "NoteTextView.h"
+#import "RichTextView.h"
 #import "EFei.h"
-
 
 @interface QuestionView()
 {
-    NoteTextView* _questionContentView;
-    NoteTextView* _questionAnswerView;
+    RichTextView* _questionContentView;
+    RichTextView* _questionAnswerView;
+    UIView*       _separator2;
+    
+    NSLayoutConstraint* _descriptionHeightConstraint;
+    
+    float _height;
 }
 
 - (void) setupUI;
@@ -78,14 +82,15 @@
     separator2.backgroundColor = [UIColor lightGrayColor];
     separator2.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:separator2];
+    _separator2 = separator2;
     
     CGRect contentRect = CGRectMake(0, 55, 320, 100);
-    _questionContentView = [[NoteTextView alloc] initWithFrame:contentRect];
+    _questionContentView = [[RichTextView alloc] initWithFrame:contentRect];
     _questionContentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_questionContentView];
     
     CGRect answerRect = CGRectMake(0, 55, 320, 100);
-    _questionAnswerView = [[NoteTextView alloc] initWithFrame:answerRect];
+    _questionAnswerView = [[RichTextView alloc] initWithFrame:answerRect];
     _questionAnswerView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_questionAnswerView];
     
@@ -145,12 +150,22 @@
     
     [separator2 addConstraints:separator2ConstraintH];
     
-    NSArray *contentConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[questionContentView(80)]"
-                                                                             options:0
-                                                                             metrics:nil
-                                                                               views:viewsDictionary];
+//    NSArray *contentConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[questionContentView(100)]"
+//                                                                             options:0
+//                                                                             metrics:nil
+//                                                                               views:viewsDictionary];
     
-    [_questionContentView addConstraints:contentConstraintH];
+//    [_questionContentView addConstraints:contentConstraintH];
+    
+    _descriptionHeightConstraint = [NSLayoutConstraint constraintWithItem:_questionContentView
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                               multiplier:0.f
+                                                                 constant:100];
+    
+    [self addConstraint:_descriptionHeightConstraint];
     
     NSArray *questionAnswerConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[questionAnswerView(80)]"
                                                                           options:0
@@ -160,7 +175,7 @@
     [_questionAnswerView addConstraints:questionAnswerConstraintH];
     
     NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[titleLabel]-5-[separator1]-10-[questionContentView]-10-[separator2]-10-[questionAnswerView]"
-                                                                      options:NSLayoutFormatAlignAllLeft
+                                                                      options:0
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
@@ -183,11 +198,11 @@
                                                                               metrics:nil
                                                                                 views:viewsDictionary];
     
-    NSArray *contentConstraintPos = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[questionContentView]-20-|"
+    NSArray *contentConstraintPos = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[questionContentView]-10-|"
                                                                                options:0
                                                                                metrics:nil
                                                                                  views:viewsDictionary];
-    NSArray *answerConstraintPos = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[questionAnswerView]-20-|"
+    NSArray *answerConstraintPos = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[questionAnswerView]-10-|"
                                                                             options:0
                                                                             metrics:nil
                                                                               views:viewsDictionary];
@@ -230,21 +245,40 @@
     
 }
 
+
+-(void) setBounds:(CGRect)bounds
+{
+    [super setBounds:bounds];
+    
+    CGSize textViewSize = [_questionContentView sizeThatFits:CGSizeMake(_questionContentView.frame.size.width, FLT_MAX)];
+    [_descriptionHeightConstraint setConstant:textViewSize.height];
+    
+    [self layoutIfNeeded];
+}
+
 - (void) setQuestion:(Question *)question
 {
     _question = question;
     
-//    NSMutableArray* array = [[NSMutableArray alloc] initWithArray:_question.contents];
-//    for (NSString* str in _question.items)
-//    {
-//        [array addObject:str];
-//    }
+    NSMutableArray* array = [[NSMutableArray alloc] initWithArray:_question.contents];
+    for (int i=0; i<_question.items.count; i++)
+    {
+        NSString* item = [_question.items objectAtIndex:i];
+        NSString* str = [NSString stringWithFormat:@"(%c) %@", 'A'+i, item];
+        [array addObject:str];
+    }
     
-    [_questionContentView setNoteContent:_question.contents];
+    [_questionContentView setNoteContent:array];
+    
 }
 
 - (void) onAnswerButton:(id)sender
 {
+    if (_height <= 0)
+    {
+        _height = self.frame.size.height;
+    }
+    
     if (_questionAnswerView.hidden)
     {
         [self showAnswer];
@@ -257,29 +291,34 @@
 
 - (void) showAnswer
 {
+    float delta = _height - (_questionContentView.frame.origin.y + _questionContentView.frame.size.height);
+    
     CGRect rect = self.frame;
-    rect.size.height += _questionAnswerView.frame.size.height;
+    rect.size.height += delta;
     self.frame = rect;
     
     _questionAnswerView.hidden = NO;
+    _separator2.hidden = NO;
     
     if ([self.delegate respondsToSelector:@selector(questionView:showHideAnswer:withHeightChange:)])
     {
-        [self.delegate questionView:self showHideAnswer:YES withHeightChange:_questionAnswerView.frame.size.height];
+        [self.delegate questionView:self showHideAnswer:YES withHeightChange:delta];
     }
 }
 
 - (void) hideAnswer
 {
+    float delta = _height - (_questionContentView.frame.origin.y + _questionContentView.frame.size.height);
     CGRect rect = self.frame;
-    rect.size.height -= _questionAnswerView.frame.size.height;
+    rect.size.height -= delta;
     self.frame = rect;
     
     _questionAnswerView.hidden = YES;
+    _separator2.hidden = YES;
     
     if ([self.delegate respondsToSelector:@selector(questionView:showHideAnswer:withHeightChange:)])
     {
-        [self.delegate questionView:self showHideAnswer:NO withHeightChange:-1*_questionAnswerView.frame.size.height];
+        [self.delegate questionView:self showHideAnswer:NO withHeightChange:-1*delta];
     }
 }
 
