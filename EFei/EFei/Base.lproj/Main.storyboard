@@ -76,6 +76,7 @@
                         <segue destination="RQe-bI-TXh" kind="relationship" relationship="viewControllers" id="39f-Qk-MpY"/>
                         <segue destination="Eed-Tw-mzv" kind="relationship" relationship="viewControllers" id="68F-hE-gzY"/>
                         <segue destination="lQu-AQ-4SG" kind="presentation" identifier="ShowQRScanViewController" id="Yx6-i2-jvJ"/>
+                        <segue destination="e0T-Ld-NAc" kind="presentation" identifier="ShowSignInViewController" id="1xq-SE-ULG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zp9-MQ-b9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,12 +269,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="e0T-Ld-NAc" kind="relationship" relationship="rootViewController" id="nbd-Ua-gW5"/>
+                        <segue destination="9jE-V5-CJV" kind="relationship" relationship="rootViewController" id="F2x-SJ-BrN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVl-Vk-qFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1920" y="-1077"/>
+            <point key="canvasLocation" x="-1126" y="-1011"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="LRk-c3-G5b">
@@ -308,7 +309,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9jE-V5-CJV" kind="show" id="Lq0-3f-TWk"/>
+                                    <segue destination="ZpW-Bc-1ws" kind="presentation" id="1i8-tb-I2Y"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTe-IQ-eH1">
@@ -409,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbi-lB-Wv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1227" y="-1077"/>
+            <point key="canvasLocation" x="-1920" y="-1011"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="afK-3L-ZES">
@@ -432,7 +433,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-d6-RWt">
                                 <rect key="frame" x="222" y="133" width="187" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmN-lK-zfj">
                                 <rect key="frame" x="117" y="205" width="109" height="21"/>
@@ -481,6 +482,14 @@
                             <constraint firstItem="nTz-TH-KXl" firstAttribute="top" secondItem="OFL-SM-H0z" secondAttribute="bottom" constant="200" id="ejE-eu-EX8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8Tu-8p-Lhw">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="RHp-SW-pyX">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onCancel:" destination="9jE-V5-CJV" id="J8k-cx-toI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nicknameTextField" destination="dih-Xj-oJB" id="213-Cb-bX6"/>
                         <outlet property="passwordTextField" destination="ene-23-qlc" id="bNo-yg-Jql"/>
@@ -489,7 +498,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72o-f7-WcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-528" y="-1077"/>
+            <point key="canvasLocation" x="-414" y="-1011"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W3i-G1-dUC">

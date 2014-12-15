@@ -16,4 +16,9 @@
 @property (nonatomic, copy) NSString* username;
 @property (nonatomic, copy) NSString* password;
 
+@property (nonatomic, readonly) BOOL needSignIn;
+
+- (void) save;
+- (void) load;
+
 @end

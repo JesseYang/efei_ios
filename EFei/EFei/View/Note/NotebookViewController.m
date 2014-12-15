@@ -8,7 +8,7 @@
 
 #import "NotebookViewController.h"
 #import "NoteCell.h"
-#import "NoteViewTapGestureRecognizer.h"
+#import "RichTextViewGestureRecognizer.h"
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 

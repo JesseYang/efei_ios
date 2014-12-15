@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NoteViewTapGestureRecognizer : UITapGestureRecognizer
+@interface RichTextViewGestureRecognizer : UITapGestureRecognizer
 
 @property (nonatomic, assign) NSRange range;
 @property (nonatomic, strong) NSTextAttachment* textAttachment;
