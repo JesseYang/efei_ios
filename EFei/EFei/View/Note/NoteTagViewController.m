@@ -6,10 +6,10 @@
 //
 //
 
-#import "TagViewController.h"
+#import "NoteTagViewController.h"
 #import "Note.h"
 
-@interface TagViewController()<UITableViewDataSource, UITableViewDelegate>
+@interface NoteTagViewController()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray* _tagTitles;
     
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation TagViewController
+@implementation NoteTagViewController
 
 - (void) viewDidLoad
 {

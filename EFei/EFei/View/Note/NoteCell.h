@@ -15,6 +15,8 @@ typedef enum : NSUInteger {
     NoteCellStatusSelect,
 } NoteCellStatus;
 
+@class Note;
+
 @interface NoteCell : UICollectionViewCell
 
 @property (nonatomic, assign) NoteCellStatus status;
@@ -23,5 +25,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 - (void) setStatusWithNoAnimation:(NoteCellStatus)status;
+
+- (void) configWithNote:(Note*)note;
 
 @end

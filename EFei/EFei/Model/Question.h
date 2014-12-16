@@ -27,7 +27,7 @@ typedef enum : NSUInteger
 @property (nonatomic, assign) NSInteger answer;
 @property (nonatomic, strong) NSArray* answerContents;
 @property (nonatomic, strong) NSArray* tags;
-
+@property (nonatomic, copy) NSString* tagsetString;
 
 @end
 

@@ -63,13 +63,41 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-
-@implementation GetTopicsCommand
+@implementation GetNoteListCommand
 
 + (void) executeWithCompleteHandler:(CompletionBlock)handler
 {
-    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetTopics
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetNoteList
                                     withData:nil
+                             completeHandler:handler];
+}
+
+@end
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation GetNoteCommand
+
++ (void) executeWithNote:(Note*)note completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetNote
+                                    withData:note
+                             completeHandler:handler];
+}
+
+@end
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+@implementation GetTopicsCommand
+
++ (void) executeWithSubjectType:(SubjectType)type completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetTopics
+                                    withData:[NSNumber numberWithInteger:type]
                              completeHandler:handler];
 }
 

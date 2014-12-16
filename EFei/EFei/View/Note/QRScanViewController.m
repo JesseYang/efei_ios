@@ -39,13 +39,19 @@
     [super viewDidLoad];
     
     [self setupNavigationBar];
+    
     [self initCapture];
     [self initViews];
-    
     [self startIndicatorAnimation];
     
     // for test
-    [self scanSuccessWithContent:@"dev.efei.org/~QZRJs"];
+    [self scanSuccessWithContent:@"dev.efei.org/~vON7R"];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning

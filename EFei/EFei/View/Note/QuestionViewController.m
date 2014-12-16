@@ -10,8 +10,8 @@
 #import "GetQuestionController.h"
 #import "RichTextView.h"
 #import "QuestionView.h"
-#import "TagViewController.h"
-#import "KnowledgeViewController.h"
+#import "NoteTagViewController.h"
+#import "NoteTopicViewController.h"
 #import "Note.h"
 #import "NotebookCommand.h"
 
@@ -169,12 +169,12 @@
 {
     if ([segue.identifier isEqualToString:EditTagSegueId])
     {
-        TagViewController* tagVC = (TagViewController*)segue.destinationViewController;
+        NoteTagViewController* tagVC = (NoteTagViewController*)segue.destinationViewController;
         tagVC.note = _note;
     }
     else if ([segue.identifier isEqualToString:EditKnowledgeSegueId])
     {
-        KnowledgeViewController* knowledgeVC = (KnowledgeViewController*)segue.destinationViewController;
+        NoteTopicViewController* knowledgeVC = (NoteTopicViewController*)segue.destinationViewController;
         knowledgeVC.note = _note;
     }
 }

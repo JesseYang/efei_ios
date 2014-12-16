@@ -1,5 +1,5 @@
 //
-//  TagViewController.h
+//  KnowledgeViewController.h
 //  EFei
 //
 //  Created by Xiangzhen Kong on 12/12/14.
@@ -10,7 +10,7 @@
 
 @class Note;
 
-@interface TagViewController : UIViewController
+@interface NoteTopicViewController : UIViewController
 
 @property (nonatomic, weak) Note* note;
 
