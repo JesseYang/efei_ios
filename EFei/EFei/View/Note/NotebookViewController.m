@@ -15,12 +15,12 @@
 
 
 
-@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate>
+@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate, UITextFieldDelegate>
 {
     NSArray* _notes;
     
-    UITextField *textField;
-    
+    UITextField* _textField;
+    UIImageView* _searchIcon;
     BOOL _select;
 }
 
@@ -47,16 +47,24 @@
     [super viewDidAppear:animated];
 
     float width = 200;
-    float height = 34;
+    float height = 35;
     float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
-    float y = 2;
-    textField = [[UITextField alloc] initWithFrame: CGRectMake(x, y, width, height)];
-    textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.font = [UIFont systemFontOfSize:15];
+    float y = 0;
+    _textField = [[UITextField alloc] initWithFrame: CGRectMake(x, y, width, height)];
+    _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _textField.borderStyle = UITextBorderStyleRoundedRect;
+    _textField.font = [UIFont systemFontOfSize:15];
+    _textField.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
+    _textField.delegate = self;
+    [self.navigationController.navigationBar addSubview:_textField];
     
-    
-    [self.navigationController.navigationBar addSubview:textField];
+    float iconHeight = 16;
+    float space = (height - iconHeight) / 2;
+    float iconX = x + space;
+    float iconY = space;
+    _searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_notebook_search.png"]];
+    _searchIcon.frame = CGRectMake(iconX, iconY, iconHeight, iconHeight);
+    [self.navigationController.navigationBar addSubview:_searchIcon];
 
     if (![EFei instance].account.needSignIn)
     {
@@ -84,6 +92,17 @@
     };
     
     [GetNoteListCommand executeWithCompleteHandler:hanlder];
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField
+{
+    _searchIcon.hidden = YES;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField
+{
+    textField.text = @"";
+    _searchIcon.hidden = NO;
 }
 
 - (IBAction)onYiFei:(id)sender

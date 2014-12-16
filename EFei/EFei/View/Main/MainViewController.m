@@ -41,14 +41,25 @@
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : efeiColor }
                                              forState:UIControlStateSelected];
     
-    for (UITabBarItem  *tab in self.tabBar.items)
+    
+    NSArray* imageArray = @[@"icon_notebook_scan", @"icon_notebook", @"icon_notebook_settings"];
+    
+    for (int i=0; i<imageArray.count; i++)
     {
-        tab.image = [tab.image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-        tab.selectedImage = [tab.image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        NSString* name = [imageArray objectAtIndex:i];
+        NSString* onImage = [NSString stringWithFormat:@"%@_on.png", name];
+        NSString* offImage = [NSString stringWithFormat:@"%@_off.png", name];
+        UITabBarItem  *tab = [self.tabBar.items objectAtIndex:i];
+        
+        tab.image = [[UIImage imageNamed:offImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        tab.selectedImage = [[UIImage imageNamed:onImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
     }
     
     [[UINavigationBar appearance] setBarTintColor:efeiColor];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]}];
+    
+    
+    
     
 }
 
