@@ -8,6 +8,8 @@
 
 #import "Note.h"
 
+#define TopicsSeparator @","
+
 @implementation Note
 
 - (id) initWithQuestion:(Question *)question
@@ -41,8 +43,12 @@
     return self;
 }
 
-- (NSString*) topicString
+
+
+- (void) setTopics:(NSArray *)topics
 {
+    _topics = topics;
+    
     NSMutableString* res = [[NSMutableString alloc] init];
     
     for (NSString* t in self.topics)
@@ -50,11 +56,18 @@
         [res appendString:t];
         if (t != [self.topics lastObject])
         {
-            [res appendString:@","];
+            [res appendString:TopicsSeparator];
         }
     }
     
-    return res;
+    _topicString = [res copy];
+}
+
+- (void) setTopicString:(NSString *)topicString
+{
+    _topicString = [topicString copy];
+    
+    _topics = [topicString componentsSeparatedByString:TopicsSeparator];
 }
 
 @end

@@ -24,6 +24,10 @@
     if (self)
     {
         _teachers = [[NSMutableArray alloc] init];
+        
+        self.name = @"";
+        self.email = @"";
+        self.mobile = @"";
     }
     return self;
 }

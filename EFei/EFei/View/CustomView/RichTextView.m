@@ -106,6 +106,16 @@
     [self addGestureRecognizer:recongnizer];
 }
 
+- (void) setUserInteractionEnabled:(BOOL)userInteractionEnabled
+{
+    [super setUserInteractionEnabled:userInteractionEnabled];
+    
+    if (!userInteractionEnabled)
+    {
+        [self removeGestureRecognizer:[self.gestureRecognizers firstObject]];
+    }
+}
+
 
 - (void) setNoteContent:(NSArray *)contents
 {
@@ -212,12 +222,18 @@
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
         
         NSLog(@"donwload success %d", finished);
-        float scale = [UIScreen mainScreen].scale;
-        UIImage* resizedImage = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width*scale, height*scale)];
-        NSAttributedString* realStr = [self attributedStringWithImage:resizedImage];
-        [_attributedString replaceCharactersInRange:NSMakeRange(index, 1) withAttributedString:realStr];
         
-        self.attributedText = _attributedString;
+        if (index < _attributedString.length)
+        {
+            
+            float scale = [UIScreen mainScreen].scale;
+            UIImage* resizedImage = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width*scale, height*scale)];
+            NSAttributedString* realStr = [self attributedStringWithImage:resizedImage];
+            [_attributedString replaceCharactersInRange:NSMakeRange(index, 1) withAttributedString:realStr];
+            
+            self.attributedText = _attributedString;
+            
+        }
     }];
     
     float scale = [UIScreen mainScreen].scale;

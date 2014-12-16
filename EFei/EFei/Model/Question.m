@@ -8,6 +8,8 @@
 
 #import "Question.h"
 
+#define TagSetSeparator @","
+
 
 @implementation Question
 
@@ -32,6 +34,13 @@
     }
     
     return QuestionTypeOther;
+}
+
+- (void) setTagsetString:(NSString *)tagsetString
+{
+    _tagsetString = [tagsetString copy];
+    
+    self.tags = [self.tagsetString componentsSeparatedByString:TagSetSeparator];
 }
 
 @end

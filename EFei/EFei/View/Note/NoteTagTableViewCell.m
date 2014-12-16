@@ -6,9 +6,9 @@
 //
 //
 
-#import "TagTableViewCell.h"
+#import "NoteTagTableViewCell.h"
 
-@implementation TagTableViewCell
+@implementation NoteTagTableViewCell
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

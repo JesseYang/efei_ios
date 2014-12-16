@@ -7,12 +7,14 @@
 //
 
 #import "NoteCell.h"
+#import "Note.h"
+#import "RichTextView.h"
 
 #define SwipeDistance 80
 
 @interface NoteCell()
 {
-    
+    RichTextView* _richTextView;
 }
 
 - (void) setupUI;
@@ -66,6 +68,10 @@
     leftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.noteContentView addGestureRecognizer:leftRecognizer];
     [self.noteContentView addGestureRecognizer:rightRecognizer];
+    
+    _richTextView = [[RichTextView alloc] initWithFrame:self.bounds];
+    _richTextView.userInteractionEnabled = NO;
+    [self.noteContentView addSubview:_richTextView];
 }
 
 - (void) layoutSubviews
@@ -112,6 +118,11 @@
     deleteRect.origin.x = self.frame.size.width - deleteRect.size.width;
     deleteRect.origin.y = 0;
     self.deleteButton.frame = deleteRect;
+    
+    
+    CGRect tvRect = _richTextView.frame;
+    tvRect.size = self.frame.size;
+    _richTextView.frame = tvRect;
 }
 
 - (void) onSwipe:(UISwipeGestureRecognizer *)recognizer
@@ -255,6 +266,11 @@
     CGRect rect = self.noteContentView.frame;
     rect.origin.x = SwipeDistance;
     self.noteContentView.frame = rect;
+}
+
+- (void) configWithNote:(Note*)note
+{
+    [_richTextView setNoteContent:note.contents];
 }
 
 @end

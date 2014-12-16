@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TaskManager.h"
 #import "Controller.h"
+#import "Topics.h"
 
 @interface NotebookCommand : NSObject
 
@@ -45,11 +46,29 @@
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////
+
+@interface GetNoteListCommand : NSObject
+
++ (void) executeWithCompleteHandler:(CompletionBlock)handler;
+
+@end
+
 //////////////////////////////////////////////////////////////////////////////////////
+
+@interface GetNoteCommand : NSObject
+
++ (void) executeWithNote:(Note*)note completeHandler:(CompletionBlock)handler;
+
+@end
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@class Subject;
 
 @interface GetTopicsCommand : NSObject
 
-+ (void) executeWithCompleteHandler:(CompletionBlock)handler;
++ (void) executeWithSubjectType:(SubjectType)type completeHandler:(CompletionBlock)handler;
 
 @end
 

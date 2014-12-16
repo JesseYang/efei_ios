@@ -6,12 +6,14 @@
 //
 //
 
-#import "KnowledgeViewController.h"
+#import "NoteTopicViewController.h"
 #import "SearchView.h"
 #import "TagCollectionView.h"
 #import "Note.h"
+#import "EFei.h"
+#import "NotebookCommand.h"
 
-@interface KnowledgeViewController()<SearchViewDelegate>
+@interface NoteTopicViewController()<SearchViewDelegate, SearchViewDataSource>
 {
     
 }
@@ -26,7 +28,7 @@
 
 @end
 
-@implementation KnowledgeViewController
+@implementation NoteTopicViewController
 
 - (void) viewDidLoad
 {
@@ -40,6 +42,19 @@
 {
     [super viewDidAppear:animated];
     
+    
+    Subject* subject = [[EFei instance].subjectManager subjectWithType:self.note.subjectType];
+    
+    if (subject.topics.count == 0)
+    {
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            
+            
+        };
+        
+        [GetTopicsCommand executeWithSubjectType:self.note.subjectType completeHandler:handler];
+    }
 }
 
 - (void) setupNavigator
@@ -54,6 +69,8 @@
 - (void) setupViews
 {
     self.searchView.delegate = self;
+    self.searchView.dataSource = self;
+    
 }
 
 - (void) onDone:(id)sender
@@ -69,6 +86,21 @@
 - (void) searchView:(SearchView *)searchView didAddContent:(NSString *)content
 {
     [self.tagCollectionView addTitle:content];
+}
+
+- (NSArray*) searchView:(SearchView *)searchView searchResultWithText:(NSString *)text
+{
+    NSMutableArray* res = [[NSMutableArray alloc] init];
+    Subject* subject = [[EFei instance].subjectManager subjectWithType:self.note.subjectType];
+    for (Topic* topic in subject.topics)
+    {
+        if ([topic.name hasPrefix:text])
+        {
+            [res addObject:topic.name];
+        }
+    }
+    
+    return res;
 }
 
 

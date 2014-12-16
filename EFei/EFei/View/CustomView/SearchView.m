@@ -8,11 +8,18 @@
 
 #import "SearchView.h"
 
-@interface SearchView()
+#define TableViewCellId @"TableViewCellId"
+
+@interface SearchView()<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
 //    UIView* _searchBar;
     
     UITextField* _textField;
+    UITableView* _tableView;
+    
+    NSArray* _searchResult;
+    
+    NSLayoutConstraint* _heightConstraint;
 }
 
 - (void) setupUI;
@@ -52,8 +59,11 @@
     [self setupSearchBar];
     [self addSubview:_searchBar];
     
-    NSDictionary *viewsDictionary = @{@"searchBar":_searchBar
-                                      };
+    [self setupTableView];
+    [self addSubview:_tableView];
+    
+    NSDictionary *viewsDictionary = @{@"searchBar":_searchBar,
+                                      @"tableView":_tableView};
     NSArray *constraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[searchBar(50)]"
                                                                        options:0
                                                                        metrics:nil
@@ -66,13 +76,40 @@
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
-    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[searchBar]"
+    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[searchBar]-1-[tableView]|"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
+    
+    NSArray *tableViewConstraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:viewsDictionary];
+
     [self addConstraints:constraintPosH];
     [self addConstraints:constraintPosV];
+    [self addConstraints:tableViewConstraintPosH];
+    
+    
+    _heightConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:0.0
+                                                      constant:51];
+    [self addConstraint:_heightConstraint];
+}
+
+-(void) setBounds:(CGRect)bounds
+{
+    [super setBounds:bounds];
+    
+    float height = 51 + _searchResult.count * 44;
+    [_heightConstraint setConstant:height];
+    
+    [self layoutIfNeeded];
 }
 
 - (void) setupSearchBar
@@ -88,6 +125,7 @@
     
     _textField = [[UITextField alloc] init];
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
+    _textField.delegate = self;
     [_searchBar addSubview:_textField];
     
     UIButton* addButton = [[UIButton alloc] init];
@@ -155,6 +193,27 @@
     
 }
 
+- (void) setupTableView
+{
+    _tableView = [[UITableView alloc] initWithFrame:self.frame style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TableViewCellId];
+    
+}
+
+- (void) resizeContent
+{
+    CGRect rect = self.frame;
+    rect.size.height = 50 + 1 + _searchResult.count * 44;
+    self.frame = rect;
+    
+    [self layoutIfNeeded];
+    
+    [_tableView reloadData];
+}
+
 - (void) onAdd:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(searchView:didAddContent:)])
@@ -163,6 +222,40 @@
     }
     
     _textField.text = @"";
+    
+    NSLog(@"%f", self.frame.size.height);
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([self.dataSource respondsToSelector:@selector(searchView:searchResultWithText:)])
+    {
+        _searchResult = [self.dataSource searchView:self searchResultWithText:_textField.text];
+        
+        [self resizeContent];
+    }
+}
+
+#pragma mark - UITableView
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _searchResult.count;
+}
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:TableViewCellId forIndexPath:indexPath];
+    cell.textLabel.text = [_searchResult objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    _textField.text = [_searchResult objectAtIndex:indexPath.row];
+    _searchResult = nil;
+    [self resizeContent];
 }
 
 @end

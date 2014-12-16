@@ -10,6 +10,12 @@
 
 @class SearchView;
 
+@protocol SearchViewDataSource <NSObject>
+
+- (NSArray*) searchView:(SearchView*)searchView searchResultWithText:(NSString*)text;
+
+@end
+
 @protocol SearchViewDelegate <NSObject>
 
 - (void) searchView:(SearchView*)searchView didAddContent:(NSString*)content;
@@ -20,5 +26,6 @@
 
 @property (nonatomic, strong) UIView* searchBar;
 @property (nonatomic, weak) id<SearchViewDelegate> delegate;
+@property (nonatomic, weak) id<SearchViewDataSource> dataSource;
 
 @end

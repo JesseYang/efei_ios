@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) NSString* noteId;
 @property (nonatomic, assign) NSInteger updateTime;
+@property (nonatomic, assign) BOOL updated;
 @property (nonatomic, copy) NSString* summary;
 @property (nonatomic, strong) NSArray* topics;
 @property (nonatomic, copy) NSString* topicString;
