@@ -388,11 +388,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EFei/View/Settings/EmailEditingViewController.m"
-            timestampString = "440409684.901475"
+            timestampString = "440561336.576134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-onNext:"
             landmarkType = "5">
          </BreakpointContent>

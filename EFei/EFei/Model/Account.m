@@ -43,6 +43,11 @@
     return self.token.length == 0;
 }
 
+- (void) signout
+{
+    self.token = @"";
+}
+
 - (void) save
 {
     NSUserDefaults *accountDefaults = [NSUserDefaults standardUserDefaults];

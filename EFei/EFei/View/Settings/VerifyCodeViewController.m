@@ -28,6 +28,15 @@
 {
     [super viewDidLoad];
     
+    [self setupNavigationBar];
+    
+}
+
+- (void) setupNavigationBar
+{
+    self.navigationItem.title = @"手机设置";
+    self.navigationItem.leftBarButtonItem.title = @"取消";
+    
     self.phoneLabel.text = [EFei instance].user.mobile;
 }
 

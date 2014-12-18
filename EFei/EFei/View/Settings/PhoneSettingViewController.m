@@ -24,7 +24,16 @@
 {
     [super viewDidLoad];
     
-    self.emailLabel.text = [NSString stringWithFormat:@"Phone: %@", [EFei instance].user.mobile];
+    [self setupNavigationBar];
+    
+}
+
+- (void) setupNavigationBar
+{
+    self.navigationItem.title = @"手机设置";
+    
+    
+    self.emailLabel.text = [NSString stringWithFormat:@"您的手机号为: %@", [EFei instance].user.mobile];
 }
 
 @end

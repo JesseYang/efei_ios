@@ -11,6 +11,7 @@
 #import "EFei.h"
 
 #define NavigationBarBackgroundColor @"#4979BD"
+#define TabBarNormalColor @"#070707"
 
 #define ShowQRScanViewControllerSegueId @"ShowQRScanViewController"
 #define ShowSignInViewControllerSegueId @"ShowSignInViewController"
@@ -33,22 +34,35 @@
     self.delegate = self;
     
     UIColor* efeiColor = [UIColor colorWithHexString:NavigationBarBackgroundColor];
+    UIColor* unselectedColor = [UIColor colorWithHexString:TabBarNormalColor];
     
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : efeiColor }
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : unselectedColor }
                                              forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : efeiColor }
                                              forState:UIControlStateSelected];
     
-    for (UITabBarItem  *tab in self.tabBar.items)
+    
+    NSArray* imageArray = @[@"icon_main_scan", @"icon_main_notebook", @"icon_main_settings"];
+    
+    for (int i=0; i<imageArray.count; i++)
     {
-        tab.image = [tab.image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-        tab.selectedImage = [tab.image imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        NSString* name = [imageArray objectAtIndex:i];
+        NSString* onImage = [NSString stringWithFormat:@"%@_on.png", name];
+        NSString* offImage = [NSString stringWithFormat:@"%@_off.png", name];
+        UITabBarItem  *tab = [self.tabBar.items objectAtIndex:i];
+        
+        tab.image = [[UIImage imageNamed:offImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        tab.selectedImage = [[UIImage imageNamed:onImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        
     }
     
     [[UINavigationBar appearance] setBarTintColor:efeiColor];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]}];
+    
+    
+    
     
 }
 
@@ -77,6 +91,13 @@
     {
         [self performSegueWithIdentifier:ShowQRScanViewControllerSegueId sender:self];
     }
+}
+
+- (void) signOut
+{
+    [[EFei instance].account signout];
+    self.selectedIndex = 1;
+    [self performSegueWithIdentifier:ShowSignInViewControllerSegueId sender:self];
 }
 
 @end

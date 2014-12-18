@@ -21,4 +21,6 @@
 - (void) save;
 - (void) load;
 
+- (void) signout;
+
 @end

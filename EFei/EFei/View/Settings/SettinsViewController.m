@@ -7,11 +7,13 @@
 //
 
 #import "SettinsViewController.h"
+#import "EFei.h"
+#import "MainViewController.h"
 
 #define NavigationBarTilte @"设置"
 
 #define PersonalSettingsImage @"icon_settings_personal.jpg"
-#define RightArrowImage @"line_icon_arrow.png"
+#define RightArrowImage @"icon_settings_arrow.png"
 
 #define CellReuseIdentifier @"CellReuseIdentifier"
 
@@ -79,9 +81,9 @@
 
 - (IBAction)onSignOut:(id)sender
 {
-    
+    MainViewController* mainVC = (MainViewController*)self.tabBarController;
+    [mainVC signOut];
 }
-
 
 
 #pragma mark - UITableView

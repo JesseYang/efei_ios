@@ -21,10 +21,17 @@
 
 @implementation EmailSettingViewController
 
-
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setupNavigationBar];
+    
+}
+
+- (void) setupNavigationBar
+{
+    self.navigationItem.title = @"邮箱设置";
     
     self.emailLabel.text = [NSString stringWithFormat:@"Email: %@", [EFei instance].user.email];
 }
