@@ -23,6 +23,22 @@
 @end
 
 @implementation EmailEditingViewController
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self setupNavigationBar];
+    
+}
+
+
+- (void) setupNavigationBar
+{
+    self.navigationItem.title = @"邮箱设置";
+    self.navigationItem.leftBarButtonItem.title = @"取消";
+    self.navigationItem.rightBarButtonItem.title = @"下一步";
+}
+
 
 - (IBAction)onCancel:(id)sender
 {

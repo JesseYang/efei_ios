@@ -11,6 +11,7 @@
 #import "EFei.h"
 
 #define NavigationBarBackgroundColor @"#4979BD"
+#define TabBarNormalColor @"#070707"
 
 #define ShowQRScanViewControllerSegueId @"ShowQRScanViewController"
 #define ShowSignInViewControllerSegueId @"ShowSignInViewController"
@@ -33,16 +34,17 @@
     self.delegate = self;
     
     UIColor* efeiColor = [UIColor colorWithHexString:NavigationBarBackgroundColor];
+    UIColor* unselectedColor = [UIColor colorWithHexString:TabBarNormalColor];
     
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : efeiColor }
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : unselectedColor }
                                              forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : efeiColor }
                                              forState:UIControlStateSelected];
     
     
-    NSArray* imageArray = @[@"icon_notebook_scan", @"icon_notebook", @"icon_notebook_settings"];
+    NSArray* imageArray = @[@"icon_main_scan", @"icon_main_notebook", @"icon_main_settings"];
     
     for (int i=0; i<imageArray.count; i++)
     {
@@ -53,6 +55,7 @@
         
         tab.image = [[UIImage imageNamed:offImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
         tab.selectedImage = [[UIImage imageNamed:onImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+        
     }
     
     [[UINavigationBar appearance] setBarTintColor:efeiColor];
@@ -88,6 +91,13 @@
     {
         [self performSegueWithIdentifier:ShowQRScanViewControllerSegueId sender:self];
     }
+}
+
+- (void) signOut
+{
+    [[EFei instance].account signout];
+    self.selectedIndex = 1;
+    [self performSegueWithIdentifier:ShowSignInViewControllerSegueId sender:self];
 }
 
 @end

@@ -22,7 +22,22 @@
 @end
 
 
-@implementation NameEditingViewController
+@implementation NameEditingViewController- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self setupNavigationBar];
+    
+}
+
+
+- (void) setupNavigationBar
+{
+    self.navigationItem.title = @"姓名设置";
+    self.navigationItem.leftBarButtonItem.title = @"取消";
+    self.navigationItem.rightBarButtonItem.title = @"完成";
+}
+
 
 - (IBAction)onCancel:(id)sender
 {

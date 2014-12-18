@@ -22,6 +22,11 @@
     CGRect      _scanRect;
 }
 
+@property (weak, nonatomic) IBOutlet UIView *scanRectView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+
+- (IBAction)onSegmentControlValueChanged:(id)sender;
+
 - (void) setupNavigationBar;
 - (void) initCapture;
 - (void) scanSuccessWithContent:(NSString*)content;
@@ -45,7 +50,7 @@
     [self startIndicatorAnimation];
     
     // for test
-    [self scanSuccessWithContent:@"dev.efei.org/~vON7R"];
+//    [self scanSuccessWithContent:@"dev.efei.org/~vON7R"];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -60,6 +65,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)onSegmentControlValueChanged:(id)sender
+{
+    if (self.segmentControl.selectedSegmentIndex == 1)
+    {
+        [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_first_off"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_first_on"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    }
+    else
+    {
+        [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_off"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_on"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    }
+}
 
 - (void) setupNavigationBar
 {
@@ -83,9 +102,7 @@
     
     CGAffineTransform captureSizeTransform = CGAffineTransformMakeScale(320 / self.view.frame.size.width, 480 / self.view.frame.size.height);
     
-    float size = 260;
-    
-    _scanRect = CGRectMake((self.view.frame.size.width-size)/2, 180, size, size);
+    _scanRect = self.scanRectView.frame;
     _capture.scanRect = CGRectApplyAffineTransform(_scanRect, captureSizeTransform);
     
     _scaning = YES;
@@ -98,17 +115,26 @@
 
 - (void) initViews
 {
-    UIView* scanRectView = [[UIView alloc] initWithFrame:_scanRect];
-    scanRectView.backgroundColor = [UIColor clearColor];
-    scanRectView.layer.borderColor = [UIColor whiteColor].CGColor;
-    scanRectView.layer.borderWidth = 1;
-    [self.view addSubview:scanRectView];
+//    UIView* scanRectView = [[UIView alloc] initWithFrame:_scanRect];
+//    scanRectView.backgroundColor = [UIColor clearColor];
+//    scanRectView.layer.borderColor = [UIColor whiteColor].CGColor;
+//    scanRectView.layer.borderWidth = 1;
+//    [self.view addSubview:scanRectView];
     
     CGRect indicatorRect = _scanRect;
     indicatorRect.size.height = 2;
+    indicatorRect.size.width -= 20;
+    indicatorRect.origin.x = (self.view.frame.size.width - indicatorRect.size.width) / 2;
+
     _indicatorView = [[UIView alloc] initWithFrame:indicatorRect];
     _indicatorView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_indicatorView];
+    
+    
+    self.segmentControl.tintColor = [UIColor blackColor];
+    self.segmentControl.backgroundColor = [UIColor clearColor];
+    [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_off"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_on"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
 }
 
 - (void) startIndicatorAnimation
