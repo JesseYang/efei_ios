@@ -23,6 +23,8 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIView *noteContentView;
 @property (weak, nonatomic) IBOutlet UIButton *exportButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *selectButton;
+
 
 - (void) setStatusWithNoAnimation:(NoteCellStatus)status;
 

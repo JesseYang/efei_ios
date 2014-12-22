@@ -25,7 +25,13 @@
 @property (weak, nonatomic) IBOutlet UIView *scanRectView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
+- (IBAction)onLight:(UIButton *)sender;
+
+- (IBAction)onBack:(id)sender;
+
 - (IBAction)onSegmentControlValueChanged:(id)sender;
+
+
 
 - (void) setupNavigationBar;
 - (void) initCapture;
@@ -47,7 +53,6 @@
     
     [self initCapture];
     [self initViews];
-    [self startIndicatorAnimation];
     
     // for test
 //    [self scanSuccessWithContent:@"dev.efei.org/~vON7R"];
@@ -57,6 +62,7 @@
 {
     [super viewDidAppear:animated];
     
+    [self startIndicatorAnimation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +71,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)onLight:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (![device hasTorch])
+    {
+        NSLog(@"no torch");
+    }
+    else
+    {
+        [device lockForConfiguration:nil];
+        if (sender.selected)
+        {
+            [device setTorchMode: AVCaptureTorchModeOn];
+        }
+        else
+        {
+            [device setTorchMode: AVCaptureTorchModeOff];
+        }
+        
+        [device unlockForConfiguration];
+    }
+}
+
+- (IBAction)onBack:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 
 - (IBAction)onSegmentControlValueChanged:(id)sender
 {
