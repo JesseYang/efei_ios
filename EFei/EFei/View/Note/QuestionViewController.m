@@ -43,6 +43,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBarHidden = NO;
+    
     self.noteTableView.dataSource = self;
     self.noteTableView.delegate = self;
     

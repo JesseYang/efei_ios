@@ -119,6 +119,7 @@
 		FCC98C2D1A470AFA00D9567D /* Launch640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC98C2B1A470AFA00D9567D /* Launch640x1136.png */; };
 		FCC98C2E1A470AFA00D9567D /* Launch640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC98C2C1A470AFA00D9567D /* Launch640x960.png */; };
 		FCC98C311A470CDE00D9567D /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC98C301A470CDE00D9567D /* QRScanViewController.m */; };
+		FCC98C4B1A52440A00D9567D /* NoteCategoryTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC98C4A1A52440A00D9567D /* NoteCategoryTabView.m */; };
 		FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */; };
 		FCD829131A2D616000F6E0CA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829121A2D616000F6E0CA /* MainViewController.m */; };
 		FCD8291A1A2EB0FD00F6E0CA /* RichTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD829191A2EB0FD00F6E0CA /* RichTextView.m */; };
@@ -326,6 +327,8 @@
 		FCC98C2C1A470AFA00D9567D /* Launch640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch640x960.png; sourceTree = "<group>"; };
 		FCC98C2F1A470CDE00D9567D /* QRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		FCC98C301A470CDE00D9567D /* QRScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
+		FCC98C491A52440A00D9567D /* NoteCategoryTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCategoryTabView.h; sourceTree = "<group>"; };
+		FCC98C4A1A52440A00D9567D /* NoteCategoryTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCategoryTabView.m; sourceTree = "<group>"; };
 		FCD8290D1A2D5EC700F6E0CA /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		FCD8290E1A2D5EC700F6E0CA /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		FCD829111A2D616000F6E0CA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -832,6 +835,8 @@
 				FCF3D1881A3B4FB7009D8722 /* TagCollectionView.m */,
 				FCF3D18A1A3B4FCF009D8722 /* TagCollectionViewCell.h */,
 				FCF3D18B1A3B4FCF009D8722 /* TagCollectionViewCell.m */,
+				FCC98C491A52440A00D9567D /* NoteCategoryTabView.h */,
+				FCC98C4A1A52440A00D9567D /* NoteCategoryTabView.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1108,6 +1113,7 @@
 				FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */,
 				FCF3D1411A371C7C009D8722 /* RichTextViewGestureRecognizer.m in Sources */,
 				FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */,
+				FCC98C4B1A52440A00D9567D /* NoteCategoryTabView.m in Sources */,
 				FCD8291A1A2EB0FD00F6E0CA /* RichTextView.m in Sources */,
 				FC3808D11A1B4418007A73E4 /* Account.m in Sources */,
 				FCF3D1FB1A3FD1A8009D8722 /* NameEditingViewController.m in Sources */,

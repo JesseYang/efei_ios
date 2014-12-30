@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Notebook-->
@@ -140,7 +141,7 @@
                         <segue destination="RQe-bI-TXh" kind="relationship" relationship="viewControllers" id="39f-Qk-MpY"/>
                         <segue destination="e0T-Ld-NAc" kind="presentation" identifier="ShowSignInViewController" id="1xq-SE-ULG"/>
                         <segue destination="ISu-Sl-w1e" kind="relationship" relationship="viewControllers" id="VNo-aE-cCZ"/>
-                        <segue destination="KhO-UC-VOt" kind="presentation" identifier="ShowQRScanViewController" id="poy-3e-Zhd"/>
+                        <segue destination="awA-yS-JkP" kind="presentation" identifier="ShowQRScanViewController" id="3a6-J8-poF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zp9-MQ-b9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,8 +160,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uK2-IP-zG1">
+                                <rect key="frame" x="0.0" y="64" width="600" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T60-NG-QcR">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_notebook_tag.png" translatesAutoresizingMaskIntoConstraints="NO" id="hpa-CK-oBu">
+                                                <rect key="frame" x="20" y="13" width="24" height="24"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="全科" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIQ-6w-ZaS">
+                                                <rect key="frame" x="63" y="15" width="75" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPi-2Z-ybE">
+                                        <rect key="frame" x="200" y="0.0" width="200" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_notebook_time.png" translatesAutoresizingMaskIntoConstraints="NO" id="i6z-uW-dKD">
+                                                <rect key="frame" x="20" y="13" width="24" height="24"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最近" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDd-0j-De3">
+                                                <rect key="frame" x="63" y="15" width="75" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHn-u3-gR8">
+                                        <rect key="frame" x="400" y="0.0" width="200" height="50"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_notebook_topic.png" translatesAutoresizingMaskIntoConstraints="NO" id="616-bV-ifb">
+                                                <rect key="frame" x="20" y="13" width="24" height="24"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标签" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnS-T0-qrk">
+                                                <rect key="frame" x="63" y="15" width="75" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="E4t-Mh-NPa"/>
+                                    <constraint firstItem="mHn-u3-gR8" firstAttribute="leading" secondItem="BPi-2Z-ybE" secondAttribute="trailing" id="Fxy-6K-DF1"/>
+                                    <constraint firstItem="BPi-2Z-ybE" firstAttribute="height" secondItem="T60-NG-QcR" secondAttribute="height" id="GL6-hh-VVe"/>
+                                    <constraint firstAttribute="height" secondItem="T60-NG-QcR" secondAttribute="height" id="Hv7-nC-JPs"/>
+                                    <constraint firstItem="mHn-u3-gR8" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="top" id="K8H-8d-gAB"/>
+                                    <constraint firstItem="T60-NG-QcR" firstAttribute="leading" secondItem="uK2-IP-zG1" secondAttribute="leading" id="Reg-KJ-ibs"/>
+                                    <constraint firstItem="T60-NG-QcR" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="top" id="exO-8a-Us8"/>
+                                    <constraint firstItem="T60-NG-QcR" firstAttribute="width" secondItem="uK2-IP-zG1" secondAttribute="width" multiplier="0.333" id="hhQ-Un-DsL"/>
+                                    <constraint firstItem="BPi-2Z-ybE" firstAttribute="height" secondItem="mHn-u3-gR8" secondAttribute="height" id="hu8-Xv-sFG"/>
+                                    <constraint firstItem="BPi-2Z-ybE" firstAttribute="width" secondItem="mHn-u3-gR8" secondAttribute="width" id="idd-hR-yca"/>
+                                    <constraint firstItem="BPi-2Z-ybE" firstAttribute="width" secondItem="T60-NG-QcR" secondAttribute="width" id="jpJ-Aq-ZgK"/>
+                                    <constraint firstItem="BPi-2Z-ybE" firstAttribute="leading" secondItem="T60-NG-QcR" secondAttribute="trailing" id="md9-gF-19k"/>
+                                    <constraint firstItem="BPi-2Z-ybE" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="top" id="ttH-yI-1JM"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nzf-fC-kWh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="115" width="600" height="485"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Wu-lx-70i">
                                     <size key="itemSize" width="320" height="100"/>
@@ -220,13 +287,22 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nzf-fC-kWh" firstAttribute="height" secondItem="eUD-H8-1ey" secondAttribute="height" id="7MK-Gl-6rb"/>
+                            <constraint firstAttribute="width" secondItem="uK2-IP-zG1" secondAttribute="width" id="8C2-JW-vJt"/>
+                            <constraint firstItem="uK2-IP-zG1" firstAttribute="leading" secondItem="eUD-H8-1ey" secondAttribute="leadingMargin" constant="-16" id="BXp-aY-jq7"/>
+                            <constraint firstItem="aQe-rj-g2b" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="bottom" id="Cl2-CH-3Hl"/>
                             <constraint firstItem="Nzf-fC-kWh" firstAttribute="width" secondItem="eUD-H8-1ey" secondAttribute="width" id="Lw4-l9-4c5"/>
+                            <constraint firstItem="Nzf-fC-kWh" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="bottom" constant="1" id="Nl2-M5-sc2"/>
+                            <constraint firstAttribute="bottom" secondItem="Nzf-fC-kWh" secondAttribute="bottom" id="Pex-Rj-B5Y"/>
+                            <constraint firstItem="uK2-IP-zG1" firstAttribute="top" secondItem="aQe-rj-g2b" secondAttribute="bottom" id="VbS-J5-CZC"/>
                             <constraint firstAttribute="centerX" secondItem="Nzf-fC-kWh" secondAttribute="centerX" id="cRz-j4-Aj8"/>
-                            <constraint firstAttribute="centerY" secondItem="Nzf-fC-kWh" secondAttribute="centerY" id="gx2-cK-KhL"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Cl2-CH-3Hl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9CX-kQ-YrB">
                         <nil key="title"/>
@@ -696,12 +772,28 @@
                     <connections>
                         <outlet property="scanRectView" destination="c3r-Fg-Btb" id="kzv-eI-Xzb"/>
                         <outlet property="segmentControl" destination="9nJ-hB-6nZ" id="edk-z3-Wsi"/>
-                        <segue destination="vjj-4v-RHh" kind="show" identifier="ShowQuestionViewController" id="t8D-XZ-r4T"/>
+                        <segue destination="vjj-4v-RHh" kind="show" identifier="ShowQuestionViewController" id="XZz-PE-fpA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnU-0X-bG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1920" y="-239"/>
+            <point key="canvasLocation" x="-1360" y="-250"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4ms-Cd-zme">
+            <objects>
+                <navigationController id="awA-yS-JkP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jd-od-vLl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KhO-UC-VOt" kind="relationship" relationship="rootViewController" id="Fqo-N7-RRa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V4H-t0-Yhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2028" y="-160"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="i4c-m8-AoS">
@@ -777,7 +869,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUU-fd-Zcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1032" y="-221"/>
+            <point key="canvasLocation" x="-512" y="-250"/>
         </scene>
         <!--Note Tag View Controller-->
         <scene sceneID="wgL-W5-GFc">
@@ -1519,6 +1611,9 @@
         <image name="icon_notebook_export.png" width="21" height="20"/>
         <image name="icon_notebook_scan_on.png" width="17" height="17"/>
         <image name="icon_notebook_select_all.png" width="14" height="13"/>
+        <image name="icon_notebook_tag.png" width="21" height="18"/>
+        <image name="icon_notebook_time.png" width="21" height="21"/>
+        <image name="icon_notebook_topic.png" width="21" height="21"/>
         <image name="icon_notebook_unselect.png" width="13" height="14"/>
         <image name="icon_scan_back.png" width="10" height="21"/>
         <image name="icon_scan_light_off.png" width="21" height="21"/>
