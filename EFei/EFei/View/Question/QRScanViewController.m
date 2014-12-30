@@ -62,6 +62,8 @@
 {
     [super viewDidAppear:animated];
     
+    self.navigationController.navigationBarHidden = YES;
+    
     [self startIndicatorAnimation];
 }
 
@@ -120,7 +122,7 @@
 
 - (void) setupNavigationBar
 {
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"扫一扫";
 }
