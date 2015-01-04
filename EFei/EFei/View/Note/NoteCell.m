@@ -70,60 +70,104 @@
     [self.noteContentView addGestureRecognizer:rightRecognizer];
     
     _richTextView = [[RichTextView alloc] initWithFrame:self.bounds];
+    _richTextView.translatesAutoresizingMaskIntoConstraints = NO;
     _richTextView.userInteractionEnabled = NO;
     [self.noteContentView addSubview:_richTextView];
+    
+    
+    
+    NSLayoutConstraint *cW = [NSLayoutConstraint constraintWithItem:_richTextView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.noteContentView
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1
+                                                          constant:0];
+    [self.noteContentView addConstraint:cW];
+    
+    NSLayoutConstraint *cH = [NSLayoutConstraint constraintWithItem:_richTextView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.noteContentView
+                                                         attribute:NSLayoutAttributeHeight
+                                                        multiplier:1
+                                                          constant:0];
+    [self.noteContentView addConstraint:cH];
+    
+//    NSDictionary *viewsDictionary = @{@"richTextView":_richTextView};
+//    NSArray *textconstraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[richTextView]|"
+//                                                                          options:0
+//                                                                          metrics:nil
+//                                                                            views:viewsDictionary];
+//    NSArray *textconstraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[richTextView]|"
+//                                                                          options:0
+//                                                                          metrics:nil
+//                                                                            views:viewsDictionary];
+//    
+//    [self.noteContentView addConstraints:textconstraintPosH];
+//    [self.noteContentView addConstraints:textconstraintPosV];
 }
 
 - (void) layoutSubviews
 {
     [super layoutSubviews];
     
-    float x = 0;
-    
-    switch (self.status)
-    {
-        case NoteCellStatusNone:
-            x = 0;
-            break;
-            
-        case NoteCellStatusExport:
-            x = SwipeDistance;
-            break;
-            
-        case NoteCellStatusDelete:
-            x = -SwipeDistance;
-            break;
-            
-        case NoteCellStatusSelect:
-            x = SwipeDistance;
-            break;
-            
-        default:
-            break;
-    }
-    
-    CGRect rect = self.frame;
-    rect.origin.x = x;
-    rect.origin.y = 0;
-    self.noteContentView.frame = rect;
-    
-    CGRect exportRect = self.exportButton.frame;
-    exportRect.origin.x = 0;
-    exportRect.origin.y = 0;
-//    exportRect.size.height = self.frame.size.height;
-    self.exportButton.frame = exportRect;
-    
-    
-    CGRect deleteRect = self.deleteButton.frame;
-    deleteRect.origin.x = self.frame.size.width - deleteRect.size.width;
-    deleteRect.origin.y = 0;
-    self.deleteButton.frame = deleteRect;
-    
-    
-    CGRect tvRect = _richTextView.frame;
-    tvRect.size = self.frame.size;
-    _richTextView.frame = tvRect;
+    _richTextView.frame = self.noteContentView.bounds;
 }
+
+//- (void) layoutSubviews
+//{
+//    [super layoutSubviews];
+//    
+//    float x = 0;
+//    
+//    switch (self.status)
+//    {
+//        case NoteCellStatusNone:
+//            x = 0;
+//            break;
+//            
+//        case NoteCellStatusExport:
+//            x = SwipeDistance;
+//            break;
+//            
+//        case NoteCellStatusDelete:
+//            x = -SwipeDistance;
+//            break;
+//            
+//        case NoteCellStatusSelect:
+//            x = SwipeDistance;
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    CGRect rect = self.frame;
+//    rect.origin.x = x;
+//    rect.origin.y = 0;
+//    self.noteContentView.frame = rect;
+//    
+//    CGRect exportRect = self.exportButton.frame;
+//    exportRect.origin.x = 0;
+//    exportRect.origin.y = 0;
+//    self.exportButton.frame = exportRect;
+//    
+//    CGRect selectRect = self.selectButton.frame;
+//    selectRect.origin.x = 0;
+//    selectRect.origin.y = 0;
+//    self.selectButton.frame = exportRect;
+//    
+//    CGRect deleteRect = self.deleteButton.frame;
+//    deleteRect.origin.x = self.frame.size.width - deleteRect.size.width;
+//    deleteRect.origin.y = 0;
+//    self.deleteButton.frame = deleteRect;
+//    
+//    
+//    CGRect tvRect = _richTextView.frame;
+//    tvRect.size = self.frame.size;
+//    _richTextView.frame = tvRect;
+//}
 
 - (void) onSwipe:(UISwipeGestureRecognizer *)recognizer
 {
@@ -171,6 +215,8 @@
             break;
             
         case NoteCellStatusExport:
+            self.exportButton.hidden = NO;
+            self.selectButton.hidden = YES;
             [self swipToExport];
             break;
             
@@ -179,6 +225,8 @@
             break;
             
         case NoteCellStatusSelect:
+            self.exportButton.hidden = YES;
+            self.selectButton.hidden = NO;
             [self swipToSelect];
             break;
             
