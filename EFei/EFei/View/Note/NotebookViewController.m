@@ -15,9 +15,10 @@
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
+#define ShowNotebookSearchViewControllerSegueId @"ShowNotebookSearchViewController"
 #define ShowNotebookFilterViewControllerSegueId @"ShowNotebookFilterViewController"
 
-@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate, UITextFieldDelegate>
+@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate>
 {
     NSArray* _notes;
     
@@ -56,6 +57,7 @@
     [super viewDidAppear:animated];
     
     _searchBarView.hidden = NO;
+    _searchBarView.editing = NO;
 
     if (![EFei instance].account.needSignIn)
     {
@@ -70,12 +72,13 @@
 
 - (void) setupViews
 {
-    float width = self.view.frame.size.width - 80;
+    float width = self.view.frame.size.width - 140;
     float height = 30;
     float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
     float y = 5;
     CGRect rect = CGRectMake(x, y, width, height);
     _searchBarView = [[SearchBarView alloc] initWithFrame:rect];
+    _searchBarView.delegate = self;
     
     [self.navigationController.navigationBar addSubview:_searchBarView];
 }
@@ -187,6 +190,13 @@
             
         };
     }
+}
+
+#pragma mark SearchBarView
+- (void) searchBarViewDidTapped:(SearchBarView *)searchBarView
+{
+    _searchBarView.editing = YES;
+    [self performSegueWithIdentifier:ShowNotebookSearchViewControllerSegueId sender:self];
 }
 
 

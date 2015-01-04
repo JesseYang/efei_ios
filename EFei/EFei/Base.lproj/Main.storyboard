@@ -356,6 +356,7 @@
                     <connections>
                         <outlet property="noteCollectionView" destination="Nzf-fC-kWh" id="lrT-6N-oYt"/>
                         <segue destination="M9u-os-4Eq" kind="show" identifier="ShowNotebookFilterViewController" id="Twc-eH-K2s"/>
+                        <segue destination="i4w-TP-q3d" kind="show" identifier="ShowNotebookSearchViewController" id="iPE-qb-xna"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bG3-hD-YJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -402,6 +403,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHv-Q2-N5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-500" y="624"/>
+        </scene>
+        <!--Notebook Search View Controller-->
+        <scene sceneID="lsD-gb-LuG">
+            <objects>
+                <viewController id="i4w-TP-q3d" customClass="NotebookSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vrb-WA-xva"/>
+                        <viewControllerLayoutGuide type="bottom" id="BX8-8z-Ed9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8UG-TR-ypY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lyh-Xm-kOJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotebookSearchTableViewCell" id="HF7-HX-ER6">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HF7-HX-ER6" id="XZO-v3-NEQ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="i4w-TP-q3d" id="rPO-Fl-qct"/>
+                                    <outlet property="delegate" destination="i4w-TP-q3d" id="EsO-3j-XrM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lyh-Xm-kOJ" firstAttribute="width" secondItem="8UG-TR-ypY" secondAttribute="width" id="GBY-mf-Vdp"/>
+                            <constraint firstItem="Lyh-Xm-kOJ" firstAttribute="height" secondItem="8UG-TR-ypY" secondAttribute="height" id="Noe-P0-4of"/>
+                            <constraint firstAttribute="centerX" secondItem="Lyh-Xm-kOJ" secondAttribute="centerX" id="P4g-oq-UOS"/>
+                            <constraint firstAttribute="centerY" secondItem="Lyh-Xm-kOJ" secondAttribute="centerY" id="aR7-sp-1c4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Lyh-Xm-kOJ" id="iGh-SS-csV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="068-at-yCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-500" y="1309"/>
         </scene>
         <!--Note Topic View Controller-->
         <scene sceneID="GYq-ka-6UW">
