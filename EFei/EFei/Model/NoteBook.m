@@ -11,6 +11,8 @@
 @interface NoteBook ()
 {
     NSMutableArray* _notes;
+    
+    NSMutableDictionary* _filters;
 }
 
 @end
@@ -23,6 +25,8 @@
     if (self)
     {
         _notes = [[NSMutableArray alloc] init];
+        
+        [self initFilters];
     }
     return self;
 }
@@ -53,5 +57,21 @@
     return [_notes objectAtIndex:index];
 }
 
+
+#pragma mark fileter
+
+- (void) initFilters
+{
+    _filters = [[NSMutableDictionary alloc] init];
+    
+    [_filters setObject:[[TimeDataFilter alloc] init] forKey:[NSNumber numberWithInteger:DataFilterTypeTime]];
+    [_filters setObject:[[TagDataFilter alloc] init] forKey:[NSNumber numberWithInteger:DataFilterTypeTag]];
+    [_filters setObject:[[SubjectDataFilter alloc] init] forKey:[NSNumber numberWithInteger:DataFilterTypeSubject]];
+}
+
+- (DataFilter*) fileterWithType:(DataFilterType)type
+{
+    return [_filters objectForKey:[NSNumber numberWithInteger:type]];
+}
 
 @end

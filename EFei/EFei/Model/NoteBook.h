@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Note.h"
+#import "DataFilter.h"
 
 @interface NoteBook : NSObject
 
@@ -17,5 +18,7 @@
 - (void) addNoteWithId:(NSString*)noteId lastUpdateTime:(NSInteger)updateTime;
 - (Note*) noteWithId:(NSString*)noteId;
 - (Note*) noteAtIndex:(NSInteger)index;
+
+- (DataFilter*) fileterWithType:(DataFilterType)type;
 
 @end

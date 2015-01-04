@@ -1,0 +1,18 @@
+//
+//  SearchBarView.h
+//  EFei
+//
+//  Created by Xiangzhen Kong on 1/4/15.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface InsetTextFiled : UITextField
+
+@end
+
+@interface SearchBarView : UIView
+
+@end
