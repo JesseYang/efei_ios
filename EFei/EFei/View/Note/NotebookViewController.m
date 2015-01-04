@@ -10,18 +10,22 @@
 #import "NoteCell.h"
 #import "NotebookCommand.h"
 #import "EFei.h"
+#import "NotebookFilterViewController.h"
+#import "SearchBarView.h"
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
-
+#define ShowNotebookFilterViewControllerSegueId @"ShowNotebookFilterViewController"
 
 @interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate, UITextFieldDelegate>
 {
     NSArray* _notes;
     
-    UITextField* _textField;
-    UIImageView* _searchIcon;
     BOOL _select;
+    
+    DataFilterType _filterType;
+    
+    SearchBarView* _searchBarView;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
@@ -29,6 +33,11 @@
 
 - (IBAction)onYiFei:(id)sender;
 - (IBAction)onSelect:(id)sender;
+
+- (IBAction)onSubjectFilter:(id)sender;
+- (IBAction)onTimeFilter:(id)sender;
+- (IBAction)onTageFilter:(id)sender;
+
 
 @end
 
@@ -38,38 +47,37 @@
 {
     [super viewDidLoad];
     
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self setupNavigationBar];
+    [self setupViews];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
-    float width = 200;
-    float height = 35;
-    float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
-    float y = 0;
-    _textField = [[UITextField alloc] initWithFrame: CGRectMake(x, y, width, height)];
-    _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _textField.borderStyle = UITextBorderStyleRoundedRect;
-    _textField.font = [UIFont systemFontOfSize:15];
-    _textField.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
-    _textField.delegate = self;
-    [self.navigationController.navigationBar addSubview:_textField];
     
-    float iconHeight = 16;
-    float space = (height - iconHeight) / 2;
-    float iconX = x + space;
-    float iconY = space;
-    _searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_notebook_search.png"]];
-    _searchIcon.frame = CGRectMake(iconX, iconY, iconHeight, iconHeight);
-    [self.navigationController.navigationBar addSubview:_searchIcon];
+    _searchBarView.hidden = NO;
 
     if (![EFei instance].account.needSignIn)
     {
         [self getNotes];
     }
+}
+
+- (void) setupNavigationBar
+{
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+}
+
+- (void) setupViews
+{
+    float width = self.view.frame.size.width - 80;
+    float height = 30;
+    float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
+    float y = 5;
+    CGRect rect = CGRectMake(x, y, width, height);
+    _searchBarView = [[SearchBarView alloc] initWithFrame:rect];
+    
+    [self.navigationController.navigationBar addSubview:_searchBarView];
 }
 
 - (void) resetData
@@ -96,13 +104,13 @@
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    _searchIcon.hidden = YES;
+//    _searchIcon.hidden = YES;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
     textField.text = @"";
-    _searchIcon.hidden = NO;
+//    _searchIcon.hidden = NO;
 }
 
 - (IBAction)onYiFei:(id)sender
@@ -144,6 +152,45 @@
 //    [self.noteCollectionView reloadData];
 }
 
+- (IBAction)onSubjectFilter:(id)sender
+{
+    _filterType = DataFilterTypeSubject;
+    [self performSegueWithIdentifier:ShowNotebookFilterViewControllerSegueId sender:self];
+}
+
+- (IBAction)onTimeFilter:(id)sender
+{
+    _filterType = DataFilterTypeTime;
+    [self performSegueWithIdentifier:ShowNotebookFilterViewControllerSegueId sender:self];
+    
+}
+
+- (IBAction)onTageFilter:(id)sender
+{
+    _filterType = DataFilterTypeTag;
+    [self performSegueWithIdentifier:ShowNotebookFilterViewControllerSegueId sender:self];
+}
+
+
+#pragma mark -- Navigation
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:ShowNotebookFilterViewControllerSegueId])
+    {
+        _searchBarView.hidden = YES;
+        
+        NotebookFilterViewController* filterVC = (NotebookFilterViewController*)segue.destinationViewController;
+        filterVC.filter = [[EFei instance].notebook fileterWithType:_filterType];
+        
+        filterVC.doneBlock = ^(DataFilter* filter){
+            
+        };
+    }
+}
+
+
+#pragma mark -- UICollectionView
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

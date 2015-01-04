@@ -142,7 +142,8 @@
     
     CGAffineTransform captureSizeTransform = CGAffineTransformMakeScale(320 / self.view.frame.size.width, 480 / self.view.frame.size.height);
     
-    _scanRect = self.scanRectView.frame;
+//    _scanRect = self.scanRectView.frame;
+    _scanRect = CGRectMake((self.view.frame.size.width-260)/2, 105, 260, 260);
     _capture.scanRect = CGRectApplyAffineTransform(_scanRect, captureSizeTransform);
     
     _scaning = YES;
