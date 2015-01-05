@@ -173,6 +173,20 @@
 //    _richTextView.frame = tvRect;
 //}
 
+- (void) setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    if (self.selected)
+    {
+        [self.selectButton setImage:[UIImage imageNamed:@"icon_notebook_select.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.selectButton setImage:[UIImage imageNamed:@"icon_notebook_unselect.png"] forState:UIControlStateNormal];
+    }
+}
+
 - (void) onSelected:(UIButton *)button
 {
     if (self.selected)
@@ -189,6 +203,11 @@
 
 - (void) onSwipe:(UISwipeGestureRecognizer *)recognizer
 {
+    if (self.status == NoteCellStatusSelect)
+    {
+        return;
+    }
+    
     switch (recognizer.direction)
     {
         case UISwipeGestureRecognizerDirectionLeft:
