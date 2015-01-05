@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
 
+//@property (nonatomic, assign) BOOL noteSelected;
 
 - (void) setStatusWithNoAnimation:(NoteCellStatus)status;
 

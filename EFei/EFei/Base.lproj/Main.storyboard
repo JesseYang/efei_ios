@@ -304,6 +304,8 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <state key="selected" image="icon_notebook_select.png"/>
+                                                    <state key="highlighted" image="icon_notebook_select.png"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="U1w-cn-4mZ"/>
@@ -1777,6 +1779,7 @@
         <image name="icon_notebook_delete.png" width="20" height="21"/>
         <image name="icon_notebook_export.png" width="21" height="20"/>
         <image name="icon_notebook_scan_on.png" width="17" height="17"/>
+        <image name="icon_notebook_select.png" width="14" height="14"/>
         <image name="icon_notebook_select_all.png" width="14" height="13"/>
         <image name="icon_notebook_tag.png" width="21" height="18"/>
         <image name="icon_notebook_time.png" width="21" height="21"/>

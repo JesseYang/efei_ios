@@ -21,6 +21,8 @@
 
 - (void) onSwipe:(UISwipeGestureRecognizer*)recognizer;
 
+- (void) onSelected:(UIButton*) button;
+
 - (void) resetUI;
 - (void) swipToExport;
 - (void) swipToDelete;
@@ -61,6 +63,8 @@
 
 - (void) setupUI
 {
+    [self.selectButton addTarget:self action:@selector(onSelected:) forControlEvents:UIControlEventTouchUpInside];
+    
     UISwipeGestureRecognizer* leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                          action:@selector(onSwipe:)];
     UISwipeGestureRecognizer* rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
@@ -168,6 +172,20 @@
 //    tvRect.size = self.frame.size;
 //    _richTextView.frame = tvRect;
 //}
+
+- (void) onSelected:(UIButton *)button
+{
+    if (self.selected)
+    {
+        [button setImage:[UIImage imageNamed:@"icon_notebook_unselect.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [button setImage:[UIImage imageNamed:@"icon_notebook_select.png"] forState:UIControlStateNormal];
+    }
+    
+    self.selected = !self.selected;
+}
 
 - (void) onSwipe:(UISwipeGestureRecognizer *)recognizer
 {
@@ -277,6 +295,11 @@
         rect.origin.x = 0;
         self.noteContentView.frame = rect;
     }];
+    
+    if (self.selected)
+    {
+        [self onSelected:self.selectButton];
+    }
 }
 
 - (void) swipToExport
