@@ -35,12 +35,15 @@
     UIBarButtonItem* _rightBBI;
     UIBarButtonItem* _selectLeftBBI;
     UIBarButtonItem* _selectRightBBI;
+    
+    NSArray* _exportNotes;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
 
 @property (weak, nonatomic) IBOutlet UIView *selectAllView;
 @property (weak, nonatomic) IBOutlet UIView *filtersView;
+@property (weak, nonatomic) IBOutlet UIButton *selectAllButton;
 
 - (IBAction)onSelectAll:(UIButton *)sender;
 
@@ -52,7 +55,7 @@
 - (IBAction)onTageFilter:(id)sender;
 
 - (void) onExportAll:(id)sender;
-- (void) exportNote:(Note*)note;
+- (void) onExportNote:(id)sender event:(id)event;
 
 @end
 
@@ -122,6 +125,8 @@
     
     self.navigationItem.leftBarButtonItem = _leftBBI;
     self.navigationItem.rightBarButtonItem = _rightBBI;
+    
+    self.noteCollectionView.allowsMultipleSelection = YES;
 }
 
 - (void) resetData
@@ -176,14 +181,34 @@
 
 #pragma mark -- Action
 
-- (void) exportNote:(Note *)note
+
+- (void)onExportNote:(id)sender event:(id)event
 {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.noteCollectionView];
+    NSIndexPath *indexPath = [self.noteCollectionView indexPathForItemAtPoint:currentTouchPosition];
+    NoteCell* cell = (NoteCell*)[self.noteCollectionView cellForItemAtIndexPath:indexPath];
+    cell.status = NoteCellStatusNone;
     
+    Note* note = [_notes objectAtIndex:indexPath.row];
+    _exportNotes = [NSArray arrayWithObjects:note, nil];
+    
+    [self performSegueWithIdentifier:ShowNotebookExportViewControllerSegueId sender:self];
 }
 
 - (void) onExportAll:(id)sender
 {
     [self onSelect:nil];
+    
+    NSArray* indexArray = [self.noteCollectionView indexPathsForSelectedItems];
+    NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:indexArray.count];
+    for (NSIndexPath* indexPath in indexArray)
+    {
+        Note* note = [_notes objectAtIndex:indexPath.row];
+        [array addObject:note];
+    }
+    _exportNotes = array;
     
     [self performSegueWithIdentifier:ShowNotebookExportViewControllerSegueId sender:self];
 }
@@ -265,6 +290,11 @@
         
         self.selectAllView.hidden = NO;
         self.filtersView.hidden = YES;
+        
+        if (self.selectAllButton.tag != 0)
+        {
+            [self onSelectAll:self.selectAllButton];
+        }
     }
     else
     {
@@ -317,7 +347,7 @@
         _searchBarView.hidden = YES;
         
         NotebookExportViewController* exportVC = (NotebookExportViewController*)segue.destinationViewController;
-        exportVC.notes = nil;
+        exportVC.notes = _exportNotes;
     }
 }
 
@@ -340,6 +370,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NoteCell* cell = (NoteCell*)[collectionView dequeueReusableCellWithReuseIdentifier:NoteCellIdentifier forIndexPath:indexPath];
+    [cell.exportButton addTarget:self action:@selector(onExportNote:event:) forControlEvents:UIControlEventTouchUpInside];
+    
     Note* note = [_notes objectAtIndex:indexPath.row];
     if (!note.updated)
     {

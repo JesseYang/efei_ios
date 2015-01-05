@@ -297,7 +297,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nzf-fC-kWh">
                                 <rect key="frame" x="0.0" y="115" width="600" height="485"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="4Wu-lx-70i">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="4Wu-lx-70i">
                                     <size key="itemSize" width="320" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -439,6 +439,7 @@
                     <connections>
                         <outlet property="filtersView" destination="uK2-IP-zG1" id="gCg-Js-PHh"/>
                         <outlet property="noteCollectionView" destination="Nzf-fC-kWh" id="lrT-6N-oYt"/>
+                        <outlet property="selectAllButton" destination="j2E-H8-2V7" id="Gdl-ba-LRx"/>
                         <outlet property="selectAllView" destination="aQd-aX-QTQ" id="eiP-nc-jQK"/>
                         <segue destination="M9u-os-4Eq" kind="show" identifier="ShowNotebookFilterViewController" id="Twc-eH-K2s"/>
                         <segue destination="i4w-TP-q3d" kind="show" identifier="ShowNotebookSearchViewController" id="iPE-qb-xna"/>

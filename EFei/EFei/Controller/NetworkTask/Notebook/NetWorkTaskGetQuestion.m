@@ -12,7 +12,7 @@
 #import "GetQuestionController.h"
 
 static NSString* kResponseNoteIdKey            = @"note_id";
-static NSString* kResponseIdKey                = @"id";
+static NSString* kResponseIdKey                = @"_id";
 static NSString* kResponseSubjectKey           = @"subject";
 static NSString* kResponseQuestionTypeKey      = @"type";
 static NSString* kResponseContentKey           = @"content";
@@ -95,6 +95,13 @@ static NSString* kResponseTagSetSeparator     = @",";
     
     Question* question = [[Question alloc] init];
     question.questionId = [dict objectForKey:kResponseIdKey];
+    
+    NSLog(@"--------------------------------------------");
+    NSLog(@"%@", [dict objectForKey:kResponseIdKey]);
+    NSLog(@"%@", question.questionId);
+    NSLog(@"%@", question);
+    NSLog(@"--------------------------------------------");
+    
     if([dict objectForKey:kResponseAnswerKey] != [NSNull null])
     {
         question.answer = [[dict objectForKey:kResponseAnswerKey] integerValue];

@@ -26,6 +26,10 @@
         self.answer = question.answer;
         self.answerContents = [question.answerContents copy];
         self.tags = [question.tags copy];
+        
+        self.tag = @"";
+        self.topicString = @"";
+        self.summary = @"";
     }
     
     return self;
