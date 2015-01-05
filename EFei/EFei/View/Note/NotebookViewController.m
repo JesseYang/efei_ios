@@ -15,17 +15,24 @@
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
+#define ShowNotebookSearchViewControllerSegueId @"ShowNotebookSearchViewController"
 #define ShowNotebookFilterViewControllerSegueId @"ShowNotebookFilterViewController"
 
-@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextViewDelegate, UITextFieldDelegate>
+@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate>
 {
     NSArray* _notes;
     
-    BOOL _select;
+    BOOL _selectMode;
     
     DataFilterType _filterType;
     
     SearchBarView* _searchBarView;
+    
+    
+    UIBarButtonItem* _leftBBI;
+    UIBarButtonItem* _rightBBI;
+    UIBarButtonItem* _selectLeftBBI;
+    UIBarButtonItem* _selectRightBBI;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
@@ -38,6 +45,8 @@
 - (IBAction)onTimeFilter:(id)sender;
 - (IBAction)onTageFilter:(id)sender;
 
+- (void) onExportAll:(id)sender;
+- (void) exportNote:(Note*)note;
 
 @end
 
@@ -56,6 +65,7 @@
     [super viewDidAppear:animated];
     
     _searchBarView.hidden = NO;
+    _searchBarView.editing = NO;
 
     if (![EFei instance].account.needSignIn)
     {
@@ -70,20 +80,76 @@
 
 - (void) setupViews
 {
-    float width = self.view.frame.size.width - 80;
+    float width = self.view.frame.size.width - 140;
     float height = 30;
     float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
     float y = 5;
     CGRect rect = CGRectMake(x, y, width, height);
     _searchBarView = [[SearchBarView alloc] initWithFrame:rect];
+    _searchBarView.delegate = self;
     
     [self.navigationController.navigationBar addSubview:_searchBarView];
+    
+    
+//    _leftBBI = [[UIBarButtonItem alloc] initWithTitle:@"易" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIView* leftView = [self viewWithTitle:@"易"
+                                          image:nil
+                                         action:nil];
+    _leftBBI = [[UIBarButtonItem alloc] initWithCustomView:leftView];
+    
+    UIView* selectAllView = [self viewWithTitle:@"选择"
+                                          image:[UIImage imageNamed:@"icon_notebook_select_all.png"]
+                                         action:@selector(onSelect:)];
+    _rightBBI = [[UIBarButtonItem alloc] initWithCustomView:selectAllView];
+    
+    
+    UIView* exportAllView = [self viewWithTitle:@"导出"
+                                          image:[UIImage imageNamed:@"icon_notebook_export_all.png"]
+                                         action:@selector(onExportAll:)];
+    _selectLeftBBI = [[UIBarButtonItem alloc] initWithCustomView:exportAllView];
+    
+    UIView* selectCancelView = [self viewWithTitle:@"取消"
+                                             image:[UIImage imageNamed:@"icon_notebook_cancel.png"]
+                                            action:@selector(onSelect:)];
+    _selectRightBBI = [[UIBarButtonItem alloc] initWithCustomView:selectCancelView];
+    
+    
+    self.navigationItem.leftBarButtonItem = _leftBBI;
+    self.navigationItem.rightBarButtonItem = _rightBBI;
 }
 
 - (void) resetData
 {
     _notes = [EFei instance].notebook.notes;
     [self.noteCollectionView reloadData];
+}
+
+- (UIView*) viewWithTitle:(NSString*)title image:(UIImage*)image action:(SEL)action
+{
+    UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    [button setImage:image forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateNormal];
+    
+    if (image != nil)
+    {
+        button.titleLabel.font = [UIFont systemFontOfSize:9];
+        
+        CGFloat spacing = 6.0;
+        
+        CGSize imageSize = button.imageView.frame.size;
+        button.titleEdgeInsets = UIEdgeInsetsMake(0.0, - imageSize.width, - (imageSize.height + spacing), 0.0);
+        
+        CGSize titleSize = button.titleLabel.frame.size;
+        button.imageEdgeInsets = UIEdgeInsetsMake(- (titleSize.height + spacing), 0.0, 0.0, - titleSize.width);
+    }
+    else
+    {
+        
+    }
+    
+    
+    return button;
 }
 
 - (void) getNotes
@@ -102,15 +168,16 @@
     [GetNoteListCommand executeWithCompleteHandler:hanlder];
 }
 
-- (void) textFieldDidBeginEditing:(UITextField *)textField
+#pragma mark -- Action
+
+- (void) exportNote:(Note *)note
 {
-//    _searchIcon.hidden = YES;
+    
 }
 
-- (void) textFieldDidEndEditing:(UITextField *)textField
+- (void) onExportAll:(id)sender
 {
-    textField.text = @"";
-//    _searchIcon.hidden = NO;
+    
 }
 
 - (IBAction)onYiFei:(id)sender
@@ -120,7 +187,7 @@
 
 - (IBAction)onSelect:(id)sender
 {
-    _select = !_select;
+    _selectMode = !_selectMode;
     
     [self.noteCollectionView performBatchUpdates:^{
         
@@ -135,7 +202,7 @@
         
         for (NoteCell* cell in self.noteCollectionView.visibleCells)
         {
-            if (_select)
+            if (_selectMode)
             {
                 cell.status = NoteCellStatusSelect;
             }
@@ -150,6 +217,17 @@
     }];
     
 //    [self.noteCollectionView reloadData];
+    
+    if (_selectMode)
+    {
+        self.navigationItem.leftBarButtonItem = _selectLeftBBI;
+        self.navigationItem.rightBarButtonItem = _selectRightBBI;
+    }
+    else
+    {
+        self.navigationItem.leftBarButtonItem = _leftBBI;
+        self.navigationItem.rightBarButtonItem = _rightBBI;
+    }
 }
 
 - (IBAction)onSubjectFilter:(id)sender
@@ -187,6 +265,13 @@
             
         };
     }
+}
+
+#pragma mark SearchBarView
+- (void) searchBarViewDidTapped:(SearchBarView *)searchBarView
+{
+    _searchBarView.editing = YES;
+    [self performSegueWithIdentifier:ShowNotebookSearchViewControllerSegueId sender:self];
 }
 
 
@@ -233,7 +318,7 @@
 - (void) collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NoteCell* noteCell = (NoteCell*) cell;
-    if (_select)
+    if (_selectMode)
     {
         [noteCell setStatusWithNoAnimation:NoteCellStatusSelect];
     }

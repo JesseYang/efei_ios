@@ -1,15 +1,21 @@
 //
-//  NotebookFilterViewController.m
+//  NotebookSearchViewController.m
 //  EFei
 //
 //  Created by Xiangzhen Kong on 1/4/15.
 //
 //
 
-#import "NotebookFilterViewController.h"
+#import "NotebookSearchViewController.h"
+
+@interface NotebookSearchViewController()<UITableViewDataSource, UITableViewDelegate>
 
 
-@implementation NotebookFilterViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
+
+@implementation NotebookSearchViewController
 
 - (void) viewDidLoad
 {
@@ -28,7 +34,7 @@
 - (void) setupNavigator
 {
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.title = self.filter.name;
+
 }
 
 - (void) setupViews
@@ -53,13 +59,13 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.filter.items.count;
+    return 0;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FilterTableViewCell" forIndexPath:indexPath];
-    cell.textLabel.text = [self.filter.items objectAtIndex:indexPath.row];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"NotebookSearchTableViewCell" forIndexPath:indexPath];
+    cell.textLabel.text = @"";
     
     return cell;
 }
@@ -80,14 +86,9 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.filter.selectedIndex = indexPath.row;
     
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    self.doneBlock(self.filter);
 }
 
 
 
 @end
-

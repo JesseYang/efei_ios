@@ -263,7 +263,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nzf-fC-kWh">
                                 <rect key="frame" x="0.0" y="115" width="600" height="485"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Wu-lx-70i">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="4Wu-lx-70i">
                                     <size key="itemSize" width="320" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -277,29 +277,60 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qen-Qd-hLD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="82" height="100"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qen-Qd-hLD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="Thb-1f-Xgv"/>
+                                                        <constraint firstAttribute="width" constant="80" id="Xxs-r8-lMM"/>
+                                                    </constraints>
                                                     <state key="normal" image="icon_notebook_export.png">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Thb-1f-Xgv"/>
+                                                        </mask>
+                                                    </variation>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-xH-gVi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="82" height="100"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-xH-gVi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="LTJ-Yu-kq9"/>
+                                                        <constraint firstAttribute="height" constant="100" id="U1w-cn-4mZ"/>
+                                                    </constraints>
                                                     <state key="normal" image="icon_notebook_unselect.png">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <state key="selected" image="icon_notebook_select.png"/>
+                                                    <state key="highlighted" image="icon_notebook_select.png"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="U1w-cn-4mZ"/>
+                                                        </mask>
+                                                    </variation>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUC-MK-1EE">
-                                                    <rect key="frame" x="300" y="0.0" width="80" height="100"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUC-MK-1EE">
+                                                    <rect key="frame" x="240" y="0.0" width="80" height="100"/>
+                                                    <color key="backgroundColor" red="0.9137254901960784" green="0.27450980392156865" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="UVm-JE-IvB"/>
+                                                        <constraint firstAttribute="height" constant="100" id="lbM-D3-Bh7"/>
+                                                    </constraints>
                                                     <state key="normal" image="icon_notebook_delete.png">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="lbM-D3-Bh7"/>
+                                                        </mask>
+                                                    </variation>
                                                 </button>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pi2-jb-tSk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="330" height="163"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pi2-jb-tSk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                                     <color key="backgroundColor" red="0.23137254900000001" green="0.76470588240000004" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <gestureRecognizers/>
                                                 </view>
@@ -307,6 +338,21 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="nUC-MK-1EE" secondAttribute="trailing" id="1BY-Hl-zqg"/>
+                                            <constraint firstItem="L1E-xH-gVi" firstAttribute="top" secondItem="cCj-OK-Yi1" secondAttribute="top" id="3cf-lU-YdS"/>
+                                            <constraint firstItem="qen-Qd-hLD" firstAttribute="top" secondItem="cCj-OK-Yi1" secondAttribute="top" id="AsG-I7-nL7"/>
+                                            <constraint firstItem="Pi2-jb-tSk" firstAttribute="leading" secondItem="cCj-OK-Yi1" secondAttribute="leading" id="CsR-eT-h7k"/>
+                                            <constraint firstItem="nUC-MK-1EE" firstAttribute="top" secondItem="cCj-OK-Yi1" secondAttribute="top" id="SAF-5F-J0U"/>
+                                            <constraint firstAttribute="bottom" secondItem="L1E-xH-gVi" secondAttribute="bottom" id="TkF-aq-V8s"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pi2-jb-tSk" secondAttribute="trailing" id="Y6K-Op-Weg"/>
+                                            <constraint firstItem="qen-Qd-hLD" firstAttribute="leading" secondItem="cCj-OK-Yi1" secondAttribute="leading" id="eK9-Lr-BqY"/>
+                                            <constraint firstItem="Pi2-jb-tSk" firstAttribute="top" secondItem="cCj-OK-Yi1" secondAttribute="top" id="iyU-fw-fwg"/>
+                                            <constraint firstItem="L1E-xH-gVi" firstAttribute="leading" secondItem="cCj-OK-Yi1" secondAttribute="leading" id="krh-1h-zbx"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pi2-jb-tSk" secondAttribute="bottom" id="oki-3M-7QS"/>
+                                            <constraint firstAttribute="bottom" secondItem="nUC-MK-1EE" secondAttribute="bottom" id="vk4-nR-yiT"/>
+                                            <constraint firstAttribute="bottom" secondItem="qen-Qd-hLD" secondAttribute="bottom" id="xz8-ZO-YCl"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="deleteButton" destination="nUC-MK-1EE" id="ram-k8-gwS"/>
                                             <outlet property="exportButton" destination="qen-Qd-hLD" id="h2H-Qy-Gv7"/>
@@ -356,6 +402,7 @@
                     <connections>
                         <outlet property="noteCollectionView" destination="Nzf-fC-kWh" id="lrT-6N-oYt"/>
                         <segue destination="M9u-os-4Eq" kind="show" identifier="ShowNotebookFilterViewController" id="Twc-eH-K2s"/>
+                        <segue destination="i4w-TP-q3d" kind="show" identifier="ShowNotebookSearchViewController" id="iPE-qb-xna"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bG3-hD-YJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -402,6 +449,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHv-Q2-N5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-500" y="624"/>
+        </scene>
+        <!--Notebook Search View Controller-->
+        <scene sceneID="lsD-gb-LuG">
+            <objects>
+                <viewController id="i4w-TP-q3d" customClass="NotebookSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vrb-WA-xva"/>
+                        <viewControllerLayoutGuide type="bottom" id="BX8-8z-Ed9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8UG-TR-ypY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lyh-Xm-kOJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotebookSearchTableViewCell" id="HF7-HX-ER6">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HF7-HX-ER6" id="XZO-v3-NEQ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="i4w-TP-q3d" id="rPO-Fl-qct"/>
+                                    <outlet property="delegate" destination="i4w-TP-q3d" id="EsO-3j-XrM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lyh-Xm-kOJ" firstAttribute="width" secondItem="8UG-TR-ypY" secondAttribute="width" id="GBY-mf-Vdp"/>
+                            <constraint firstItem="Lyh-Xm-kOJ" firstAttribute="height" secondItem="8UG-TR-ypY" secondAttribute="height" id="Noe-P0-4of"/>
+                            <constraint firstAttribute="centerX" secondItem="Lyh-Xm-kOJ" secondAttribute="centerX" id="P4g-oq-UOS"/>
+                            <constraint firstAttribute="centerY" secondItem="Lyh-Xm-kOJ" secondAttribute="centerY" id="aR7-sp-1c4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Lyh-Xm-kOJ" id="iGh-SS-csV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="068-at-yCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-500" y="1309"/>
         </scene>
         <!--Note Topic View Controller-->
         <scene sceneID="GYq-ka-6UW">
@@ -1687,6 +1779,7 @@
         <image name="icon_notebook_delete.png" width="20" height="21"/>
         <image name="icon_notebook_export.png" width="21" height="20"/>
         <image name="icon_notebook_scan_on.png" width="17" height="17"/>
+        <image name="icon_notebook_select.png" width="14" height="14"/>
         <image name="icon_notebook_select_all.png" width="14" height="13"/>
         <image name="icon_notebook_tag.png" width="21" height="18"/>
         <image name="icon_notebook_time.png" width="21" height="21"/>

@@ -32,6 +32,8 @@
     UIImageView* _clearIcon;
 }
 
+- (void) onTapped:(id)sender;
+
 @end
 
 
@@ -129,6 +131,29 @@
                                     multiplier:1
                                       constant:0];
     [self addConstraint:c];
+    
+    
+    
+    UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapped:)];
+    [self addGestureRecognizer:recognizer];
+    
+    self.editing = NO;
+}
+
+- (void) onTapped:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(searchBarViewDidTapped:)])
+    {
+        [self.delegate searchBarViewDidTapped:self];
+    }
+}
+
+- (void) setEditing:(BOOL)editing
+{
+    _editing = editing;
+    
+    _textField.userInteractionEnabled = _editing;
+    _textField.text = @"";
 }
 
 

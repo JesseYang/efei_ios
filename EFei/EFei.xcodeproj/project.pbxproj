@@ -58,6 +58,7 @@
 		FCA096771A591EB800D0520A /* NotebookFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA096761A591EB800D0520A /* NotebookFilterViewController.m */; };
 		FCA096791A5927B800D0520A /* icon_logo_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA096781A5927B800D0520A /* icon_logo_big@2x.png */; };
 		FCA0967C1A592C1000D0520A /* SearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA0967B1A592C1000D0520A /* SearchBarView.m */; };
+		FCA0967F1A59370500D0520A /* NotebookSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA0967E1A59370400D0520A /* NotebookSearchViewController.m */; };
 		FCC2B8C21A18D0D800B3DC24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C11A18D0D800B3DC24 /* main.m */; };
 		FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC2B8C41A18D0D800B3DC24 /* AppDelegate.m */; };
 		FCC2B8CB1A18D0D800B3DC24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC2B8C91A18D0D800B3DC24 /* Main.storyboard */; };
@@ -266,6 +267,8 @@
 		FCA096781A5927B800D0520A /* icon_logo_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_logo_big@2x.png"; sourceTree = "<group>"; };
 		FCA0967A1A592C1000D0520A /* SearchBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarView.h; sourceTree = "<group>"; };
 		FCA0967B1A592C1000D0520A /* SearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarView.m; sourceTree = "<group>"; };
+		FCA0967D1A59370400D0520A /* NotebookSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookSearchViewController.h; sourceTree = "<group>"; };
+		FCA0967E1A59370400D0520A /* NotebookSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookSearchViewController.m; sourceTree = "<group>"; };
 		FCC2B8BC1A18D0D800B3DC24 /* EFei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC2B8C01A18D0D800B3DC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCC2B8C11A18D0D800B3DC24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -582,6 +585,8 @@
 				FCF3D17F1A3B22FF009D8722 /* NoteTopicViewController.m */,
 				FCA096751A591EB800D0520A /* NotebookFilterViewController.h */,
 				FCA096761A591EB800D0520A /* NotebookFilterViewController.m */,
+				FCA0967D1A59370400D0520A /* NotebookSearchViewController.h */,
+				FCA0967E1A59370400D0520A /* NotebookSearchViewController.m */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -1160,6 +1165,7 @@
 				FCF3D1441A371CA4009D8722 /* QuestionView.m in Sources */,
 				FCF3D1861A3B42A0009D8722 /* SearchView.m in Sources */,
 				FCD829131A2D616000F6E0CA /* MainViewController.m in Sources */,
+				FCA0967F1A59370500D0520A /* NotebookSearchViewController.m in Sources */,
 				FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */,
 				FCF3D1831A3B3142009D8722 /* NoteTagTableViewCell.m in Sources */,
 				FCF3D20C1A401981009D8722 /* EmailSettingViewController.m in Sources */,
