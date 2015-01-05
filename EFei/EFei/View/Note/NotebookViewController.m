@@ -12,11 +12,13 @@
 #import "EFei.h"
 #import "NotebookFilterViewController.h"
 #import "SearchBarView.h"
+#import "NotebookExportViewController.h"
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
 #define ShowNotebookSearchViewControllerSegueId @"ShowNotebookSearchViewController"
 #define ShowNotebookFilterViewControllerSegueId @"ShowNotebookFilterViewController"
+#define ShowNotebookExportViewControllerSegueId @"ShowNotebookExportViewController"
 
 @interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate>
 {
@@ -37,6 +39,10 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
 
+@property (weak, nonatomic) IBOutlet UIView *selectAllView;
+@property (weak, nonatomic) IBOutlet UIView *filtersView;
+
+- (IBAction)onSelectAll:(UIButton *)sender;
 
 - (IBAction)onYiFei:(id)sender;
 - (IBAction)onSelect:(id)sender;
@@ -177,7 +183,41 @@
 
 - (void) onExportAll:(id)sender
 {
+    [self onSelect:nil];
     
+    [self performSegueWithIdentifier:ShowNotebookExportViewControllerSegueId sender:self];
+}
+
+- (IBAction)onSelectAll:(UIButton *)sender
+{
+    NSInteger count = [self collectionView:self.noteCollectionView numberOfItemsInSection:0];
+    if (sender.tag == 0)
+    {
+        [sender setImage:[UIImage imageNamed:@"icon_notebook_select.png"] forState:UIControlStateNormal];
+        
+        
+        for (int i=0; i<count; i++)
+        {
+            NSIndexPath* index = [NSIndexPath indexPathForItem:i inSection:0];
+            [self.noteCollectionView selectItemAtIndexPath:index
+                                                  animated:NO
+                                            scrollPosition:UICollectionViewScrollPositionNone];
+        }
+    }
+    else
+    {
+        [sender setImage:[UIImage imageNamed:@"icon_notebook_unselect.png"] forState:UIControlStateNormal];
+        
+        
+        for (int i=0; i<count; i++)
+        {
+            NSIndexPath* index = [NSIndexPath indexPathForItem:i inSection:0];
+            [self.noteCollectionView deselectItemAtIndexPath:index animated:NO];
+        }
+    }
+    
+    sender.tag = 1 - sender.tag;
+
 }
 
 - (IBAction)onYiFei:(id)sender
@@ -222,11 +262,17 @@
     {
         self.navigationItem.leftBarButtonItem = _selectLeftBBI;
         self.navigationItem.rightBarButtonItem = _selectRightBBI;
+        
+        self.selectAllView.hidden = NO;
+        self.filtersView.hidden = YES;
     }
     else
     {
         self.navigationItem.leftBarButtonItem = _leftBBI;
         self.navigationItem.rightBarButtonItem = _rightBBI;
+        
+        self.selectAllView.hidden = YES;
+        self.filtersView.hidden = NO;
     }
 }
 
@@ -264,6 +310,14 @@
         filterVC.doneBlock = ^(DataFilter* filter){
             
         };
+    }
+    
+    if ([segue.identifier isEqualToString:ShowNotebookExportViewControllerSegueId])
+    {
+        _searchBarView.hidden = YES;
+        
+        NotebookExportViewController* exportVC = (NotebookExportViewController*)segue.destinationViewController;
+        exportVC.notes = nil;
     }
 }
 
