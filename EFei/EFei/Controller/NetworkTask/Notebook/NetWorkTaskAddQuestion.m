@@ -63,4 +63,13 @@ static NSString* kResponseTeachersKe           = @"teachers";
     return YES;
 }
 
+- (void) sucess
+{
+    [super sucess];
+    
+    Note* note = (Note*)self.data;
+    [[EFei instance].notebook addNote:note];
+    [EFei instance].newNotesAdded = YES;
+}
+
 @end

@@ -52,6 +52,18 @@
     return [_questionDcit objectForKey:showUrl] != nil;
 }
 
+
+- (void) addQuestionToList
+{
+    [self.questionList addQuestion:self.currentQuestion];
+    self.currentQuestion = nil;
+}
+
+- (void) discardCurrentQuestion
+{
+    self.currentQuestion = nil;
+}
+
 - (void) startGetQuestion
 {
     [self parseUrl];

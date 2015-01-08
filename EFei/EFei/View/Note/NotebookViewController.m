@@ -165,18 +165,24 @@
 
 - (void) getNotes
 {
-    if ([EFei instance].notebook.notes.count > 0)
+    if ([EFei instance].notebook.notes.count == 0)
     {
-        return;
+        CompletionBlock hanlder = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            [self resetData];
+            
+        };
+        
+        [GetNoteListCommand executeWithCompleteHandler:hanlder];
     }
-    
-    CompletionBlock hanlder = ^(NetWorkTaskType taskType, BOOL success) {
-        
-        [self resetData];
-        
-    };
-    
-    [GetNoteListCommand executeWithCompleteHandler:hanlder];
+    else
+    {
+        if ([EFei instance].newNotesAdded)
+        {
+            [self resetData];
+            [EFei instance].newNotesAdded = NO;
+        }
+    }
 }
 
 #pragma mark -- Action

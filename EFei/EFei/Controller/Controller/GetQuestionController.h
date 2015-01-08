@@ -16,11 +16,15 @@
 @property (nonatomic, copy) NSString* questionId;
 @property (nonatomic, copy) ControllerCompletionBlock completionBlock;
 @property (nonatomic, strong) QuestionList* questionList;
+@property (nonatomic, strong) Question* currentQuestion;
 
 + (GetQuestionController*) instance;
 
 - (void) startGetQuestion;
 
 - (BOOL) questionExist:(NSString*)showUrl;
+
+- (void) addQuestionToList;
+- (void) discardCurrentQuestion;
 
 @end
