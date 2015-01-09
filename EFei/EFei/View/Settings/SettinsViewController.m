@@ -23,6 +23,8 @@
 
 #define LogoutButtonTitle @"退出登陆"
 
+#define ShowTeacherViewControllerSegueId @"ShowTeacherViewController"
+
 @interface SettinsViewController()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray*      _titlesArray;
@@ -158,6 +160,7 @@
 
 - (void) onMyTeachersClicked
 {
+    [self performSegueWithIdentifier:ShowTeacherViewControllerSegueId sender:self];
 }
 
 - (void) onAboutClicked

@@ -51,7 +51,7 @@
 @interface GetTeacherInfo : NSObject
 
 @property (nonatomic, assign) NSInteger scope;
-@property (nonatomic, copy) NSString* subject;
+@property (nonatomic, assign) NSInteger subject;
 @property (nonatomic, copy) NSString* name;
 
 @property (nonatomic, strong) NSArray* results;

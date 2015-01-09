@@ -34,6 +34,7 @@ typedef enum : NSUInteger
     NetWorkTaskTypeParseShortUrl,
     NetWorkTaskTypeGetQuestion,
     NetWorkTaskTypeAddQuestion,
+    NetWorkTaskTypeAddQuestionList,
     
     // Notebook
     NetWorkTaskTypeGetTopics,

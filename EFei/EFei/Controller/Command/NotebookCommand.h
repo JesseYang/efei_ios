@@ -47,6 +47,14 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+@interface AddQuestionListToNotebookCommand : NSObject
+
++ (void) executeWithQuestionList:(NSArray*)questions completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 @interface GetNoteListCommand : NSObject
 
 + (void) executeWithCompleteHandler:(CompletionBlock)handler;

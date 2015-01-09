@@ -26,5 +26,6 @@
 
 - (void) addQuestionToList;
 - (void) discardCurrentQuestion;
+- (void) discardQuestionList;
 
 @end

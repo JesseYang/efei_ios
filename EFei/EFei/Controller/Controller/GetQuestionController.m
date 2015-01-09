@@ -64,6 +64,11 @@
     self.currentQuestion = nil;
 }
 
+- (void) discardQuestionList
+{
+    [self.questionList clearAllQuestion];
+}
+
 - (void) startGetQuestion
 {
     [self parseUrl];

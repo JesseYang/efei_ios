@@ -25,3 +25,4 @@
            avatar:(NSString*)avatar;
 
 @end
+
