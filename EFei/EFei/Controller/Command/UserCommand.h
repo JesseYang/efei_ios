@@ -24,6 +24,7 @@
 @interface GetTeachersCommand : NSObject
 
 + (void) executeWithCompleteHandler:(CompletionBlock)handler;
++ (void) executeWithSubject:(NSInteger)subject name:(NSString*)name completeHandler:(CompletionBlock)handler;
 
 @end
 

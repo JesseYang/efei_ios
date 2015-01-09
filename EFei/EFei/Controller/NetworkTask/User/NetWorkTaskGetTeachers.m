@@ -9,6 +9,7 @@
 #import "NetWorkTaskGetTeachers.h"
 #import "EFei.h"
 #import "TaskManager.h"
+#import "SearchTeacherController.h"
 
 static NSString* kRsquestScopeKey         = @"scope";
 static NSString* kRequestNameKey          = @"name";
@@ -57,6 +58,7 @@ static NSString* kResponseAvatarKey       = @"avatar";
 
 - (BOOL) parseResultDict:(NSDictionary *)dict
 {
+    GetTeacherInfo* info = (GetTeacherInfo*)self.data;
     NSArray* teachers = [dict objectForKey:kResponseTeachersKey];
     
     if (![teachers isKindOfClass:[NSArray class]])
@@ -64,7 +66,15 @@ static NSString* kResponseAvatarKey       = @"avatar";
         return NO;
     }
     
-    [[EFei instance].user clearTeacherList];
+    if (info.scope == 1)
+    {
+        [[EFei instance].user clearTeacherList];
+    }
+    else
+    {
+        [[SearchTeacherController instance] clearTeacherList];
+    }
+    
     
     for (NSDictionary* teacherDict in teachers)
     {
@@ -84,7 +94,15 @@ static NSString* kResponseAvatarKey       = @"avatar";
         
         // TODO: save search teacher results.
         
-        [[EFei instance].user addTeacher:teacher];
+        if (info.scope == 1)
+        {
+            [[EFei instance].user addTeacher:teacher];
+        }
+        else
+        {
+            [[SearchTeacherController instance] addTeacher:teacher];
+        }
+        
         
         NSLog(@"NetWorkTaskGetUserInfo:  %@", name);
     }

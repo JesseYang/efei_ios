@@ -30,6 +30,18 @@
                              completeHandler:handler];
 }
 
++ (void) executeWithSubject:(NSInteger)subject name:(NSString*)name completeHandler:(CompletionBlock)handler
+{
+    GetTeacherInfo* info = [[GetTeacherInfo alloc] init];
+    info.scope = 0;
+    info.subject = subject;
+    info.name = name;
+    
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetTeachers
+                                    withData:info
+                             completeHandler:handler];
+}
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////

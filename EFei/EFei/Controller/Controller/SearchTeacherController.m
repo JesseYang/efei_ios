@@ -40,6 +40,17 @@
     return self;
 }
 
+
+- (void) clearTeacherList
+{
+    [_searchedTeachers removeAllObjects];
+}
+
+- (void) addTeacher:(Teacher*)teacher
+{
+    [_searchedTeachers addObject:teacher];
+}
+
 - (void) selectSearchedTeacher:(NSInteger)index
 {
     if (index >=0 && index < _searchedTeachers.count)
