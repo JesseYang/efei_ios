@@ -32,6 +32,11 @@
     return self;
 }
 
+- (void) clearTeacherList
+{
+    [_teachers removeAllObjects];
+}
+
 - (void) addTeacher:(Teacher*)teacher
 {
     [_teachers addObject:teacher];

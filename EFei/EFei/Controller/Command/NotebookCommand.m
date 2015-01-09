@@ -63,6 +63,20 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+
+@implementation AddQuestionListToNotebookCommand
+
++ (void) executeWithQuestionList:(NSArray *)questions completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeAddQuestionList
+                                    withData:questions
+                             completeHandler:handler];
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 @implementation GetNoteListCommand
 
 + (void) executeWithCompleteHandler:(CompletionBlock)handler

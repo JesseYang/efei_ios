@@ -18,6 +18,7 @@
 
 @property (nonatomic, readonly) NSArray* teachers;
 
+- (void) clearTeacherList;
 - (void) addTeacher:(Teacher*)teacher;
 - (void) deleteTeacherWithId:(NSInteger)teacherId;
 - (Teacher*) teacherWithId:(NSInteger)teacherId;

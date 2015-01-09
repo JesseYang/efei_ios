@@ -13,25 +13,44 @@
 
 #define ShowResultSegueId @"ShowQuestionViewController"
 
+#define ScanRectTop 105
+#define ScanRectWidth 260
+
+typedef enum : NSUInteger {
+    ScanModeSingle,
+    ScanModeMultiple,
+} ScanMode;
+
 @interface QRScanViewController ()<ZXCaptureDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     ZXCapture*  _capture;
     
     UIView*     _indicatorView;
     BOOL        _scaning;
+    BOOL        _parsing;
     CGRect      _scanRect;
+    
+    ScanMode    _scanMode;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *scanRectView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+
+@property (weak, nonatomic) IBOutlet UIView *multipleScanView;
+@property (weak, nonatomic) IBOutlet UILabel *multipleScanLabel;
+@property (weak, nonatomic) IBOutlet UIView *scanResultView;
+
 
 - (IBAction)onLight:(UIButton *)sender;
 
 - (IBAction)onBack:(id)sender;
 
 - (IBAction)onSegmentControlValueChanged:(id)sender;
+- (IBAction)onMultipleScanOK:(id)sender;
+- (IBAction)onMultipleScanCancel:(id)sender;
 
-
+- (IBAction)onScanResultOK:(id)sender;
+- (IBAction)onScanResultCancel:(id)sender;
 
 - (void) setupNavigationBar;
 - (void) initCapture;
@@ -62,7 +81,6 @@
 {
     [super viewDidAppear:animated];
     
-    self.navigationController.navigationBarHidden = YES;
     
     [self startIndicatorAnimation];
 }
@@ -73,6 +91,94 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void) initCapture
+{
+    _capture = [[ZXCapture alloc] init];
+    _capture.camera = _capture.back;
+    _capture.focusMode = AVCaptureFocusModeContinuousAutoFocus;
+    _capture.rotation = 90.0f;
+    
+    _capture.layer.frame = self.view.bounds;
+    [self.view.layer addSublayer:_capture.layer];
+    
+    _capture.delegate = self;
+    _capture.layer.frame = self.view.bounds;
+    
+    CGAffineTransform captureSizeTransform = CGAffineTransformMakeScale(320 / self.view.frame.size.width, 480 / self.view.frame.size.height);
+    
+    _scanRect = CGRectMake((self.view.frame.size.width-ScanRectWidth)/2, ScanRectTop, ScanRectWidth, ScanRectWidth);
+    NSLog(@"%f, %f, %f, %f", _scanRect.origin.x, _scanRect.origin.y, _scanRect.size.width, _scanRect.size.height);
+    
+    _scanRect = self.scanRectView.frame;
+    _scanRect.origin.x = (self.view.frame.size.width-self.scanRectView.frame.size.width)/2;
+    
+    NSLog(@"%f, %f, %f, %f", _scanRect.origin.x, _scanRect.origin.y, _scanRect.size.width, _scanRect.size.height);
+    
+    
+    _capture.scanRect = CGRectApplyAffineTransform(_scanRect, captureSizeTransform);
+    
+    
+    _scaning = YES;
+    
+    for (UIView* subView in self.view.subviews)
+    {
+        [self.view bringSubviewToFront:subView];
+    }
+}
+
+- (void) initViews
+{
+    CGRect indicatorRect = _scanRect;
+    indicatorRect.size.height = 2;
+    indicatorRect.size.width -= 20;
+    indicatorRect.origin.x = (self.view.frame.size.width - indicatorRect.size.width) / 2;
+    
+    _indicatorView = [[UIView alloc] initWithFrame:indicatorRect];
+    _indicatorView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:_indicatorView];
+    
+    
+    self.segmentControl.tintColor = [UIColor blackColor];
+    self.segmentControl.backgroundColor = [UIColor clearColor];
+    [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_off"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_on"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
+    
+    _scanMode = ScanModeSingle;
+    
+    
+    self.multipleScanView.hidden = YES;
+    self.scanResultView.hidden = YES;
+    
+    [self updateMultipleScanView];
+}
+
+- (void) startIndicatorAnimation
+{
+    if (!_scaning)
+    {
+        return;
+    }
+    
+    CGRect frame = _indicatorView.frame;
+    frame.origin.y = _scanRect.origin.y;
+    _indicatorView.frame = frame;
+    
+    [UIView animateWithDuration:2.5 animations:^{
+        
+        CGRect frame = _indicatorView.frame;
+        frame.origin.y += (_scanRect.size.height-1);
+        _indicatorView.frame = frame;
+        
+    } completion:^(BOOL finished) {
+        
+        [self startIndicatorAnimation];
+        
+    }];
+}
+
+#pragma mark -- Action
 
 - (IBAction)onLight:(UIButton *)sender
 {
@@ -112,95 +218,91 @@
     {
         [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_first_off"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
         [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_first_on"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        
+        _scanMode = ScanModeMultiple;
     }
     else
     {
         [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_off"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
         [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_on"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        
+        _scanMode = ScanModeSingle;
     }
+    
+    self.multipleScanView.hidden = (_scanMode == ScanModeSingle);
 }
+
+- (IBAction)onMultipleScanOK:(id)sender
+{
+    NSArray* questions = [GetQuestionController instance].questionList.questions;
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    };
+    [AddQuestionListToNotebookCommand executeWithQuestionList:questions completeHandler:handler];
+    
+}
+
+- (IBAction)onMultipleScanCancel:(id)sender
+{
+    [[GetQuestionController instance] discardQuestionList];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)onScanResultOK:(id)sender
+{
+    [[GetQuestionController instance] addQuestionToList];
+    [self updateMultipleScanView];
+ 
+    [self hideScanResultView];
+}
+
+- (IBAction)onScanResultCancel:(id)sender
+{
+    [[GetQuestionController instance] discardCurrentQuestion];
+    
+    [self hideScanResultView];
+}
+
+- (void) showScanResultView
+{
+    self.scanResultView.hidden = NO;
+}
+
+- (void) hideScanResultView
+{
+    self.scanResultView.hidden = YES;
+}
+
+
+- (void) updateMultipleScanView
+{
+    NSInteger count = [GetQuestionController instance].questionList.questions.count;
+    self.multipleScanLabel.text = [NSString stringWithFormat:@"已扫描 %ld 道题目", count];
+}
+
 
 - (void) setupNavigationBar
 {
-    self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"扫一扫";
+    self.navigationController.navigationBarHidden = YES;
 }
 
-- (void) initCapture
+
+- (void) doneWithSingleQuestion
 {
-    _capture = [[ZXCapture alloc] init];
-    _capture.camera = _capture.back;
-    _capture.focusMode = AVCaptureFocusModeContinuousAutoFocus;
-    _capture.rotation = 90.0f;
-    
-    _capture.layer.frame = self.view.bounds;
-    [self.view.layer addSublayer:_capture.layer];
-    
-    _capture.delegate = self;
-    _capture.layer.frame = self.view.bounds;
-    
-    CGAffineTransform captureSizeTransform = CGAffineTransformMakeScale(320 / self.view.frame.size.width, 480 / self.view.frame.size.height);
-    
-//    _scanRect = self.scanRectView.frame;
-    _scanRect = CGRectMake((self.view.frame.size.width-260)/2, 105, 260, 260);
-    _capture.scanRect = CGRectApplyAffineTransform(_scanRect, captureSizeTransform);
-    
-    _scaning = YES;
-    
-    for (UIView* subView in self.view.subviews)
-    {
-        [self.view bringSubviewToFront:subView];
-    }
+    [self performSegueWithIdentifier:ShowResultSegueId sender:self];
 }
 
-- (void) initViews
+- (void) doneWithMultipleQuestion
 {
-//    UIView* scanRectView = [[UIView alloc] initWithFrame:_scanRect];
-//    scanRectView.backgroundColor = [UIColor clearColor];
-//    scanRectView.layer.borderColor = [UIColor whiteColor].CGColor;
-//    scanRectView.layer.borderWidth = 1;
-//    [self.view addSubview:scanRectView];
-    
-    CGRect indicatorRect = _scanRect;
-    indicatorRect.size.height = 2;
-    indicatorRect.size.width -= 20;
-    indicatorRect.origin.x = (self.view.frame.size.width - indicatorRect.size.width) / 2;
-
-    _indicatorView = [[UIView alloc] initWithFrame:indicatorRect];
-    _indicatorView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:_indicatorView];
-    
-    
-    self.segmentControl.tintColor = [UIColor blackColor];
-    self.segmentControl.backgroundColor = [UIColor clearColor];
-    [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_off"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.segmentControl setBackgroundImage:[UIImage imageNamed:@"icon_scan_switch_second_on"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-}
-
-- (void) startIndicatorAnimation
-{
-    if (!_scaning)
-    {
-        return;
-    }
-    
-    
-    CGRect frame = _indicatorView.frame;
-    frame.origin.y = _scanRect.origin.y;
-    _indicatorView.frame = frame;
-    
-    [UIView animateWithDuration:2.5 animations:^{
-        
-        CGRect frame = _indicatorView.frame;
-        frame.origin.y += (_scanRect.size.height-1);
-        _indicatorView.frame = frame;
-        
-    } completion:^(BOOL finished) {
-        
-        [self startIndicatorAnimation];
-        
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onPhotoAlbum:(id)sender
@@ -213,7 +315,7 @@
 
 - (void) scanSuccessWithContent:(NSString *)content
 {
-    if (!_scaning)
+    if (_parsing)
     {
         return;
     }
@@ -224,16 +326,37 @@
         return;
     }
     
-    // Vibrate
-//    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    [_capture stop];
-    _scaning = NO;
     
+    _parsing = YES;
+    
+    // Vibrate
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    if (_scanMode == ScanModeSingle)
+    {
+        [_capture stop];
+    }
     
     ControllerCompletionBlock handler = ^(BOOL success) {
         NSLog(@"get question %d", success);
-        
-        [self performSegueWithIdentifier:ShowResultSegueId sender:self];
+        _parsing = NO;
+        switch (_scanMode)
+        {
+            case ScanModeSingle:
+            {
+                [self doneWithSingleQuestion];
+            }
+                break;
+                
+            case ScanModeMultiple:
+            {
+                [self showScanResultView];
+            }
+                break;
+                
+            default:
+                break;
+        }
         
     };
     [GetQuestionContentCommand executeWithShortUrl:content completeHandler:handler];

@@ -29,6 +29,8 @@
 @property (nonatomic, strong) SubjectManager* subjectManager;
 @property (nonatomic, copy) UIColor* efeiColor;
 
+@property (nonatomic, assign) BOOL newNotesAdded;
+
 + (EFei*) instance;
 
 - (void) load;
