@@ -16,6 +16,9 @@
 @property (nonatomic, readonly) NSArray* searchedTeachers;
 @property (nonatomic, readonly) Teacher* teacherToAdd;
 
+- (void) clearTeacherList;
+- (void) addTeacher:(Teacher*)teacher;
+
 - (void) selectSearchedTeacher:(NSInteger)index;
 
 @end

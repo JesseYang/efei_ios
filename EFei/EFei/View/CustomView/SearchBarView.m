@@ -69,6 +69,7 @@
     _textField = [[InsetTextFiled alloc] init];
     _textField.borderStyle = UITextBorderStyleRoundedRect;
     _textField.font = [UIFont systemFontOfSize:15];
+    _textField.textColor = [UIColor whiteColor];
     _textField.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
     _textField.delegate = self;

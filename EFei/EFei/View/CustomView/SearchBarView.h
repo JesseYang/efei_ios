@@ -14,6 +14,8 @@
 
 - (void) searchBarViewDidTapped:(SearchBarView*)searchBarView;
 
+- (void) searchBarVie:(SearchBarView*)searchBarView textDidChanged:(NSString*)text;
+
 @end
 
 @interface InsetTextFiled : UITextField
