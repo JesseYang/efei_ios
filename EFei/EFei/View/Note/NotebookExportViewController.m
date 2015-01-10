@@ -7,12 +7,21 @@
 //
 
 #import "NotebookExportViewController.h"
+#import "EFei.h"
+#import "NotebookCommand.h"
 
 @interface NotebookExportViewController()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray* _exportFormatArray;
     NSArray* _exportContentArray;
     NSArray* _exportDestinationArray;
+    
+    
+    
+    NSString*  _fileType;
+    BOOL       _hasAnswer;
+    BOOL       _hasNote;
+    NSString*  _email;
     
 }
 
@@ -77,7 +86,21 @@
 
 - (void) onDone:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.emailTextFeild.enabled)
+    {
+        _email = self.emailTextFeild.text;
+    }
+    else
+    {
+        _email = @"";
+    }
+    
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    };
+    
+    [NotebookExportCommand executeWithNotes:self.notes fileType:_fileType hasAnswer:_hasAnswer hasNote:_hasNote email:_email completeHandler:handler];
 }
 
 
@@ -193,6 +216,31 @@
         self.emailImageView.highlighted = (indexPath.row == 1);
     }
     
+    
+    if (tableView == self.exportFormatTableView)
+    {
+        if (indexPath.row == 0)
+        {
+            _fileType = @"word";
+        }
+        else if(indexPath.row == 1)
+        {
+            _fileType = @"pdf";
+        }
+    }
+    
+    
+    if (tableView == self.exportContentTableView)
+    {
+        if (indexPath.row == 0)
+        {
+            _hasAnswer = !_hasAnswer;
+        }
+        else if(indexPath.row == 1)
+        {
+            _hasNote = !_hasNote;
+        }
+    }
 }
 
 

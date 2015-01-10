@@ -158,7 +158,7 @@
     exportInfo.email     = email;
     
     [[TaskManager instance] startNetworkTask:NetWorkTaskTypeExportNotes
-                                    withData:nil
+                                    withData:exportInfo
                              completeHandler:handler];
 }
 
@@ -177,7 +177,7 @@
     exportInfo.email     = email;
     
     [[TaskManager instance] startNetworkTask:NetWorkTaskTypeExportNotes
-                                    withData:nil
+                                    withData:exportInfo
                              completeHandler:handler];
 }
 
