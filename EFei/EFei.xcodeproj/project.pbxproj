@@ -62,6 +62,10 @@
 		FC66F4421A5F9C4E008E93D7 /* TeacherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4411A5F9C4E008E93D7 /* TeacherTableViewCell.m */; };
 		FC66F4451A5F9C5C008E93D7 /* TeacherAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4441A5F9C5C008E93D7 /* TeacherAddTableViewCell.m */; };
 		FC66F44B1A5FA954008E93D7 /* SearchTeacherController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F44A1A5FA954008E93D7 /* SearchTeacherController.m */; };
+		FC66F4601A60DE7A008E93D7 /* ResetPassordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F45F1A60DE7A008E93D7 /* ResetPassordViewController.m */; };
+		FC66F4631A60DE90008E93D7 /* ResetPasswordResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4621A60DE90008E93D7 /* ResetPasswordResultViewController.m */; };
+		FC66F4661A60F2CD008E93D7 /* ResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4651A60F2CD008E93D7 /* ResetPasswordController.m */; };
+		FC66F4691A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4681A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m */; };
 		FCA096741A5911CE00D0520A /* DataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA096731A5911CE00D0520A /* DataFilter.m */; };
 		FCA096771A591EB800D0520A /* NotebookFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA096761A591EB800D0520A /* NotebookFilterViewController.m */; };
 		FCA096791A5927B800D0520A /* icon_logo_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA096781A5927B800D0520A /* icon_logo_big@2x.png */; };
@@ -285,6 +289,14 @@
 		FC66F4441A5F9C5C008E93D7 /* TeacherAddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherAddTableViewCell.m; sourceTree = "<group>"; };
 		FC66F4491A5FA954008E93D7 /* SearchTeacherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTeacherController.h; sourceTree = "<group>"; };
 		FC66F44A1A5FA954008E93D7 /* SearchTeacherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTeacherController.m; sourceTree = "<group>"; };
+		FC66F45E1A60DE7A008E93D7 /* ResetPassordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPassordViewController.h; sourceTree = "<group>"; };
+		FC66F45F1A60DE7A008E93D7 /* ResetPassordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPassordViewController.m; sourceTree = "<group>"; };
+		FC66F4611A60DE90008E93D7 /* ResetPasswordResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordResultViewController.h; sourceTree = "<group>"; };
+		FC66F4621A60DE90008E93D7 /* ResetPasswordResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordResultViewController.m; sourceTree = "<group>"; };
+		FC66F4641A60F2CD008E93D7 /* ResetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordController.h; sourceTree = "<group>"; };
+		FC66F4651A60F2CD008E93D7 /* ResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordController.m; sourceTree = "<group>"; };
+		FC66F4671A60FA07008E93D7 /* ResetPasswordNewPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordNewPwdViewController.h; sourceTree = "<group>"; };
+		FC66F4681A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordNewPwdViewController.m; sourceTree = "<group>"; };
 		FCA096721A5911CE00D0520A /* DataFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFilter.h; sourceTree = "<group>"; };
 		FCA096731A5911CE00D0520A /* DataFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFilter.m; sourceTree = "<group>"; };
 		FCA096751A591EB800D0520A /* NotebookFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookFilterViewController.h; sourceTree = "<group>"; };
@@ -489,6 +501,8 @@
 				FCF3D2111A401FE7009D8722 /* PersonalSettingController.m */,
 				FC66F4491A5FA954008E93D7 /* SearchTeacherController.h */,
 				FC66F44A1A5FA954008E93D7 /* SearchTeacherController.m */,
+				FC66F4641A60F2CD008E93D7 /* ResetPasswordController.h */,
+				FC66F4651A60F2CD008E93D7 /* ResetPasswordController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -595,6 +609,12 @@
 				FC4311C11A1DAB960020EA31 /* SignInViewController.m */,
 				FC4311C31A1DABA40020EA31 /* SignUpViewController.h */,
 				FC4311C41A1DABA40020EA31 /* SignUpViewController.m */,
+				FC66F45E1A60DE7A008E93D7 /* ResetPassordViewController.h */,
+				FC66F45F1A60DE7A008E93D7 /* ResetPassordViewController.m */,
+				FC66F4611A60DE90008E93D7 /* ResetPasswordResultViewController.h */,
+				FC66F4621A60DE90008E93D7 /* ResetPasswordResultViewController.m */,
+				FC66F4671A60FA07008E93D7 /* ResetPasswordNewPwdViewController.h */,
+				FC66F4681A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1174,6 +1194,7 @@
 				FC4311C21A1DAB960020EA31 /* SignInViewController.m in Sources */,
 				FCF3D2121A401FE7009D8722 /* PersonalSettingController.m in Sources */,
 				FC3809051A1C6EE5007A73E4 /* Infos.m in Sources */,
+				FC66F4631A60DE90008E93D7 /* ResetPasswordResultViewController.m in Sources */,
 				FC3808F91A1C6CB5007A73E4 /* NetWorkTaskGetUpdateTime.m in Sources */,
 				FC4311FA1A1F60DB0020EA31 /* NetWorkTaskChangePassword.m in Sources */,
 				FC4312091A1F62860020EA31 /* NetWorkTaskAddTeacher.m in Sources */,
@@ -1193,9 +1214,11 @@
 				FC2E81691A2AF2AF0032D9AA /* NotebookViewController.m in Sources */,
 				FC66F4361A5F9BDF008E93D7 /* TeacherViewController.m in Sources */,
 				FCD8290F1A2D5EC700F6E0CA /* QuestionViewController.m in Sources */,
+				FC66F4601A60DE7A008E93D7 /* ResetPassordViewController.m in Sources */,
 				FCF3D1411A371C7C009D8722 /* RichTextViewGestureRecognizer.m in Sources */,
 				FC66F4321A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m in Sources */,
 				FCA096771A591EB800D0520A /* NotebookFilterViewController.m in Sources */,
+				FC66F4691A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m in Sources */,
 				FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */,
 				FCC98C4B1A52440A00D9567D /* NoteCategoryTabView.m in Sources */,
 				FCD8291A1A2EB0FD00F6E0CA /* RichTextView.m in Sources */,
@@ -1225,6 +1248,7 @@
 				FCF3D1861A3B42A0009D8722 /* SearchView.m in Sources */,
 				FCD829131A2D616000F6E0CA /* MainViewController.m in Sources */,
 				FCA0967F1A59370500D0520A /* NotebookSearchViewController.m in Sources */,
+				FC66F4661A60F2CD008E93D7 /* ResetPasswordController.m in Sources */,
 				FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */,
 				FCF3D1831A3B3142009D8722 /* NoteTagTableViewCell.m in Sources */,
 				FCF3D20C1A401981009D8722 /* EmailSettingViewController.m in Sources */,

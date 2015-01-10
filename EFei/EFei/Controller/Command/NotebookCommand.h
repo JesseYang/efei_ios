@@ -89,3 +89,35 @@
 
 @end
 //////////////////////////////////////////////////////////////////////////////////////
+
+@interface NotebookExportCommand : NSObject
+
++ (void) executeWithNotes:(NSArray*)notes
+                 fileType:(NSString*)fileType
+                hasAnswer:(BOOL)answer
+                  hasNote:(BOOL)hasNote
+                    email:(NSString*)email
+          completeHandler:(CompletionBlock)handler;
+
+
++ (void) executeWithNote:(Note*)note
+                fileType:(NSString*)fileType
+               hasAnswer:(BOOL)answer
+                 hasNote:(BOOL)hasNote
+                   email:(NSString*)email
+         completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface NotebookDeleteNoteCommand : NSObject
+
++ (void) executeWithNote:(Note*)note
+         completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+

@@ -61,3 +61,17 @@ static NSString* kResponseFilePathKey        = @"file_path";
 }
 
 @end
+
+/*
+ 
+ file_type：可以是”pdf”或者”word”
+ has_answer：布尔值，表示是否包含答案及解析
+ has_note：布尔值，表示是否包含笔记
+ note_id_str：字符串，逗号分割的要导出的note的id列表
+ email：接收导出文档的邮箱，当为空时不发送邮件而是直接下载
+ 返回值
+ code：REQUIRE_SIGNIN
+ file_path：当选择直接下载模式时有意义，为下载地
+
+ 
+ */

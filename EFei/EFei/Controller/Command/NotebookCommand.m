@@ -8,6 +8,7 @@
 
 #import "NotebookCommand.h"
 #import "GetQuestionController.h"
+#import "EFei.h"
 
 @implementation  NotebookCommand
 
@@ -125,6 +126,72 @@
 {
     [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetNotebookUpdateTime
                                     withData:nil
+                             completeHandler:handler];
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation NotebookExportCommand
+
++ (void) executeWithNotes:(NSArray *)notes
+                 fileType:(NSString *)fileType
+                hasAnswer:(BOOL)answer
+                  hasNote:(BOOL)hasNote
+                    email:(NSString *)email
+          completeHandler:(CompletionBlock)handler
+{
+    NSMutableString* idStr = [[NSMutableString alloc] init];
+    for (Note* note in notes)
+    {
+        [idStr appendFormat:@"%@,", note.noteId];
+    }
+    [idStr deleteCharactersInRange:NSMakeRange(idStr.length-1, 1)];
+    
+    
+    ExportInfo* exportInfo = [[ExportInfo alloc] init];
+    exportInfo.noteIdStr = idStr;
+    exportInfo.fileType  = fileType;
+    exportInfo.hadNote   = hasNote;
+    exportInfo.hasAnswer = answer;
+    exportInfo.email     = email;
+    
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeExportNotes
+                                    withData:nil
+                             completeHandler:handler];
+}
+
++ (void) executeWithNote:(Note *)note
+                fileType:(NSString *)fileType
+               hasAnswer:(BOOL)answer
+                 hasNote:(BOOL)hasNote
+                   email:(NSString *)email
+         completeHandler:(CompletionBlock)handler
+{
+    ExportInfo* exportInfo = [[ExportInfo alloc] init];
+    exportInfo.noteIdStr = note.noteId;
+    exportInfo.fileType  = fileType;
+    exportInfo.hadNote   = hasNote;
+    exportInfo.hasAnswer = answer;
+    exportInfo.email     = email;
+    
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeExportNotes
+                                    withData:nil
+                             completeHandler:handler];
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation NotebookDeleteNoteCommand
+
++ (void) executeWithNote:(Note*)note
+         completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeDeleteNote
+                                    withData:note
                              completeHandler:handler];
 }
 
