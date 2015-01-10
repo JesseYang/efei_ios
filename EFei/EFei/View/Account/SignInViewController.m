@@ -27,17 +27,30 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
- 
+    
+    [self setupNavigator];
+    [self setupViews];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+
+- (void) setupNavigator
+{
+    self.navigationItem.title = @"登陆";
+}
+
+- (void) setupViews
+{
     self.usernameTextField.text = [EFei instance].account.username;
     self.passwordTextField.text = [EFei instance].account.password;
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBarHidden = YES;
-}
+
 
 - (IBAction)onSignIn:(id)sender
 {

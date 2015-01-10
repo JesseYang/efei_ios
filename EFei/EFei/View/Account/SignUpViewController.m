@@ -25,19 +25,31 @@
 
 @implementation SignUpViewController
 
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
     
+    [self setupNavigator];
+    [self setupViews];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
-    self.navigationController.navigationBarHidden = NO;
 }
 
+
+- (void) setupNavigator
+{
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationItem.title = @"找回密码";
+}
+
+- (void) setupViews
+{
+}
 
 - (IBAction)onSignUp:(id)sender
 {
