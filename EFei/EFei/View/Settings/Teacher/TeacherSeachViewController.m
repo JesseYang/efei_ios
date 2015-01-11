@@ -145,6 +145,11 @@
     [GetTeachersCommand executeWithSubject:0 name:text completeHandler:handler];
 }
 
+- (void) searchBarViewDidTapped:(SearchBarView *)searchBarView
+{
+    
+}
+
 #pragma mark -- TableView
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -397,6 +397,11 @@
     [self performSegueWithIdentifier:ShowNotebookSearchViewControllerSegueId sender:self];
 }
 
+- (void) searchBarVie:(SearchBarView *)searchBarView textDidChanged:(NSString *)text
+{
+    
+}
+
 
 #pragma mark -- UICollectionView
 

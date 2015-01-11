@@ -11,6 +11,7 @@
 #import "NotebookCommand.h"
 #import "GetQuestionController.h"
 #import "QuestionViewController.h"
+#import "RichTextView.h"
 
 #define ShowResultSegueId @"ShowQuestionViewController"
 
@@ -40,6 +41,8 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIView *multipleScanView;
 @property (weak, nonatomic) IBOutlet UILabel *multipleScanLabel;
 @property (weak, nonatomic) IBOutlet UIView *scanResultView;
+@property (weak, nonatomic) IBOutlet RichTextView *questionView;
+
 
 
 - (IBAction)onLight:(UIButton *)sender;
@@ -272,6 +275,9 @@ typedef enum : NSUInteger {
 
 - (void) showScanResultView
 {
+    Note* note = [GetQuestionController instance].currentNote;
+    [self.questionView setNoteContent:note.contents];
+    
     self.scanResultView.hidden = NO;
 }
 
@@ -284,7 +290,7 @@ typedef enum : NSUInteger {
 - (void) updateMultipleScanView
 {
     NSInteger count = [GetQuestionController instance].noteList.count;
-    self.multipleScanLabel.text = [NSString stringWithFormat:@"已扫描 %ld 道题目", count];
+    self.multipleScanLabel.text = [NSString stringWithFormat:@"已扫描 %ld 道题目", (long)count];
 }
 
 

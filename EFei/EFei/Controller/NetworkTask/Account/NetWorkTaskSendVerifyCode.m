@@ -35,9 +35,8 @@ static NSString* kRequestUsernameKey      = @"email_mobile";
 
 - (void) prepareParameter
 {
-    SignUpInfo* info = (SignUpInfo*)self.data;
-    
-    [self.parameterDict setValue:info.username forKey:kRequestUsernameKey];
+    NSString* phone = (NSString*)self.data;
+    [self.parameterDict setValue:phone forKey:kRequestUsernameKey];
 }
 
 
