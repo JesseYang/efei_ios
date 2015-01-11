@@ -117,8 +117,7 @@ static NSString* kResponseTagSetSeparator     = @",";
     NSString* tagSet = [dict objectForKey:kResponseTagSetKey];
     question.tags = [tagSet componentsSeparatedByString:kResponseTagSetSeparator];
     
-//    [controller.questionList addQuestion:question];
-    controller.currentQuestion = question;
+    controller.currentNote = [[Note alloc] initWithQuestion:question];
     
     return YES;
 }

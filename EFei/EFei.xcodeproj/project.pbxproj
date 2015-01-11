@@ -66,6 +66,7 @@
 		FC66F4631A60DE90008E93D7 /* ResetPasswordResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4621A60DE90008E93D7 /* ResetPasswordResultViewController.m */; };
 		FC66F4661A60F2CD008E93D7 /* ResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4651A60F2CD008E93D7 /* ResetPasswordController.m */; };
 		FC66F4691A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4681A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m */; };
+		FC66F46C1A61B326008E93D7 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F46B1A61B326008E93D7 /* PopupMenu.m */; };
 		FCA096741A5911CE00D0520A /* DataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA096731A5911CE00D0520A /* DataFilter.m */; };
 		FCA096771A591EB800D0520A /* NotebookFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA096761A591EB800D0520A /* NotebookFilterViewController.m */; };
 		FCA096791A5927B800D0520A /* icon_logo_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA096781A5927B800D0520A /* icon_logo_big@2x.png */; };
@@ -297,6 +298,8 @@
 		FC66F4651A60F2CD008E93D7 /* ResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordController.m; sourceTree = "<group>"; };
 		FC66F4671A60FA07008E93D7 /* ResetPasswordNewPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordNewPwdViewController.h; sourceTree = "<group>"; };
 		FC66F4681A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordNewPwdViewController.m; sourceTree = "<group>"; };
+		FC66F46A1A61B326008E93D7 /* PopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupMenu.h; sourceTree = "<group>"; };
+		FC66F46B1A61B326008E93D7 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupMenu.m; sourceTree = "<group>"; };
 		FCA096721A5911CE00D0520A /* DataFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFilter.h; sourceTree = "<group>"; };
 		FCA096731A5911CE00D0520A /* DataFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFilter.m; sourceTree = "<group>"; };
 		FCA096751A591EB800D0520A /* NotebookFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookFilterViewController.h; sourceTree = "<group>"; };
@@ -932,6 +935,8 @@
 				FCC98C4A1A52440A00D9567D /* NoteCategoryTabView.m */,
 				FCA0967A1A592C1000D0520A /* SearchBarView.h */,
 				FCA0967B1A592C1000D0520A /* SearchBarView.m */,
+				FC66F46A1A61B326008E93D7 /* PopupMenu.h */,
+				FC66F46B1A61B326008E93D7 /* PopupMenu.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1204,6 +1209,7 @@
 				FC3809081A1C738F007A73E4 /* NetWorkTaskSignUp.m in Sources */,
 				FCF3D1801A3B22FF009D8722 /* NoteTopicViewController.m in Sources */,
 				FC3808FC1A1C6DAF007A73E4 /* AccountCommand.m in Sources */,
+				FC66F46C1A61B326008E93D7 /* PopupMenu.m in Sources */,
 				FCA096741A5911CE00D0520A /* DataFilter.m in Sources */,
 				FC4311F71A1F60CC0020EA31 /* NetWorkTaskRename.m in Sources */,
 				FC3808ED1A1C60B8007A73E4 /* NetWorkTask.m in Sources */,

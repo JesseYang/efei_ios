@@ -14,22 +14,26 @@
 #import "NoteTopicViewController.h"
 #import "Note.h"
 #import "NotebookCommand.h"
+#import "PopupMenu.h"
+#import "EFei.h"
 
 #define EditTagSegueId @"ShowTagViewController"
 #define EditKnowledgeSegueId @"ShowKnowledgeViewController"
 
-@interface QuestionViewController()<UITableViewDataSource, UITableViewDelegate, QuestionViewDelegate>
+@interface QuestionViewController()<UITableViewDataSource, UITableViewDelegate, QuestionViewDelegate, PopupMenuDelegate>
 {
     NSArray* _noteTableTitles;
     NSArray* _noteTableContentLables;
     
-    Note* _note;
+    PopupMenu* _popupMenu;
 }
 
 @property (weak, nonatomic) IBOutlet QuestionView *questionView;
 
 @property (weak, nonatomic) IBOutlet UITableView *noteTableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBBI;
 
 
 - (IBAction)onDone:(id)sender;
@@ -43,20 +47,26 @@
 {
     [super viewDidLoad];
     
+    [self setupNavigator];
+    [self setupData];
+    [self setupViews];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.noteTableView reloadData];
+}
+
+
+- (void) setupNavigator
+{
     self.navigationController.navigationBarHidden = NO;
-    
-    self.noteTableView.dataSource = self;
-    self.noteTableView.delegate = self;
-    
-    self.questionView.delegate = self;
-    
-    GetQuestionController* controller = [GetQuestionController instance];
-    Question* question = [controller.questionList.questions lastObject];
-    self.questionView.question = question;
-    NSLog(@"question view controller load");
-    
-    _note = [[Note alloc] initWithQuestion:question];
-    
+}
+
+- (void) setupData
+{
     _noteTableTitles = [NSArray arrayWithObjects:@"标签", @"知识点", nil];
     
     CGRect rect = CGRectMake(0, 0, 100, 50);
@@ -70,19 +80,67 @@
     _noteTableContentLables = [NSArray arrayWithObjects:label1, label2, nil];
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) setupViews
 {
-    [super viewDidAppear:animated];
+    self.noteTableView.dataSource = self;
+    self.noteTableView.delegate = self;
+    
+    self.questionView.delegate = self;
+    
+    self.questionView.question = self.note;
     
     
-    [self.noteTableView reloadData];
+    
+    
+    NSArray* imageNames = [NSArray arrayWithObjects:
+                           @"icon_notebook_delete.png",@"icon_notebook_delete.png",
+                           @"icon_notebook_export.png", @"icon_notebook_export.png", nil];
+    
+    NSMutableArray* images = [[NSMutableArray alloc] initWithCapacity:imageNames.count];
+    for (NSString* name in imageNames)
+    {
+        UIImage* image = [UIImage imageNamed:name];
+        [images addObject:image];
+    }
+    NSArray* titles = [NSArray arrayWithObjects:@"删除",@"导出", nil];
+    
+    _popupMenu = [[PopupMenu alloc] initWithMenuItemSize:CGSizeMake(80, 30)
+                                           menuItemCount:titles.count
+                                                  titles:titles
+                                                  images:images
+                                         backgroundColor:[EFei instance].efeiColor
+                                          seperatorColor:[UIColor colorWithWhite:1.0 alpha:0.8]];
+    _popupMenu.delegate = self;
+    
+    
+    if (self.note.noteId.length > 0)
+    {
+        self.rightBBI.title = @"操作";
+        
+        
+    }
+    else
+    {
+        self.rightBBI.title = @"保存";
+    }
 }
 
+#pragma mark -- Action
 
 - (IBAction)onDone:(id)sender
 {
-    
-    
+    if (self.note.noteId.length > 0)
+    {
+        [self showNoteOperationMenu];
+    }
+    else
+    {
+        [self addQuestionAsNote];
+    }
+}
+
+- (void) addQuestionAsNote
+{
     _note.summary = @"";
     
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
@@ -96,6 +154,47 @@
     
     [AddQuestionToNotebookCommand executeWithNote:_note completeHandler:handler];
 }
+
+- (void) showNoteOperationMenu
+{
+    float x = self.view.frame.size.width - 30;
+    [_popupMenu showAtPoint:CGPointMake(x, 65) withArrowOffset:0.8];
+}
+
+- (void) exportNote
+{
+    
+}
+
+- (void) deleteNote
+{
+    
+}
+
+#pragma mark -- PopupMenuDelegate
+
+- (void) popupMenu:(PopupMenu *)menu didSelectItemAtIndex:(NSInteger)index
+{
+    switch (index)
+    {
+        case 0:
+            [self deleteNote];
+            break;
+            
+        case 1:
+            [self exportNote];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void) popupMenuDidDismiss:(PopupMenu *)menu
+{
+    
+}
+
 
 #pragma mark - QuestionView
 - (void) questionView:(QuestionView *)question showHideAnswer:(BOOL)show withHeightChange:(float)delta

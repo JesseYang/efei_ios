@@ -16,6 +16,9 @@
     RichTextView* _questionContentView;
     RichTextView* _questionAnswerView;
     UIView*       _separator2;
+    UIView*       _answerFlagView;
+    
+    UIImageView*  _answerImageView;
     
     NSLayoutConstraint* _descriptionHeightConstraint;
     
@@ -64,6 +67,12 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:titleLabel];
     
+    UIImageView* imageView = [UIImageView new];
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    imageView.image = [UIImage imageNamed:@"icon_question_show_answer.png"];
+    [self addSubview:imageView];
+    _answerImageView = imageView;
+    
     UIButton* answerButton = [UIButton new];
     answerButton.translatesAutoresizingMaskIntoConstraints = NO;
     [answerButton setTitleColor:[EFei instance].efeiColor forState:UIControlStateNormal];
@@ -83,6 +92,12 @@
     separator2.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:separator2];
     _separator2 = separator2;
+    
+    UIView* flagView = [UIView new];
+    flagView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:flagView];
+    _answerFlagView = flagView;
+    [self setupAnswerFlagView];
     
     CGRect contentRect = CGRectMake(0, 55, 320, 100);
     _questionContentView = [[RichTextView alloc] initWithFrame:contentRect];
@@ -104,7 +119,9 @@
                                       @"separator1":separator1,
                                       @"separator2":separator2,
                                       @"questionContentView":_questionContentView,
-                                      @"questionAnswerView": _questionAnswerView
+                                      @"questionAnswerView": _questionAnswerView,
+                                      @"answerImageView": _answerImageView,
+                                      @"answerFlagView": _answerFlagView
                                       };
     NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[titleLabel(30)]"
                                                                     options:0
@@ -134,6 +151,20 @@
     [answerButton addConstraints:answerConstraintV];
     
     
+    NSArray *answerImageConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[answerImageView(10)]"
+                                                                         options:0
+                                                                         metrics:nil
+                                                                           views:viewsDictionary];
+    
+    NSArray *answerImageConstraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[answerImageView(20)]"
+                                                                         options:0
+                                                                         metrics:nil
+                                                                           views:viewsDictionary];
+    
+    
+    [_answerImageView addConstraints:answerImageConstraintH];
+    [_answerImageView addConstraints:answerImageConstraintV];
+    
     
     NSArray *separatorConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[separator1(1)]"
                                                                          options:0
@@ -149,6 +180,21 @@
                                                                               views:viewsDictionary];
     
     [separator2 addConstraints:separator2ConstraintH];
+    
+    
+    NSArray *answerFlagConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[answerFlagView(20)]"
+                                                                              options:0
+                                                                              metrics:nil
+                                                                                views:viewsDictionary];
+    
+    NSArray *answerFlagConstraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[answerFlagView(60)]"
+                                                                              options:0
+                                                                              metrics:nil
+                                                                                views:viewsDictionary];
+    
+    
+    [_answerFlagView addConstraints:answerFlagConstraintH];
+    [_answerFlagView addConstraints:answerFlagConstraintV];
     
 //    NSArray *contentConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[questionContentView(100)]"
 //                                                                             options:0
@@ -174,7 +220,7 @@
     
     [_questionAnswerView addConstraints:questionAnswerConstraintH];
     
-    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[titleLabel]-5-[separator1]-10-[questionContentView]-10-[separator2]-10-[questionAnswerView]"
+    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[titleLabel]-5-[separator1]-10-[questionContentView]-10-[separator2]-10-[answerFlagView]-5-[questionAnswerView]"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:viewsDictionary];
@@ -184,7 +230,7 @@
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
-    NSArray *constraintPosH2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[answerButton]-20-|"
+    NSArray *constraintPosH2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[answerImageView]-2-[answerButton]-20-|"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:viewsDictionary];
@@ -207,6 +253,12 @@
                                                                             metrics:nil
                                                                               views:viewsDictionary];
     
+    
+    NSArray *answerFlagConstraintPos = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[answerFlagView]"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:viewsDictionary];
+    
     [self addConstraints:constraintPosV];
     [self addConstraints:constraintPosH];
     [self addConstraints:constraintPosH2];
@@ -214,6 +266,7 @@
     [self addConstraints:separator2ConstraintPos];
     [self addConstraints:contentConstraintPos];
     [self addConstraints:answerConstraintPos];
+    [self addConstraints:answerFlagConstraintPos];
     
     NSLayoutConstraint* constraint = [NSLayoutConstraint constraintWithItem:answerButton
                                                                   attribute:NSLayoutAttributeTop
@@ -243,6 +296,78 @@
 //    [self addConstraint:separator2Constraint];
     
     
+    NSLayoutConstraint* constraint2 = [NSLayoutConstraint constraintWithItem:_answerImageView
+                                                                  attribute:NSLayoutAttributeCenterY
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:answerButton
+                                                                  attribute:NSLayoutAttributeCenterY
+                                                                 multiplier:1.0
+                                                                   constant:0.0];
+    
+    
+    [self addConstraint:constraint2];
+}
+
+- (void) setupAnswerFlagView
+{
+    UIImageView* flagImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
+    flagImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    flagImageView.image = [UIImage imageNamed:@"icon_question_answer_flag.png"];
+    [_answerFlagView addSubview:flagImageView];
+    
+    UILabel* flagLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 45, 20)];
+    flagLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    flagLabel.font = [UIFont systemFontOfSize:15];
+    flagLabel.textColor = [UIColor lightGrayColor];
+    flagLabel.text = @"答案";
+    [_answerFlagView addSubview:flagLabel];
+    
+    NSDictionary *viewsDictionary = @{@"flagImageView":flagImageView,
+                                      @"flagLabel":flagLabel
+                                      };
+    NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[flagImageView(20)]"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    
+    NSArray *constraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[flagImageView(12)]"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    
+    [flagImageView addConstraints:constraintH];
+    [flagImageView addConstraints:constraintV];
+    
+    NSArray *constraintH2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[flagLabel(20)]"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    
+    NSArray *constraintV2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[flagLabel(45)]"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:viewsDictionary];
+    
+    [flagLabel addConstraints:constraintH2];
+    [flagLabel addConstraints:constraintV2];
+    
+    NSArray *constraintPosV1 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[flagImageView]"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                         views:viewsDictionary];
+    NSArray *constraintPosV2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[flagLabel]"
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:viewsDictionary];
+    
+    NSArray *constraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[flagImageView]-3-[flagLabel]|"
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:viewsDictionary];
+    
+    [_answerFlagView addConstraints:constraintPosH];
+    [_answerFlagView addConstraints:constraintPosV1];
+    [_answerFlagView addConstraints:constraintPosV2];
 }
 
 
@@ -269,7 +394,7 @@
     }
     
     [_questionContentView setNoteContent:array];
-    
+    [_questionAnswerView setNoteContent:_question.answerContents];
 }
 
 - (void) onAnswerButton:(id)sender
@@ -291,6 +416,8 @@
 
 - (void) showAnswer
 {
+    _answerImageView.image = [UIImage imageNamed:@"icon_question_show_answer.png"];
+    
     float delta = _height - (_questionContentView.frame.origin.y + _questionContentView.frame.size.height);
     
     CGRect rect = self.frame;
@@ -299,6 +426,7 @@
     
     _questionAnswerView.hidden = NO;
     _separator2.hidden = NO;
+    _answerFlagView.hidden = NO;
     
     if ([self.delegate respondsToSelector:@selector(questionView:showHideAnswer:withHeightChange:)])
     {
@@ -308,6 +436,8 @@
 
 - (void) hideAnswer
 {
+    _answerImageView.image = [UIImage imageNamed:@"icon_question_hide_answer.png"];
+    
     float delta = _height - (_questionContentView.frame.origin.y + _questionContentView.frame.size.height);
     CGRect rect = self.frame;
     rect.size.height -= delta;
@@ -315,6 +445,7 @@
     
     _questionAnswerView.hidden = YES;
     _separator2.hidden = YES;
+    _answerFlagView.hidden = YES;
     
     if ([self.delegate respondsToSelector:@selector(questionView:showHideAnswer:withHeightChange:)])
     {

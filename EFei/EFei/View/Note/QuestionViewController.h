@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Note;
+
 @interface QuestionViewController : UIViewController
+
+@property (nonatomic, weak) Note* note;
 
 @end

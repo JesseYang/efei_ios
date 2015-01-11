@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Controller.h"
 #import "Question.h"
+#import "Note.h"
 
 @interface GetQuestionController : NSObject
 
 @property (nonatomic, copy) NSString* shortUrl;
 @property (nonatomic, copy) NSString* questionId;
 @property (nonatomic, copy) ControllerCompletionBlock completionBlock;
-@property (nonatomic, strong) QuestionList* questionList;
-@property (nonatomic, strong) Question* currentQuestion;
+@property (nonatomic, strong) NSArray* noteList;
+@property (nonatomic, strong) Note* currentNote;
 
 + (GetQuestionController*) instance;
 
