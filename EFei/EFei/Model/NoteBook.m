@@ -35,6 +35,12 @@
 {
     [_notes addObject:note];
 }
+
+- (void) deleteNote:(Note *)note
+{
+    [_notes removeObject:note];
+}
+
 - (void) addNoteWithId:(NSString*)noteId lastUpdateTime:(NSInteger)updateTime
 {
     Note* note = [[Note alloc] initWithNoteId:noteId updateTime:updateTime];

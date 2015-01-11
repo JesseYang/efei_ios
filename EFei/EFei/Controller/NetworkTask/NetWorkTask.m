@@ -228,7 +228,6 @@ static NSString* kBaseReqeustMessageKey = @"message";
     ASIHTTPRequest* request = [ASIHTTPRequest requestWithURL:url];
     [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
     [request addRequestHeader:@"Accept" value:@"application/json"];
-    [request setRequestMethod:method];
     [request setTimeOutSeconds:60];
     
     
@@ -248,6 +247,8 @@ static NSString* kBaseReqeustMessageKey = @"message";
         
         [request setPostBody:tempJsonData];
     }
+    [request buildPostBody];
+    [request setRequestMethod:method];
     
     ASIHTTPRequest* __weak weakRequest = request;
     [request setCompletionBlock:^{

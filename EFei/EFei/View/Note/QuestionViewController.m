@@ -17,9 +17,11 @@
 #import "PopupMenu.h"
 #import "EFei.h"
 #import "UIPlaceHolderTextView.h"
+#import "NotebookExportViewController.h"
 
 #define EditTagSegueId @"ShowTagViewController"
 #define EditKnowledgeSegueId @"ShowKnowledgeViewController"
+#define ShowNotebookExportViewControllerSegueId @"ShowNotebookExportViewController"
 
 @interface QuestionViewController()<UITableViewDataSource, UITableViewDelegate, QuestionViewDelegate, PopupMenuDelegate>
 {
@@ -175,12 +177,18 @@
 
 - (void) exportNote
 {
-    
+    [self performSegueWithIdentifier:ShowNotebookExportViewControllerSegueId sender:self];
 }
 
 - (void) deleteNote
 {
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    };
     
+    [NotebookDeleteNoteCommand executeWithNote:self.note completeHandler:handler];
 }
 
 #pragma mark -- PopupMenuDelegate
@@ -293,6 +301,11 @@
     {
         NoteTopicViewController* knowledgeVC = (NoteTopicViewController*)segue.destinationViewController;
         knowledgeVC.note = _note;
+    }
+    else if([segue.identifier isEqualToString:ShowNotebookExportViewControllerSegueId])
+    {
+        NotebookExportViewController* exportVC = (NotebookExportViewController*)segue.destinationViewController;
+        exportVC.notes = [NSArray arrayWithObjects:self.note, nil];
     }
 }
 
