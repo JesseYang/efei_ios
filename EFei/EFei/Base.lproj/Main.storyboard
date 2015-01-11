@@ -84,7 +84,7 @@
                     <connections>
                         <outlet property="tableView" destination="5pU-co-e0U" id="vvi-xg-bKs"/>
                         <segue destination="pI3-2m-fVY" kind="show" identifier="ShowPersonalSettingViewController" id="s4B-qu-GxL"/>
-                        <segue destination="CT0-dY-bkX" kind="push" identifier="ShowTeacherViewController" id="ByT-DF-XBf"/>
+                        <segue destination="CT0-dY-bkX" kind="show" identifier="ShowTeacherViewController" id="ByT-DF-XBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ga-Qb-k34" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -782,7 +782,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="l7I-01-dja" id="B6B-hn-Dvp"/>
-                        <segue destination="ZOJ-BC-v0O" kind="push" identifier="ShowResetPasswordResultViewController" id="E0O-U9-Y3Y"/>
+                        <segue destination="ZOJ-BC-v0O" kind="show" identifier="ShowResetPasswordResultViewController" id="E0O-U9-Y3Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLp-CO-RN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -965,7 +965,7 @@
                         <outlet property="phoneView" destination="JSZ-k4-lWW" id="hs9-fc-SW5"/>
                         <outlet property="rightBBI" destination="n34-4y-ib7" id="FuL-Eo-f91"/>
                         <outlet property="sendCodeButton" destination="noq-jz-LsN" id="3qR-ch-CWC"/>
-                        <segue destination="a51-nN-LRo" kind="push" identifier="ShowResetPasswordNewPwdViewController" id="iW6-sF-1rj"/>
+                        <segue destination="a51-nN-LRo" kind="show" identifier="ShowResetPasswordNewPwdViewController" id="iW6-sF-1rj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGl-rt-afy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1136,7 +1136,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fLR-F1-p6y" kind="push" id="rFb-EK-HXN"/>
+                                    <segue destination="fLR-F1-p6y" kind="show" id="rFb-EK-HXN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1181,7 +1181,7 @@
                         <barButtonItem key="rightBarButtonItem" title="免费注册" id="D5l-MK-ah9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="9jE-V5-CJV" kind="push" id="IYZ-cy-we1"/>
+                                <segue destination="9jE-V5-CJV" kind="show" id="IYZ-cy-we1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1414,7 +1414,7 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNK-Rd-hYN">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="190"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YE5-Fr-vtx">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YE5-Fr-vtx" customClass="RichTextView">
                                                 <rect key="frame" x="20" y="0.0" width="560" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -1573,6 +1573,7 @@
                     <connections>
                         <outlet property="multipleScanLabel" destination="MrK-CJ-2xA" id="GSD-DJ-5JE"/>
                         <outlet property="multipleScanView" destination="Smo-Mf-OAM" id="Jfb-fO-0xu"/>
+                        <outlet property="questionView" destination="YE5-Fr-vtx" id="SPS-Ti-e6x"/>
                         <outlet property="scanRectView" destination="c3r-Fg-Btb" id="kzv-eI-Xzb"/>
                         <outlet property="scanResultView" destination="LNK-Rd-hYN" id="m3v-23-D8k"/>
                         <outlet property="segmentControl" destination="9nJ-hB-6nZ" id="edk-z3-Wsi"/>
@@ -1692,11 +1693,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XWj-h8-g2d">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XWj-h8-g2d">
                                 <rect key="frame" x="0.0" y="64" width="600" height="400"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="136" id="8rc-rj-1f6"/>
+                                    <constraint firstAttribute="height" constant="400" id="8rc-rj-1f6"/>
                                 </constraints>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="ZdT-re-KIo">
@@ -2166,7 +2167,7 @@
                         <barButtonItem key="rightBarButtonItem" title="添加" id="16N-wq-N3u">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="VI7-Ic-zvU" kind="push" id="YLF-2M-2gw"/>
+                                <segue destination="VI7-Ic-zvU" kind="show" id="YLF-2M-2gw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
