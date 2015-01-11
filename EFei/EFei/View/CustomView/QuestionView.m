@@ -21,6 +21,7 @@
     UIImageView*  _answerImageView;
     
     NSLayoutConstraint* _descriptionHeightConstraint;
+    NSLayoutConstraint* _answerHeightConstraint;
     
     float _height;
 }
@@ -213,12 +214,23 @@
     
     [self addConstraint:_descriptionHeightConstraint];
     
-    NSArray *questionAnswerConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[questionAnswerView(80)]"
-                                                                          options:0
-                                                                          metrics:nil
-                                                                            views:viewsDictionary];
     
-    [_questionAnswerView addConstraints:questionAnswerConstraintH];
+    _answerHeightConstraint = [NSLayoutConstraint constraintWithItem:_questionAnswerView
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                               multiplier:0.f
+                                                                 constant:100];
+    
+    [self addConstraint:_answerHeightConstraint];
+    
+//    NSArray *questionAnswerConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[questionAnswerView(80)]"
+//                                                                          options:0
+//                                                                          metrics:nil
+//                                                                            views:viewsDictionary];
+//    
+//    [_questionAnswerView addConstraints:questionAnswerConstraintH];
     
     NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[titleLabel]-5-[separator1]-10-[questionContentView]-10-[separator2]-10-[answerFlagView]-5-[questionAnswerView]"
                                                                       options:0
@@ -378,7 +390,25 @@
     CGSize textViewSize = [_questionContentView sizeThatFits:CGSizeMake(_questionContentView.frame.size.width, FLT_MAX)];
     [_descriptionHeightConstraint setConstant:textViewSize.height];
     
+    textViewSize = [_questionAnswerView sizeThatFits:CGSizeMake(_questionAnswerView.frame.size.width, FLT_MAX)];
+    [_answerHeightConstraint setConstant:textViewSize.height];
+    
     [self layoutIfNeeded];
+}
+
+- (float) viewHeight
+{
+    CGSize textViewSize = [_questionContentView sizeThatFits:CGSizeMake(_questionContentView.frame.size.width, FLT_MAX)];
+    
+    float height = textViewSize.height + 60;
+    
+    if (!_questionAnswerView.hidden)
+    {
+        CGSize textViewSize = [_questionAnswerView sizeThatFits:CGSizeMake(_questionAnswerView.frame.size.width, FLT_MAX)];
+        height += (textViewSize.height + 60);
+    }
+    
+    return height;
 }
 
 - (void) setQuestion:(Question *)question

@@ -16,6 +16,7 @@
 #import "NotebookCommand.h"
 #import "PopupMenu.h"
 #import "EFei.h"
+#import "UIPlaceHolderTextView.h"
 
 #define EditTagSegueId @"ShowTagViewController"
 #define EditKnowledgeSegueId @"ShowKnowledgeViewController"
@@ -29,12 +30,14 @@
 }
 
 @property (weak, nonatomic) IBOutlet QuestionView *questionView;
-
 @property (weak, nonatomic) IBOutlet UITableView *noteTableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *summaryTextView;
+
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBBI;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *questionViewHeightConstraint;
 
 - (IBAction)onDone:(id)sender;
 
@@ -89,8 +92,7 @@
     
     self.questionView.question = self.note;
     
-    
-    
+    self.summaryTextView.placeholder = @"总结";
     
     NSArray* imageNames = [NSArray arrayWithObjects:
                            @"icon_notebook_delete.png",@"icon_notebook_delete.png",
@@ -117,12 +119,22 @@
     {
         self.rightBBI.title = @"操作";
         
-        
+        self.summaryTextView.text = self.note.summary;
     }
     else
     {
         self.rightBBI.title = @"保存";
     }
+}
+
+- (void) viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    float height = self.questionView.viewHeight;
+    [self.questionViewHeightConstraint setConstant:height];
+    
+    NSLog(@"will layout :  %f" , height);
 }
 
 #pragma mark -- Action
@@ -204,6 +216,10 @@
         CGRect rect = self.noteTableView.frame;
         rect.origin.y += delta;
         self.noteTableView.frame = rect;
+        
+        rect = self.summaryTextView.frame;
+        rect.origin.y += delta;
+        self.summaryTextView.frame = rect;
     }];
 }
 
