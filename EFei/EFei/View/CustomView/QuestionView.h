@@ -23,4 +23,6 @@
 @property (nonatomic, strong) Question* question;
 @property (nonatomic, weak) id<QuestionViewDelegate> delegate;
 
+@property (nonatomic, assign) float viewHeight;
+
 @end

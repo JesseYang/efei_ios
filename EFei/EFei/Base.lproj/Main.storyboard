@@ -1611,15 +1611,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Reb-uU-9Kg" customClass="QuestionView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Reb-uU-9Kg" customClass="QuestionView">
                                 <rect key="frame" x="0.0" y="84" width="600" height="300"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="zi5-01-tTd"/>
+                                    <constraint firstAttribute="height" priority="250" constant="300" id="zi5-01-tTd"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1Se-S2-Rsa">
-                                <rect key="frame" x="0.0" y="207" width="600" height="96"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1Se-S2-Rsa">
+                                <rect key="frame" x="0.0" y="407" width="600" height="96"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="Omd-zB-IZo"/>
@@ -1633,25 +1633,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IwK-Xm-FJj">
-                                <rect key="frame" x="0.0" y="323" width="600" height="300"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-mU-Grp" customClass="UIPlaceHolderTextView">
+                                <rect key="frame" x="0.0" y="523" width="600" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="6DL-vS-7u4"/>
+                                    <constraint firstAttribute="height" constant="80" id="aDW-yq-4so"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="R5f-mU-Grp" firstAttribute="top" secondItem="1Se-S2-Rsa" secondAttribute="bottom" constant="20" id="3oX-hn-sSl"/>
                             <constraint firstItem="1Se-S2-Rsa" firstAttribute="leading" secondItem="LYb-Vo-Pyj" secondAttribute="leading" id="5pZ-pF-YZv"/>
-                            <constraint firstItem="IwK-Xm-FJj" firstAttribute="leading" secondItem="LYb-Vo-Pyj" secondAttribute="leading" id="Fsy-fm-2Gt"/>
-                            <constraint firstItem="IwK-Xm-FJj" firstAttribute="top" secondItem="1Se-S2-Rsa" secondAttribute="bottom" constant="20" id="IPB-2s-Ork"/>
                             <constraint firstItem="Reb-uU-9Kg" firstAttribute="width" secondItem="LYb-Vo-Pyj" secondAttribute="width" id="Vsj-EE-HeA"/>
-                            <constraint firstItem="IwK-Xm-FJj" firstAttribute="width" secondItem="LYb-Vo-Pyj" secondAttribute="width" id="aZl-zI-EPF"/>
+                            <constraint firstAttribute="width" secondItem="R5f-mU-Grp" secondAttribute="width" id="bpn-3D-WNB"/>
                             <constraint firstItem="1Se-S2-Rsa" firstAttribute="width" secondItem="LYb-Vo-Pyj" secondAttribute="width" id="fDA-03-9Ss"/>
                             <constraint firstItem="Reb-uU-9Kg" firstAttribute="leading" secondItem="LYb-Vo-Pyj" secondAttribute="leading" id="hYq-l8-olj"/>
                             <constraint firstItem="Reb-uU-9Kg" firstAttribute="top" secondItem="rkR-7T-eOX" secondAttribute="bottom" constant="20" id="mBh-pm-1R0"/>
-                            <constraint firstItem="IwK-Xm-FJj" firstAttribute="leading" secondItem="LYb-Vo-Pyj" secondAttribute="leading" id="oDw-O0-bCp"/>
+                            <constraint firstItem="R5f-mU-Grp" firstAttribute="leading" secondItem="LYb-Vo-Pyj" secondAttribute="leadingMargin" constant="-16" id="xZJ-dQ-zWi"/>
                             <constraint firstItem="1Se-S2-Rsa" firstAttribute="top" secondItem="Reb-uU-9Kg" secondAttribute="bottom" constant="23" id="y0u-3X-gjL"/>
                         </constraints>
                     </view>
@@ -1667,7 +1668,9 @@
                     <connections>
                         <outlet property="noteTableView" destination="1Se-S2-Rsa" id="kRp-Qe-slb"/>
                         <outlet property="questionView" destination="Reb-uU-9Kg" id="T5b-7j-7Mk"/>
+                        <outlet property="questionViewHeightConstraint" destination="zi5-01-tTd" id="NyF-M8-toR"/>
                         <outlet property="rightBBI" destination="inH-yb-EoY" id="6tn-gA-fJ7"/>
+                        <outlet property="summaryTextView" destination="R5f-mU-Grp" id="Esh-sV-hPJ"/>
                         <segue destination="Imo-xk-Btf" kind="show" identifier="ShowTagViewController" id="YZF-SG-MxS"/>
                         <segue destination="Vrw-6r-Eew" kind="show" identifier="ShowKnowledgeViewController" id="O9r-Jg-VxB"/>
                     </connections>
