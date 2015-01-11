@@ -37,7 +37,6 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        [self setupUI];
     }
     
     return self;
@@ -63,6 +62,11 @@
 
 - (void) setupUI
 {
+    if (self.noteContentView == nil)
+    {
+        return;
+    }
+    
     [self.selectButton addTarget:self action:@selector(onSelected:) forControlEvents:UIControlEventTouchUpInside];
     
     UISwipeGestureRecognizer* leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
@@ -98,25 +102,25 @@
                                                           constant:0];
     [self.noteContentView addConstraint:cH];
     
-//    NSDictionary *viewsDictionary = @{@"richTextView":_richTextView};
+    NSDictionary *viewsDictionary = @{@"richTextView":_richTextView};
 //    NSArray *textconstraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[richTextView]|"
 //                                                                          options:0
 //                                                                          metrics:nil
 //                                                                            views:viewsDictionary];
-//    NSArray *textconstraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[richTextView]|"
-//                                                                          options:0
-//                                                                          metrics:nil
-//                                                                            views:viewsDictionary];
-//    
+    NSArray *textconstraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-40-[richTextView]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewsDictionary];
+    
 //    [self.noteContentView addConstraints:textconstraintPosH];
-//    [self.noteContentView addConstraints:textconstraintPosV];
+    [self.noteContentView addConstraints:textconstraintPosV];
 }
 
 - (void) layoutSubviews
 {
     [super layoutSubviews];
     
-    _richTextView.frame = self.noteContentView.bounds;
+//    _richTextView.frame = self.noteContentView.bounds;
 }
 
 //- (void) layoutSubviews
@@ -361,6 +365,34 @@
 - (void) configWithNote:(Note*)note
 {
     [_richTextView setNoteContent:note.contents];
+    
+    
+    if (note.tag.length > 0)
+    {
+        self.tagLabel.text = [NSString stringWithFormat:@"标签: %@", note.tag];
+    }
+    else
+    {
+        self.tagLabel.text = @"无标签";
+    }
+    
+    if (note.topicString.length > 0)
+    {
+        self.topicLabel.text = [NSString stringWithFormat:@"标签: %@", note.topicString];
+    }
+    else
+    {
+        self.topicLabel.text = @"无知识点";
+    }
+    
+    if (note.summary.length > 0)
+    {
+        self.summaryLabel.text = [NSString stringWithFormat:@"标签: %@", note.summary];
+    }
+    else
+    {
+        self.summaryLabel.text = @"无总结";
+    }
 }
 
 @end

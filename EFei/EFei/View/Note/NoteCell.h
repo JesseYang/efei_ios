@@ -24,6 +24,10 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *exportButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topicLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
+
 
 //@property (nonatomic, assign) BOOL noteSelected;
 
