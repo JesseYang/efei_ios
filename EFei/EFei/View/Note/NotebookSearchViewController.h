@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SearchBarView;
+
 @interface NotebookSearchViewController : UIViewController
+
+@property (nonatomic, weak) SearchBarView* searchBarView;
 
 @end

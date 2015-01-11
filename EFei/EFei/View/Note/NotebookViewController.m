@@ -60,6 +60,7 @@
 
 - (void) onExportAll:(id)sender;
 - (void) onExportNote:(id)sender event:(id)event;
+- (void) onDeleteNote:(id)sender event:(id)event;
 
 @end
 
@@ -191,6 +192,26 @@
 
 #pragma mark -- Action
 
+- (void)onDeleteNote:(id)sender event:(id)event
+{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.noteCollectionView];
+    NSIndexPath *indexPath = [self.noteCollectionView indexPathForItemAtPoint:currentTouchPosition];
+    NoteCell* cell = (NoteCell*)[self.noteCollectionView cellForItemAtIndexPath:indexPath];
+    cell.status = NoteCellStatusNone;
+    
+    Note* note = [_notes objectAtIndex:indexPath.row];
+    
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [self resetData];
+        [self.noteCollectionView reloadData];
+        
+    };
+    
+    [NotebookDeleteNoteCommand executeWithNote:note completeHandler:handler];
+}
 
 - (void)onExportNote:(id)sender event:(id)event
 {
@@ -389,6 +410,7 @@
 {
     NoteCell* cell = (NoteCell*)[collectionView dequeueReusableCellWithReuseIdentifier:NoteCellIdentifier forIndexPath:indexPath];
     [cell.exportButton addTarget:self action:@selector(onExportNote:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.deleteButton addTarget:self action:@selector(onDeleteNote:event:) forControlEvents:UIControlEventTouchUpInside];
     
     Note* note = [_notes objectAtIndex:indexPath.row];
     if (!note.updated)

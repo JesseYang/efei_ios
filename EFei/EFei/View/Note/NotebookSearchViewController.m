@@ -7,8 +7,10 @@
 //
 
 #import "NotebookSearchViewController.h"
+#import "SearchBarView.h"
+#import "NotebookCommand.h"
 
-@interface NotebookSearchViewController()<UITableViewDataSource, UITableViewDelegate>
+@interface NotebookSearchViewController()<UITableViewDataSource, UITableViewDelegate, SearchBarViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -40,6 +42,8 @@
 - (void) setupViews
 {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.searchBarView.delegate = self;
 }
 
 
@@ -56,6 +60,21 @@
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+
+#pragma mark -- SearchBarView
+
+
+- (void) searchBarViewDidTapped:(SearchBarView*)searchBarView
+{
+    
+}
+
+- (void) searchBarVie:(SearchBarView*)searchBarView textDidChanged:(NSString*)text
+{
+    
+}
+
+#pragma mark -- TableView
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

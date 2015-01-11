@@ -91,5 +91,13 @@ static NSString* kResponseUserIdKey            = @"user_id";
     return YES;
 }
 
+- (void) sucess
+{
+    [super sucess];
+    
+    Note* note = (Note*)self.data;
+    [[EFei instance].notebook deleteNote:note];
+}
+
 @end
 

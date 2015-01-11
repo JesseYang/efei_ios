@@ -162,6 +162,10 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    if ([self.delegate respondsToSelector:@selector(searchBarVie:textDidChanged:)])
+    {
+        [self.delegate searchBarVie:self textDidChanged:textField.text];
+    }
     
 }
 

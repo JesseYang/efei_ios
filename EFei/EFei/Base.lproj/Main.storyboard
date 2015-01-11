@@ -536,7 +536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="068-at-yCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266" y="1061"/>
+            <point key="canvasLocation" x="-472" y="1543"/>
         </scene>
         <!--Notebook Export View Controller-->
         <scene sceneID="AuX-Qi-cKX">
@@ -672,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXu-DW-4zf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1139" y="1056"/>
+            <point key="canvasLocation" x="-484" y="174"/>
         </scene>
         <!--Note Topic View Controller-->
         <scene sceneID="GYq-ka-6UW">
@@ -1673,6 +1673,7 @@
                         <outlet property="summaryTextView" destination="R5f-mU-Grp" id="Esh-sV-hPJ"/>
                         <segue destination="Imo-xk-Btf" kind="show" identifier="ShowTagViewController" id="YZF-SG-MxS"/>
                         <segue destination="Vrw-6r-Eew" kind="show" identifier="ShowKnowledgeViewController" id="O9r-Jg-VxB"/>
+                        <segue destination="1GG-6u-EPW" kind="show" identifier="ShowNotebookExportViewController" id="eVa-ta-b50"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUU-fd-Zcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2657,8 +2658,9 @@
         <image name="icon_setttings_phone.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o6R-FQ-MA7"/>
         <segue reference="lJ7-wF-fmM"/>
+        <segue reference="eVa-ta-b50"/>
+        <segue reference="o6R-FQ-MA7"/>
         <segue reference="nMQ-kM-1EK"/>
         <segue reference="erv-2u-Fl5"/>
     </inferredMetricsTieBreakers>
