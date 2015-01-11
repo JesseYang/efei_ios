@@ -217,27 +217,36 @@
     NSInteger index = _attributedString.length;
     
     SDWebImageManager* manager = [SDWebImageManager sharedManager];
-    [manager downloadImageWithURL:url options:SDWebImageAllowInvalidSSLCertificates progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-        
-        NSLog(@"donwload success %d", finished);
-        
-        if (index < _attributedString.length)
-        {
+    
+    UIImage* image = [UIImage imageNamed:@"icon_question_image_placeholder.png"];
+    UIImage* cachedImage = [manager.imageCache imageFromMemoryCacheForKey:fileName];
+    if (cachedImage == nil)
+    {
+        [manager downloadImageWithURL:url options:SDWebImageAllowInvalidSSLCertificates progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
-            float scale = [UIScreen mainScreen].scale;
-            UIImage* resizedImage = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width*scale, height*scale)];
-            NSAttributedString* realStr = [self attributedStringWithImage:resizedImage];
-            [_attributedString replaceCharactersInRange:NSMakeRange(index, 1) withAttributedString:realStr];
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             
-            self.attributedText = _attributedString;
+            NSLog(@"donwload success %d", finished);
+            [manager.imageCache storeImage:image forKey:fileName];
             
-        }
-    }];
+            if (index < _attributedString.length)
+            {
+                float scale = [UIScreen mainScreen].scale;
+                UIImage* resizedImage = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width*scale, height*scale)];
+                NSAttributedString* realStr = [self attributedStringWithImage:resizedImage];
+                [_attributedString replaceCharactersInRange:NSMakeRange(index, 1) withAttributedString:realStr];
+                
+                self.attributedText = _attributedString;
+                
+            }
+        }];
+    }
+    else
+    {
+        image = cachedImage;
+    }
     
     float scale = [UIScreen mainScreen].scale;
-    UIImage* image = [UIImage imageNamed:@"icon_question_image_placeholder.png"];
     UIImage* resizedImage = [UIImage imageWithImage:image sacleToSize:CGSizeMake(width*scale, height*scale)];
     return [self attributedStringWithImage:resizedImage];
     

@@ -13,6 +13,7 @@
 {
     NSMutableDictionary* _questionDcit;
     
+    NSMutableArray* _noteList;
 }
 
 - (void) parseUrl;
@@ -40,7 +41,7 @@
     self = [super init];
     if (self)
     {
-        self.questionList = [[QuestionList alloc] init];
+        _noteList = [[NSMutableArray alloc] init];
         
         _questionDcit = [[NSMutableDictionary alloc] init];
     }
@@ -55,18 +56,18 @@
 
 - (void) addQuestionToList
 {
-    [self.questionList addQuestion:self.currentQuestion];
-    self.currentQuestion = nil;
+    [_noteList addObject:self.currentNote];
+    self.currentNote = nil;
 }
 
 - (void) discardCurrentQuestion
 {
-    self.currentQuestion = nil;
+    self.currentNote = nil;
 }
 
 - (void) discardQuestionList
 {
-    [self.questionList clearAllQuestion];
+    [_noteList removeAllObjects];
 }
 
 - (void) startGetQuestion

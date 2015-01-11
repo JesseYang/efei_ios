@@ -13,12 +13,14 @@
 #import "NotebookFilterViewController.h"
 #import "SearchBarView.h"
 #import "NotebookExportViewController.h"
+#import "QuestionViewController.h"
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
 #define ShowNotebookSearchViewControllerSegueId @"ShowNotebookSearchViewController"
 #define ShowNotebookFilterViewControllerSegueId @"ShowNotebookFilterViewController"
 #define ShowNotebookExportViewControllerSegueId @"ShowNotebookExportViewController"
+#define ShowQuestionViewControllerSegueId       @"ShowQuestionViewController"
 
 @interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate>
 {
@@ -37,6 +39,8 @@
     UIBarButtonItem* _selectRightBBI;
     
     NSArray* _exportNotes;
+    
+    Note* _selectedNote;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
@@ -355,6 +359,14 @@
         NotebookExportViewController* exportVC = (NotebookExportViewController*)segue.destinationViewController;
         exportVC.notes = _exportNotes;
     }
+    
+    if ([segue.identifier isEqualToString:ShowQuestionViewControllerSegueId])
+    {
+        _searchBarView.hidden = YES;
+        
+        QuestionViewController* questionVC = (QuestionViewController*)segue.destinationViewController;
+        questionVC.note = _selectedNote;
+    }
 }
 
 #pragma mark SearchBarView
@@ -399,6 +411,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"did select cell at index: %ld", indexPath.row);
+    _selectedNote = [_notes objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:ShowQuestionViewControllerSegueId sender:self];
+    
     return;
 }
 

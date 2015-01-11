@@ -10,6 +10,7 @@
 #import <ZXingObjC.h>
 #import "NotebookCommand.h"
 #import "GetQuestionController.h"
+#import "QuestionViewController.h"
 
 #define ShowResultSegueId @"ShowQuestionViewController"
 
@@ -234,7 +235,7 @@ typedef enum : NSUInteger {
 
 - (IBAction)onMultipleScanOK:(id)sender
 {
-    NSArray* questions = [GetQuestionController instance].questionList.questions;
+    NSArray* questions = [GetQuestionController instance].noteList;
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
         [self.navigationController popViewControllerAnimated:YES];
@@ -282,7 +283,7 @@ typedef enum : NSUInteger {
 
 - (void) updateMultipleScanView
 {
-    NSInteger count = [GetQuestionController instance].questionList.questions.count;
+    NSInteger count = [GetQuestionController instance].noteList.count;
     self.multipleScanLabel.text = [NSString stringWithFormat:@"已扫描 %ld 道题目", count];
 }
 
@@ -389,7 +390,8 @@ typedef enum : NSUInteger {
 {
     if ([segue.identifier isEqualToString:ShowResultSegueId])
     {
-        
+        QuestionViewController* questionVC = (QuestionViewController*)segue.destinationViewController;
+        questionVC.note = [GetQuestionController instance].currentNote;
     }
 }
 
