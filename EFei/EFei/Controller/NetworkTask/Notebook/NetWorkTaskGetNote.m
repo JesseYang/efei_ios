@@ -93,6 +93,8 @@ static NSString* kResponseUserIdKey            = @"user_id";
     note.tag = [noteDict objectForKey:kResponseTagKey];
     note.tagsetString = [noteDict objectForKey:kResponseTagSetKey];
     note.topicString = [noteDict objectForKey:kResponseTopicStrKey];
+    note.createTime = [noteDict objectForKey:kResponseCreatedAtKey];
+    note.lastUpdateTime = [noteDict objectForKey:kResponseUpdatedAtKey];
     
     note.updated = YES;
     

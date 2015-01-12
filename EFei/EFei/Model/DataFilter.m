@@ -30,6 +30,14 @@
 
 @end
 
+@interface TimeDataFilter()
+{
+    NSDateFormatter* _formatter;
+    NSTimeInterval   _timeInterval;
+}
+
+@end
+
 
 @implementation TimeDataFilter
 
@@ -45,14 +53,60 @@
                       @"全部时间",nil];
         
         self.name = @"时间筛选";
+        
+        _formatter = [[NSDateFormatter alloc] init];
+        [_formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
     }
     
     return self;
 }
 
+- (void) setSelectedIndex:(NSInteger)selectedIndex
+{
+    [super setSelectedIndex:selectedIndex];
+    
+    switch (self.selectedIndex)
+    {
+        case 0:
+            _timeInterval = 3600 * 24 * 7;
+            break;
+            
+        case 1:
+            _timeInterval = 3600 * 24 * 30;
+            break;
+            
+        case 2:
+            _timeInterval = 3600 * 24 * 90;
+            break;
+            
+        case 3:
+            _timeInterval = 3600 * 24 * 180;
+            break;
+            
+            
+        default:
+            _timeInterval = 0;
+            break;
+    }
+}
+
 - (BOOL) filterData:(id)data
 {
-    return YES;
+    if (self.selectedIndex < 0 || self.selectedIndex == 4)
+    {
+        return YES;
+    }
+    
+    if (![data isKindOfClass:[Note class]])
+    {
+        return NO;
+    }
+    
+    Note* note = (Note*)data;
+    NSDate* date = [_formatter dateFromString:note.createTime];
+    NSTimeInterval interval = [date timeIntervalSinceNow] * (-1);
+    NSLog(@"Time interval: %@   ---  %f", note.createTime, interval);
+    return interval <= _timeInterval;
 }
 
 @end
@@ -77,7 +131,19 @@
 
 - (BOOL) filterData:(id)data
 {
-    return YES;
+    if (self.selectedIndex < 0 || self.selectedIndex == 4)
+    {
+        return YES;
+    }
+    
+    if (![data isKindOfClass:[Note class]])
+    {
+        return NO;
+    }
+    
+    Note* note = (Note*)data;
+    NSString* tag = [self.items objectAtIndex:self.selectedIndex];
+    return [tag isEqualToString:note.tag];
 }
 
 @end
@@ -96,14 +162,78 @@
                       @"语言",
                       @"英语",nil];
         self.name = @"科目筛选";
+        
+        self.subjectType = SubjectTypeAll;
     }
     
     return self;
 }
 
+/*
+ SubjectTypeChinese      = 1,
+ SubjectTypeMathematics  = 2,
+ SubjectTypeEnglish      = 4,
+ SubjectTypePhysics      = 8,
+ SubjectTypeChemistry    = 16,
+ SubjectTypeBiology      = 32,
+ SubjectTypeHistroy      = 64,
+ SubjectTypeGeography    = 128,
+ SubjectTypePolitics     = 256,
+ SubjectTypeOther        = 512,
+ SubjectTypeAll          = 1024,
+ 
+ */
+
+- (void) setSelectedIndex:(NSInteger)selectedIndex
+{
+    [super setSelectedIndex:selectedIndex];
+    
+    switch (self.selectedIndex)
+    {
+        case 0:
+            self.subjectType = SubjectTypeMathematics;
+            break;
+            
+        case 1:
+            self.subjectType = SubjectTypePhysics;
+            break;
+            
+        case 2:
+            self.subjectType = SubjectTypeChemistry;
+            break;
+            
+        case 3:
+            self.subjectType = SubjectTypeBiology;
+            break;
+            
+        case 4:
+            self.subjectType = SubjectTypeChinese;
+            break;
+            
+        case 5:
+            self.subjectType = SubjectTypeEnglish;
+            break;
+            
+        default:
+            self.subjectType = SubjectTypeAll;
+            break;
+    }
+}
+
 - (BOOL) filterData:(id)data
 {
-    return YES;
+    if (self.subjectType == SubjectTypeAll)
+    {
+        return YES;
+    }
+    
+    if (![data isKindOfClass:[Note class]])
+    {
+        return NO;
+    }
+    
+    Note* note = (Note*)data;
+    return note.subjectType == self.subjectType;
 }
 
 @end

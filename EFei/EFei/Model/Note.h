@@ -11,6 +11,8 @@
 @interface Note : Question
 
 @property (nonatomic, copy) NSString* noteId;
+@property (nonatomic, copy) NSString* createTime;
+@property (nonatomic, copy) NSString* lastUpdateTime;
 @property (nonatomic, assign) NSInteger updateTime;
 @property (nonatomic, assign) BOOL updated;
 @property (nonatomic, copy) NSString* summary;

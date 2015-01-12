@@ -136,7 +136,7 @@
 
 - (void) resetData
 {
-    _notes = [EFei instance].notebook.notes;
+    _notes = [EFei instance].notebook.filetedNotes;
     [self.noteCollectionView reloadData];
 }
 
@@ -369,6 +369,9 @@
         filterVC.filter = [[EFei instance].notebook fileterWithType:_filterType];
         
         filterVC.doneBlock = ^(DataFilter* filter){
+            
+            [self resetData];
+            [self.noteCollectionView reloadData];
             
         };
     }
