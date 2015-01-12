@@ -13,6 +13,7 @@
 @interface NoteBook : NSObject
 
 @property (nonatomic, readonly) NSArray* notes;
+@property (nonatomic, readonly) NSArray* filetedNotes;
 
 - (void) addNote:(Note*)note;
 - (void) deleteNote:(Note*)note;

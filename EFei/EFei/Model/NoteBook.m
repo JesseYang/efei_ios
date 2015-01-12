@@ -31,6 +31,31 @@
     return self;
 }
 
+- (NSArray*)filetedNotes
+{
+    NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:self.notes.count];
+    for (Note* note in self.notes)
+    {
+        BOOL pass = YES;
+        for (DataFilter* filter in _filters.allValues)
+        {
+            pass = [filter filterData:note];
+            
+            if (!pass)
+            {
+                break;
+            }
+        }
+        
+        if (pass)
+        {
+            [array addObject:note];
+        }
+    }
+    
+    return array;
+}
+
 - (void) addNote:(Note*)note
 {
     [_notes addObject:note];

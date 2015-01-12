@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Topics.h"
 
 typedef enum : NSUInteger {
     DataFilterTypeTime,
@@ -36,5 +37,7 @@ typedef enum : NSUInteger {
 
 
 @interface SubjectDataFilter : DataFilter
+
+@property (nonatomic, assign) SubjectType subjectType;
 
 @end

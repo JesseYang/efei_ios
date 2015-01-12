@@ -7,7 +7,7 @@
 //
 
 #import "NotebookFilterViewController.h"
-
+#import "EFei.h"
 
 @implementation NotebookFilterViewController
 
@@ -34,6 +34,7 @@
 - (void) setupViews
 {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 
 
@@ -60,6 +61,14 @@
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FilterTableViewCell" forIndexPath:indexPath];
     cell.textLabel.text = [self.filter.items objectAtIndex:indexPath.row];
+    UIView* view = [[UIView alloc] initWithFrame:cell.bounds];
+    view.backgroundColor = [EFei instance].efeiColor;
+    cell.selectedBackgroundView = view;
+    
+    if (indexPath.row == self.filter.selectedIndex)
+    {
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
     
     return cell;
 }

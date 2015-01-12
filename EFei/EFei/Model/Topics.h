@@ -20,6 +20,7 @@ typedef enum : NSUInteger
     SubjectTypeGeography    = 128,
     SubjectTypePolitics     = 256,
     SubjectTypeOther        = 512,
+    SubjectTypeAll          = 1024,
 } SubjectType;
 
 @interface Topic : NSObject
