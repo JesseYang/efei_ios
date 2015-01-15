@@ -90,7 +90,9 @@
 {
     TeacherTableViewCell* cell = (TeacherTableViewCell*)[tableView dequeueReusableCellWithIdentifier:TeacherTableViewCellId forIndexPath:indexPath];
     Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
-    cell.textLabel.text = teacher.name;
+    cell.subjectLabel.text = teacher.subjectName;
+    cell.schoolLabel.text = teacher.school;
+    cell.nameLabel.text = teacher.name;
     
     return cell;
 }
@@ -120,8 +122,18 @@
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         // Delete the row from the data source
+        Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            if(success)
+            {
+                [self setupData];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+            }
+            
+        };
+        [RemoveTeacherCommand executeWithTeacher:teacher completeHandler:handler];
         
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
         
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert)

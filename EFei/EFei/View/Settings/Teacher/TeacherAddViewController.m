@@ -9,6 +9,7 @@
 #import "TeacherAddViewController.h"
 #import "EFei.h"
 #import "SearchTeacherController.h"
+#import "UserCommand.h"
 
 @interface TeacherAddViewController()
 {
@@ -50,12 +51,18 @@
     self.addButton.backgroundColor = [EFei instance].efeiColor;
     
     Teacher* teacher = [SearchTeacherController instance].teacherToAdd;
-    self.teacherLabel.text = [NSString stringWithFormat:@"%@  %@  %@", teacher.school, teacher.subject, teacher.name];
+    self.teacherLabel.text = [NSString stringWithFormat:@"%@  %@  %@", teacher.school, teacher.subjectName, teacher.name];
 }
 
 - (IBAction)onAddTeacher:(id)sender
 {
-    
+    Teacher* teacher = [SearchTeacherController instance].teacherToAdd;
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    };
+    [AddTeacherCommand executeWithTeacher:teacher completeHandler:handler];
 }
 
 @end

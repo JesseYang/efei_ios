@@ -42,16 +42,28 @@
     [_teachers addObject:teacher];
 }
 
-- (void) deleteTeacherWithId:(NSInteger)teacherId
+- (void) deleteTeacher:(Teacher *)teacher
 {
-    
+    [_teachers removeObject:teacher];
 }
 
-- (Teacher*) teacherWithId:(NSInteger)teacherId
+- (void) deleteTeacherWithId:(NSString*)teacherId
 {
     for (Teacher* t in _teachers)
     {
-        if (t.teacherId == teacherId)
+        if ([t.teacherId isEqualToString:teacherId])
+        {
+            [_teachers removeObject:t];
+            break;
+        }
+    }
+}
+
+- (Teacher*) teacherWithId:(NSString*)teacherId
+{
+    for (Teacher* t in _teachers)
+    {
+        if ([t.teacherId isEqualToString:teacherId])
         {
             return t;
         }

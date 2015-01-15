@@ -68,6 +68,7 @@
 		FC66F4691A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4681A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m */; };
 		FC66F46C1A61B326008E93D7 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F46B1A61B326008E93D7 /* PopupMenu.m */; };
 		FC66F46F1A6222A8008E93D7 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F46E1A6222A8008E93D7 /* UIPlaceHolderTextView.m */; };
+		FC761D8E1A65EF7800F11103 /* SubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC761D8D1A65EF7800F11103 /* SubjectViewController.m */; };
 		FCA096741A5911CE00D0520A /* DataFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA096731A5911CE00D0520A /* DataFilter.m */; };
 		FCA096771A591EB800D0520A /* NotebookFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA096761A591EB800D0520A /* NotebookFilterViewController.m */; };
 		FCA096791A5927B800D0520A /* icon_logo_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA096781A5927B800D0520A /* icon_logo_big@2x.png */; };
@@ -303,6 +304,8 @@
 		FC66F46B1A61B326008E93D7 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupMenu.m; sourceTree = "<group>"; };
 		FC66F46D1A6222A8008E93D7 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		FC66F46E1A6222A8008E93D7 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
+		FC761D8C1A65EF7800F11103 /* SubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectViewController.h; sourceTree = "<group>"; };
+		FC761D8D1A65EF7800F11103 /* SubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectViewController.m; sourceTree = "<group>"; };
 		FCA096721A5911CE00D0520A /* DataFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFilter.h; sourceTree = "<group>"; };
 		FCA096731A5911CE00D0520A /* DataFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFilter.m; sourceTree = "<group>"; };
 		FCA096751A591EB800D0520A /* NotebookFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookFilterViewController.h; sourceTree = "<group>"; };
@@ -640,6 +643,8 @@
 				FC66F4411A5F9C4E008E93D7 /* TeacherTableViewCell.m */,
 				FC66F4431A5F9C5C008E93D7 /* TeacherAddTableViewCell.h */,
 				FC66F4441A5F9C5C008E93D7 /* TeacherAddTableViewCell.m */,
+				FC761D8C1A65EF7800F11103 /* SubjectViewController.h */,
+				FC761D8D1A65EF7800F11103 /* SubjectViewController.m */,
 			);
 			path = Teacher;
 			sourceTree = "<group>";
@@ -1218,6 +1223,7 @@
 				FCA096741A5911CE00D0520A /* DataFilter.m in Sources */,
 				FC4311F71A1F60CC0020EA31 /* NetWorkTaskRename.m in Sources */,
 				FC3808ED1A1C60B8007A73E4 /* NetWorkTask.m in Sources */,
+				FC761D8E1A65EF7800F11103 /* SubjectViewController.m in Sources */,
 				FC66F4421A5F9C4E008E93D7 /* TeacherTableViewCell.m in Sources */,
 				FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */,
 				FC4312031A1F62100020EA31 /* NetWorkTaskVerifyMobile.m in Sources */,
@@ -1408,7 +1414,7 @@
 				INFOPLIST_FILE = EFei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8ecc19b-799c-4799-ad11-73260bbcb630";
+				PROVISIONING_PROFILE = "fc8aa7c3-1bbb-43bb-98e0-bc174eb3fb23";
 			};
 			name = Debug;
 		};
@@ -1423,7 +1429,7 @@
 				INFOPLIST_FILE = EFei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8ecc19b-799c-4799-ad11-73260bbcb630";
+				PROVISIONING_PROFILE = "fc8aa7c3-1bbb-43bb-98e0-bc174eb3fb23";
 			};
 			name = Release;
 		};

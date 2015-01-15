@@ -28,19 +28,19 @@ static NSString* kReqeustClassIdKey           = @"class_id";
     {
         self.taskType = NetWorkTaskTypeAddTeacher;
         self.httpMethod = HttpMethodPost;
-        self.path = @"student/students/teachers";
+        self.path = @"student/teachers";
     }
     return self;
 }
 
 - (void) prepareParameter
 {
-    AddRemoveTeacherInfo* info = (AddRemoveTeacherInfo*)self.data;
+    Teacher* teacher = (Teacher*)self.data;
     
-    [self.parameterDict setValue:[NSNumber numberWithInteger:info.teacherId] forKey:kReqeustTeacherIdKey];
-    if (info.classId > 0)
+    [self.parameterDict setValue:teacher.teacherId forKey:kReqeustTeacherIdKey];
+    if (teacher.classId > 0)
     {
-        [self.parameterDict setValue:[NSNumber numberWithInteger:info.classId] forKey:kReqeustTeacherIdKey];
+        [self.parameterDict setValue:[NSNumber numberWithInteger:teacher.classId] forKey:kReqeustTeacherIdKey];
     }
 }
 
@@ -49,6 +49,14 @@ static NSString* kReqeustClassIdKey           = @"class_id";
 {
     
     return YES;
+}
+
+- (void) sucess
+{
+    [super sucess];
+    
+    Teacher* teacher = (Teacher*)self.data;
+    [[EFei instance].user addTeacher:teacher];
 }
 
 

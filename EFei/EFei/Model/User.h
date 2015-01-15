@@ -20,7 +20,8 @@
 
 - (void) clearTeacherList;
 - (void) addTeacher:(Teacher*)teacher;
-- (void) deleteTeacherWithId:(NSInteger)teacherId;
-- (Teacher*) teacherWithId:(NSInteger)teacherId;
+- (void) deleteTeacher:(Teacher*)teacher;
+- (void) deleteTeacherWithId:(NSString*)teacherId;
+- (Teacher*) teacherWithId:(NSString*)teacherId;
 
 @end

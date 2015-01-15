@@ -32,6 +32,7 @@ typedef enum : NSUInteger
 
 @interface Subject : NSObject
 
+@property (nonatomic, copy) NSString* name;
 @property (nonatomic, readonly) NSArray* topics;
 
 - (void) clearAllTopics;
@@ -45,6 +46,7 @@ typedef enum : NSUInteger
 @property (nonatomic, readonly) NSArray* subjects;
 
 - (Subject*) subjectWithType:(SubjectType)type;
+- (NSString*) subjectNameWithType:(SubjectType)type;
 
 @end
 

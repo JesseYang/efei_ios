@@ -45,6 +45,7 @@
     
     
     NSArray* imageArray = @[@"icon_main_scan", @"icon_main_notebook", @"icon_main_settings"];
+    NSArray* tabTitle = @[@"扫码", @"错题本", @"设置"];
     
     for (int i=0; i<imageArray.count; i++)
     {
@@ -55,7 +56,8 @@
         
         tab.image = [[UIImage imageNamed:offImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
         tab.selectedImage = [[UIImage imageNamed:onImage] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-        
+     
+        tab.title = [tabTitle objectAtIndex:i];
     }
     
     [[UINavigationBar appearance] setBarTintColor:efeiColor];

@@ -78,9 +78,9 @@ static NSString* kResponseAvatarKey       = @"avatar";
     
     for (NSDictionary* teacherDict in teachers)
     {
-        NSInteger teacherId = [[teacherDict objectForKey:kResponseIdKey] integerValue];
+        NSString* teacherId = [teacherDict objectForKey:kResponseIdKey];
         NSString* name = [teacherDict objectForKey:kResponseNameKey];
-        NSString* subject = [teacherDict objectForKey:kResponseSubjectKey];
+        SubjectType subject = [[teacherDict objectForKey:kResponseSubjectKey] integerValue];
         NSString* school = [teacherDict objectForKey:kResponseSchoolKey];
         NSString* desc = [teacherDict objectForKey:kResponseDescKey];
         NSString* avatar = [teacherDict objectForKey:kResponseAvatarKey];
