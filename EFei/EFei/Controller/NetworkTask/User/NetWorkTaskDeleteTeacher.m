@@ -27,15 +27,15 @@ static NSString* kReqeustTeacherIdKey           = @"teacher_id";
     {
         self.taskType = NetWorkTaskTypeDeleteTeacher;
         self.httpMethod = HttpMethodDelete;
-        self.path = @"student/students/teachers";
+        self.path = @"student/teachers";
     }
     return self;
 }
 
 - (void) prepareParameter
 {
-    AddRemoveTeacherInfo* info = (AddRemoveTeacherInfo*)self.data;
-    self.path = [NSString stringWithFormat:@"%@/%ld", self.path, info.teacherId];
+    Teacher* teacher = (Teacher*)self.data;
+    self.path = [NSString stringWithFormat:@"%@/%@", self.path, teacher.teacherId];
 }
 
 
@@ -44,6 +44,14 @@ static NSString* kReqeustTeacherIdKey           = @"teacher_id";
     return YES;
 }
 
+
+- (void) sucess
+{
+    [super sucess];
+    
+    Teacher* teacher = (Teacher*)self.data;
+    [[EFei instance].user deleteTeacher:teacher];
+}
 
 @end
 

@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
 
 - (IBAction)onSignIn:(id)sender;
 
@@ -42,12 +43,22 @@
 - (void) setupNavigator
 {
     self.navigationItem.title = @"登陆";
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+                                initWithTitle:@"返回"
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:nil];
+    self.navigationItem.backBarButtonItem=btnBack;
 }
 
 - (void) setupViews
 {
     self.usernameTextField.text = [EFei instance].account.username;
     self.passwordTextField.text = [EFei instance].account.password;
+    
+    self.signInButton.layer.cornerRadius = 5;
 }
 
 

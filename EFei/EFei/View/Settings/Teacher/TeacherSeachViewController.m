@@ -12,16 +12,20 @@
 #import "SearchTeacherController.h"
 #import "SearchBarView.h"
 #import "UserCommand.h"
+#import "SubjectViewController.h"
 
 #define TeacherAddTableViewCellId @"TeacherAddTableViewCellId"
 
 #define ShowTeacherAddViewControllerSegueId @"ShowTeacherAddViewController"
+#define ShowSubjectViewControllerSegueId @"ShowSubjectViewController"
 
 @interface TeacherSeachViewController()<SearchBarViewDelegate>
 {
     SearchBarView* _searchBarView;
     
     NSArray* _teachers;
+    
+    SubjectType _currentSubjectType;
 }
 
 - (void) onBack:(id)sender;
@@ -39,11 +43,14 @@
     [self setupData];
     [self setupNavigator];
     [self setupViews];
+    [self updateRightBarButtonItem];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    _searchBarView.hidden = NO;
 }
 
 
@@ -96,6 +103,13 @@
 - (void) setupData
 {
     _teachers = [SearchTeacherController instance].searchedTeachers;
+    _currentSubjectType = SubjectTypeAll;
+}
+
+- (void) updateRightBarButtonItem
+{
+    NSString* title = [[EFei instance].subjectManager subjectNameWithType:_currentSubjectType];
+    self.navigationItem.rightBarButtonItem.title = title;
 }
 
 -(void)viewDidLayoutSubviews
@@ -131,6 +145,25 @@
     [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
 }
 
+#pragma mark -- Navigation
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    _searchBarView.hidden = YES;
+    
+    if ([segue.identifier isEqualToString:ShowSubjectViewControllerSegueId])
+    {
+        SubjectViewController* subjectVC = (SubjectViewController*)segue.destinationViewController;
+        subjectVC.subjectType = _currentSubjectType;
+        subjectVC.doneBlock = ^(SubjectType type){
+            
+            _currentSubjectType = type;
+            [self updateRightBarButtonItem];
+            
+        };
+    }
+}
+
+
 #pragma mark -- SearchBarViewDelegate
 - (void) searchBarVie:(SearchBarView *)searchBarView textDidChanged:(NSString *)text
 {
@@ -142,7 +175,7 @@
         
     };
     
-    [GetTeachersCommand executeWithSubject:0 name:text completeHandler:handler];
+    [GetTeachersCommand executeWithSubject:_currentSubjectType name:text completeHandler:handler];
 }
 
 - (void) searchBarViewDidTapped:(SearchBarView *)searchBarView
@@ -164,7 +197,9 @@
     [cell.addButton addTarget:self action:@selector(onAddTeacher:event:) forControlEvents:UIControlEventTouchUpInside];
     
     Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
-    cell.textLabel.text = teacher.name;
+    cell.subjectLabel.text = teacher.subjectName;
+    cell.schoolLabel.text = teacher.school;
+    cell.nameLabel.text = teacher.name;
     
     return cell;
 }

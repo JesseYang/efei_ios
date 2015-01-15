@@ -77,7 +77,7 @@
         self.emailLabel.hidden = NO;
         self.emailLabel.text = [ResetPasswordController instance].email;
         
-        self.rightBBI.title = @"登陆";
+        self.rightBBI.title = @"登录";
     }
     else
     {
@@ -87,6 +87,8 @@
         
         self.rightBBI.title = @"下一步";
     }
+    
+    self.sendCodeButton.layer.cornerRadius = 5;
 }
 
 - (IBAction)onSignin:(id)sender

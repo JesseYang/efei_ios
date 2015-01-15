@@ -46,3 +46,28 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+@implementation AddTeacherCommand
+
++ (void) executeWithTeacher:(Teacher *)teacher completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeAddTeacher
+                                    withData:teacher
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation RemoveTeacherCommand
+
++ (void) executeWithTeacher:(Teacher *)teacher completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeDeleteTeacher
+                                    withData:teacher
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+

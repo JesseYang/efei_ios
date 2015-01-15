@@ -7,12 +7,13 @@
 //
 
 #import "Teacher.h"
+#import "EFei.h"
 
 @implementation Teacher
 
-- (id) initWithId:(NSInteger)teacherId
+- (id) initWithId:(NSString*)teacherId
              name:(NSString*)name
-          subject:(NSString*)subject
+          subject:(SubjectType)subject
            school:(NSString*)school
       description:(NSString*)desc
            avatar:(NSString*)avatar
@@ -22,10 +23,12 @@
     {
         self.teacherId = teacherId;
         self.name = name;
-        self.subject = subject;
+        self.subjectType = subject;
         self.school = school;
         self.desc = desc;
         self.avatar = avatar;
+        
+        self.subjectName = [[EFei instance].subjectManager subjectNameWithType:self.subjectType];
     }
     return self;
 }
