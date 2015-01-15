@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+
 - (IBAction)onSignUp:(id)sender;
 - (IBAction)onCancel:(id)sender;
 
@@ -44,11 +46,19 @@
 - (void) setupNavigator
 {
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.title = @"找回密码";
+    self.navigationItem.title = @"注册";
+    
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+                                initWithTitle:@"直接登录"
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:@selector(onCancel:)];
+    self.navigationItem.rightBarButtonItem=btnBack;
 }
 
 - (void) setupViews
 {
+    self.signUpButton.layer.cornerRadius = 5;
 }
 
 - (IBAction)onSignUp:(id)sender
@@ -72,9 +82,8 @@
 
 - (IBAction)onCancel:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
