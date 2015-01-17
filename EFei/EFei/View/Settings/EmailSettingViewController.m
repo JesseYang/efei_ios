@@ -33,7 +33,7 @@
 {
     self.navigationItem.title = @"邮箱设置";
     
-    self.emailLabel.text = [NSString stringWithFormat:@"Email: %@", [EFei instance].user.email];
+    self.emailLabel.text = [NSString stringWithFormat:@"您当前绑定的邮箱为: %@", [EFei instance].user.email];
 }
 
 
