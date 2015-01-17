@@ -51,7 +51,7 @@
 
 - (void) setTopics:(NSArray *)topics
 {
-    _topics = topics;
+    _topics = [NSArray arrayWithArray:topics];
     
     NSMutableString* res = [[NSMutableString alloc] init];
     

@@ -67,6 +67,9 @@
     
     _titleLabel.text = @"请选择一个您想添加的标签";
     
+    UIView* view = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = view;
+    
 }
 
 - (void) onDone:(id)sender
@@ -102,15 +105,23 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"TagTableViewCell" forIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageNamed:@"icon_question_tag.jpg"];
+    cell.imageView.image = [UIImage imageNamed:@"icon_question_tag.png"];
     cell.textLabel.text = [_tagTitles objectAtIndex:indexPath.row];
     
+    UIImageView* imageView = nil;
     if (cell.accessoryView == nil)
     {
-        UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        imageView.image = nil;
-        imageView.highlightedImage = [UIImage imageNamed:@"icon_question_tag_selected.jpg"];
+        imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
         cell.accessoryView = imageView;
+    }
+    imageView = (UIImageView*)cell.accessoryView;
+    if (indexPath.row == _selectedTagIndex)
+    {
+        imageView.image = [UIImage imageNamed:@"icon_question_tag_select.png"];
+    }
+    else
+    {
+        imageView.image = nil;
     }
     
     return cell;
@@ -132,34 +143,9 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_selectedTagIndex >= 0)
-    {
-        NSIndexPath *preIndexPath = [NSIndexPath indexPathForRow:_selectedTagIndex inSection:0];
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:preIndexPath];
-        UIImageView* imageView = (UIImageView*)cell.accessoryView;
-        
-        imageView.highlighted = NO;
-    }
-    
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIImageView* imageView = (UIImageView*)cell.accessoryView;
-    
-    imageView.highlighted = !imageView.highlighted;
-    
-    _selectedTagIndex = imageView.highlighted ? indexPath.row : -1;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    _selectedTagIndex = indexPath.row;
+    [tableView reloadData];
 }
-
-//- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    return @"Select a tag";
-//}
-//
-//- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-//{
-//    UITableViewHeaderFooterView *v = (UITableViewHeaderFooterView *)view;
-//    v.textLabel.font = [UIFont systemFontOfSize:15];
-//    v.textLabel.textAlignment = NSTextAlignmentCenter;
-//    v.backgroundView.backgroundColor = [UIColor whiteColor];
-//}
 
 @end

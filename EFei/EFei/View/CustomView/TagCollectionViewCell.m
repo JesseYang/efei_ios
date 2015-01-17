@@ -75,7 +75,7 @@
     [self addSubview:_contentLabel];
     
     _deleteButton = [UIButton new];
-    [_deleteButton setImage:[UIImage imageNamed:@"icon_knowledge_tag_delete.jpg"] forState:UIControlStateNormal];
+    [_deleteButton setImage:[UIImage imageNamed:@"icon_question_topic_delete.png"] forState:UIControlStateNormal];
     _deleteButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_deleteButton];
     
