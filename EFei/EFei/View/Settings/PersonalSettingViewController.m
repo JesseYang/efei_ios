@@ -10,7 +10,7 @@
 #import "EFei.h"
 #import "PersonalSettingController.h"
 
-#define NavigationBarTilte @"设置"
+#define NavigationBarTilte @"个人设置"
 
 #define PersonalSettingsImage @"icon_settings_personal.jpg"
 #define RightArrowImage @"line_icon_arrow.png"
@@ -58,6 +58,7 @@
 {
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = NavigationBarTilte;
+    
 }
 
 - (void) setupData
