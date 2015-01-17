@@ -49,6 +49,11 @@
 @property (weak, nonatomic) IBOutlet UIView *filtersView;
 @property (weak, nonatomic) IBOutlet UIButton *selectAllButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *subjectFilterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeFilterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagFilterLabel;
+
+
 - (IBAction)onSelectAll:(UIButton *)sender;
 
 - (IBAction)onYiFei:(id)sender;
@@ -61,6 +66,9 @@
 - (void) onExportAll:(id)sender;
 - (void) onExportNote:(id)sender event:(id)event;
 - (void) onDeleteNote:(id)sender event:(id)event;
+
+
+- (void) updateFilterLabel;
 
 @end
 
@@ -356,6 +364,28 @@
     [self performSegueWithIdentifier:ShowNotebookFilterViewControllerSegueId sender:self];
 }
 
+- (void) updateFilterLabel
+{
+    DataFilter* filter = [[EFei instance].notebook fileterWithType:_filterType];
+    NSString* text = filter.selectedName;
+    switch (_filterType)
+    {
+        case DataFilterTypeSubject:
+            self.subjectFilterLabel.text = text;
+            break;
+            
+        case DataFilterTypeTime:
+            self.timeFilterLabel.text = text;
+            break;
+            
+        case DataFilterTypeTag:
+            self.tagFilterLabel.text = text;
+            break;
+        default:
+            break;
+    }
+}
+
 
 #pragma mark -- Navigation
 
@@ -370,6 +400,7 @@
         
         filterVC.doneBlock = ^(DataFilter* filter){
             
+            [self updateFilterLabel];
             [self resetData];
             [self.noteCollectionView reloadData];
             
