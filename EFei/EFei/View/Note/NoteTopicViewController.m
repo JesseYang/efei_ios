@@ -71,6 +71,10 @@
     self.searchView.delegate = self;
     self.searchView.dataSource = self;
     
+    for (NSString* t in self.note.topics)
+    {
+        [self.tagCollectionView addTitle:t];
+    }
 }
 
 - (void) onDone:(id)sender

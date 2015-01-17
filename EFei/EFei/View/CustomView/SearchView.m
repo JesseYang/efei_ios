@@ -119,7 +119,7 @@
     _searchBar.translatesAutoresizingMaskIntoConstraints = NO;
     
     
-    UIImageView* iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_knowledge_tag_add.png"]];
+    UIImageView* iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_question_topic_edit.png"]];
     iconView.translatesAutoresizingMaskIntoConstraints = NO;
     [_searchBar addSubview:iconView];
     
@@ -142,12 +142,12 @@
                                       @"textField":_textField,
                                       @"addButton":addButton
                                       };
-    NSArray *iconConstraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[iconView(30)]"
+    NSArray *iconConstraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[iconView(22)]"
                                                                    options:0
                                                                    metrics:nil
                                                                      views:viewsDictionary];
     
-    NSArray *iconConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[iconView(30)]"
+    NSArray *iconConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[iconView(22)]"
                                                                    options:0
                                                                    metrics:nil
                                                                      views:viewsDictionary];
@@ -182,7 +182,7 @@
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
-    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[iconView]"
+    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16-[iconView]"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:viewsDictionary];

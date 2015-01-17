@@ -121,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="QR Scan" image="icon_notebook_scan_on.png" id="1pd-Zu-cVE"/>
+                    <tabBarItem key="tabBarItem" title="QR Scan" id="1pd-Zu-cVE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIn-QD-QXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -751,8 +751,18 @@
                                     <constraint firstAttribute="height" constant="150" placeholder="YES" id="Tpb-4w-b58"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    已添加的知识点:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nki-L5-Vke">
+                                <rect key="frame" x="0.0" y="173" width="600" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="gXq-az-goN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v1S-LS-6Yb" customClass="TagCollectionView">
-                                <rect key="frame" x="0.0" y="182" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="194" width="600" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="g4Y-vS-DDb"/>
@@ -761,7 +771,7 @@
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCollectionViewCell" id="R8M-vg-giX" customClass="TagCollectionViewCell">
@@ -778,12 +788,15 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="width" secondItem="Nki-L5-Vke" secondAttribute="width" id="7X6-6N-coP"/>
                             <constraint firstItem="8me-Q1-zWQ" firstAttribute="top" secondItem="oLm-PV-Kpk" secondAttribute="bottom" placeholder="YES" id="NV3-jX-uzr"/>
                             <constraint firstAttribute="width" secondItem="oLm-PV-Kpk" secondAttribute="width" id="ToA-dR-0dO"/>
                             <constraint firstItem="v1S-LS-6Yb" firstAttribute="leading" secondItem="1jp-tx-0fK" secondAttribute="leadingMargin" constant="-16" id="U7r-U0-rsw"/>
-                            <constraint firstItem="v1S-LS-6Yb" firstAttribute="top" secondItem="xNB-9R-I0N" secondAttribute="bottom" constant="118" id="b6C-8I-Vf0"/>
+                            <constraint firstItem="Nki-L5-Vke" firstAttribute="leading" secondItem="1jp-tx-0fK" secondAttribute="leadingMargin" constant="-16" id="WX6-yk-HG2"/>
+                            <constraint firstItem="v1S-LS-6Yb" firstAttribute="top" secondItem="xNB-9R-I0N" secondAttribute="bottom" constant="130" id="b6C-8I-Vf0"/>
                             <constraint firstItem="oLm-PV-Kpk" firstAttribute="leading" secondItem="1jp-tx-0fK" secondAttribute="leadingMargin" constant="-16" id="j1i-pV-6n0"/>
                             <constraint firstAttribute="width" secondItem="v1S-LS-6Yb" secondAttribute="width" id="j2N-1E-ag0"/>
+                            <constraint firstItem="Nki-L5-Vke" firstAttribute="top" secondItem="xNB-9R-I0N" secondAttribute="bottom" constant="109" id="xkQ-VD-d17"/>
                             <constraint firstItem="oLm-PV-Kpk" firstAttribute="top" secondItem="xNB-9R-I0N" secondAttribute="bottom" constant="16" id="zkI-57-b3H"/>
                         </constraints>
                         <variation key="default">
@@ -2747,7 +2760,6 @@
         <image name="icon_account_password.png" width="26" height="26"/>
         <image name="icon_notebook_delete.png" width="20" height="21"/>
         <image name="icon_notebook_export.png" width="21" height="20"/>
-        <image name="icon_notebook_scan_on.png" width="17" height="17"/>
         <image name="icon_notebook_select.png" width="14" height="14"/>
         <image name="icon_notebook_select_all.png" width="14" height="13"/>
         <image name="icon_notebook_tag.png" width="21" height="18"/>
