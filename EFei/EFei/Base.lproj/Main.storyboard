@@ -204,9 +204,9 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_notebook_tag.png" translatesAutoresizingMaskIntoConstraints="NO" id="hpa-CK-oBu">
                                                 <rect key="frame" x="20" y="13" width="24" height="24"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="全科" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIQ-6w-ZaS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="全科" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DIQ-6w-ZaS">
                                                 <rect key="frame" x="63" y="15" width="75" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -231,9 +231,9 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_notebook_time.png" translatesAutoresizingMaskIntoConstraints="NO" id="i6z-uW-dKD">
                                                 <rect key="frame" x="20" y="13" width="24" height="24"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最近" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDd-0j-De3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最近" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jDd-0j-De3">
                                                 <rect key="frame" x="63" y="15" width="75" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -264,9 +264,9 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_notebook_topic.png" translatesAutoresizingMaskIntoConstraints="NO" id="616-bV-ifb">
                                                 <rect key="frame" x="20" y="13" width="24" height="24"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标签" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnS-T0-qrk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标签" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tnS-T0-qrk">
                                                 <rect key="frame" x="63" y="15" width="75" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -497,6 +497,9 @@
                         <outlet property="noteCollectionView" destination="Nzf-fC-kWh" id="lrT-6N-oYt"/>
                         <outlet property="selectAllButton" destination="j2E-H8-2V7" id="Gdl-ba-LRx"/>
                         <outlet property="selectAllView" destination="aQd-aX-QTQ" id="eiP-nc-jQK"/>
+                        <outlet property="subjectFilterLabel" destination="DIQ-6w-ZaS" id="c0N-P0-God"/>
+                        <outlet property="tagFilterLabel" destination="tnS-T0-qrk" id="3zx-zd-guL"/>
+                        <outlet property="timeFilterLabel" destination="jDd-0j-De3" id="GPB-fa-CZA"/>
                         <segue destination="M9u-os-4Eq" kind="show" identifier="ShowNotebookFilterViewController" id="Twc-eH-K2s"/>
                         <segue destination="i4w-TP-q3d" kind="show" identifier="ShowNotebookSearchViewController" id="iPE-qb-xna"/>
                         <segue destination="1GG-6u-EPW" kind="show" identifier="ShowNotebookExportViewController" id="5Kv-F8-Fjs"/>
@@ -2765,10 +2768,10 @@
         <image name="icon_setttings_phone.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lJ7-wF-fmM"/>
-        <segue reference="eVa-ta-b50"/>
-        <segue reference="IMU-TW-lqa"/>
-        <segue reference="nMQ-kM-1EK"/>
         <segue reference="o6R-FQ-MA7"/>
+        <segue reference="lJ7-wF-fmM"/>
+        <segue reference="5Kv-F8-Fjs"/>
+        <segue reference="nMQ-kM-1EK"/>
+        <segue reference="IMU-TW-lqa"/>
     </inferredMetricsTieBreakers>
 </document>

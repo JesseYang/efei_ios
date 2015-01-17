@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, strong) NSArray* items;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, copy) NSString* selectedName;
+@property (nonatomic, copy) NSString* initialDisplayName;
 
 - (BOOL) filterData:(id)data;
 

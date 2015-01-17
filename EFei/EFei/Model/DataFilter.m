@@ -28,6 +28,16 @@
     return YES;
 }
 
+- (NSString*) selectedName
+{
+    if (self.selectedIndex>=0 && self.selectedIndex<self.items.count)
+    {
+        return [self.items objectAtIndex:self.selectedIndex];
+    }
+    
+    return self.initialDisplayName;
+}
+
 @end
 
 @interface TimeDataFilter()
@@ -56,6 +66,8 @@
         
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
+        
+        self.initialDisplayName = @"最近";
     }
     
     return self;
@@ -124,6 +136,8 @@
                       @"典型题",
                       @"全部标签",nil];
         self.name = @"标签筛选";
+        
+        self.initialDisplayName = @"标签";
     }
     
     return self;
@@ -160,8 +174,11 @@
                       @"化学",
                       @"生物",
                       @"语言",
-                      @"英语",nil];
+                      @"英语",
+                      @"全部科目",nil];
         self.name = @"科目筛选";
+        
+        self.initialDisplayName = @"全科";
         
         self.subjectType = SubjectTypeAll;
     }
