@@ -8,6 +8,7 @@
 
 #import "PhoneEditingViewController.h"
 #import "EFei.h"
+#import "UserCommand.h"
 
 @interface PhoneEditingViewController()
 {
@@ -48,9 +49,16 @@
 
 - (IBAction)onNext:(id)sender
 {
-    [EFei instance].user.mobile = self.emailTextField.text;
+    NSString* text = self.emailTextField.text;
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [EFei instance].user.mobile = text;
+        [self performSegueWithIdentifier:@"ShowVerifyCodeViewController" sender:self];
+        
+    };
     
-    [self performSegueWithIdentifier:@"ShowVerifyCodeViewController" sender:self];
+    [UpdatePhoneNumberCommand executeWithNumber:text completeHandler:handler];
+    
 }
 
 @end

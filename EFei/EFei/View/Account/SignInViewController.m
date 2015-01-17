@@ -9,6 +9,7 @@
 #import "SignInViewController.h"
 #import "AccountCommand.h"
 #import "EFei.h"
+#import "UserCommand.h"
 
 @interface SignInViewController()
 {
@@ -69,6 +70,8 @@
         if (success)
         {
             [[EFei instance].account save];
+            
+            [GetUserInfoCommand executeWithCompleteHandler:nil];
             
             [self dismissViewControllerAnimated:YES completion:^{
                 
