@@ -18,6 +18,18 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+@implementation GetUserInfoCommand
+
++ (void) executeWithCompleteHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetUserInfo
+                                    withData:nil
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 @implementation GetTeachersCommand
 
 + (void) executeWithCompleteHandler:(CompletionBlock)handler
@@ -70,4 +82,50 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+@implementation RenameCommand
 
++ (void) executeWithName:(NSString *)name completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeRename
+                                    withData:name
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation UpdateEmailCommand
+
++ (void) executeWithEmail:(NSString *)email completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeChangeEmail
+                                    withData:email
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation UpdatePhoneNumberCommand
+
++ (void) executeWithNumber:(NSString *)phone completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeChangeMobile
+                                    withData:phone
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation UpdatePhoneSendVerifyCodeCommand
+
++ (void) executeWithVerifyCode:(NSString *)code completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeVerifyMobile
+                                    withData:code
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////

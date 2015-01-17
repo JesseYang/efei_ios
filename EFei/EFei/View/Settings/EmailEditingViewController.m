@@ -8,6 +8,7 @@
 
 #import "EmailEditingViewController.h"
 #import "EFei.h"
+#import "UserCommand.h"
 
 @interface EmailEditingViewController()
 {
@@ -47,9 +48,17 @@
 
 - (IBAction)onNext:(id)sender
 {
-    [EFei instance].user.email = self.emailTextField.text;
+    NSString* text = self.emailTextField.text;
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [EFei instance].user.email = self.emailTextField.text;
+        
+        [self performSegueWithIdentifier:@"ShowEmailEditingResultViewController" sender:self];
+        
+    };
     
-    [self performSegueWithIdentifier:@"ShowEmailEditingResultViewController" sender:self];
+    [UpdateEmailCommand executeWithEmail:text completeHandler:handler];
+    
 }
 
 

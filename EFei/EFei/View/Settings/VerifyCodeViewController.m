@@ -8,6 +8,7 @@
 
 #import "VerifyCodeViewController.h"
 #import "EFei.h"
+#import "UserCommand.h"
 
 @interface VerifyCodeViewController ()
 {
@@ -42,7 +43,15 @@
 
 - (IBAction)onSubmit:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSString* text = self.phoneTextField.text;
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    };
+    
+    [UpdatePhoneSendVerifyCodeCommand executeWithVerifyCode:text completeHandler:handler];
+    
 }
 
 - (IBAction)onCancel:(id)sender

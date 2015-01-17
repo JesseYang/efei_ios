@@ -17,6 +17,14 @@
 
 @end
 
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface GetUserInfoCommand : NSObject
+
++ (void) executeWithCompleteHandler:(CompletionBlock)handler;
+
+@end
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -43,6 +51,39 @@
 @interface RemoveTeacherCommand : NSObject
 
 + (void) executeWithTeacher:(Teacher*)teacher completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface RenameCommand : NSObject
+
++ (void) executeWithName:(NSString*)name completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface UpdateEmailCommand : NSObject
+
++ (void) executeWithEmail:(NSString*)email completeHandler:(CompletionBlock)handler;
+
+@end
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface UpdatePhoneNumberCommand : NSObject
+
++ (void) executeWithNumber:(NSString*)phone completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface UpdatePhoneSendVerifyCodeCommand : NSObject
+
++ (void) executeWithVerifyCode:(NSString*)code completeHandler:(CompletionBlock)handler;
 
 @end
 

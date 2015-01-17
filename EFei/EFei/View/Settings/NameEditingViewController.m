@@ -8,6 +8,7 @@
 
 #import "NameEditingViewController.h"
 #import "EFei.h"
+#import "UserCommand.h"
 
 @interface NameEditingViewController()
 {
@@ -46,9 +47,14 @@
 
 - (IBAction)onDone:(id)sender
 {
-    [EFei instance].user.name = self.nameTextField.text;
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSString* name = self.nameTextField.text;
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [EFei instance].user.name = self.nameTextField.text;
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    };
+    [RenameCommand executeWithName:name completeHandler:handler];
 }
 
 @end
