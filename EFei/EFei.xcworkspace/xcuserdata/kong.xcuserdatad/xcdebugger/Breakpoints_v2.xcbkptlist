@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EFei/View/Note/NotebookViewController.m"
-            timestampString = "443210028.952202"
+            timestampString = "443246245.767485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-onDeleteNote:event:"
             landmarkType = "5">
          </BreakpointContent>

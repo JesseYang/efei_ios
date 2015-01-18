@@ -98,6 +98,13 @@
 - (void) setupNavigationBar
 {
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+                                initWithTitle:@"错题本"
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:nil];
+    self.navigationItem.backBarButtonItem = btnBack;
 }
 
 - (void) setupViews
