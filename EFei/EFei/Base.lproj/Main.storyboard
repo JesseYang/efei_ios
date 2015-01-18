@@ -1676,7 +1676,7 @@
         <!--Question View Controller-->
         <scene sceneID="i4c-m8-AoS">
             <objects>
-                <viewController id="vjj-4v-RHh" customClass="QuestionViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="vjj-4v-RHh" customClass="QuestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rkR-7T-eOX"/>
                         <viewControllerLayoutGuide type="bottom" id="o5E-Jc-JRq"/>
@@ -2780,10 +2780,10 @@
         <image name="icon_setttings_phone.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="IMU-TW-lqa"/>
         <segue reference="o6R-FQ-MA7"/>
         <segue reference="lJ7-wF-fmM"/>
-        <segue reference="5Kv-F8-Fjs"/>
+        <segue reference="eVa-ta-b50"/>
         <segue reference="nMQ-kM-1EK"/>
-        <segue reference="IMU-TW-lqa"/>
     </inferredMetricsTieBreakers>
 </document>

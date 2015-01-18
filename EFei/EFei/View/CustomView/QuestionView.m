@@ -424,7 +424,16 @@
     }
     
     [_questionContentView setNoteContent:array];
-    [_questionAnswerView setNoteContent:_question.answerContents];
+    
+    if (_question.answerContents.count == 0)
+    {
+        [self hideAnswer];
+    }
+    else
+    {
+        
+        [_questionAnswerView setNoteContent:_question.answerContents];
+    }
 }
 
 - (void) onAnswerButton:(id)sender
