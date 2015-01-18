@@ -85,6 +85,14 @@ typedef enum : NSUInteger {
 {
     [super viewDidAppear:animated];
     
+    self.navigationController.navigationBarHidden = YES;
+    
+    if (!_scaning)
+    {
+        [self initCapture];
+        [self initViews];
+        
+    }
     
     [self startIndicatorAnimation];
 }
@@ -341,7 +349,11 @@ typedef enum : NSUInteger {
     
     if (_scanMode == ScanModeSingle)
     {
+        _scaning = NO;
         [_capture stop];
+        
+        [_capture.layer removeFromSuperlayer];
+        [_indicatorView removeFromSuperview];
     }
     
     ControllerCompletionBlock handler = ^(BOOL success) {

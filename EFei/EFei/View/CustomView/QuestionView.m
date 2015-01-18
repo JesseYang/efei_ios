@@ -431,6 +431,13 @@
     }
     else
     {
+        NSMutableArray* array = [[NSMutableArray alloc] initWithArray:_question.answerContents];
+        if (_question.questionType == QuestionTypeChoice)
+        {
+            char c = _question.answer + 'A';
+            NSString* ans = [[NSString alloc] initWithFormat:@"%c", c];
+            [array addObject:ans];
+        }
         
         [_questionAnswerView setNoteContent:_question.answerContents];
     }
@@ -455,6 +462,18 @@
 
 - (void) showAnswer
 {
+    if (_question.answerContents.count == 0)
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"答案未上传"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
     _answerImageView.image = [UIImage imageNamed:@"icon_question_show_answer.png"];
     
     float delta = _height - (_questionContentView.frame.origin.y + _questionContentView.frame.size.height);
