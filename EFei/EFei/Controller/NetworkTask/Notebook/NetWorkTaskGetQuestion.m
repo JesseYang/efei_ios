@@ -85,13 +85,16 @@ static NSString* kResponseTagSetSeparator     = @",";
 
 - (BOOL) parseResultDict:(NSDictionary *)dict
 {
+    GetQuestionController* controller = (GetQuestionController*)self.data;
     NSString* noteId = [dict objectForKey:kResponseNoteIdKey];
     if (noteId.length > 0)
     {
         NSLog(@"NetWorkTaskGetQuestion: note id: %@", noteId);
+        
+        Note* note = [[EFei instance].notebook noteWithId:noteId];
+        controller.currentNote = note;
+        return YES;
     }
-    
-    GetQuestionController* controller = (GetQuestionController*)self.data;
     
     Question* question = [[Question alloc] init];
     question.questionId = [dict objectForKey:kResponseIdKey];
