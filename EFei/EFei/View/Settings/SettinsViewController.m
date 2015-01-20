@@ -21,7 +21,7 @@
 #define TitleMyTeachers @"我的老师"
 #define TitleAbout @"关于易飞"
 
-#define LogoutButtonTitle @"退出登陆"
+#define LogoutButtonTitle @"退出登录"
 
 #define ShowTeacherViewControllerSegueId @"ShowTeacherViewController"
 

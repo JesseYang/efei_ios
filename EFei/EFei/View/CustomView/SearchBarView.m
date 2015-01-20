@@ -29,10 +29,12 @@
 {
     InsetTextFiled* _textField;
     UIImageView* _searchIcon;
-    UIImageView* _clearIcon;
+    UIButton* _clearIcon;
 }
 
 - (void) onTapped:(id)sender;
+- (void) onClear:(id)sender;
+- (void) onTextChanged:(id)sender;
 
 @end
 
@@ -70,9 +72,11 @@
     _textField.borderStyle = UITextBorderStyleRoundedRect;
     _textField.font = [UIFont systemFontOfSize:15];
     _textField.textColor = [UIColor whiteColor];
-    _textField.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
+    _textField.backgroundColor = [UIColor colorWithRed:0.2 green:0.3 blue:0.9 alpha:1.0];
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
     _textField.delegate = self;
+    _textField.returnKeyType = UIReturnKeySearch;
+    [_textField addTarget:self action:@selector(onTextChanged:) forControlEvents:UIControlEventEditingChanged];
     [self addSubview:_textField];
     
     
@@ -81,9 +85,13 @@
     [self addSubview:_searchIcon];
     
     
-    _clearIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_notebook_search.png"]];
+    _clearIcon = [[UIButton alloc] init];
     _clearIcon.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self addSubview:_clearIcon];
+    [_clearIcon setImage:[UIImage imageNamed:@"icon_question_topic_delete.png"] forState:UIControlStateNormal];
+    [_clearIcon addTarget:self action:@selector(onClear:) forControlEvents:UIControlEventTouchUpInside];
+    _clearIcon.hidden = YES;
+    
+    [self addSubview:_clearIcon];
     
     NSDictionary *viewsDictionary = @{@"textField":_textField,
                                       @"searchIcon":_searchIcon,
@@ -124,6 +132,25 @@
     [self addConstraints:iconConstraintPosX];
     
     
+    NSArray *cleanIconConstraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[clearIcon(20)]"
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:viewsDictionary];
+    
+    NSArray *cleanIconConstraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[clearIcon(20)]"
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:viewsDictionary];
+    NSArray *cleanIconConstraintPosX = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[clearIcon]-10-|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewsDictionary];
+    
+    [_clearIcon addConstraints:cleanIconConstraintV];
+    [_clearIcon addConstraints:cleanIconConstraintH];
+    [self addConstraints:cleanIconConstraintPosX];
+    
+    
     NSLayoutConstraint *c = [NSLayoutConstraint constraintWithItem:_searchIcon
                                      attribute:NSLayoutAttributeCenterY
                                      relatedBy:NSLayoutRelationEqual
@@ -132,6 +159,16 @@
                                     multiplier:1
                                       constant:0];
     [self addConstraint:c];
+    
+    
+    NSLayoutConstraint *c1 = [NSLayoutConstraint constraintWithItem:_clearIcon
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1
+                                                          constant:0];
+    [self addConstraint:c1];
     
     
     
@@ -157,6 +194,16 @@
     _textField.text = @"";
 }
 
+- (void) onClear:(id)sender
+{
+    _textField.text = @"";
+    _clearIcon.hidden = YES;
+}
+
+- (void) onTextChanged:(id)sender
+{
+    _clearIcon.hidden = (_textField.text.length == 0);
+}
 
 #pragma mark UITextFieldDelegate
 
@@ -169,5 +216,14 @@
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == _textField)
+    {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
 
 @end

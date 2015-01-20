@@ -47,10 +47,11 @@ static NSString* kReqeustTeacherIdKey           = @"teacher_id";
 
 - (void) sucess
 {
-    [super sucess];
     
     Teacher* teacher = (Teacher*)self.data;
     [[EFei instance].user deleteTeacher:teacher];
+    
+    [super sucess];
 }
 
 @end
