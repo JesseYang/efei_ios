@@ -32,6 +32,42 @@
     return self;
 }
 
+- (void) setEmail:(NSString *)email
+{
+    if (email != nil)
+    {
+        _email  = [email copy];
+    }
+    else
+    {
+        _email = @"";
+    }
+}
+
+- (void) setName:(NSString *)name
+{
+    if (name != nil)
+    {
+        _name  = [name copy];
+    }
+    else
+    {
+        _name = @"";
+    }
+}
+
+- (void) setMobile:(NSString *)mobile
+{
+    if (mobile != nil)
+    {
+        _mobile  = [mobile copy];
+    }
+    else
+    {
+        _mobile = @"";
+    }
+}
+
 - (void) clearTeacherList
 {
     [_teachers removeAllObjects];
