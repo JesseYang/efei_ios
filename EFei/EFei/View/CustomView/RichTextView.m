@@ -25,7 +25,7 @@
 #define ImageAttributeTagMath @"math"
 #define ImageAttributeTagFigure @"fig"
 
-#define TextFontSize 12
+#define TextFontSize 14
 
 
 @interface RichTextView()
@@ -167,7 +167,7 @@
         return;
     }
     NSDictionary * attributesNormal = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont systemFontOfSize:9], NSFontAttributeName, nil];
+                                    [UIFont systemFontOfSize:TextFontSize], NSFontAttributeName, nil];
     NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributesNormal];
     [_attributedString appendAttributedString:attributedString];
 }
@@ -278,7 +278,7 @@
     float scale = [UIScreen mainScreen].scale;
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
     textAttachment.image = image;
-    textAttachment.bounds = CGRectMake(0, 0, image.size.width/scale, image.size.height/scale);
+    textAttachment.bounds = CGRectMake(0, -2, image.size.width/scale, image.size.height/scale);
     
     NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
     

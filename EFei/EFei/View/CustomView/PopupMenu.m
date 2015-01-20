@@ -289,11 +289,12 @@
             UIImage* image = [_images objectAtIndex:indexPath.row*2];
             UIImage* highlightedImage = [_images objectAtIndex:(indexPath.row*2+1)];
             float screenScale = [UIScreen mainScreen].scale;
+            screenScale = 1.0;
             cell.imageView.image = image;
             cell.imageView.highlightedImage = highlightedImage;
             CGRect rect = cell.imageView.frame;
-            rect.origin.y = (cell.frame.size.height - image.size.height / screenScale) / 2;
-            rect.size = CGSizeMake(image.size.width/screenScale, image.size.height/screenScale);
+            rect.origin.y = 6; //(cell.frame.size.height - image.size.height / screenScale) / 2;
+            rect.size = CGSizeMake(18, 18); // CGSizeMake(image.size.width/screenScale, image.size.height/screenScale);
             
             if (_titles != nil)
             {
@@ -308,6 +309,7 @@
         }
         
         cell.titleLabel.text = [_titles objectAtIndex:indexPath.row];
+        cell.titleLabel.textAlignment = NSTextAlignmentLeft;
         cell.segmentView.backgroundColor = _seperatorColor;
         
         if (indexPath.row == _titles.count-1)
