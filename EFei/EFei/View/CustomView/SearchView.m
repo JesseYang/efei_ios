@@ -24,6 +24,7 @@
 
 - (void) setupUI;
 
+- (void) textFieldDidChange:(id)sender;
 - (void) onAdd:(id)sender;
 
 @end
@@ -126,6 +127,7 @@
     _textField = [[UITextField alloc] init];
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
     _textField.delegate = self;
+    [_textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [_searchBar addSubview:_textField];
     
     UIButton* addButton = [[UIButton alloc] init];
@@ -178,18 +180,30 @@
     [addButton addConstraints:buttonConstraintH];
     
     NSArray *constraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[iconView]-10-[textField]-10-[addButton]-10-|"
-                                                                      options:NSLayoutFormatAlignAllTop
-                                                                      metrics:nil
-                                                                        views:viewsDictionary];
-    
-    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16-[iconView]"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:viewsDictionary];
     
+    NSArray *constraintPosV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-14-[iconView]"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:viewsDictionary];
+    
+    NSArray *constraintPosV2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[textField]"
+                                                                      options:0
+                                                                      metrics:nil
+                                                                        views:viewsDictionary];
+    
+    NSArray *constraintPosV3 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[addButton]"
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:viewsDictionary];
+    
     
     [_searchBar addConstraints:constraintPosV];
     [_searchBar addConstraints:constraintPosH];
+    [_searchBar addConstraints:constraintPosV2];
+    [_searchBar addConstraints:constraintPosV3];
     
 }
 
@@ -226,7 +240,9 @@
     NSLog(@"%f", self.frame.size.height);
 }
 
-- (void) textFieldDidEndEditing:(UITextField *)textField
+
+//- (void) textFieldDidEndEditing:(UITextField *)textField
+- (void) textFieldDidChange:(id)sender
 {
     if ([self.dataSource respondsToSelector:@selector(searchView:searchResultWithText:)])
     {

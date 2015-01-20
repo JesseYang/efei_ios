@@ -81,6 +81,30 @@
     }
 }
 
+
+- (void)onDeleteTeacher:(id)sender event:(id)event
+{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+    
+    Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        if(success)
+        {
+            [self setupData];
+            [self.tableView reloadData];
+        }
+        
+    };
+    [RemoveTeacherCommand executeWithTeacher:teacher completeHandler:handler];
+}
+
+
+#pragma mark -- TableView
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _teachers.count;
@@ -91,8 +115,13 @@
     TeacherTableViewCell* cell = (TeacherTableViewCell*)[tableView dequeueReusableCellWithIdentifier:TeacherTableViewCellId forIndexPath:indexPath];
     Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
     cell.subjectLabel.text = teacher.subjectName;
+    cell.subjectLabel.textColor = [EFei instance].efeiColor;
     cell.schoolLabel.text = teacher.school;
     cell.nameLabel.text = teacher.name;
+    
+    [cell.deleteButton addTarget:self action:@selector(onDeleteTeacher:event:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell resetUI];
     
     return cell;
 }
@@ -114,6 +143,11 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

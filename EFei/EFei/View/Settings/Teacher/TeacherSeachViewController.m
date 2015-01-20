@@ -198,6 +198,7 @@
     
     Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
     cell.subjectLabel.text = teacher.subjectName;
+    cell.subjectLabel.textColor = [EFei instance].efeiColor;
     cell.schoolLabel.text = teacher.school;
     cell.nameLabel.text = teacher.name;
     

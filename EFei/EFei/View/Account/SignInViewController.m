@@ -43,7 +43,7 @@
 
 - (void) setupNavigator
 {
-    self.navigationItem.title = @"登陆";
+    self.navigationItem.title = @"登录";
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]

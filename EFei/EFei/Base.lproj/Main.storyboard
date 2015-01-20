@@ -1021,7 +1021,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jMv-fq-CYE">
-                        <barButtonItem key="rightBarButtonItem" title="登陆" id="n34-4y-ib7">
+                        <barButtonItem key="rightBarButtonItem" title="登录" id="n34-4y-ib7">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onSignin:" destination="ZOJ-BC-v0O" id="DRv-b6-UXn"/>
@@ -1278,31 +1278,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-d6-RWt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-d6-RWt">
                                 <rect key="frame" x="360" y="137" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Niu-O4-qTB"/>
                                     <constraint firstAttribute="height" constant="30" id="iXx-aS-X3f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dih-Xj-oJB">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6-16位区分大小写密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dih-Xj-oJB">
                                 <rect key="frame" x="360" y="201" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="DbF-Jr-RVt"/>
                                     <constraint firstAttribute="height" constant="30" id="t4V-Bm-YnA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ene-23-qlc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="真实姓名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ene-23-qlc">
                                 <rect key="frame" x="360" y="262" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="9hG-CB-hgv"/>
                                     <constraint firstAttribute="height" constant="30" id="R1r-14-qbx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BmU-nd-Cvz">
@@ -2118,7 +2118,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置一个你用来登陆的邮箱地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaP-Q0-ucT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置一个你用来登录的邮箱地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaP-Q0-ucT">
                                 <rect key="frame" x="0.0" y="227" width="600" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CbA-K8-pgH"/>
@@ -2184,8 +2184,20 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZzL-1F-aKC" id="LdG-ce-9zt">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iai-BH-rVp">
+                                            <rect key="frame" x="520" y="0.0" width="80" height="44"/>
+                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="8Ny-q8-4Up"/>
+                                                <constraint firstAttribute="width" constant="80" id="JTc-Cu-aEY"/>
+                                            </constraints>
+                                            <state key="normal" image="icon_setting_teacher_delete.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6h-YB-dFb">
                                             <rect key="frame" x="20" y="0.0" width="80" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="uda-DR-ESx"/>
                                                 <constraint firstAttribute="width" constant="80" id="xex-6Q-dyK"/>
@@ -2196,6 +2208,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMa-IC-93L">
                                             <rect key="frame" x="100" y="0.0" width="400" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="Tuh-6F-f9n"/>
                                             </constraints>
@@ -2205,6 +2218,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0a-FP-J87">
                                             <rect key="frame" x="500" y="0.0" width="100" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="WZi-yr-w3U"/>
                                                 <constraint firstAttribute="width" constant="100" id="gLv-2W-k8s"/>
@@ -2214,6 +2228,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="P0a-FP-J87" secondAttribute="trailing" id="3Oq-GQ-RJx"/>
                                         <constraint firstItem="B6h-YB-dFb" firstAttribute="leading" secondItem="LdG-ce-9zt" secondAttribute="leadingMargin" constant="12" id="T8q-Du-4ZJ"/>
@@ -2222,9 +2237,12 @@
                                         <constraint firstItem="B6h-YB-dFb" firstAttribute="top" secondItem="LdG-ce-9zt" secondAttribute="topMargin" constant="-8" id="lWy-7S-kDe"/>
                                         <constraint firstItem="FMa-IC-93L" firstAttribute="top" secondItem="LdG-ce-9zt" secondAttribute="topMargin" constant="-8" id="pt9-Y0-iq6"/>
                                         <constraint firstItem="P0a-FP-J87" firstAttribute="leading" secondItem="FMa-IC-93L" secondAttribute="trailing" id="rUr-aU-gpX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Iai-BH-rVp" secondAttribute="trailing" constant="-8" id="vhk-zD-qwm"/>
+                                        <constraint firstItem="Iai-BH-rVp" firstAttribute="top" secondItem="LdG-ce-9zt" secondAttribute="topMargin" constant="-8" id="zFA-4S-mxh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="deleteButton" destination="Iai-BH-rVp" id="l5z-KO-z4I"/>
                                     <outlet property="nameLabel" destination="P0a-FP-J87" id="piN-9c-qeV"/>
                                     <outlet property="schoolLabel" destination="FMa-IC-93L" id="1RR-z7-7ZQ"/>
                                     <outlet property="subjectLabel" destination="B6h-YB-dFb" id="z6G-6p-AnM"/>
@@ -2668,7 +2686,7 @@
                                     <constraint firstAttribute="height" constant="115" id="lxO-eL-0VA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请设置一个您用来登陆的手机号码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgn-tc-IeX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请设置一个您用来登录的手机号码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgn-tc-IeX">
                                 <rect key="frame" x="0.0" y="227" width="600" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YSL-eM-BXI"/>
@@ -2775,6 +2793,7 @@
         <image name="icon_scan_rect_right_bottom.png" width="39" height="39"/>
         <image name="icon_scan_rect_right_top.png" width="39" height="39"/>
         <image name="icon_setting_teacher_add.png" width="17" height="17"/>
+        <image name="icon_setting_teacher_delete.png" width="20" height="21"/>
         <image name="icon_setttings_email.png" width="108" height="114"/>
         <image name="icon_setttings_name.png" width="115" height="115"/>
         <image name="icon_setttings_phone.png" width="128" height="128"/>

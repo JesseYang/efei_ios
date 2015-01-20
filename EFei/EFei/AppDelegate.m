@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 

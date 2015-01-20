@@ -51,8 +51,12 @@
 
 - (void) addTitle:(NSString*)title
 {
-    [_titles addObject:title];
-    [self reloadData];
+    NSString *trimmedString = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (trimmedString.length > 0)
+    {
+        [_titles addObject:title];
+        [self reloadData];
+    }
 }
 
 - (void) onDeleteTag:(id)sender event:(UIEvent *)event
