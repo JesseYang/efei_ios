@@ -155,7 +155,7 @@
 
 - (void) addQuestionAsNote
 {
-    _note.summary = @"";
+    _note.summary = _summaryTextView.text;
     
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
