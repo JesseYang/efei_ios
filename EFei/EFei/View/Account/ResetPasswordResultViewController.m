@@ -10,6 +10,7 @@
 #import "ResetPasswordController.h"
 #import "EFei.h"
 #import "AccountCommand.h"
+#import "ToastView.h"
 
 @interface ResetPasswordResultViewController()
 {
@@ -100,7 +101,21 @@
     else
     {
         [ResetPasswordController instance].authCode = self.codeTextField.text;
-        [self performSegueWithIdentifier:@"ShowResetPasswordNewPwdViewController" sender:self];
+        
+        
+        CompletionBlock hanlder = ^(NetWorkTaskType taskType, BOOL success) {
+            if (success)
+            {
+                [self performSegueWithIdentifier:@"ShowResetPasswordNewPwdViewController" sender:self];
+            }
+            else
+            {
+                [ToastView showMessage:kErrorMessageGetRestPasswordTokenFailed];
+            }
+        };
+        
+        NSString* phone = [ResetPasswordController instance].email;
+        [GetResetPasswordTokenCommand executeWithPhoneNumber:phone authCode:self.codeTextField.text completeHandler:hanlder];
     }
 }
 
@@ -118,7 +133,7 @@
 
 - (IBAction)onResendCode:(id)sender
 {
-    [self startCountDown];
+    [self getVerifyCode];
 }
 
 - (void) getVerifyCode

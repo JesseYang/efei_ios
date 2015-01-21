@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import "AccountCommand.h"
+#import "ToastView.h"
 
 @interface SignUpViewController()
 {
@@ -63,6 +64,22 @@
 
 - (IBAction)onSignUp:(id)sender
 {
+    if (![self checkPhoneNumber])
+    {
+        return;
+    }
+    
+    
+    if (![self checkPassword])
+    {
+        return;
+    }
+    
+    if (![self checkRealName])
+    {
+        return;
+    }
+    
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         NSLog(@"");
         
@@ -84,6 +101,51 @@
 {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL) checkPhoneNumber
+{
+    NSString* text = self.usernameTextField.text;
+    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if (text.length == 11 && [text rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+    {
+        return YES;
+    }
+    else
+    {
+        [ToastView showMessage:kErrorMessageWrongPhoneNumber];
+        return NO;
+    }
+}
+
+
+- (BOOL) checkPassword
+{
+    NSString* text = self.passwordTextField.text;
+    if (text.length >= 6 && text.length <= 16)
+    {
+        return YES;
+    }
+    else
+    {
+        [ToastView showMessage:kErrorMessageWrongPassword];
+        return NO;
+    }
+}
+
+
+- (BOOL) checkRealName
+{
+    NSString* text = self.nicknameTextField.text;
+    if (text.length > 0)
+    {
+        return YES;
+    }
+    else
+    {
+        [ToastView showMessage:kErrorMessageWrongRealName];
+        return NO;
+    }
 }
 
 @end

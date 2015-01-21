@@ -15,6 +15,8 @@
 @property (nonatomic, copy) NSString* phone;
 @property (nonatomic, copy) NSString* authCode;
 
+@property (nonatomic, copy) NSString* resetPasswordToken;
+
 + (ResetPasswordController*) instance;
 
 - (void) startResetPassword;

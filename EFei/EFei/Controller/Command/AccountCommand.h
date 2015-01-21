@@ -60,12 +60,21 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-@interface ResetPasswordCommand : NSObject
+@interface GetResetPasswordTokenCommand : NSObject
 
 + (void) executeWithPhoneNumber:(NSString*)phone
                        authCode:(NSString*)code
-                       password:(NSString*)password
                 completeHandler:(CompletionBlock)handler;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+@interface ResetPasswordCommand : NSObject
+
++ (void) executeWithToken:(NSString *)token
+                 password:(NSString *)password
+          completeHandler:(CompletionBlock)handler;
 
 @end
 
