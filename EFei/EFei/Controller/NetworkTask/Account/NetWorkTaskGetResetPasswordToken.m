@@ -9,6 +9,7 @@
 #import "NetWorkTaskGetResetPasswordToken.h"
 #import "EFei.h"
 #import "TaskManager.h"
+#import "ResetPasswordController.h"
 
 // Request keys.
 static NSString* kRequestUsernameKey        = @"mobile";
@@ -47,8 +48,9 @@ static NSString* kResponseResetPasswordTokenKey = @"reset_password_token";
 - (BOOL) parseResultDict:(NSDictionary *)dict
 {
     NSString* token = [dict objectForKey:kResponseResetPasswordTokenKey];
-    
     NSLog(@"NetWorkTaskGetResetPasswordToken:  %@", token);
+    
+    [ResetPasswordController instance].resetPasswordToken = token;
     
     return token.length > 0;
 }

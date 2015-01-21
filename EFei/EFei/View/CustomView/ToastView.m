@@ -8,6 +8,16 @@
 
 #import "ToastView.h"
 
+NSString* kErrorMessageWrongUserName                = @"请输入用户名";
+NSString* kErrorMessageWrongPhoneNumber             = @"请输入正确的手机号";
+NSString* kErrorMessageWrongPassword                = @"请输入6-16位密码";
+NSString* kErrorMessageWrongRealName                = @"请输入真实姓名";
+NSString* kErrorMessageWrongSignInFailed            = @"登录失败，请重试";
+NSString* kErrorMessageWrongSignUpFailed            = @"注册失败，请重试";
+NSString* kErrorMessageNoSuchUser                   = @"用户不存在，请重试";
+NSString* kErrorMessageGetRestPasswordTokenFailed   = @"验证码错误，请重试";
+NSString* kErrorMessageResetPasswordFailed          = @"重置密码失败，请重试";
+
 @interface ToastView()
 
 - (id) initWithMessage:(NSString*)message;

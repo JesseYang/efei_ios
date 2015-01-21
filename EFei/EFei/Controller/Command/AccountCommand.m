@@ -72,12 +72,29 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+
+@implementation GetResetPasswordTokenCommand
+
++ (void) executeWithPhoneNumber:(NSString *)phone authCode:(NSString *)code completeHandler:(CompletionBlock)handler
+{
+    ResetPasswordInfo* info = [[ResetPasswordInfo alloc] init];
+    info.phoneNumber = phone;
+    info.verifyCode = code;
+    
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetResetPasswordToken withData:info completeHandler:handler];
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 @implementation ResetPasswordCommand
 
-+ (void) executeWithPhoneNumber:(NSString *)phone authCode:(NSString *)code password:(NSString *)password completeHandler:(CompletionBlock)handler
++ (void) executeWithToken:(NSString *)token password:(NSString *)password completeHandler:(CompletionBlock)handler
 {
-    SignUpInfo* info = [[SignUpInfo alloc] init];
+    ResetPasswordInfo* info = [[ResetPasswordInfo alloc] init];
     info.password = password;
+    info.token = token;
     
     [[TaskManager instance] startNetworkTask:NetWorkTaskTypeResetPassword withData:info completeHandler:handler];
 }
