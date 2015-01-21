@@ -296,7 +296,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nzf-fC-kWh">
-                                <rect key="frame" x="0.0" y="115" width="600" height="485"/>
+                                <rect key="frame" x="0.0" y="115" width="600" height="441"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="4Wu-lx-70i">
                                     <size key="itemSize" width="320" height="100"/>
@@ -465,7 +465,7 @@
                             <constraint firstItem="aQe-rj-g2b" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="bottom" id="Cl2-CH-3Hl"/>
                             <constraint firstItem="Nzf-fC-kWh" firstAttribute="width" secondItem="eUD-H8-1ey" secondAttribute="width" id="Lw4-l9-4c5"/>
                             <constraint firstItem="Nzf-fC-kWh" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="bottom" constant="1" id="Nl2-M5-sc2"/>
-                            <constraint firstAttribute="bottom" secondItem="Nzf-fC-kWh" secondAttribute="bottom" id="Pex-Rj-B5Y"/>
+                            <constraint firstAttribute="bottom" secondItem="Nzf-fC-kWh" secondAttribute="bottom" constant="44" id="Pex-Rj-B5Y"/>
                             <constraint firstItem="uK2-IP-zG1" firstAttribute="top" secondItem="aQe-rj-g2b" secondAttribute="bottom" id="VbS-J5-CZC"/>
                             <constraint firstAttribute="centerX" secondItem="Nzf-fC-kWh" secondAttribute="centerX" id="cRz-j4-Aj8"/>
                             <constraint firstItem="aQd-aX-QTQ" firstAttribute="leading" secondItem="eUD-H8-1ey" secondAttribute="leadingMargin" constant="-16" id="o2h-Rd-uOD"/>

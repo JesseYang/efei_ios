@@ -10,6 +10,7 @@
 #import "AccountCommand.h"
 #import "EFei.h"
 #import "UserCommand.h"
+#import "ToastView.h"
 
 @interface SignInViewController()
 {
@@ -66,6 +67,20 @@
 
 - (IBAction)onSignIn:(id)sender
 {
+    if (self.usernameTextField.text.length == 0)
+    {
+        [ToastView showMessage:@"请输入用户名"];
+        return;
+    }
+    
+    
+    if (self.passwordTextField.text.length == 0)
+    {
+        [ToastView showMessage:@"请输入密码"];
+        return;
+    }
+    
+    
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         if (success)
         {
@@ -76,6 +91,10 @@
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];
+        }
+        else
+        {
+            [ToastView showMessage:@"用户名密码错误，请重试"];
         }
     };
     

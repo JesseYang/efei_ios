@@ -10,6 +10,8 @@
 #import "EFei.h"
 #import "SearchTeacherController.h"
 #import "UserCommand.h"
+#import "UIColor+Hex.h"
+
 
 @interface TeacherAddViewController()
 {

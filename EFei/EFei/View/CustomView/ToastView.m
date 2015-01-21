@@ -1,0 +1,77 @@
+//
+//  ToastView.m
+//  EFei
+//
+//  Created by Xiangzhen Kong on 1/20/15.
+//
+//
+
+#import "ToastView.h"
+
+@interface ToastView()
+
+- (id) initWithMessage:(NSString*)message;
+- (void) setupUI:(NSString*)message;
+
+@end
+
+@implementation ToastView
+
++ (void) showMessage:(NSString *)message
+{
+    ToastView* view = [[ToastView alloc] initWithMessage:message];
+    
+    UIWindow * keyWindow = [[UIApplication sharedApplication] keyWindow];
+    
+    view.center = keyWindow.center;
+    
+    [keyWindow addSubview:view];
+    
+    [UIView animateWithDuration: 2.0f
+                          delay: 0.5
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations: ^{
+                         view.alpha = 0.0;
+                     }
+                     completion: ^(BOOL finished) {
+                         [view removeFromSuperview];
+                     }
+     ];
+}
+
+- (id) initWithMessage:(NSString *)message
+{
+    self = [super init];
+    
+    if (self)
+    {
+        [self setupUI:message];
+    }
+    
+    return self;
+}
+
+- (void) setupUI:(NSString*)message
+{
+    self.backgroundColor = [UIColor blackColor];
+    self.layer.cornerRadius = 5.0f;
+    
+    UILabel* label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:15];
+    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = message;
+    label.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:label];
+    
+    CGSize size = [message sizeWithAttributes:@{NSFontAttributeName: label.font}];
+    CGSize adjustedSize = CGSizeMake(MAX(ceilf(size.width), 200), MAX(ceilf(size.height), 80));
+    
+    CGRect rect = CGRectMake(0, 0, adjustedSize.width, adjustedSize.height);
+    label.frame = rect;
+    self.frame = rect;
+}
+
+
+
+@end

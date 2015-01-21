@@ -336,10 +336,10 @@ typedef enum : NSUInteger {
     }
     
     // Ignore scaned question.
-    if ([[GetQuestionController instance] questionExist:content])
-    {
-        return;
-    }
+//    if ([[GetQuestionController instance] questionExist:content])
+//    {
+//        return;
+//    }
     
     
     _parsing = YES;

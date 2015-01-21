@@ -7,7 +7,9 @@
 //
 
 #import "SearchBarView.h"
+#import "UIColor+Hex.h"
 
+#define TextFieldBackgroundColor @"#2e64a9"
 #define TextFiledInsetX 35
 
 @implementation InsetTextFiled
@@ -72,7 +74,7 @@
     _textField.borderStyle = UITextBorderStyleRoundedRect;
     _textField.font = [UIFont systemFontOfSize:15];
     _textField.textColor = [UIColor whiteColor];
-    _textField.backgroundColor = [UIColor colorWithRed:0.2 green:0.3 blue:0.9 alpha:1.0];
+    _textField.backgroundColor = [UIColor colorWithHexString:TextFieldBackgroundColor];
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
     _textField.delegate = self;
     _textField.returnKeyType = UIReturnKeySearch;

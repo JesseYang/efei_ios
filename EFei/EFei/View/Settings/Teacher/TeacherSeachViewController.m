@@ -13,6 +13,9 @@
 #import "SearchBarView.h"
 #import "UserCommand.h"
 #import "SubjectViewController.h"
+#import "UIColor+Hex.h"
+
+#define SubjectLabelTextColor @"#4d71aa"
 
 #define TeacherAddTableViewCellId @"TeacherAddTableViewCellId"
 
@@ -198,7 +201,7 @@
     
     Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
     cell.subjectLabel.text = teacher.subjectName;
-    cell.subjectLabel.textColor = [EFei instance].efeiColor;
+    cell.subjectLabel.textColor = [UIColor colorWithHexString:SubjectLabelTextColor];
     cell.schoolLabel.text = teacher.school;
     cell.nameLabel.text = teacher.name;
     

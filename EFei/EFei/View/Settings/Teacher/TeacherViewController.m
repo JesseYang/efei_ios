@@ -10,7 +10,9 @@
 #import "TeacherTableViewCell.h"
 #import "EFei.h"
 #import "UserCommand.h"
+#import "UIColor+Hex.h"
 
+#define SubjectLabelTextColor @"#4d71aa"
 #define TeacherTableViewCellId @"TeacherTableViewCellId"
 
 @interface TeacherViewController()
@@ -115,7 +117,7 @@
     TeacherTableViewCell* cell = (TeacherTableViewCell*)[tableView dequeueReusableCellWithIdentifier:TeacherTableViewCellId forIndexPath:indexPath];
     Teacher* teacher = [_teachers objectAtIndex:indexPath.row];
     cell.subjectLabel.text = teacher.subjectName;
-    cell.subjectLabel.textColor = [EFei instance].efeiColor;
+    cell.subjectLabel.textColor = [UIColor colorWithHexString:SubjectLabelTextColor];
     cell.schoolLabel.text = teacher.school;
     cell.nameLabel.text = teacher.name;
     

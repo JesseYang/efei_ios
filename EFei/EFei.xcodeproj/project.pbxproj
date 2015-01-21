@@ -165,6 +165,7 @@
 		FCF3D20C1A401981009D8722 /* EmailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D20B1A401981009D8722 /* EmailSettingViewController.m */; };
 		FCF3D20F1A401AC0009D8722 /* EmailEditingResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D20E1A401AC0009D8722 /* EmailEditingResultViewController.m */; };
 		FCF3D2121A401FE7009D8722 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D2111A401FE7009D8722 /* PersonalSettingController.m */; };
+		FCFE88DF1A6EE12000B4146A /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFE88DE1A6EE12000B4146A /* ToastView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -439,6 +440,8 @@
 		FCF3D20E1A401AC0009D8722 /* EmailEditingResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailEditingResultViewController.m; sourceTree = "<group>"; };
 		FCF3D2101A401FE7009D8722 /* PersonalSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingController.h; sourceTree = "<group>"; };
 		FCF3D2111A401FE7009D8722 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
+		FCFE88DD1A6EE12000B4146A /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastView.h; sourceTree = "<group>"; };
+		FCFE88DE1A6EE12000B4146A /* ToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -947,6 +950,8 @@
 				FC66F46B1A61B326008E93D7 /* PopupMenu.m */,
 				FC66F46D1A6222A8008E93D7 /* UIPlaceHolderTextView.h */,
 				FC66F46E1A6222A8008E93D7 /* UIPlaceHolderTextView.m */,
+				FCFE88DD1A6EE12000B4146A /* ToastView.h */,
+				FCFE88DE1A6EE12000B4146A /* ToastView.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1265,6 +1270,7 @@
 				FCF3D1441A371CA4009D8722 /* QuestionView.m in Sources */,
 				FCF3D1861A3B42A0009D8722 /* SearchView.m in Sources */,
 				FCD829131A2D616000F6E0CA /* MainViewController.m in Sources */,
+				FCFE88DF1A6EE12000B4146A /* ToastView.m in Sources */,
 				FCA0967F1A59370500D0520A /* NotebookSearchViewController.m in Sources */,
 				FC66F4661A60F2CD008E93D7 /* ResetPasswordController.m in Sources */,
 				FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */,
