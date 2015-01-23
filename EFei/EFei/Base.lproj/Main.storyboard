@@ -380,7 +380,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无知识点" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRB-vb-47g">
-                                                                    <rect key="frame" x="219" y="0.0" width="96" height="20"/>
+                                                                    <rect key="frame" x="155" y="0.0" width="160" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="lRy-WW-XVQ"/>
                                                                     </constraints>
@@ -403,7 +403,7 @@
                                                                 <constraint firstAttribute="height" constant="40" id="7Tv-uR-Ry1"/>
                                                                 <constraint firstItem="pUY-R1-auf" firstAttribute="leading" secondItem="tDt-89-Ppy" secondAttribute="leading" constant="5" id="BMs-8b-iLR"/>
                                                                 <constraint firstItem="NRB-vb-47g" firstAttribute="top" secondItem="tDt-89-Ppy" secondAttribute="top" id="Dxo-KT-nu0"/>
-                                                                <constraint firstItem="NRB-vb-47g" firstAttribute="width" secondItem="tDt-89-Ppy" secondAttribute="width" multiplier="0.3" id="NYQ-QJ-hrc"/>
+                                                                <constraint firstItem="NRB-vb-47g" firstAttribute="width" secondItem="tDt-89-Ppy" secondAttribute="width" multiplier="0.5" id="NYQ-QJ-hrc"/>
                                                                 <constraint firstItem="Z5a-23-wTk" firstAttribute="top" secondItem="tDt-89-Ppy" secondAttribute="top" id="T8p-Ec-nql"/>
                                                                 <constraint firstItem="pUY-R1-auf" firstAttribute="top" secondItem="NRB-vb-47g" secondAttribute="bottom" id="cbf-tp-bPY"/>
                                                                 <constraint firstItem="Z5a-23-wTk" firstAttribute="width" secondItem="tDt-89-Ppy" secondAttribute="width" multiplier="0.5" id="lNH-hJ-Vh7"/>
@@ -619,10 +619,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZbN-As-tL4">
-                                <rect key="frame" x="0.0" y="156" width="600" height="88"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="2ye-Rl-Q7w"/>
+                                    <constraint firstAttribute="height" id="2ye-Rl-Q7w"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExportOptionCell" id="VG2-5l-UIz">
@@ -638,7 +637,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SXx-ew-SxX">
-                                <rect key="frame" x="0.0" y="256" width="600" height="88"/>
+                                <rect key="frame" x="0.0" y="168" width="600" height="88"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="3AS-m3-bEL"/>
@@ -656,10 +655,11 @@
                                     <outlet property="delegate" destination="1GG-6u-EPW" id="CeV-9s-1Xc"/>
                                 </connections>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Xv-Zv-bis">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Xv-Zv-bis">
+                                <rect key="frame" x="0.0" y="270" width="600" height="88"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="jmB-hA-chI"/>
+                                    <constraint firstAttribute="height" constant="88" id="jmB-hA-chI"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExportOptionCell" id="fG3-56-Y9Y">

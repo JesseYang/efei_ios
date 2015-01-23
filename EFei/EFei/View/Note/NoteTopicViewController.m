@@ -75,6 +75,8 @@
     {
         [self.tagCollectionView addTitle:t];
     }
+    
+    [self.view bringSubviewToFront:self.searchView];
 }
 
 - (void) onDone:(id)sender
