@@ -266,7 +266,7 @@
     {
         if (_note.topics.count > 0)
         {
-            contentLabel.text = [_note.topics firstObject];
+            contentLabel.text = _note.topicString;// [_note.topics firstObject];
         }
     }
     
