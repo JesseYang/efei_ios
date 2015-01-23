@@ -9,9 +9,14 @@
 #import "NotebookSearchViewController.h"
 #import "SearchBarView.h"
 #import "NotebookCommand.h"
+#import "EFei.h"
+#import <IQKeyboardManager.h>
 
 @interface NotebookSearchViewController()<UITableViewDataSource, UITableViewDelegate, SearchBarViewDelegate>
-
+{
+    NSArray* _histories;
+    BOOL _showSearchHistory;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -25,11 +30,18 @@
     
     [self setupNavigator];
     [self setupViews];
+    
+    [[EFei instance].searchManager addSearch:@"三角函数"];
+    [[EFei instance].searchManager addSearch:@"单调性"];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    self.searchBarView.delegate = self;
+    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = NO;
 }
 
 
@@ -46,6 +58,10 @@
     self.searchBarView.delegate = self;
 }
 
+- (void) setupData
+{
+    _histories = [EFei instance].searchManager.searchHistroies;
+}
 
 -(void)viewDidLayoutSubviews
 {
@@ -66,25 +82,61 @@
 
 - (void) searchBarViewDidTapped:(SearchBarView*)searchBarView
 {
-    
+}
+
+- (void) searchBarVieDidBeginEditing:(SearchBarView *)searchBarView
+{
+    _showSearchHistory = YES;
+    [self setupData];
+    [self.tableView reloadData];
 }
 
 - (void) searchBarVie:(SearchBarView*)searchBarView textDidChanged:(NSString*)text
 {
-    
+    if (_showSearchHistory)
+    {
+        
+    }
 }
 
 #pragma mark -- TableView
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (_showSearchHistory)
+    {
+        if (_histories.count > 0)
+        {
+            return _histories.count + 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
     return 0;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"NotebookSearchTableViewCell" forIndexPath:indexPath];
-    cell.textLabel.text = @"";
+    
+    if (_showSearchHistory)
+    {
+        if (indexPath.row < _histories.count)
+        {
+            cell.textLabel.text = [_histories objectAtIndex:indexPath.row];
+        }
+        else
+        {
+            cell.textLabel.text = @"清除历史记录";
+        }
+    }
+    else
+    {
+        cell.textLabel.text = @"";
+    }
     
     return cell;
 }
@@ -105,6 +157,23 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.searchBarView endEditing];
+    
+    if (_showSearchHistory)
+    {
+        if (indexPath.row >= _histories.count)
+        {
+            [[EFei instance].searchManager clearHistory];
+            [self setupData];
+            [self.tableView reloadData];
+        }
+        
+        _showSearchHistory = NO;
+    }
+    else
+    {
+        
+    }
     
 }
 

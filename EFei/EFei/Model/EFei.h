@@ -17,6 +17,7 @@
 #import "Infos.h"
 #import "Teacher.h"
 #import "Topics.h"
+#import "SearchManager.h"
 
 // Access point of data model
 
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) NoteBook* notebook;
 @property (nonatomic, strong) Settings* settings;
 @property (nonatomic, strong) SubjectManager* subjectManager;
+@property (nonatomic, strong) SearchManager* searchManager;
 @property (nonatomic, copy) UIColor* efeiColor;
 
 @property (nonatomic, assign) BOOL newNotesAdded;

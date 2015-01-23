@@ -65,6 +65,11 @@
     return self;
 }
 
+- (void) endEditing
+{
+    [_textField resignFirstResponder];
+}
+
 - (void) setupUI
 {
     self.backgroundColor = [UIColor clearColor];
@@ -208,6 +213,16 @@
 }
 
 #pragma mark UITextFieldDelegate
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if ([self.delegate respondsToSelector:@selector(searchBarVieDidBeginEditing:)])
+    {
+        [self.delegate searchBarVieDidBeginEditing:self];
+    }
+    
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {

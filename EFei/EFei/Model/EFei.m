@@ -44,6 +44,7 @@
         self.notebook       = [[NoteBook alloc] init];
         self.settings       = [[Settings alloc] init];
         self.subjectManager = [[SubjectManager alloc] init];
+        self.searchManager  = [[SearchManager alloc] init];
         
         self.efeiColor = [UIColor colorWithHexString:EFeiColorString];
         
