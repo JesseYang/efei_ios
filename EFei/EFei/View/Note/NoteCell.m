@@ -383,7 +383,7 @@
     
     if (note.topicString.length > 0)
     {
-        self.topicLabel.text = [NSString stringWithFormat:@"标签: %@", note.topicString];
+        self.topicLabel.text = [NSString stringWithFormat:@"知识点: %@", note.topicString];
     }
     else
     {
@@ -392,7 +392,7 @@
     
     if (note.summary.length > 0)
     {
-        self.summaryLabel.text = [NSString stringWithFormat:@"标签: %@", note.summary];
+        self.summaryLabel.text = [NSString stringWithFormat:@"总结: %@", note.summary];
     }
     else
     {
