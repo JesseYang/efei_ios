@@ -76,7 +76,7 @@
                           @"直接下载",
                           @"发送至邮箱",nil];
 
-    
+    _fileType = @"word";
 }
 
 - (void) setupViews

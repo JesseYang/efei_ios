@@ -16,6 +16,13 @@ typedef enum : NSUInteger {
 } NoteCellStatus;
 
 @class Note;
+@class NoteCell;
+
+@protocol NoteCellDelegate <NSObject>
+
+- (void) noteCellDidSelected:(NoteCell*)cell;
+
+@end
 
 @interface NoteCell : UICollectionViewCell
 
@@ -28,6 +35,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UILabel *topicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 
+@property (nonatomic, weak) id<NoteCellDelegate> delegate;
 
 //@property (nonatomic, assign) BOOL noteSelected;
 
