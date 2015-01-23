@@ -203,6 +203,11 @@
     }
     
     self.selected = !self.selected;
+    
+    if ([self.delegate respondsToSelector:@selector(noteCellDidSelected:)])
+    {
+        [self.delegate noteCellDidSelected:self];
+    }
 }
 
 - (void) onSwipe:(UISwipeGestureRecognizer *)recognizer

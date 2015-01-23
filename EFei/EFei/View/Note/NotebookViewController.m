@@ -24,7 +24,7 @@
 #define ShowNotebookExportViewControllerSegueId @"ShowNotebookExportViewController"
 #define ShowQuestionViewControllerSegueId       @"ShowQuestionViewController"
 
-@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate>
+@interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate, NoteCellDelegate>
 {
     NSArray* _notes;
     
@@ -43,6 +43,9 @@
     NSArray* _exportNotes;
     
     Note* _selectedNote;
+    
+    NSInteger _selectedNoteCount;
+    NSMutableArray* _notesStatus;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *noteCollectionView;
@@ -71,6 +74,8 @@
 
 
 - (void) updateFilterLabel;
+
+- (void) updateSelectAllButton;
 
 @end
 
@@ -157,6 +162,11 @@
 - (void) resetData
 {
     _notes = [EFei instance].notebook.filetedNotes;
+    _notesStatus = [[NSMutableArray alloc] initWithCapacity:_notes.count];
+    for (int i=0; i<_notes.count; i++)
+    {
+        [_notesStatus addObject:[NSNumber numberWithBool:NO]];
+    }
     [self.noteCollectionView reloadData];
 }
 
@@ -250,16 +260,24 @@
 
 - (void) onExportAll:(id)sender
 {
-    [self onSelect:nil];
-    
-    NSArray* indexArray = [self.noteCollectionView indexPathsForSelectedItems];
-    NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:indexArray.count];
-    for (NSIndexPath* indexPath in indexArray)
+    NSInteger count = _notesStatus.count;
+    NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:count];
+    for (int i=0; i<count; i++)
     {
-        Note* note = [_notes objectAtIndex:indexPath.row];
-        [array addObject:note];
+        BOOL selected = [[_notesStatus objectAtIndex:i] boolValue];
+        if (selected)
+        {
+            Note* note = [_notes objectAtIndex:i];
+            [array addObject:note];
+        }
+        
+        NSIndexPath* indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+        [self.noteCollectionView deselectItemAtIndexPath:indexPath animated:NO];
     }
     _exportNotes = array;
+    
+    
+    [self onSelect:nil];
     
     [self performSegueWithIdentifier:ShowNotebookExportViewControllerSegueId sender:self];
 }
@@ -278,7 +296,11 @@
             [self.noteCollectionView selectItemAtIndexPath:index
                                                   animated:NO
                                             scrollPosition:UICollectionViewScrollPositionNone];
+            
+            [_notesStatus replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:YES]];
         }
+        
+        _selectedNoteCount = count;
     }
     else
     {
@@ -289,7 +311,11 @@
         {
             NSIndexPath* index = [NSIndexPath indexPathForItem:i inSection:0];
             [self.noteCollectionView deselectItemAtIndexPath:index animated:NO];
+            
+            [_notesStatus replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];
         }
+        
+        _selectedNoteCount = 0;
     }
     
     sender.tag = 1 - sender.tag;
@@ -398,6 +424,41 @@
     }
 }
 
+- (void) updateSelectAllButton
+{
+    if (_selectedNoteCount == _notes.count)
+    {
+        [self.selectAllButton setImage:[UIImage imageNamed:@"icon_notebook_select.png"] forState:UIControlStateNormal];
+        self.selectAllButton.tag = 1;
+    }
+    else
+    {
+        [self.selectAllButton setImage:[UIImage imageNamed:@"icon_notebook_unselect.png"] forState:UIControlStateNormal];
+        self.selectAllButton.tag = 0;
+    }
+    
+}
+
+#pragma mark - NoteCellDelegate
+
+- (void) noteCellDidSelected:(NoteCell *)cell
+{
+    NSIndexPath* indexPath = [self.noteCollectionView indexPathForCell:cell];
+    if (cell.selected)
+    {
+        _selectedNoteCount ++;
+        
+        [_notesStatus replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:YES]];
+    }
+    else
+    {
+        _selectedNoteCount --;
+        [_notesStatus replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:NO]];
+    }
+    
+    [self updateSelectAllButton];
+}
+
 
 #pragma mark -- Navigation
 
@@ -468,6 +529,7 @@
     NoteCell* cell = (NoteCell*)[collectionView dequeueReusableCellWithReuseIdentifier:NoteCellIdentifier forIndexPath:indexPath];
     [cell.exportButton addTarget:self action:@selector(onExportNote:event:) forControlEvents:UIControlEventTouchUpInside];
     [cell.deleteButton addTarget:self action:@selector(onDeleteNote:event:) forControlEvents:UIControlEventTouchUpInside];
+    cell.delegate = self;
     
     Note* note = [_notes objectAtIndex:indexPath.row];
     if (!note.updated)
