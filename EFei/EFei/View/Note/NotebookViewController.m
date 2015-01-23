@@ -14,6 +14,8 @@
 #import "SearchBarView.h"
 #import "NotebookExportViewController.h"
 #import "QuestionViewController.h"
+#import "NotebookSearchViewController.h"
+#import <IQKeyboardManager.h>
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
@@ -88,11 +90,14 @@
     
     _searchBarView.hidden = NO;
     _searchBarView.editing = NO;
+    _searchBarView.delegate = self;
 
     if (![EFei instance].account.needSignIn)
     {
         [self getNotes];
     }
+    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
 }
 
 - (void) setupNavigationBar
@@ -398,6 +403,12 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:ShowNotebookSearchViewControllerSegueId])
+    {
+        NotebookSearchViewController* searchVC = (NotebookSearchViewController*)segue.destinationViewController;
+        searchVC.searchBarView = _searchBarView;
+    }
+    
     if ([segue.identifier isEqualToString:ShowNotebookFilterViewControllerSegueId])
     {
         _searchBarView.hidden = YES;

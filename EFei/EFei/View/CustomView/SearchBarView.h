@@ -14,6 +14,7 @@
 
 - (void) searchBarViewDidTapped:(SearchBarView*)searchBarView;
 
+- (void) searchBarVieDidBeginEditing:(SearchBarView*)searchBarView;
 - (void) searchBarVie:(SearchBarView*)searchBarView textDidChanged:(NSString*)text;
 
 @end
@@ -26,5 +27,7 @@
 
 @property (nonatomic, assign) BOOL editing;
 @property (nonatomic, weak) id<SearchBarViewDelegate> delegate;
+
+- (void) endEditing;
 
 @end

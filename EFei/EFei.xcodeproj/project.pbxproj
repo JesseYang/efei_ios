@@ -166,6 +166,7 @@
 		FCF3D20F1A401AC0009D8722 /* EmailEditingResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D20E1A401AC0009D8722 /* EmailEditingResultViewController.m */; };
 		FCF3D2121A401FE7009D8722 /* PersonalSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D2111A401FE7009D8722 /* PersonalSettingController.m */; };
 		FCFE88DF1A6EE12000B4146A /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFE88DE1A6EE12000B4146A /* ToastView.m */; };
+		FCFE89211A70C22300B4146A /* SearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFE89201A70C22300B4146A /* SearchManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -442,6 +443,8 @@
 		FCF3D2111A401FE7009D8722 /* PersonalSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingController.m; sourceTree = "<group>"; };
 		FCFE88DD1A6EE12000B4146A /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastView.h; sourceTree = "<group>"; };
 		FCFE88DE1A6EE12000B4146A /* ToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastView.m; sourceTree = "<group>"; };
+		FCFE891F1A70C22300B4146A /* SearchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchManager.h; sourceTree = "<group>"; };
+		FCFE89201A70C22300B4146A /* SearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,6 +773,8 @@
 				FCF3D1A21A3D36FC009D8722 /* ImageManager.m */,
 				FCA096721A5911CE00D0520A /* DataFilter.h */,
 				FCA096731A5911CE00D0520A /* DataFilter.m */,
+				FCFE891F1A70C22300B4146A /* SearchManager.h */,
+				FCFE89201A70C22300B4146A /* SearchManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1201,6 +1206,7 @@
 				FC3808F01A1C60F4007A73E4 /* TaskManager.m in Sources */,
 				FCF3D18C1A3B4FCF009D8722 /* TagCollectionViewCell.m in Sources */,
 				FCF3D2041A3FD2F7009D8722 /* VerifyCodeViewController.m in Sources */,
+				FCFE89211A70C22300B4146A /* SearchManager.m in Sources */,
 				FCC2B94D1A1988D200B3DC24 /* ViewController.m in Sources */,
 				FC3808D41A1B4423007A73E4 /* User.m in Sources */,
 				FCF3D2011A3FD2E4009D8722 /* PhoneEditingViewController.m in Sources */,

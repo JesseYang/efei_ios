@@ -36,7 +36,8 @@
     self.navigationItem.title = @"邮箱换绑";
     self.navigationItem.leftBarButtonItem.title = @"完成";
     
-    self.infoLabel.text = [NSString stringWithFormat:@"验证邮件已经发送至:\n%@\n请点击邮件中的链接完成验证", [EFei instance].user.mobile];
+    self.infoLabel.textColor = [EFei instance].efeiColor;
+    self.infoLabel.text = [EFei instance].user.mobile;
 }
 
 - (IBAction)onDone:(id)sender
