@@ -272,6 +272,7 @@
     _textField.text = [_searchResult objectAtIndex:indexPath.row];
     _searchResult = nil;
     [self resizeContent];
+    [self onAdd:nil];
 }
 
 @end
