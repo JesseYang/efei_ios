@@ -40,6 +40,7 @@
     [super viewDidAppear:animated];
     
     self.searchBarView.delegate = self;
+    [self.searchBarView beginEditing];
     
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = NO;
 }

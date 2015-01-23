@@ -28,6 +28,7 @@
 @property (nonatomic, assign) BOOL editing;
 @property (nonatomic, weak) id<SearchBarViewDelegate> delegate;
 
+- (void) beginEditing;
 - (void) endEditing;
 
 @end

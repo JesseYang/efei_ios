@@ -65,6 +65,11 @@
     return self;
 }
 
+- (void) beginEditing
+{
+    [_textField becomeFirstResponder];
+}
+
 - (void) endEditing
 {
     [_textField resignFirstResponder];
