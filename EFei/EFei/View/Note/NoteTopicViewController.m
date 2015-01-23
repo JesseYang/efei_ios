@@ -89,7 +89,10 @@
 
 - (void) searchView:(SearchView *)searchView didAddContent:(NSString *)content
 {
-    [self.tagCollectionView addTitle:content];
+    if ([self.tagCollectionView.titles indexOfObject:content] == NSNotFound)
+    {
+        [self.tagCollectionView addTitle:content];
+    }
 }
 
 - (NSArray*) searchView:(SearchView *)searchView searchResultWithText:(NSString *)text
@@ -98,7 +101,8 @@
     Subject* subject = [[EFei instance].subjectManager subjectWithType:self.note.subjectType];
     for (Topic* topic in subject.topics)
     {
-        if ([topic.name hasPrefix:text])
+        NSString* lowerStr = [text lowercaseString];
+        if ([topic.name hasPrefix:text] || [topic.quickName hasPrefix:lowerStr])
         {
             [res addObject:topic.name];
         }
