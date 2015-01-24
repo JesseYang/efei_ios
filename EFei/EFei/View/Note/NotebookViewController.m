@@ -336,6 +336,15 @@
 {
     _selectMode = !_selectMode;
     
+    NSInteger count = [self collectionView:self.noteCollectionView numberOfItemsInSection:0];
+    for (int i=0; i<count; i++)
+    {
+        NSIndexPath* index = [NSIndexPath indexPathForItem:i inSection:0];
+        [self.noteCollectionView deselectItemAtIndexPath:index animated:NO];
+        
+        [_notesStatus replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];
+    }
+    
     [self.noteCollectionView performBatchUpdates:^{
         
 //        NSInteger count = [self collectionView:self.noteCollectionView numberOfItemsInSection:0];

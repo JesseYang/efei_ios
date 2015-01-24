@@ -86,6 +86,11 @@
 
 - (void) onDone:(id)sender
 {
+    if (self.notes.count == 0)
+    {
+        return;
+    }
+    
     if (self.emailTextFeild.enabled)
     {
         _email = self.emailTextFeild.text;
