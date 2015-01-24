@@ -63,7 +63,9 @@
     
     _tagTitles = self.note.tags;
     
-    _selectedTagIndex = -1;
+    NSString* selectedTag = self.note.tag;
+    
+    _selectedTagIndex = [_tagTitles indexOfObject:selectedTag];
     
     _titleLabel.text = @"请选择一个您想添加的标签";
     

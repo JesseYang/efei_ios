@@ -34,7 +34,7 @@
 
 - (void) setEmail:(NSString *)email
 {
-    if (email != nil)
+    if (email != nil && [email isKindOfClass:[NSString class]])
     {
         _email  = [email copy];
     }
@@ -46,7 +46,7 @@
 
 - (void) setName:(NSString *)name
 {
-    if (name != nil)
+    if (name != nil && [name isKindOfClass:[NSString class]])
     {
         _name  = [name copy];
     }
@@ -58,7 +58,7 @@
 
 - (void) setMobile:(NSString *)mobile
 {
-    if (mobile != nil)
+    if (mobile != nil && [mobile isKindOfClass:[NSString class]])
     {
         _mobile  = [mobile copy];
     }

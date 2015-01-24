@@ -119,6 +119,7 @@
 
 - (void) setNoteContent:(NSArray *)contents
 {
+    _attributedString = [[NSMutableAttributedString alloc] initWithString:@""];
     for (NSString* line in contents)
     {
         [self processLine:line];
