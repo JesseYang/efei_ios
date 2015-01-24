@@ -11,6 +11,8 @@
 #import <SBJson.h>
 #import "EFei.h"
 
+NSString* kNetworkNotificationName = @"EFeiNetworkNotificationName";
+
 static NSString* kBaseUrl = @"http://dev.efei.org";
 
 static NSString* kBaseResponseSuccessKey = @"success";
@@ -101,6 +103,8 @@ static NSString* kBaseReqeustMessageKey = @"message";
 - (void) failed
 {
     NSLog(@"NetworkTask failed. Error code: %ld. %@", self.errorCode, self.error);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkNotificationName object:self.error];
     
     if (self.completionBlock != nil)
     {

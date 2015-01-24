@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString* kNetworkNotificationName;
+
 typedef enum : NSUInteger
 {
     // Account

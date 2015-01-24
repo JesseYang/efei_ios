@@ -618,7 +618,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZbN-As-tL4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZbN-As-tL4">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="2ye-Rl-Q7w"/>
@@ -1467,8 +1467,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="8Tu-8p-Lhw"/>
                     <connections>
-                        <outlet property="nicknameTextField" destination="dih-Xj-oJB" id="213-Cb-bX6"/>
-                        <outlet property="passwordTextField" destination="ene-23-qlc" id="bNo-yg-Jql"/>
+                        <outlet property="nicknameTextField" destination="ene-23-qlc" id="trc-g3-Eyj"/>
+                        <outlet property="passwordTextField" destination="dih-Xj-oJB" id="3gx-mr-LSG"/>
                         <outlet property="signUpButton" destination="OFL-SM-H0z" id="N2u-Ku-4wn"/>
                         <outlet property="usernameTextField" destination="hWl-d6-RWt" id="ba1-3R-pAm"/>
                     </connections>

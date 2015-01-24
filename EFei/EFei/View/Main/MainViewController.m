@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import "UIColor+Hex.h"
 #import "EFei.h"
+#import "NetWorkTask.h"
+#import "ToastView.h"
 
 #define NavigationBarBackgroundColor @"#4979BD"
 #define TabBarNormalColor @"#070707"
@@ -65,7 +67,7 @@
     
     
     
-    
+    [self setupNetworkNotification];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -100,6 +102,25 @@
     [[EFei instance].account signout];
     self.selectedIndex = 1;
     [self performSegueWithIdentifier:ShowSignInViewControllerSegueId sender:self];
+}
+
+- (void) setupNetworkNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNetworkNotification:)
+                                                 name:kNetworkNotificationName
+                                               object:nil];
+    
+}
+
+- (void) receiveNetworkNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:kNetworkNotificationName])
+    {
+        NSString* error = notification.object;
+        NSLog (@"Network notification %@", error);
+        [ToastView showMessage:error];
+    }
 }
 
 @end
