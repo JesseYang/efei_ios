@@ -94,7 +94,7 @@
         }
         else
         {
-            [ToastView showMessage:@"用户名密码错误，请重试"];
+//            [ToastView showMessage:@"用户名密码错误，请重试"];
         }
     };
     
