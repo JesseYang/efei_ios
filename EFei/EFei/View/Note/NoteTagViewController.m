@@ -79,6 +79,7 @@
     if (_selectedTagIndex >= 0)
     {
         self.note.tag = [_tagTitles objectAtIndex:_selectedTagIndex];
+        self.note.modified = YES;
     }
     
     [self.navigationController popViewControllerAnimated:YES];
