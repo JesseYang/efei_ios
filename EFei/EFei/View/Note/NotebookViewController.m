@@ -104,8 +104,8 @@
     else
     {
         [self resetData];
-        [self.noteCollectionView reloadData];
     }
+    [self.noteCollectionView reloadData];
     
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
 }

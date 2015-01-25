@@ -12,12 +12,13 @@ extern NSString* kErrorMessageWrongUserName;
 extern NSString* kErrorMessageWrongPhoneNumber;
 extern NSString* kErrorMessageWrongPassword;
 extern NSString* kErrorMessageWrongRealName;
+extern NSString* kErrorMessageWrongEmail;
 extern NSString* kErrorMessageWrongSignInFailed;
 extern NSString* kErrorMessageWrongSignUpFailed;
 extern NSString* kErrorMessageNoSuchUser;
 extern NSString* kErrorMessageGetRestPasswordTokenFailed;
 extern NSString* kErrorMessageResetPasswordFailed;
-
+extern NSString* kErrorMessageNoExportDestination;
 
 @interface ToastView : UIView
 

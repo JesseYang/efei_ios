@@ -53,18 +53,26 @@
 {
     _topics = [NSArray arrayWithArray:topics];
     
-    NSMutableString* res = [[NSMutableString alloc] init];
-    
-    for (NSString* t in self.topics)
+    if (_topics.count == 0)
     {
-        [res appendString:t];
-        if (t != [self.topics lastObject])
+        _topicString = @"";
+    }
+    else
+    {
+        NSMutableString* res = [[NSMutableString alloc] init];
+        
+        for (NSString* t in self.topics)
         {
-            [res appendString:TopicsSeparator];
+            [res appendString:t];
+            if (t != [self.topics lastObject])
+            {
+                [res appendString:TopicsSeparator];
+            }
         }
+        
+        _topicString = [res copy];
     }
     
-    _topicString = [res copy];
 }
 
 - (void) setTopicString:(NSString *)topicString

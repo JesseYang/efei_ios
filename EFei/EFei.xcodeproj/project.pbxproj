@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D7A6B466F9D1A89691CA409 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0C56EE660008A4E4B0D34B /* libPods.a */; };
+		FC2311211A74C75900639106 /* icon_notebook_export_email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC2311201A74C75900639106 /* icon_notebook_export_email@2x.png */; };
 		FC2E81601A2AB6DE0032D9AA /* GetQuestionController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2E815F1A2AB6DE0032D9AA /* GetQuestionController.m */; };
 		FC2E81691A2AF2AF0032D9AA /* NotebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2E81681A2AF2AF0032D9AA /* NotebookViewController.m */; };
 		FC2E816C1A2AF30D0032D9AA /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2E816B1A2AF30D0032D9AA /* NoteCell.m */; };
@@ -183,6 +184,7 @@
 		126DD9D665867BC5FC29904D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		89DD7216BEBCFF5172A63059 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BA0C56EE660008A4E4B0D34B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC2311201A74C75900639106 /* icon_notebook_export_email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_notebook_export_email@2x.png"; sourceTree = "<group>"; };
 		FC2E815E1A2AB6DE0032D9AA /* GetQuestionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetQuestionController.h; sourceTree = "<group>"; };
 		FC2E815F1A2AB6DE0032D9AA /* GetQuestionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetQuestionController.m; sourceTree = "<group>"; };
 		FC2E81661A2ABB8B0032D9AA /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 		FCC98BC11A4708B600D9567D /* notebook */ = {
 			isa = PBXGroup;
 			children = (
+				FC2311201A74C75900639106 /* icon_notebook_export_email@2x.png */,
 				FCC98BC21A4708B600D9567D /* icon_notebook_cancel@2x.png */,
 				FCC98BC31A4708B600D9567D /* icon_notebook_delete@2x.png */,
 				FCC98BC41A4708B600D9567D /* icon_notebook_export@2x.png */,
@@ -1145,6 +1148,7 @@
 				FCC98C221A4708B700D9567D /* icon_setting_teacher_cancel@2x.png in Resources */,
 				FCC98C231A4708B700D9567D /* icon_setting_teacher_delete@2x.png in Resources */,
 				FCC98C021A4708B600D9567D /* icon_notebook_select@2x.png in Resources */,
+				FC2311211A74C75900639106 /* icon_notebook_export_email@2x.png in Resources */,
 				FCC2B8CD1A18D0D800B3DC24 /* Images.xcassets in Resources */,
 				FCC98C111A4708B600D9567D /* icon_question_topic_delete@2x.png in Resources */,
 				FCC98C1C1A4708B700D9567D /* icon_scan_switch_first_on@2x.png in Resources */,
