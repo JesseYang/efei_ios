@@ -47,7 +47,7 @@
     }
     else
     {
-        [self getVerifyCode];
+        [self startCountDown];
     }
 }
 
@@ -114,7 +114,7 @@
             }
         };
         
-        NSString* phone = [ResetPasswordController instance].email;
+        NSString* phone = [ResetPasswordController instance].phone;
         [GetResetPasswordTokenCommand executeWithPhoneNumber:phone authCode:self.codeTextField.text completeHandler:hanlder];
     }
 }
