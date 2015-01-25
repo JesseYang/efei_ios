@@ -12,6 +12,7 @@
 #import "Note.h"
 #import "EFei.h"
 #import "NotebookCommand.h"
+#import <IQKeyboardManager.h>
 
 @interface NoteTopicViewController()<SearchViewDelegate, SearchViewDataSource>
 {
@@ -77,6 +78,8 @@
     }
     
     [self.view bringSubviewToFront:self.searchView];
+    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = NO;
 }
 
 - (void) onDone:(id)sender

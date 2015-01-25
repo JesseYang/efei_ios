@@ -230,12 +230,16 @@
 
 - (void) onAdd:(id)sender
 {
+    [_textField endEditing:YES];
+    
     if ([self.delegate respondsToSelector:@selector(searchView:didAddContent:)])
     {
         [self.delegate searchView:self didAddContent:_textField.text];
     }
     
     _textField.text = @"";
+    _searchResult = nil;
+    [self resizeContent];
     
     NSLog(@"%f", self.frame.size.height);
 }
@@ -270,8 +274,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     _textField.text = [_searchResult objectAtIndex:indexPath.row];
-    _searchResult = nil;
-    [self resizeContent];
+    
     [self onAdd:nil];
 }
 

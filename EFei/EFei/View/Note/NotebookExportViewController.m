@@ -9,6 +9,7 @@
 #import "NotebookExportViewController.h"
 #import "EFei.h"
 #import "NotebookCommand.h"
+#import "ToastView.h"
 
 @interface NotebookExportViewController()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -22,7 +23,7 @@
     BOOL       _hasAnswer;
     BOOL       _hasNote;
     NSString*  _email;
-    
+    ExportDestination _destination;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *noteCountLabel;
@@ -77,6 +78,27 @@
                           @"发送至邮箱",nil];
 
     _fileType = @"word";
+    
+    NotebookExportSetting* settings = [EFei instance].settings.exportSetting;
+    _fileType = settings.fileType;
+    _hasAnswer = settings.hasAnswer;
+    _hasNote = settings.hasNote;
+    _email = settings.email;
+    _destination = settings.destination;
+    
+    self.emailTextFeild.text = _email;
+    if (_destination == ExportDestinationEmail)
+    {
+        self.emailTextFeild.enabled = YES;
+        self.emailImageView.highlighted = YES;
+        self.emailTextFeild.backgroundColor = [UIColor whiteColor];
+    }
+    else
+    {
+        self.emailTextFeild.enabled = NO;
+        self.emailImageView.highlighted = NO;
+        self.emailTextFeild.backgroundColor = [UIColor lightGrayColor];
+    }
 }
 
 - (void) setupViews
@@ -100,12 +122,62 @@
         _email = @"";
     }
     
+    if (![self checkSetting])
+    {
+        return;
+    }
+    
+    NotebookExportSetting* settings = [EFei instance].settings.exportSetting;
+    settings.fileType  = _fileType;
+    settings.hasAnswer = _hasAnswer;
+    settings.hasNote   = _hasNote;
+    settings.email     = _email;
+    settings.destination = _destination;
+    
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
-        [self.navigationController popViewControllerAnimated:YES];
+        if (success)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     };
     
     [NotebookExportCommand executeWithNotes:self.notes fileType:_fileType hasAnswer:_hasAnswer hasNote:_hasNote email:_email completeHandler:handler];
+}
+
+
+- (BOOL) checkSetting
+{
+    if (_destination == ExportDestinationNone)
+    {
+        [ToastView showMessage:kErrorMessageNoExportDestination];
+        return NO;
+    }
+    
+    if (_destination == ExportDestinationEmail)
+    {
+        if ([self isValidEmail:_email])
+        {
+            return YES;
+        }
+        else
+        {
+            [ToastView showMessage:kErrorMessageWrongEmail];
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL) isValidEmail:(NSString*)checkString
+{
+    BOOL stricterFilter = NO;
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
 }
 
 
@@ -168,9 +240,14 @@
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ExportOptionCell" forIndexPath:indexPath];
 
-//    UIView *bgColorView = [[UIView alloc] init];
-//    bgColorView.backgroundColor = [UIColor whiteColor];
-//    [cell setSelectedBackgroundView:bgColorView];
+    
+    UIImageView* imageView = nil;
+    if (cell.accessoryView == nil)
+    {
+        imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
+        cell.accessoryView = imageView;
+    }
+    imageView = (UIImageView*)cell.accessoryView;
     
     if (tableView == self.exportFormatTableView)
     {
@@ -180,20 +257,32 @@
     if (tableView == self.exportContentTableView)
     {
         cell.textLabel.text = [_exportContentArray objectAtIndex:indexPath.row];
+        
+        if ((indexPath.row == 0 && _hasAnswer) || (indexPath.row==1 && _hasNote))
+        {
+            imageView.image = [UIImage imageNamed:@"icon_notebook_select.png"];
+        }
+        else
+        {
+            imageView.image = nil;
+        }
     }
     
     
     if (tableView == self.exprotDestinationTableView)
     {
         cell.textLabel.text = [_exportDestinationArray objectAtIndex:indexPath.row];
-    }
-    
-    if (cell.accessoryView == nil)
-    {
-        UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
-        imageView.image = nil;
-        imageView.highlightedImage = [UIImage imageNamed:@"icon_notebook_select.png"];
-        cell.accessoryView = imageView;
+        
+        if ((indexPath.row == 0 && _destination == ExportDestinationDownload)
+            ||(indexPath.row == 1 && _destination == ExportDestinationEmail))
+        {
+            imageView.image = [UIImage imageNamed:@"icon_notebook_select.png"];
+        }
+        else
+        {
+            imageView.image = nil;
+        }
+        
     }
     
     return cell;
@@ -215,12 +304,31 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
     if (tableView == self.exprotDestinationTableView)
     {
         self.emailTextFeild.enabled = (indexPath.row == 1);
         self.emailImageView.highlighted = (indexPath.row == 1);
+        
+        if (indexPath.row == 0)
+        {
+            _destination = ExportDestinationDownload;
+        }
+        else if(indexPath.row == 1)
+        {
+            _destination = ExportDestinationEmail;
+        }
+        
+        if (self.emailTextFeild.enabled)
+        {
+            self.emailTextFeild.backgroundColor = [UIColor whiteColor];
+        }
+        else
+        {
+            self.emailTextFeild.backgroundColor = [UIColor lightGrayColor];
+        }
     }
-    
     
     if (tableView == self.exportFormatTableView)
     {
@@ -246,6 +354,8 @@
             _hasNote = !_hasNote;
         }
     }
+    
+    [tableView reloadData];
 }
 
 
