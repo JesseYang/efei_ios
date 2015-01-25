@@ -9,6 +9,7 @@
 #import "NetWorkTaskAddQuestion.h"
 #import "EFei.h"
 #import "TaskManager.h"
+#import "GetQuestionController.h"
 
 static NSString* kRequestQuestionIdKey        = @"question_id";
 static NSString* kRequestQuestionIdsKey       = @"question_ids";
@@ -113,8 +114,11 @@ static NSString* kResponseUserIdKey            = @"user_id";
     
     note.updated = YES;
     
+    
     [[EFei instance].notebook addNote:note];
     [EFei instance].newNotesAdded = YES;
+    
+    [GetQuestionController instance].currentNote = nil;
     
     return YES;
 }
