@@ -15,6 +15,7 @@
 #import "NotebookExportViewController.h"
 #import "QuestionViewController.h"
 #import "NotebookSearchViewController.h"
+#import "GetQuestionController.h"
 #import <IQKeyboardManager.h>
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
@@ -108,6 +109,8 @@
     [self.noteCollectionView reloadData];
     
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    
+    [self addQuestionIfNeeded];
 }
 
 - (void) setupNavigationBar
@@ -173,6 +176,27 @@
         [_notesStatus addObject:[NSNumber numberWithBool:NO]];
     }
     [self.noteCollectionView reloadData];
+}
+
+- (void) addQuestionIfNeeded
+{
+    Note* note = [GetQuestionController instance].currentNote;
+    
+    if (note != nil && note.noteId.length == 0)
+    {
+        
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            if (success)
+            {
+                [self resetData];
+                [self.noteCollectionView reloadData];
+            }
+        };
+        
+        [AddQuestionToNotebookCommand executeWithNote:note completeHandler:handler];
+        
+    }
 }
 
 - (UIView*) viewWithTitle:(NSString*)title image:(UIImage*)image action:(SEL)action

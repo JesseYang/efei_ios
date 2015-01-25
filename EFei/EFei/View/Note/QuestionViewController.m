@@ -157,16 +157,25 @@
 {
     _note.summary = _summaryTextView.text;
     
-    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+    if ([EFei instance].account.needSignIn)
+    {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            if (success)
+            {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            
+        };
         
-        if (success)
-        {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-    };
+        [AddQuestionToNotebookCommand executeWithNote:_note completeHandler:handler];
+    }
     
-    [AddQuestionToNotebookCommand executeWithNote:_note completeHandler:handler];
+    
 }
 
 - (void) showNoteOperationMenu

@@ -677,7 +677,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6s2-TZ-xJG">
                                 <rect key="frame" x="0.0" y="361" width="600" height="50"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_notebook_export_email.png" translatesAutoresizingMaskIntoConstraints="NO" id="bET-pA-Moh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_notebook_export_email_disable.png" highlightedImage="icon_notebook_export_email.png" translatesAutoresizingMaskIntoConstraints="NO" id="bET-pA-Moh">
                                         <rect key="frame" x="30" y="10" width="40" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="859-or-mhy"/>
@@ -3007,6 +3007,7 @@
         <image name="icon_notebook_delete.png" width="20" height="21"/>
         <image name="icon_notebook_export.png" width="21" height="20"/>
         <image name="icon_notebook_export_email.png" width="26" height="21"/>
+        <image name="icon_notebook_export_email_disable.png" width="26" height="21"/>
         <image name="icon_notebook_select.png" width="14" height="14"/>
         <image name="icon_notebook_select_all.png" width="14" height="13"/>
         <image name="icon_notebook_tag.png" width="21" height="18"/>
