@@ -8,6 +8,7 @@
 
 #import "ResetPassordViewController.h"
 #import "ResetPasswordController.h"
+#import "AccountCommand.h"
 
 @interface ResetPassordViewController()
 {
@@ -67,15 +68,35 @@
     NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     if (text.length == 11 && [text rangeOfCharacterFromSet:notDigits].location == NSNotFound)
     {
-        [ResetPasswordController instance].phone = text;
+        [self nextWithPhone:text];
     }
     else
     {
-        [ResetPasswordController instance].email = text;
+        [self nextWithEmail:text];
     }
     
+}
+
+- (void) nextWithEmail:(NSString*)email
+{
+    [ResetPasswordController instance].email = email;
     [self performSegueWithIdentifier:@"ShowResetPasswordResultViewController" sender:self];
 }
+
+- (void) nextWithPhone:(NSString*)phone
+{
+    [ResetPasswordController instance].phone = phone;
+    
+    CompletionBlock hanlder = ^(NetWorkTaskType taskType, BOOL success) {
+//        if (success)
+        {
+            [self performSegueWithIdentifier:@"ShowResetPasswordResultViewController" sender:self];
+        }
+    };
+    
+    [SendVerifyCodeCommand executeWithPhoneNumber:phone completeHandler:hanlder];
+}
+
 
 
 @end
