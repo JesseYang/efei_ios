@@ -29,6 +29,8 @@
     NSArray* _noteTableContentLables;
     
     PopupMenu* _popupMenu;
+    
+    BOOL _noteModified;
 }
 
 @property (weak, nonatomic) IBOutlet QuestionView *questionView;
@@ -42,7 +44,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *questionViewHeightConstraint;
 
 - (IBAction)onDone:(id)sender;
-
+- (IBAction)onBack:(id)sender;
 
 @end
 
@@ -122,11 +124,38 @@
         self.rightBBI.title = @"操作";
         
         self.summaryTextView.text = self.note.summary;
+        
+        UIImage* backImage = [UIImage imageNamed:@"icon_setting_teacher_back.png"];
+        self.navigationItem.leftBarButtonItem = [self barItemWithImage:backImage
+                                                                 title:@"返回"
+                                                                target:self
+                                                                action:@selector(onBack:)];
     }
     else
     {
         self.rightBBI.title = @"保存";
     }
+}
+
+
+
+- (UIBarButtonItem*)barItemWithImage:(UIImage*)image title:(NSString*)title target:(id)target action:(SEL)action
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.0, 0.0, image.size.width + 50, image.size.height);
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [button setImage:image forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
+    CGSize imageSize = button.imageView.frame.size;
+    button.imageEdgeInsets = UIEdgeInsetsMake(0.0, -imageSize.width, 0.0, 0.0);
+    
+    return barButtonItem;
 }
 
 - (void) viewWillLayoutSubviews
@@ -140,6 +169,33 @@
 }
 
 #pragma mark -- Action
+
+- (IBAction)onBack:(id)sender
+{
+    if (![self.note.summary isEqualToString:_summaryTextView.text])
+    {
+        self.note.summary = _summaryTextView.text;
+        self.note.modified = YES;
+    }
+    
+    if (self.note.modified)
+    {
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            if (success)
+            {
+                self.note.modified = NO;
+            }
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        };
+        [NotebookUpdateNoteCommand executeWithNote:self.note completeHandler:handler];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 - (IBAction)onDone:(id)sender
 {
@@ -155,7 +211,7 @@
 
 - (void) addQuestionAsNote
 {
-    _note.summary = _summaryTextView.text;
+    self.note.summary = _summaryTextView.text;
     
     if ([EFei instance].account.needSignIn)
     {
@@ -172,7 +228,7 @@
             
         };
         
-        [AddQuestionToNotebookCommand executeWithNote:_note completeHandler:handler];
+        [AddQuestionToNotebookCommand executeWithNote:self.note completeHandler:handler];
     }
     
     
@@ -269,11 +325,11 @@
     
     if (indexPath.row == 0)
     {
-        contentLabel.text = _note.tag;
+        contentLabel.text = self.note.tag;
     }
     else if (indexPath.row == 1)
     {
-        contentLabel.text = _note.topicString;// [_note.topics firstObject];
+        contentLabel.text = self.note.topicString;// [self.note.topics firstObject];
     }
     
     return cell;
@@ -301,12 +357,12 @@
     if ([segue.identifier isEqualToString:EditTagSegueId])
     {
         NoteTagViewController* tagVC = (NoteTagViewController*)segue.destinationViewController;
-        tagVC.note = _note;
+        tagVC.note = self.note;
     }
     else if ([segue.identifier isEqualToString:EditKnowledgeSegueId])
     {
         NoteTopicViewController* knowledgeVC = (NoteTopicViewController*)segue.destinationViewController;
-        knowledgeVC.note = _note;
+        knowledgeVC.note = self.note;
     }
     else if([segue.identifier isEqualToString:ShowNotebookExportViewControllerSegueId])
     {

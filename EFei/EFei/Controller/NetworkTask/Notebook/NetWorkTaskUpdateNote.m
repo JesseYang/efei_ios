@@ -37,6 +37,7 @@ static NSString* kResponseSummaryKey           = @"summary";
 static NSString* kResponseTagKey               = @"tag";
 static NSString* kResponseTagSetKey            = @"tag_set";
 static NSString* kResponseTopicIdsKey          = @"topic_ids";
+static NSString* kResponseTopicStrKey          = @"topic_str";
 static NSString* kResponseTypeKey              = @"type";
 static NSString* kResponseUpdatedAtKey         = @"updated_at";
 static NSString* kResponseUserIdKey            = @"user_id";
@@ -76,26 +77,35 @@ static NSString* kResponseUserIdKey            = @"user_id";
 
 - (BOOL) parseResultDict:(NSDictionary *)dict
 {
-    //    Note* note = (Note*)self.data;
-    //
-    //    NSDictionary* noteDict = [dict objectForKey:kResponseNoteKey];
-    //    if (![noteDict isKindOfClass:[NSDictionary class]])
-    //    {
-    //        return NO;
-    //    }
-    //
-    //    note.noteId = [[noteDict objectForKey:kResponseIdKey] objectForKey:kResponseIdOidKey];
-    //    note.answer = [[noteDict objectForKey:kResponseAnswerKey] integerValue];
-    //    note.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
-    //    note.items = [noteDict objectForKey:kResponseItemsKey];
-    //    note.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
-    //    note.updateTime = [[noteDict objectForKey:kResponseLastUpdateTimeKey] integerValue];
-    //    note.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
-    //    note.questionType = [[noteDict objectForKey:kResponseQuestionTypeKey] integerValue];
-    //    note.subjectType = [[noteDict objectForKey:kResponseSubjectKey] integerValue];
-    //    note.summary = [noteDict objectForKey:kResponseSummaryKey];
-    //    note.tag = [noteDict objectForKey:kResponseTagKey];
-    //    note.tags = [noteDict objectForKey:kResponseTagSetKey];
+    Note* note = (Note*)self.data;
+    
+    NSDictionary* noteDict = [dict objectForKey:kResponseNoteKey];
+    if (![noteDict isKindOfClass:[NSDictionary class]])
+    {
+        return NO;
+    }
+    
+    NSLog(@"Note  %@", dict);
+    
+    note.noteId = [noteDict objectForKey:kResponseIdKey];
+    if ([noteDict objectForKey:kResponseAnswerKey] != [NSNull null])
+    {
+        note.answer = [[noteDict objectForKey:kResponseAnswerKey] integerValue];
+    }
+    note.contents = [noteDict objectForKey:kResponseContentKey];
+    note.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
+    note.items = [noteDict objectForKey:kResponseItemsKey];
+    note.updateTime = [[noteDict objectForKey:kResponseLastUpdateTimeKey] integerValue];
+    note.questionType = [[noteDict objectForKey:kResponseQuestionTypeKey] integerValue];
+    note.subjectType = [[noteDict objectForKey:kResponseSubjectKey] integerValue];
+    note.summary = [noteDict objectForKey:kResponseSummaryKey];
+    note.tag = [noteDict objectForKey:kResponseTagKey];
+    note.tagsetString = [noteDict objectForKey:kResponseTagSetKey];
+    note.topicString = [noteDict objectForKey:kResponseTopicStrKey];
+    note.createTime = [noteDict objectForKey:kResponseCreatedAtKey];
+    note.lastUpdateTime = [noteDict objectForKey:kResponseUpdatedAtKey];
+    
+    note.updated = YES;
     
     return YES;
 }

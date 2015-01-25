@@ -85,6 +85,7 @@
 - (void) onDone:(id)sender
 {
     self.note.topics = [NSArray arrayWithArray:self.tagCollectionView.titles];
+    self.note.modified = YES;
     
     [self.navigationController popViewControllerAnimated:YES];
 }
