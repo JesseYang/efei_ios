@@ -108,6 +108,18 @@
             [subject addTopic:topic];
         }
     }
+    
+    NSDictionary* attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:&error];
+    if (attrs != nil)
+    {
+        NSDate *date = (NSDate*)[attrs objectForKey: NSFileCreationDate];
+        NSLog(@"Date Created: %@", [date description]);
+        NSTimeInterval timeInterval = [date timeIntervalSinceNow];
+        if (timeInterval < -604800)
+        {
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+        }
+    }
 }
 
 - (void) saveSubject:(Subject*)subject
