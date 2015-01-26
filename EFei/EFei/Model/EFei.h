@@ -35,7 +35,11 @@
 
 + (EFei*) instance;
 
-- (void) load;
-- (void) save;
+- (void) loadData;
+- (void) saveData;
+
+
+- (void) loadSubject:(Subject*)subject;
+- (void) saveSubject:(Subject*)subject;
 
 @end

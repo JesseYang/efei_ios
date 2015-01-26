@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class Subject;
+
 @interface DataBase : NSObject
+
+- (void) loadSubject:(Subject*)subject;
+- (void) saveSubject:(Subject*)subject;
+
 
 @end
