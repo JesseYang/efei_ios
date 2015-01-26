@@ -21,6 +21,12 @@
 
 @implementation EFei
 
++ (void) load
+{
+    EFei* efei = [EFei instance];
+    [efei loadData];
+}
+
 + (EFei*) instance
 {
     static EFei* _instance = nil;
@@ -47,18 +53,27 @@
         self.searchManager  = [[SearchManager alloc] init];
         
         self.efeiColor = [UIColor colorWithHexString:EFeiColorString];
-        
-        [self load];
     }
     return self;
 }
 
-- (void) save
+- (void) saveData
 {
 }
 
-- (void) load
+- (void) loadData
 {
+    [self.subjectManager loadData];
+}
+
+- (void) loadSubject:(Subject*)subject
+{
+    [_database loadSubject:subject];
+}
+
+- (void) saveSubject:(Subject*)subject
+{
+    [_database saveSubject:subject];
 }
 
 @end

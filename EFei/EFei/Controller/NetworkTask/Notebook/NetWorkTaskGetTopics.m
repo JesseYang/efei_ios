@@ -63,6 +63,8 @@ static NSString* kResponseTopicsKey        = @"topics";
         [subject addTopic:t];
     }
     
+    [subject saveData];
+    
     return YES;
 }
 

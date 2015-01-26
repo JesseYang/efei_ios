@@ -35,8 +35,13 @@ typedef enum : NSUInteger
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, readonly) NSArray* topics;
 
+- (id) initWithName:(NSString*)name;
+
 - (void) clearAllTopics;
 - (void) addTopic:(Topic*)topic;
+
+- (void) loadData;
+- (void) saveData;
 
 @end
 
@@ -47,6 +52,9 @@ typedef enum : NSUInteger
 
 - (Subject*) subjectWithType:(SubjectType)type;
 - (NSString*) subjectNameWithType:(SubjectType)type;
+
+- (void) loadData;
+- (void) saveData;
 
 @end
 
