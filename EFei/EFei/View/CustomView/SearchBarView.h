@@ -12,6 +12,8 @@
 
 @protocol SearchBarViewDelegate <NSObject>
 
+@optional
+
 - (void) searchBarViewDidTapped:(SearchBarView*)searchBarView;
 
 - (void) searchBarVieDidBeginEditing:(SearchBarView*)searchBarView;

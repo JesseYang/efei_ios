@@ -43,6 +43,8 @@
 {
     [super viewDidLoad];
     
+    _currentSubjectType = SubjectTypeAll;
+    
     [self setupData];
     [self setupNavigator];
     [self setupViews];
@@ -61,10 +63,17 @@
 {
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    self.navigationItem.leftBarButtonItem = [self barItemWithImage:[UIImage imageNamed:@"icon_setting_teacher_back.png"]
+    UIBarButtonItem* leftBarButtonItem = [self barItemWithImage:[UIImage imageNamed:@"icon_setting_teacher_back.png"]
                                                              title:@"返回"
                                                             target:self
                                                             action:@selector(onBack:)];
+    
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                            target:nil
+                                                                            action:nil];
+    spacer.width = -10; // for example shift right bar button to the right
+    
+    self.navigationItem.leftBarButtonItems = @[spacer, leftBarButtonItem];
 }
 
 - (UIBarButtonItem*)barItemWithImage:(UIImage*)image title:(NSString*)title target:(id)target action:(SEL)action
@@ -91,10 +100,10 @@
 {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    float width = self.view.frame.size.width - 140;
+    float width = self.view.frame.size.width - 160;
     float height = 30;
     float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
-    float y = 5;
+    float y = 7;
     CGRect rect = CGRectMake(x, y, width, height);
     _searchBarView = [[SearchBarView alloc] initWithFrame:rect];
     _searchBarView.delegate = self;
@@ -106,7 +115,6 @@
 - (void) setupData
 {
     _teachers = [SearchTeacherController instance].searchedTeachers;
-    _currentSubjectType = SubjectTypeAll;
 }
 
 - (void) updateRightBarButtonItem

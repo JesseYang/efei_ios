@@ -127,10 +127,10 @@
 
 - (void) setupViews
 {
-    float width = self.view.frame.size.width - 140;
+    float width = self.view.frame.size.width - 160;
     float height = 30;
     float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
-    float y = 5;
+    float y = 7;
     CGRect rect = CGRectMake(x, y, width, height);
     _searchBarView = [[SearchBarView alloc] initWithFrame:rect];
     _searchBarView.delegate = self;
