@@ -9,6 +9,9 @@
 #import "PhoneEditingViewController.h"
 #import "EFei.h"
 #import "UserCommand.h"
+#import "VerifyCodeViewController.h"
+#import "NSString+Email.h"
+#import "ToastView.h"
 
 @interface PhoneEditingViewController()
 {
@@ -47,19 +50,55 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
 - (IBAction)onNext:(id)sender
 {
+    if (![self checkEmail])
+    {
+        return;
+    }
+    
     NSString* text = self.emailTextField.text;
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
-        [EFei instance].user.mobile = text;
-        [self performSegueWithIdentifier:@"ShowVerifyCodeViewController" sender:self];
+        if (success)
+        {
+            [self performSegueWithIdentifier:@"ShowVerifyCodeViewController" sender:self];
+        }
         
     };
     
     [UpdatePhoneNumberCommand executeWithNumber:text completeHandler:handler];
     
 }
+
+- (BOOL) checkEmail
+{
+    NSString* text = self.emailTextField.text;
+    if ([text isValidPhoneNumber])
+    {
+        return YES;
+    }
+    else
+    {
+        [ToastView showMessage:kErrorMessageWrongPhoneNumber];
+        
+        return NO;
+    }
+}
+
+
+#pragma mark -- Navigation
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowVerifyCodeViewController"])
+    {
+        VerifyCodeViewController* resultVC = (VerifyCodeViewController*)segue.destinationViewController;
+        resultVC.phone = self.emailTextField.text;
+    }
+}
+
+
 
 @end
 
