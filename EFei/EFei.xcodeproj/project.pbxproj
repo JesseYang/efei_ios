@@ -56,6 +56,7 @@
 		FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312291A2021820020EA31 /* NetWorkTaskUpdateNote.m */; };
 		FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */; };
 		FC4312301A2022D10020EA31 /* Topics.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122F1A2022D10020EA31 /* Topics.m */; };
+		FC5BFF1B1A78A22800A7659C /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF1A1A78A22800A7659C /* NSString+Email.m */; };
 		FC66F4321A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4311A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m */; };
 		FC66F4361A5F9BDF008E93D7 /* TeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4351A5F9BDF008E93D7 /* TeacherViewController.m */; };
 		FC66F4391A5F9C10008E93D7 /* TeacherSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4381A5F9C10008E93D7 /* TeacherSeachViewController.m */; };
@@ -282,6 +283,8 @@
 		FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskExportNotes.m; sourceTree = "<group>"; };
 		FC43122E1A2022D10020EA31 /* Topics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topics.h; sourceTree = "<group>"; };
 		FC43122F1A2022D10020EA31 /* Topics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topics.m; sourceTree = "<group>"; };
+		FC5BFF191A78A22800A7659C /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
+		FC5BFF1A1A78A22800A7659C /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		FC66F4301A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskAddQuestionList.h; sourceTree = "<group>"; };
 		FC66F4311A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskAddQuestionList.m; sourceTree = "<group>"; };
 		FC66F4341A5F9BDF008E93D7 /* TeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherViewController.h; sourceTree = "<group>"; };
@@ -974,6 +977,8 @@
 				FCF3D1471A3AE699009D8722 /* UIColor+Hex.m */,
 				FCF3D1A41A3D3765009D8722 /* UIImage+Resize.h */,
 				FCF3D1A51A3D3765009D8722 /* UIImage+Resize.m */,
+				FC5BFF191A78A22800A7659C /* NSString+Email.h */,
+				FC5BFF1A1A78A22800A7659C /* NSString+Email.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1255,6 +1260,7 @@
 				FCF3D1411A371C7C009D8722 /* RichTextViewGestureRecognizer.m in Sources */,
 				FC66F4321A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m in Sources */,
 				FCA096771A591EB800D0520A /* NotebookFilterViewController.m in Sources */,
+				FC5BFF1B1A78A22800A7659C /* NSString+Email.m in Sources */,
 				FC66F4691A60FA07008E93D7 /* ResetPasswordNewPwdViewController.m in Sources */,
 				FC4312271A2021770020EA31 /* NetWorkTaskDeleteNote.m in Sources */,
 				FCC98C4B1A52440A00D9567D /* NoteCategoryTabView.m in Sources */,

@@ -86,8 +86,6 @@
         {
             [[EFei instance].account save];
             
-            [GetUserInfoCommand executeWithCompleteHandler:nil];
-            
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];

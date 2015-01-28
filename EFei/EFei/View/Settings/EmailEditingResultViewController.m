@@ -37,7 +37,7 @@
     self.navigationItem.leftBarButtonItem.title = @"完成";
     
     self.infoLabel.textColor = [EFei instance].efeiColor;
-    self.infoLabel.text = [EFei instance].user.mobile;
+    self.infoLabel.text = self.email;
 }
 
 - (IBAction)onDone:(id)sender

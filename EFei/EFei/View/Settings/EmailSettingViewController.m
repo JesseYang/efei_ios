@@ -11,9 +11,11 @@
 
 @interface EmailSettingViewController()
 {
+    BOOL _shouldBack;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UIButton *changeMailButton;
 
 - (IBAction)onChangeEmail:(id)sender;
 
@@ -27,6 +29,18 @@
     
     [self setupNavigationBar];
     
+    [self setupView];
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (_shouldBack)
+    {
+        [self.navigationController popViewControllerAnimated:NO];
+    }
 }
 
 - (void) setupNavigationBar
@@ -36,10 +50,15 @@
     self.emailLabel.text = [NSString stringWithFormat:@"您当前绑定的邮箱为: %@", [EFei instance].user.email];
 }
 
+- (void) setupView
+{
+    self.changeMailButton.layer.cornerRadius = 5;
+}
+
 
 - (IBAction)onChangeEmail:(id)sender
 {
-    
+    _shouldBack = YES;
 }
 
 @end
