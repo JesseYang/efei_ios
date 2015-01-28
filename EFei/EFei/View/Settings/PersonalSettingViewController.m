@@ -9,6 +9,7 @@
 #import "PersonalSettingViewController.h"
 #import "EFei.h"
 #import "PersonalSettingController.h"
+#import "UserCommand.h"
 
 #define NavigationBarTilte @"个人设置"
 
@@ -49,9 +50,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self setupData];
-    
-    [self.tableView reloadData];
+    [self getUserInfo];
 }
 
 - (void) setupNavigationBar
@@ -69,6 +68,17 @@
     
     User* user = [EFei instance].user;
     _contentArray = @[user.name, user.email, user.mobile];
+}
+
+- (void) getUserInfo
+{
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        [self setupData];
+        [self.tableView reloadData];
+        
+    };
+    [GetUserInfoCommand executeWithCompleteHandler:handler];
 }
 
 

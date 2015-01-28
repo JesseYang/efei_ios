@@ -2074,6 +2074,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="changeMailButton" destination="rUr-4H-Evu" id="LSM-J4-6dy"/>
                         <outlet property="emailLabel" destination="OxE-Zp-Jh2" id="f0L-PX-Dpn"/>
                     </connections>
                 </viewController>

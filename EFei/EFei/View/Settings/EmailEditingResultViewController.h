@@ -10,4 +10,6 @@
 
 @interface EmailEditingResultViewController : UIViewController
 
+@property (nonatomic, copy) NSString* email;
+
 @end

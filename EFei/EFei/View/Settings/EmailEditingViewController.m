@@ -9,6 +9,9 @@
 #import "EmailEditingViewController.h"
 #import "EFei.h"
 #import "UserCommand.h"
+#import "NSString+Email.h"
+#import "ToastView.h"
+#import "EmailEditingResultViewController.h"
 
 @interface EmailEditingViewController()
 {
@@ -48,12 +51,18 @@
 
 - (IBAction)onNext:(id)sender
 {
+    if (![self checkEmail])
+    {
+        return;
+    }
+    
     NSString* text = self.emailTextField.text;
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
-        [EFei instance].user.email = self.emailTextField.text;
-        
-        [self performSegueWithIdentifier:@"ShowEmailEditingResultViewController" sender:self];
+        if (success)
+        {
+            [self performSegueWithIdentifier:@"ShowEmailEditingResultViewController" sender:self];
+        }
         
     };
     
@@ -61,7 +70,31 @@
     
 }
 
+- (BOOL) checkEmail
+{
+    NSString* text = self.emailTextField.text;
+    if ([text isValidEmail])
+    {
+        return YES;
+    }
+    else
+    {
+        [ToastView showMessage:kErrorMessageWrongEmail];
+        
+        return NO;
+    }
+}
 
+
+#pragma mark -- Navigation
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowEmailEditingResultViewController"])
+    {
+        EmailEditingResultViewController* resultVC = (EmailEditingResultViewController*)segue.destinationViewController;
+        resultVC.email = self.emailTextField.text;
+    }
+}
 
 
 @end
