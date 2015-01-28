@@ -20,4 +20,17 @@
     return [emailTest evaluateWithObject:self];
 }
 
+- (BOOL) isValidPhoneNumber
+{
+    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if (self.length == 11 && [self rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
 @end

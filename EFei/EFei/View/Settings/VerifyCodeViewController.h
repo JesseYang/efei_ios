@@ -10,4 +10,6 @@
 
 @interface VerifyCodeViewController : UIViewController
 
+@property (nonatomic, copy) NSString* phone;
+
 @end

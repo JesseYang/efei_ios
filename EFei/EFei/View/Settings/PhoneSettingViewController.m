@@ -11,9 +11,14 @@
 
 @interface PhoneSettingViewController()
 {
+    BOOL _shouldBack;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UIButton *changePhoneButton;
+
+
+- (IBAction)onChangePhone:(id)sender;
 
 @end
 
@@ -25,7 +30,17 @@
     [super viewDidLoad];
     
     [self setupNavigationBar];
+    [self setupView];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
+    if (_shouldBack)
+    {
+        [self.navigationController popViewControllerAnimated:NO];
+    }
 }
 
 - (void) setupNavigationBar
@@ -36,4 +51,16 @@
     self.emailLabel.text = [NSString stringWithFormat:@"您的手机号为: %@", [EFei instance].user.mobile];
 }
 
+
+- (void) setupView
+{
+    self.changePhoneButton.layer.cornerRadius = 5;
+}
+
+- (IBAction)onChangePhone:(id)sender
+{
+    _shouldBack = YES;
+}
+
 @end
+

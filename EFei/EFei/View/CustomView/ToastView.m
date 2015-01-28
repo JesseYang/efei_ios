@@ -19,6 +19,7 @@ NSString* kErrorMessageNoSuchUser                   = @"用户不存在，请重
 NSString* kErrorMessageGetRestPasswordTokenFailed   = @"验证码错误，请重试";
 NSString* kErrorMessageResetPasswordFailed          = @"重置密码失败，请重试";
 NSString* kErrorMessageNoExportDestination          = @"请选择导出方式";
+NSString* kErrorMessageNoVerifyCode                 = @"请输入验证码";
 
 @interface ToastView()
 

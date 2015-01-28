@@ -2675,6 +2675,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="onChangePhone:" destination="r0h-mc-q79" eventType="touchUpInside" id="FXr-bo-9h0"/>
                                     <segue destination="aOe-d2-nin" kind="presentation" id="erv-2u-Fl5"/>
                                 </connections>
                             </button>
@@ -2708,6 +2709,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="changePhoneButton" destination="Pog-vk-Gq2" id="1Be-AF-UOr"/>
                         <outlet property="emailLabel" destination="h8q-wj-WWn" id="zht-Gv-G6d"/>
                     </connections>
                 </viewController>
@@ -2868,6 +2870,7 @@
                     <connections>
                         <outlet property="phoneLabel" destination="EBl-ad-gor" id="Pvh-AG-dA0"/>
                         <outlet property="phoneTextField" destination="xYd-61-5Zf" id="yb3-xo-5XR"/>
+                        <outlet property="submitButton" destination="PZL-ya-mSC" id="UA6-Kq-Bc2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzE-aS-Ode" userLabel="First Responder" sceneMemberID="firstResponder"/>
