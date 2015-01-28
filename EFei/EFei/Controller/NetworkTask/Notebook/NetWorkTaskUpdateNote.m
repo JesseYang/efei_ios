@@ -70,7 +70,7 @@ static NSString* kResponseUserIdKey            = @"user_id";
     self.path = [NSString stringWithFormat:@"%@/%@", self.path, note.noteId];
     
     [self.parameterDict setObject:note.tag forKey:kRequestNoteTagKey];
-    [self.parameterDict setObject:note.topics forKey:kRequestNoteTopicsKey];
+    [self.parameterDict setObject:note.topicString forKey:kRequestNoteTopicsKey];
     [self.parameterDict setObject:note.summary forKey:kRequestNoteSummaryKey];
 }
 
