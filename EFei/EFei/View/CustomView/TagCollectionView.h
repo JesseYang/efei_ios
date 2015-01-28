@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@interface TagCollectionViewFlowLayout : UICollectionViewFlowLayout
+
+@end
+
 @interface TagCollectionView : UICollectionView
 
 @property (nonatomic, strong) NSArray* titles;

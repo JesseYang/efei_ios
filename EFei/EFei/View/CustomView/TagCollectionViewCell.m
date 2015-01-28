@@ -11,7 +11,7 @@
 
 #define CellColor @"#4979BD"
 
-#define CellPadding 10
+#define CellPadding 3
 #define CellHeight 30
 
 @interface TagCollectionViewCell()
@@ -94,7 +94,7 @@
     [_deleteButton addConstraints:buttonConstraintH];
     [_deleteButton addConstraints:buttonConstraintV];
     
-    NSArray *constraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentLabel]-5-[deleteButton]|"
+    NSArray *constraintPosH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[contentLabel]-0-[deleteButton]|"
                                                                       options:NSLayoutFormatAlignAllTop
                                                                       metrics:nil
                                                                         views:viewsDictionary];
