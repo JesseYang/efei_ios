@@ -10,6 +10,7 @@
 
 typedef enum : NSUInteger
 {
+    SubjectTypeAll          = 0,
     SubjectTypeChinese      = 1,
     SubjectTypeMathematics  = 2,
     SubjectTypeEnglish      = 4,
@@ -19,8 +20,7 @@ typedef enum : NSUInteger
     SubjectTypeHistroy      = 64,
     SubjectTypeGeography    = 128,
     SubjectTypePolitics     = 256,
-    SubjectTypeOther        = 512,
-    SubjectTypeAll          = 1024,
+    SubjectTypeOther        = 512
 } SubjectType;
 
 @interface Topic : NSObject
