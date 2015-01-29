@@ -9,6 +9,7 @@
 #import "NetWorkTaskExportNotes.h"
 #import "EFei.h"
 #import "TaskManager.h"
+#import "ExportNotesController.h"
 
 static NSString* kRequestFileTypeKey         = @"file_type";
 static NSString* kRequestHasAnswerKey        = @"has_answer";
@@ -18,7 +19,7 @@ static NSString* kRequestEmailKey            = @"email";
 
 static NSString* kResponseFilePathKey        = @"file_path";
 
-
+static NSString* kHostName                   = @"http://dev.efei.org/";
 
 @implementation NetWorkTaskExportNotes
 
@@ -57,6 +58,9 @@ static NSString* kResponseFilePathKey        = @"file_path";
 {
     NSString* filePath = [dict objectForKey:kResponseFilePathKey];
     NSLog(@"NetWorkTaskExportNotes: %@", filePath);
+    
+    [ExportNotesController instance].pendingTaskUrl = [kHostName stringByAppendingString:filePath];
+    
     return YES;
 }
 

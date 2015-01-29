@@ -20,6 +20,8 @@ NSString* kErrorMessageGetRestPasswordTokenFailed   = @"验证码错误，请重
 NSString* kErrorMessageResetPasswordFailed          = @"重置密码失败，请重试";
 NSString* kErrorMessageNoExportDestination          = @"请选择导出方式";
 NSString* kErrorMessageNoVerifyCode                 = @"请输入验证码";
+NSString* kErrorMessageDownloadSuccess              = @"下载成功";
+NSString* kErrorMessageDownloadFailed               = @"下载失败";
 
 @interface ToastView()
 

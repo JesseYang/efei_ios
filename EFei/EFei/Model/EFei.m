@@ -76,4 +76,9 @@
     [_database saveSubject:subject];
 }
 
+- (void) saveNotebookExportFile:(NSString*)path
+{
+    [_database saveNotebookExportFile:path];
+}
+
 @end

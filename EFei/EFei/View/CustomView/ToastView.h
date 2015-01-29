@@ -20,6 +20,8 @@ extern NSString* kErrorMessageGetRestPasswordTokenFailed;
 extern NSString* kErrorMessageResetPasswordFailed;
 extern NSString* kErrorMessageNoExportDestination;
 extern NSString* kErrorMessageNoVerifyCode;
+extern NSString* kErrorMessageDownloadSuccess;
+extern NSString* kErrorMessageDownloadFailed;
 
 @interface ToastView : UIView
 
