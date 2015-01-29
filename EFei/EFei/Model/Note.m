@@ -7,6 +7,7 @@
 //
 
 #import "Note.h"
+#import "NSString+Email.h"
 
 #define TopicsSeparator @","
 
@@ -84,19 +85,27 @@
 
 - (BOOL) matchText:(NSString *)text
 {
-    if ([self.topicString rangeOfString:text].location != NSNotFound)
+    if ([self.topicString hasSubString:text])
     {
         return YES;
     }
     
-    if ([self.tag rangeOfString:text].location != NSNotFound)
+    if ([self.tag hasSubString:text])
     {
         return YES;
     }
     
-    if ([self.summary rangeOfString:text].location != NSNotFound)
+    if ([self.summary hasSubString:text])
     {
         return YES;
+    }
+    
+    for (NSString* string in self.contents)
+    {
+        if ([string hasSubString:text])
+        {
+            return YES;
+        }
     }
     
     return NO;

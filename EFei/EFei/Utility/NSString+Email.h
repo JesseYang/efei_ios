@@ -13,4 +13,6 @@
 - (BOOL) isValidEmail;
 - (BOOL) isValidPhoneNumber;
 
+- (BOOL) hasSubString:(NSString*)subString;
+
 @end

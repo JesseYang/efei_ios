@@ -75,6 +75,12 @@
     [_textField resignFirstResponder];
 }
 
+- (void) setText:(NSString *)text
+{
+    _textField.text = text;
+    [self onTextChanged:_textField];
+}
+
 - (void) setupUI
 {
     self.backgroundColor = [UIColor clearColor];

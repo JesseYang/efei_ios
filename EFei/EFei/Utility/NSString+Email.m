@@ -33,4 +33,14 @@
     }
 }
 
+- (BOOL) hasSubString:(NSString *)subString
+{
+    if (self.length > 0 && [self rangeOfString:subString].location != NSNotFound)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end
