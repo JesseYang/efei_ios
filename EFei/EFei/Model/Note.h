@@ -24,4 +24,6 @@
 - (id) initWithQuestion:(Question*)question;
 - (id) initWithNoteId:(NSString*)noteId updateTime:(NSInteger)updateTime;
 
+- (BOOL) matchText:(NSString*)text;
+
 @end

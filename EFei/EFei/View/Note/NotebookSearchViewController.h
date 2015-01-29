@@ -10,8 +10,11 @@
 
 @class SearchBarView;
 
+typedef void (^SearchViewControllerDoneBlock)(NSString* text);
+
 @interface NotebookSearchViewController : UIViewController
 
 @property (nonatomic, weak) SearchBarView* searchBarView;
+@property (nonatomic, copy) SearchViewControllerDoneBlock doneBlock;
 
 @end

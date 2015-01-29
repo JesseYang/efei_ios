@@ -82,4 +82,24 @@
     _topics = [topicString componentsSeparatedByString:TopicsSeparator];
 }
 
+- (BOOL) matchText:(NSString *)text
+{
+    if ([self.topicString rangeOfString:text].location != NSNotFound)
+    {
+        return YES;
+    }
+    
+    if ([self.tag rangeOfString:text].location != NSNotFound)
+    {
+        return YES;
+    }
+    
+    if ([self.summary rangeOfString:text].location != NSNotFound)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

@@ -23,4 +23,6 @@
 
 - (DataFilter*) fileterWithType:(DataFilterType)type;
 
+- (NSArray*) searchNotesWithText:(NSString*)text;
+
 @end

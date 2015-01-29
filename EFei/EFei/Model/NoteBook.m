@@ -88,6 +88,19 @@
     return [_notes objectAtIndex:index];
 }
 
+- (NSArray*) searchNotesWithText:(NSString *)text
+{
+    NSArray* array = self.filetedNotes;
+    NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:array.count];
+    for (Note* note in array)
+    {
+        if ([note matchText:text])
+        {
+            [result addObject:note];
+        }
+    }
+    return result;
+}
 
 #pragma mark fileter
 
