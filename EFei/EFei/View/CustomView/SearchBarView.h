@@ -34,5 +34,6 @@
 
 - (void) beginEditing;
 - (void) endEditing;
+- (void) setText:(NSString*)text;
 
 @end

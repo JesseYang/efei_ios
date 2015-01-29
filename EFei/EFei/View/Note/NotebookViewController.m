@@ -197,7 +197,6 @@
             if (success)
             {
                 [self resetData];
-                [self.noteCollectionView reloadData];
             }
         };
         
@@ -272,7 +271,6 @@
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
         [self resetData];
-        [self.noteCollectionView reloadData];
         
     };
     
@@ -515,7 +513,6 @@
             
             _searchText = [text copy];
             [self resetData];
-            [self.noteCollectionView reloadData];
             
         };
     }
@@ -531,7 +528,6 @@
             
             [self updateFilterLabel];
             [self resetData];
-            [self.noteCollectionView reloadData];
             
         };
     }
@@ -569,7 +565,6 @@
 {
     _searchText = nil;
     [self resetData];
-    [self.noteCollectionView reloadData];
 }
 
 

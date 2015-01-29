@@ -171,6 +171,7 @@
     {
         [self.searchBarView endEditing];
         NSString* keyword = [_histories objectAtIndex:indexPath.row];
+        [self.searchBarView setText:keyword];
         [self searchNotebookWithKeyword:keyword];
     }
     
