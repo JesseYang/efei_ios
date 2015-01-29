@@ -57,6 +57,8 @@
 		FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */; };
 		FC4312301A2022D10020EA31 /* Topics.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122F1A2022D10020EA31 /* Topics.m */; };
 		FC5BFF1B1A78A22800A7659C /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF1A1A78A22800A7659C /* NSString+Email.m */; };
+		FC5BFF271A7A0DBB00A7659C /* ExportNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF261A7A0DBB00A7659C /* ExportNotesController.m */; };
+		FC5BFF2A1A7A106E00A7659C /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF291A7A106E00A7659C /* FileDownloader.m */; };
 		FC66F4321A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4311A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m */; };
 		FC66F4361A5F9BDF008E93D7 /* TeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4351A5F9BDF008E93D7 /* TeacherViewController.m */; };
 		FC66F4391A5F9C10008E93D7 /* TeacherSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66F4381A5F9C10008E93D7 /* TeacherSeachViewController.m */; };
@@ -285,6 +287,10 @@
 		FC43122F1A2022D10020EA31 /* Topics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topics.m; sourceTree = "<group>"; };
 		FC5BFF191A78A22800A7659C /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
 		FC5BFF1A1A78A22800A7659C /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
+		FC5BFF251A7A0DBB00A7659C /* ExportNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportNotesController.h; sourceTree = "<group>"; };
+		FC5BFF261A7A0DBB00A7659C /* ExportNotesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportNotesController.m; sourceTree = "<group>"; };
+		FC5BFF281A7A106E00A7659C /* FileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloader.h; sourceTree = "<group>"; };
+		FC5BFF291A7A106E00A7659C /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
 		FC66F4301A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskAddQuestionList.h; sourceTree = "<group>"; };
 		FC66F4311A5F5AFC008E93D7 /* NetWorkTaskAddQuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskAddQuestionList.m; sourceTree = "<group>"; };
 		FC66F4341A5F9BDF008E93D7 /* TeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherViewController.h; sourceTree = "<group>"; };
@@ -525,6 +531,10 @@
 				FC66F44A1A5FA954008E93D7 /* SearchTeacherController.m */,
 				FC66F4641A60F2CD008E93D7 /* ResetPasswordController.h */,
 				FC66F4651A60F2CD008E93D7 /* ResetPasswordController.m */,
+				FC5BFF251A7A0DBB00A7659C /* ExportNotesController.h */,
+				FC5BFF261A7A0DBB00A7659C /* ExportNotesController.m */,
+				FC5BFF281A7A106E00A7659C /* FileDownloader.h */,
+				FC5BFF291A7A106E00A7659C /* FileDownloader.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1250,6 +1260,7 @@
 				FC761D8E1A65EF7800F11103 /* SubjectViewController.m in Sources */,
 				FC66F4421A5F9C4E008E93D7 /* TeacherTableViewCell.m in Sources */,
 				FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */,
+				FC5BFF2A1A7A106E00A7659C /* FileDownloader.m in Sources */,
 				FC4312031A1F62100020EA31 /* NetWorkTaskVerifyMobile.m in Sources */,
 				FCC2B8C51A18D0D800B3DC24 /* AppDelegate.m in Sources */,
 				FC2E81691A2AF2AF0032D9AA /* NotebookViewController.m in Sources */,
@@ -1266,6 +1277,7 @@
 				FCC98C4B1A52440A00D9567D /* NoteCategoryTabView.m in Sources */,
 				FCD8291A1A2EB0FD00F6E0CA /* RichTextView.m in Sources */,
 				FC3808D11A1B4418007A73E4 /* Account.m in Sources */,
+				FC5BFF271A7A0DBB00A7659C /* ExportNotesController.m in Sources */,
 				FCF3D1FB1A3FD1A8009D8722 /* NameEditingViewController.m in Sources */,
 				FC4311EB1A1F45710020EA31 /* NetWorkTaskSendVerifyCode.m in Sources */,
 				FC3808D71A1B4440007A73E4 /* Question.m in Sources */,

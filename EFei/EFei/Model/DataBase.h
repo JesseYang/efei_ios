@@ -15,5 +15,6 @@
 - (void) loadSubject:(Subject*)subject;
 - (void) saveSubject:(Subject*)subject;
 
+- (void) saveNotebookExportFile:(NSString*)path;
 
 @end

@@ -10,6 +10,7 @@
 #import "EFei.h"
 #import "NotebookCommand.h"
 #import "ToastView.h"
+#import "ExportNotesController.h"
 
 @interface NotebookExportViewController()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -138,11 +139,37 @@
         
         if (success)
         {
-            [self.navigationController popViewControllerAnimated:YES];
+            if (_destination == ExportDestinationDownload)
+            {
+                [self downloadFile];
+            }
+            else
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
         }
     };
     
     [NotebookExportCommand executeWithNotes:self.notes fileType:_fileType hasAnswer:_hasAnswer hasNote:_hasNote email:_email completeHandler:handler];
+}
+
+- (void) downloadFile
+{
+    ExportNotesControllerDoneBlock handler = ^(BOOL success) {
+        
+        if (success)
+        {
+            [ToastView showMessage:kErrorMessageDownloadSuccess];
+        }
+        else
+        {
+            [ToastView showMessage:kErrorMessageDownloadFailed];
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    };
+    [[ExportNotesController instance] startDonwloadWithBlock:handler];
 }
 
 

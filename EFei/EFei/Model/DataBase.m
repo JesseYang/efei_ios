@@ -12,11 +12,13 @@
 #define DataBaseRootFolder @"EFei"
 #define DataBaseNotebookFolder @"notebook"
 #define DataBaseSubjectFolder @"subject"
+#define DataBaseNotebookExportFolder @"export"
 
 @interface DataBase()
 {
     NSString* _rootPath;
     NSString* _nootbookPath;
+    NSString* _nootbookExportPath;
     NSString* _subjectPath;
 }
 
@@ -64,6 +66,18 @@
         NSLog(@"error creating directory: %@", error);
     }
     
+    // Create notebook foler
+    _nootbookExportPath = [_nootbookPath stringByAppendingPathComponent:DataBaseNotebookExportFolder];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:_nootbookExportPath
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:&error];
+    if (error != nil)
+    {
+        NSLog(@"error creating directory: %@", error);
+    }
+    
     // Create subject folder
     _subjectPath = [_rootPath stringByAppendingPathComponent:DataBaseSubjectFolder];
     
@@ -82,7 +96,7 @@
 - (void) loadSubject:(Subject*)subject
 {
     NSString* fileName = [NSString stringWithFormat:@"%@.txt", subject.name];
-    NSString* filePath = [_subjectPath stringByAppendingString:fileName];
+    NSString* filePath = [_subjectPath stringByAppendingPathComponent:fileName];
     
     BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
     if (!exist)
@@ -125,7 +139,7 @@
 - (void) saveSubject:(Subject*)subject
 {
     NSString* fileName = [NSString stringWithFormat:@"%@.txt", subject.name];
-    NSString* filePath = [_subjectPath stringByAppendingString:fileName];
+    NSString* filePath = [_subjectPath stringByAppendingPathComponent:fileName];
     
     NSError * error = nil;
     BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
@@ -149,6 +163,19 @@
         [string writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }
     
+}
+
+- (void) saveNotebookExportFile:(NSString *)path
+{
+    NSString* fileName = [path lastPathComponent];
+    NSString* filePath = [_nootbookExportPath stringByAppendingPathComponent:fileName];
+    
+    NSError* error = nil;
+    [[NSFileManager defaultManager] copyItemAtPath:path toPath:filePath error:&error];
+    if (error != nil)
+    {
+        NSLog(@"Copy file failed (%@) --> (%@)", path, filePath);
+    }
 }
 
 @end
