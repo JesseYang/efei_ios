@@ -28,9 +28,15 @@
     return self;
 }
 
+- (NSArray*) searchHistroies
+{
+    return _searchHistroies;
+}
+
 - (void) addSearch:(NSString *)search
 {
-    [_searchHistroies addObject:search];
+    [_searchHistroies removeObject:search];
+    [_searchHistroies insertObject:search atIndex:0];
 }
 
 - (void) clearHistory

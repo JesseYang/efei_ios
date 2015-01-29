@@ -17,7 +17,9 @@
 - (void) searchBarViewDidTapped:(SearchBarView*)searchBarView;
 
 - (void) searchBarVieDidBeginEditing:(SearchBarView*)searchBarView;
+- (void) searchBarViewDidClearText:(SearchBarView*)searchBarView;
 - (void) searchBarVie:(SearchBarView*)searchBarView textDidChanged:(NSString*)text;
+- (void) searchBarViewSearchButtonTapped:(SearchBarView*)searchBarView withText:(NSString*)text;
 
 @end
 

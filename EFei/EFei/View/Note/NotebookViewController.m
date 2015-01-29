@@ -28,6 +28,7 @@
 @interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate, NoteCellDelegate>
 {
     NSArray* _notes;
+    NSString* _searchText;
     
     BOOL _selectMode;
     
@@ -138,7 +139,6 @@
     [self.navigationController.navigationBar addSubview:_searchBarView];
     
     
-//    _leftBBI = [[UIBarButtonItem alloc] initWithTitle:@"易" style:UIBarButtonItemStylePlain target:nil action:nil];
     UIView* leftView = [self viewWithTitle:@"易"
                                           image:nil
                                          action:nil];
@@ -169,7 +169,14 @@
 
 - (void) resetData
 {
-    _notes = [EFei instance].notebook.filetedNotes;
+    if (_searchText.length > 0)
+    {
+        _notes = [[EFei instance].notebook searchNotesWithText:_searchText];
+    }
+    else
+    {
+        _notes = [EFei instance].notebook.filetedNotes;
+    }
     _notesStatus = [[NSMutableArray alloc] initWithCapacity:_notes.count];
     for (int i=0; i<_notes.count; i++)
     {
@@ -396,8 +403,6 @@
         
     }];
     
-//    [self.noteCollectionView reloadData];
-    
     if (_selectMode)
     {
         self.navigationItem.leftBarButtonItem = _selectLeftBBI;
@@ -506,6 +511,13 @@
     {
         NotebookSearchViewController* searchVC = (NotebookSearchViewController*)segue.destinationViewController;
         searchVC.searchBarView = _searchBarView;
+        searchVC.doneBlock = ^(NSString* text){
+            
+            _searchText = [text copy];
+            [self resetData];
+            [self.noteCollectionView reloadData];
+            
+        };
     }
     
     if ([segue.identifier isEqualToString:ShowNotebookFilterViewControllerSegueId])
@@ -551,6 +563,13 @@
 - (void) searchBarVie:(SearchBarView *)searchBarView textDidChanged:(NSString *)text
 {
     
+}
+
+- (void) searchBarViewDidClearText:(SearchBarView *)searchBarView
+{
+    _searchText = nil;
+    [self resetData];
+    [self.noteCollectionView reloadData];
 }
 
 

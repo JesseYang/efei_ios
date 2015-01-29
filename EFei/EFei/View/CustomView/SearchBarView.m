@@ -203,13 +203,18 @@
     _editing = editing;
     
     _textField.userInteractionEnabled = _editing;
-    _textField.text = @"";
+//    _textField.text = @"";
 }
 
 - (void) onClear:(id)sender
 {
     _textField.text = @"";
     _clearIcon.hidden = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(searchBarViewDidClearText:)])
+    {
+        [self.delegate searchBarViewDidClearText:self];
+    }
 }
 
 - (void) onTextChanged:(id)sender
@@ -231,9 +236,9 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if ([self.delegate respondsToSelector:@selector(searchBarVie:textDidChanged:)])
+    if ([self.delegate respondsToSelector:@selector(searchBarViewSearchButtonTapped:withText:)])
     {
-        [self.delegate searchBarVie:self textDidChanged:textField.text];
+        [self.delegate searchBarViewSearchButtonTapped:self withText:textField.text];
     }
     
 }
