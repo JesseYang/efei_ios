@@ -25,7 +25,7 @@
     if (self)
     {
 //        self.token = @"9eWXA9uQgH2YKPrOkoo2wnC8W7wavDI8RdMNpaKi6BuNP6DFjPjJ8F_cIOAwP6Bh";
-        
+        self.autoSignIn = NO;
         [self initClientVersion];
         
         [self load];
