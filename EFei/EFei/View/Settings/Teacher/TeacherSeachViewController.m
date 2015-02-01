@@ -176,9 +176,8 @@
 
 
 #pragma mark -- SearchBarViewDelegate
-- (void) searchBarVie:(SearchBarView *)searchBarView textDidChanged:(NSString *)text
+- (void) searchBarViewSearchButtonTapped:(SearchBarView *)searchBarView withText:(NSString *)text
 {
-    
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
         [self setupData];

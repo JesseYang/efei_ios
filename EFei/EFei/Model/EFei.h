@@ -35,6 +35,8 @@
 
 + (EFei*) instance;
 
+- (void) signOut;
+
 - (void) loadData;
 - (void) saveData;
 

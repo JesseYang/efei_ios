@@ -57,6 +57,12 @@
     return self;
 }
 
+- (void) signOut
+{
+    [self.account signout];
+    [self.notebook clearNotes];
+}
+
 - (void) saveData
 {
 }

@@ -12,6 +12,9 @@
 
 @interface DataBase : NSObject
 
+- (void) createFolderForUser:(NSString*)user;
+- (void) changeUser:(NSString*)user to:(NSString*)newUser;
+
 - (void) loadSubject:(Subject*)subject;
 - (void) saveSubject:(Subject*)subject;
 

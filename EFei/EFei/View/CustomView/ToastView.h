@@ -14,6 +14,8 @@ extern NSString* kErrorMessageWrongPassword;
 extern NSString* kErrorMessageWrongRealName;
 extern NSString* kErrorMessageWrongEmail;
 extern NSString* kErrorMessageWrongSignInFailed;
+extern NSString* kErrorMessageSignUpSuccess;
+extern NSString* kErrorMessageNeedSignIn;
 extern NSString* kErrorMessageWrongSignUpFailed;
 extern NSString* kErrorMessageNoSuchUser;
 extern NSString* kErrorMessageGetRestPasswordTokenFailed;

@@ -18,6 +18,7 @@
 #import "EFei.h"
 #import "UIPlaceHolderTextView.h"
 #import "NotebookExportViewController.h"
+#import "ToastView.h"
 
 #define EditTagSegueId @"ShowTagViewController"
 #define EditKnowledgeSegueId @"ShowKnowledgeViewController"
@@ -215,6 +216,7 @@
     
     if ([EFei instance].account.needSignIn)
     {
+        [ToastView showMessage:kErrorMessageNeedSignIn];
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
     else

@@ -20,7 +20,7 @@
 
 @interface MainViewController()<UITabBarControllerDelegate>
 {
-    
+    BOOL _showNotebook;
 }
 
 @end
@@ -79,6 +79,13 @@
     {
         [self performSegueWithIdentifier:ShowSignInViewControllerSegueId sender:self];
     }
+    
+    if (_showNotebook)
+    {
+        self.selectedIndex = 1;
+        _showNotebook = NO;
+    }
+    
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
@@ -93,13 +100,14 @@
     NSLog(@"selected item at index: %ld", index);
     if (index == 0)
     {
+        _showNotebook = YES;
         [self performSegueWithIdentifier:ShowQRScanViewControllerSegueId sender:self];
     }
 }
 
 - (void) signOut
 {
-    [[EFei instance].account signout];
+    [[EFei instance] signOut];
     self.selectedIndex = 1;
     [self performSegueWithIdentifier:ShowSignInViewControllerSegueId sender:self];
 }
