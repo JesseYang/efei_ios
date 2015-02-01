@@ -57,6 +57,7 @@
         
         if (success)
         {
+            [EFei instance].account.username = self.phone;
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         

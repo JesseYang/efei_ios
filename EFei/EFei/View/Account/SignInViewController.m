@@ -39,6 +39,7 @@
 {
     [super viewDidAppear:animated];
     
+    [self setupViews];
 }
 
 

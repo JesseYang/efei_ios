@@ -102,6 +102,11 @@
     return result;
 }
 
+- (void) clearNotes
+{
+    [_notes removeAllObjects];
+}
+
 #pragma mark fileter
 
 - (void) initFilters

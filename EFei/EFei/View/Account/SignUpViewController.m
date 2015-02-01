@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "AccountCommand.h"
 #import "ToastView.h"
+#import "EFei.h"
 
 @interface SignUpViewController()
 {
@@ -85,7 +86,7 @@
         
         if (success)
         {
-            [self onCancel:nil];
+            [self onSuccess:nil];
         }
         
     };
@@ -101,6 +102,18 @@
 {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)onSuccess:(id)sender
+{
+    [EFei instance].account.username = self.usernameTextField.text;
+    [EFei instance].account.password = self.passwordTextField.text;
+    
+    [ToastView showMessage:kErrorMessageSignUpSuccess];
+    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (BOOL) checkPhoneNumber

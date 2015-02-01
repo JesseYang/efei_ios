@@ -25,4 +25,6 @@
 
 - (NSArray*) searchNotesWithText:(NSString*)text;
 
+- (void) clearNotes;
+
 @end
