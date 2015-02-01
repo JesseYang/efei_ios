@@ -108,6 +108,7 @@
 {
     [EFei instance].account.username = self.usernameTextField.text;
     [EFei instance].account.password = self.passwordTextField.text;
+    [EFei instance].account.autoSignIn = YES;
     
     [ToastView showMessage:kErrorMessageSignUpSuccess];
     [self.navigationController popViewControllerAnimated:NO];
