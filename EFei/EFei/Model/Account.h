@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) NSString* client;
 @property (nonatomic, copy) NSString* username;
 @property (nonatomic, copy) NSString* password;
+@property (nonatomic, assign) BOOL autoSignIn;
 
 @property (nonatomic, readonly) BOOL needSignIn;
 

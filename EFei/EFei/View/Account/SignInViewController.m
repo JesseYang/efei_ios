@@ -40,6 +40,12 @@
     [super viewDidAppear:animated];
     
     [self setupViews];
+    
+    if ([EFei instance].account.autoSignIn)
+    {
+        [EFei instance].account.autoSignIn = NO;
+        [self onSignIn:self.signInButton];
+    }
 }
 
 

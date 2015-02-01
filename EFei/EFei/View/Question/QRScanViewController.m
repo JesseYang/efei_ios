@@ -95,6 +95,8 @@ typedef enum : NSUInteger {
     }
     
     [self startIndicatorAnimation];
+    
+    [self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning
@@ -272,6 +274,8 @@ typedef enum : NSUInteger {
     [self updateMultipleScanView];
  
     [self hideScanResultView];
+    
+    _parsing = NO;
 }
 
 - (IBAction)onScanResultCancel:(id)sender
@@ -279,6 +283,8 @@ typedef enum : NSUInteger {
     [[GetQuestionController instance] discardCurrentQuestion];
     
     [self hideScanResultView];
+    
+    _parsing = NO;
 }
 
 - (void) showScanResultView
@@ -358,11 +364,12 @@ typedef enum : NSUInteger {
     
     ControllerCompletionBlock handler = ^(BOOL success) {
         NSLog(@"get question %d", success);
-        _parsing = NO;
+        
         switch (_scanMode)
         {
             case ScanModeSingle:
             {
+                _parsing = NO;
                 [self doneWithSingleQuestion];
             }
                 break;

@@ -18,12 +18,17 @@ static NSString* kRequestNoteSummaryKey       = @"summary";
 
 
 static NSString* kResponseNoteKey              = @"note";
+static NSString* kResponseNoteIds              = @"note_ids";
 static NSString* kResponseNoteUpdateTimeKey    = @"note_update_time";
 static NSString* kResponseTeacherKey           = @"teacher";
 static NSString* kResponseTeachersKey          = @"teachers";
 
+@interface NetWorkTaskAddQuestionList()
+{
+    NSArray* _noteIds;
+}
 
-
+@end
 
 @implementation NetWorkTaskAddQuestionList
 
@@ -47,6 +52,8 @@ static NSString* kResponseTeachersKey          = @"teachers";
 
 - (void) prepareParameter
 {
+    _noteIds = nil;
+    
     NSArray* array = (NSArray*)self.data;
     
     NSMutableArray* ids = [[NSMutableArray alloc] initWithCapacity:array.count];
@@ -70,7 +77,11 @@ static NSString* kResponseTeachersKey          = @"teachers";
     
     NSString* subject = [updateTimeDict.allKeys firstObject];
     NSInteger time = [[updateTimeDict objectForKey:subject] integerValue];
-    NSLog(@"NetWorkTaskGetUpdateTime:  %@  %ld", subject, time);
+    NSLog(@"NetWorkTaskAddQuestionList:  %@  %ld", subject, time);
+    
+    _noteIds = [dict objectForKey:kResponseNoteIds];
+    
+    NSLog(@"NetWorkTaskAddQuestionList ids: %@", _noteIds);
     
     return YES;
 }
@@ -80,11 +91,23 @@ static NSString* kResponseTeachersKey          = @"teachers";
     [super sucess];
     
     NSArray* array = (NSArray*)self.data;
-    for (Question* q in array)
+//    for (Question* q in array)
+//    {
+//        Note* note = [[Note alloc] initWithQuestion:q];
+//        [[EFei instance].notebook addNote:note];
+//    }
+
+    for (int i=0; i<array.count; i++)
     {
+        Question* q = [array objectAtIndex:i];
         Note* note = [[Note alloc] initWithQuestion:q];
         [[EFei instance].notebook addNote:note];
+        if (i < _noteIds.count)
+        {
+            note.noteId = [_noteIds objectAtIndex:i];
+        }
     }
+    
     
     [EFei instance].newNotesAdded = YES;
 }
