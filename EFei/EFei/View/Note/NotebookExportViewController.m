@@ -145,6 +145,7 @@
             }
             else
             {
+                [ToastView showMessage:kErrorMessageSendToMailSuccess];
                 [self.navigationController popViewControllerAnimated:YES];
             }
             
