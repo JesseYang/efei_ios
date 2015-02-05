@@ -101,9 +101,16 @@
             
             NSLog(@"get question: %@", self.questionId);
             
-            [_questionDcit setObject:self.questionId forKey:self.shortUrl];
-            
-            self.completionBlock(success);
+            if (success)
+            {
+                [_questionDcit setObject:self.questionId forKey:self.shortUrl];
+                
+                self.completionBlock(success);
+            }
+            else
+            {
+                
+            }
         };
         
         [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetQuestion

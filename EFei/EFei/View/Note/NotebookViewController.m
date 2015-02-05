@@ -128,7 +128,7 @@
 
 - (void) setupViews
 {
-    float width = self.view.frame.size.width - 160;
+    float width = self.view.frame.size.width - 180;
     float height = 30;
     float x = (self.navigationController.navigationBar.frame.size.width - width) / 2;
     float y = 7;
@@ -604,6 +604,20 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"did select cell at index: %ld", indexPath.row);
+    
+    NoteCell* cell = (NoteCell*)[ collectionView cellForItemAtIndexPath:indexPath];
+    if (_selectMode)
+    {
+        [self noteCellDidSelected:cell];
+        return;
+    }
+    
+    if (cell.status != NoteCellStatusNone)
+    {
+        cell.status = NoteCellStatusNone;
+        return;
+    }
+    
     _selectedNote = [_notes objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:ShowQuestionViewControllerSegueId sender:self];

@@ -87,6 +87,9 @@ typedef enum : NSUInteger {
     
     self.navigationController.navigationBarHidden = YES;
     
+    [[GetQuestionController instance] discardCurrentQuestion];
+    [[GetQuestionController instance] discardQuestionList];
+    
     if (!_scaning)
     {
         [self initCapture];
@@ -249,14 +252,23 @@ typedef enum : NSUInteger {
 - (IBAction)onMultipleScanOK:(id)sender
 {
     NSArray* questions = [GetQuestionController instance].noteList;
-    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+    
+    if (questions.count > 0)
+    {
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        };
+        [AddQuestionListToNotebookCommand executeWithQuestionList:questions completeHandler:handler];
         
+    }
+    else
+    {
         [self.navigationController popViewControllerAnimated:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
-        
-    };
-    [AddQuestionListToNotebookCommand executeWithQuestionList:questions completeHandler:handler];
-    
+    }
 }
 
 - (IBAction)onMultipleScanCancel:(id)sender

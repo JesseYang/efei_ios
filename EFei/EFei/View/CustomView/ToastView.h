@@ -24,6 +24,7 @@ extern NSString* kErrorMessageNoExportDestination;
 extern NSString* kErrorMessageNoVerifyCode;
 extern NSString* kErrorMessageDownloadSuccess;
 extern NSString* kErrorMessageDownloadFailed;
+extern NSString* kErrorMessageSendToMailSuccess;
 
 @interface ToastView : UIView
 

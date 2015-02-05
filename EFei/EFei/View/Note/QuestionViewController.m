@@ -179,7 +179,7 @@
         self.note.modified = YES;
     }
     
-    if (self.note.modified)
+    if (self.note.modified && self.note.noteId.length > 0)
     {
         CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
             

@@ -24,6 +24,7 @@ NSString* kErrorMessageNoExportDestination          = @"请选择导出方式";
 NSString* kErrorMessageNoVerifyCode                 = @"请输入验证码";
 NSString* kErrorMessageDownloadSuccess              = @"下载成功";
 NSString* kErrorMessageDownloadFailed               = @"下载失败";
+NSString* kErrorMessageSendToMailSuccess            = @"发送成功";
 
 @interface ToastView()
 
