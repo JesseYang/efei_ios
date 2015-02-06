@@ -56,6 +56,7 @@
 		FC43122A1A2021820020EA31 /* NetWorkTaskUpdateNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4312291A2021820020EA31 /* NetWorkTaskUpdateNote.m */; };
 		FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */; };
 		FC4312301A2022D10020EA31 /* Topics.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122F1A2022D10020EA31 /* Topics.m */; };
+		FC4ECB161A84B1420002C2DF /* AddTeacherController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4ECB151A84B1420002C2DF /* AddTeacherController.m */; };
 		FC5BFF1B1A78A22800A7659C /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF1A1A78A22800A7659C /* NSString+Email.m */; };
 		FC5BFF271A7A0DBB00A7659C /* ExportNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF261A7A0DBB00A7659C /* ExportNotesController.m */; };
 		FC5BFF2A1A7A106E00A7659C /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF291A7A106E00A7659C /* FileDownloader.m */; };
@@ -285,6 +286,8 @@
 		FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskExportNotes.m; sourceTree = "<group>"; };
 		FC43122E1A2022D10020EA31 /* Topics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Topics.h; sourceTree = "<group>"; };
 		FC43122F1A2022D10020EA31 /* Topics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topics.m; sourceTree = "<group>"; };
+		FC4ECB141A84B1420002C2DF /* AddTeacherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTeacherController.h; sourceTree = "<group>"; };
+		FC4ECB151A84B1420002C2DF /* AddTeacherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTeacherController.m; sourceTree = "<group>"; };
 		FC5BFF191A78A22800A7659C /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
 		FC5BFF1A1A78A22800A7659C /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		FC5BFF251A7A0DBB00A7659C /* ExportNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportNotesController.h; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 				FC5BFF261A7A0DBB00A7659C /* ExportNotesController.m */,
 				FC5BFF281A7A106E00A7659C /* FileDownloader.h */,
 				FC5BFF291A7A106E00A7659C /* FileDownloader.m */,
+				FC4ECB141A84B1420002C2DF /* AddTeacherController.h */,
+				FC4ECB151A84B1420002C2DF /* AddTeacherController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1222,6 +1227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC4ECB161A84B1420002C2DF /* AddTeacherController.m in Sources */,
 				FC66F43C1A5F9C22008E93D7 /* TeacherClassViewController.m in Sources */,
 				FC4311F11A1F45F40020EA31 /* NetWorkTaskResetPassword.m in Sources */,
 				FC4312151A2020A20020EA31 /* NetWorkTaskParseShortUrl.m in Sources */,

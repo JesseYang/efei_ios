@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "Topics.h"
 
+
+@interface TeacherClass : NSObject
+
+@property (nonatomic, copy) NSString* classId;
+@property (nonatomic, copy) NSString* name;
+@property (nonatomic, copy) NSString* desc;
+
+@end
+
+
 @interface Teacher : NSObject
 
 @property (nonatomic, copy) NSString* teacherId;
@@ -19,13 +29,15 @@
 @property (nonatomic, copy) NSString* school;
 @property (nonatomic, copy) NSString* desc;
 @property (nonatomic, copy) NSString* avatar;
+@property (nonatomic, strong) NSArray* classes;
 
 - (id) initWithId:(NSString*)teacherId
              name:(NSString*)name
           subject:(SubjectType)subject
            school:(NSString*)school
       description:(NSString*)desc
-           avatar:(NSString*)avatar;
+           avatar:(NSString*)avatar
+          classes:(NSArray*)classes;
 
 @end
 

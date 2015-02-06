@@ -90,7 +90,8 @@ static NSString* kResponseAvatarKey       = @"avatar";
                                                subject:subject
                                                 school:school
                                            description:desc
-                                                avatar:avatar];
+                                                avatar:avatar
+                                               classes:nil];
         
         // TODO: save search teacher results.
         

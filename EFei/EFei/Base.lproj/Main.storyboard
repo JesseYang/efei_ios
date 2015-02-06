@@ -504,6 +504,7 @@
                         <segue destination="i4w-TP-q3d" kind="show" identifier="ShowNotebookSearchViewController" id="iPE-qb-xna"/>
                         <segue destination="1GG-6u-EPW" kind="show" identifier="ShowNotebookExportViewController" id="5Kv-F8-Fjs"/>
                         <segue destination="vjj-4v-RHh" kind="show" identifier="ShowQuestionViewController" id="lJ7-wF-fmM"/>
+                        <segue destination="akA-LG-AUa" kind="push" identifier="ShowTeacherAddViewController" id="TVa-e1-d2k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bG3-hD-YJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2998,6 +2999,116 @@
             </objects>
             <point key="canvasLocation" x="1654" y="3686"/>
         </scene>
+        <!--Teacher Add View Controller-->
+        <scene sceneID="11s-RN-nTW">
+            <objects>
+                <viewController id="akA-LG-AUa" customClass="TeacherAddViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lnb-T8-Jyo"/>
+                        <viewControllerLayoutGuide type="bottom" id="gne-8e-aNz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zdB-87-XCd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否添加教师?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDq-04-9Z0">
+                                <rect key="frame" x="0.0" y="92" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0ez-1g-yu4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSp-0C-2oQ">
+                                <rect key="frame" x="0.0" y="146" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pPq-Jq-vFf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tf5-fL-388">
+                                <rect key="frame" x="22" y="211" width="556" height="33"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="cnu-Ld-kSZ"/>
+                                    <constraint firstAttribute="height" constant="33" id="lj9-rk-hNr"/>
+                                </constraints>
+                                <state key="normal" title="添加">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cnu-Ld-kSZ"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onAddTeacher:" destination="akA-LG-AUa" eventType="touchUpInside" id="kEh-It-yDv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="tf5-fL-388" secondAttribute="centerX" id="108-fz-6xU"/>
+                            <constraint firstItem="hSp-0C-2oQ" firstAttribute="leading" secondItem="zdB-87-XCd" secondAttribute="leadingMargin" constant="-16" id="2c7-cR-Xzi"/>
+                            <constraint firstItem="hSp-0C-2oQ" firstAttribute="top" secondItem="kDq-04-9Z0" secondAttribute="bottom" constant="24" id="94Q-Ra-Be0"/>
+                            <constraint firstAttribute="width" secondItem="kDq-04-9Z0" secondAttribute="width" id="Iuo-gQ-xRo"/>
+                            <constraint firstItem="tf5-fL-388" firstAttribute="top" secondItem="hSp-0C-2oQ" secondAttribute="bottom" constant="35" id="LVY-eA-paq"/>
+                            <constraint firstItem="kDq-04-9Z0" firstAttribute="top" secondItem="lnb-T8-Jyo" secondAttribute="bottom" constant="28" id="RWd-95-cz7"/>
+                            <constraint firstItem="tf5-fL-388" firstAttribute="leading" secondItem="zdB-87-XCd" secondAttribute="leadingMargin" constant="6" id="Z3b-zL-6ed"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tf5-fL-388" secondAttribute="trailing" constant="6" id="ctm-Zw-B0z"/>
+                            <constraint firstAttribute="width" secondItem="hSp-0C-2oQ" secondAttribute="width" id="fnc-J5-2XV"/>
+                            <constraint firstItem="kDq-04-9Z0" firstAttribute="leading" secondItem="zdB-87-XCd" secondAttribute="leadingMargin" constant="-16" id="myJ-EJ-ryh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VUs-Sb-oDZ">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="gTd-RP-4ad">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onBack:" destination="akA-LG-AUa" id="hh4-Cu-1Kn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="tf5-fL-388" id="gAd-Ev-QbT"/>
+                        <outlet property="teacherLabel" destination="hSp-0C-2oQ" id="Gp3-XI-qkr"/>
+                        <segue destination="5A2-BL-p3N" kind="push" identifier="ShowTeacherClassViewController" id="wRN-Uq-peX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iJR-p3-gOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244" y="1027"/>
+        </scene>
+        <!--Teacher Class View Controller-->
+        <scene sceneID="myb-Rd-pUM">
+            <objects>
+                <tableViewController id="5A2-BL-p3N" customClass="TeacherClassViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rOF-Pa-j7y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nvq-rq-9di">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nvq-rq-9di" id="ZIj-Of-ahN">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5A2-BL-p3N" id="U1F-hg-dvD"/>
+                            <outlet property="delegate" destination="5A2-BL-p3N" id="fiC-gk-Rqc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Mcs-gS-YhN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zfh-WG-MGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="930" y="1027"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_account_account.png" width="26" height="26"/>
@@ -3028,10 +3139,10 @@
         <image name="icon_setttings_phone.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="erv-2u-Fl5"/>
-        <segue reference="9xM-Xp-2Dk"/>
-        <segue reference="o6R-FQ-MA7"/>
+        <segue reference="5Kv-F8-Fjs"/>
         <segue reference="lJ7-wF-fmM"/>
-        <segue reference="eVa-ta-b50"/>
+        <segue reference="9xM-Xp-2Dk"/>
+        <segue reference="erv-2u-Fl5"/>
+        <segue reference="o6R-FQ-MA7"/>
     </inferredMetricsTieBreakers>
 </document>

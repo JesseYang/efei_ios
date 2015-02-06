@@ -17,6 +17,8 @@
 #import "NotebookSearchViewController.h"
 #import "GetQuestionController.h"
 #import <IQKeyboardManager.h>
+#import "AddTeacherController.h"
+#import "TeacherAddViewController.h"
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
@@ -24,6 +26,7 @@
 #define ShowNotebookFilterViewControllerSegueId @"ShowNotebookFilterViewController"
 #define ShowNotebookExportViewControllerSegueId @"ShowNotebookExportViewController"
 #define ShowQuestionViewControllerSegueId       @"ShowQuestionViewController"
+#define ShowTeacherAddViewControllerSegueId     @"ShowTeacherAddViewController"
 
 @interface NotebookViewController()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SearchBarViewDelegate, NoteCellDelegate>
 {
@@ -112,6 +115,7 @@
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     
     [self addQuestionIfNeeded];
+    [self addTeacherIfNeeded];
 }
 
 - (void) setupNavigationBar
@@ -204,6 +208,15 @@
         
     }
 }
+
+- (void) addTeacherIfNeeded
+{
+    if ([AddTeacherController instance].teacherToAdd != nil)
+    {
+        [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
+    }
+}
+
 
 - (UIView*) viewWithTitle:(NSString*)title image:(UIImage*)image action:(SEL)action
 {
@@ -546,6 +559,14 @@
         
         QuestionViewController* questionVC = (QuestionViewController*)segue.destinationViewController;
         questionVC.note = _selectedNote;
+    }
+    
+    if ([segue.identifier isEqualToString:ShowTeacherAddViewControllerSegueId])
+    {
+        _searchBarView.hidden = YES;
+        
+        TeacherAddViewController* tVC = (TeacherAddViewController*)segue.destinationViewController;
+        tVC.teacher = [AddTeacherController instance].teacherToAdd;
     }
 }
 
