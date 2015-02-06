@@ -11,7 +11,9 @@
 #import "SearchTeacherController.h"
 #import "UserCommand.h"
 #import "UIColor+Hex.h"
+#import "TeacherClassViewController.h"
 
+#define ShowTeacherClassViewControllerSegueId @"ShowTeacherClassViewController"
 
 @interface TeacherAddViewController()
 {
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 - (IBAction)onAddTeacher:(id)sender;
+- (IBAction) onBack:(id)sender;
 
 @end
 
@@ -52,19 +55,45 @@
     self.addButton.layer.cornerRadius = 5;
     self.addButton.backgroundColor = [EFei instance].efeiColor;
     
-    Teacher* teacher = [SearchTeacherController instance].teacherToAdd;
-    self.teacherLabel.text = [NSString stringWithFormat:@"%@  %@  %@", teacher.school, teacher.subjectName, teacher.name];
+    self.teacherLabel.text = [NSString stringWithFormat:@"%@  %@  %@", self.teacher.school, self.teacher.subjectName, self.teacher.name];
 }
 
 - (IBAction)onAddTeacher:(id)sender
 {
-    Teacher* teacher = [SearchTeacherController instance].teacherToAdd;
-    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+    if (self.teacher.classes.count > 1)
+    {
+        [self performSegueWithIdentifier:ShowTeacherClassViewControllerSegueId sender:self];
+    }
+    else
+    {
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            if (success)
+            {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+            
+        };
         
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    };
-    [AddTeacherCommand executeWithTeacher:teacher completeHandler:handler];
+        [AddTeacherCommand executeWithTeacher:self.teacher completeHandler:handler];
+    }
+    
+}
+
+- (IBAction)onBack:(id)sender
+{
+    [[EFei instance].user addIgnoreTeacher:self.teacher.teacherId];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:ShowTeacherClassViewControllerSegueId])
+    {
+        TeacherClassViewController* tcVC = (TeacherClassViewController*)segue.destinationViewController;
+        tcVC.teacher = self.teacher;
+    }
 }
 
 @end

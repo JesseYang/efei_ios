@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Teacher;
+
 @interface TeacherAddViewController : UIViewController
+
+@property (nonatomic, weak) Teacher* teacher;
 
 @end

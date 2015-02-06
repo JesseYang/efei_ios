@@ -24,4 +24,8 @@
 - (void) deleteTeacherWithId:(NSString*)teacherId;
 - (Teacher*) teacherWithId:(NSString*)teacherId;
 
+- (BOOL) hasTeacher:(NSString*)teacherId;
+- (BOOL) isIgnoreTeacher:(NSString*)teacherId;
+- (void) addIgnoreTeacher:(NSString*)teacherId;
+
 @end

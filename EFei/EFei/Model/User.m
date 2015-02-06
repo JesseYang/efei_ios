@@ -12,6 +12,8 @@
 @interface User ()
 {
     NSMutableArray* _teachers;
+    
+    NSMutableArray* _ignoredTeachers;
 }
 
 @end
@@ -105,6 +107,21 @@
         }
     }
     return nil;
+}
+
+- (BOOL) hasTeacher:(NSString*)teacherId
+{
+    return [self teacherWithId:teacherId] != nil;
+}
+
+- (BOOL) isIgnoreTeacher:(NSString*)teacherId
+{
+    return [_ignoredTeachers containsObject:teacherId];
+}
+
+- (void) addIgnoreTeacher:(NSString*)teacherId
+{
+    [_ignoredTeachers addObject:teacherId];
 }
 
 @end

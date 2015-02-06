@@ -9,6 +9,7 @@
 #import "NetWorkTaskAddTeacher.h"
 #import "EFei.h"
 #import "TaskManager.h"
+#import "AddTeacherController.h"
 
 static NSString* kReqeustTeacherIdKey           = @"teacher_id";
 static NSString* kReqeustClassIdKey           = @"class_id";
@@ -53,7 +54,10 @@ static NSString* kReqeustClassIdKey           = @"class_id";
 
 - (void) sucess
 {
+    [AddTeacherController instance].teacherToAdd = nil;
+    
     [super sucess];
+    
     
     Teacher* teacher = (Teacher*)self.data;
     [[EFei instance].user addTeacher:teacher];

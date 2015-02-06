@@ -153,7 +153,20 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
     [[SearchTeacherController instance] selectSearchedTeacher:indexPath.row];
     
-    [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
+//    [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
+    
+    
+    Teacher* teacher = [SearchTeacherController instance].teacherToAdd;
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        if (success)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    };
+    [AddTeacherCommand executeWithTeacher:teacher completeHandler:handler];
+
 }
 
 #pragma mark -- Navigation

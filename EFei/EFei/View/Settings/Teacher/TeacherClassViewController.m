@@ -7,6 +7,8 @@
 //
 
 #import "TeacherClassViewController.h"
+#import "Teacher.h"
+#import "UserCommand.h"
 
 #define TeacherClassTableViewCellId @"TeacherClassTableViewCellId"
 
@@ -44,6 +46,22 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
+- (void) addTeacherWithClassIndex:(NSInteger)index
+{
+    TeacherClass* tc = [self.teacher.classes objectAtIndex:index];
+    self.teacher.classId = tc.classId;
+    
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        if (success)
+        {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        
+    };
+    
+    [AddTeacherCommand executeWithTeacher:self.teacher completeHandler:handler];
+}
 
 -(void)viewDidLayoutSubviews
 {
@@ -61,13 +79,14 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.teacher.classes.count;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:TeacherClassTableViewCellId forIndexPath:indexPath];
-    cell.textLabel.text = @"123";
+    TeacherClass* tc = [self.teacher.classes objectAtIndex:indexPath.row];
+    cell.textLabel.text = tc.desc;
     
     return cell;
 }
@@ -89,7 +108,11 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    
 }
+
+
 
 
 
