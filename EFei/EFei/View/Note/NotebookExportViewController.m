@@ -12,7 +12,7 @@
 #import "ToastView.h"
 #import "ExportNotesController.h"
 
-@interface NotebookExportViewController()<UITableViewDataSource, UITableViewDelegate>
+@interface NotebookExportViewController()<UITableViewDataSource, UITableViewDelegate, UIDocumentInteractionControllerDelegate>
 {
     NSArray* _exportFormatArray;
     NSArray* _exportContentArray;
@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *emailImageView;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextFeild;
 
+@property (nonatomic, retain) UIDocumentInteractionController* documentInteractionController;
 
 @end
 
@@ -162,15 +163,40 @@
         if (success)
         {
             [ToastView showMessage:kErrorMessageDownloadSuccess];
+            [self openFile];
         }
         else
         {
             [ToastView showMessage:kErrorMessageDownloadFailed];
+            [self.navigationController popViewControllerAnimated:YES];
         }
         
-        [self.navigationController popViewControllerAnimated:YES];
     };
     [[ExportNotesController instance] startDonwloadWithBlock:handler];
+}
+
+- (void) openFile
+{
+    dispatch_async(dispatch_get_main_queue(), ^() {
+        
+        
+        NSURL *url = [NSURL fileURLWithPath:[ExportNotesController instance].filePath];
+        
+        if (url != nil)
+        {
+            // Initialize Document Interaction Controller
+            self.documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:url];
+            
+            // Configure Document Interaction Controller
+            [self.documentInteractionController setDelegate:self];
+            
+            // Preview PDF
+            //        [documentInteractionController presentPreviewAnimated:YES];
+            CGRect rect = CGRectMake(0, 0, 100, 100);
+            [self.documentInteractionController presentOpenInMenuFromRect:rect inView:self.view animated:YES];
+        }
+        
+    });
 }
 
 
@@ -240,6 +266,14 @@
         [self.exprotDestinationTableView setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+
+#pragma mark -- UIDocumentInteractionController
+
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark -- UITableView
 

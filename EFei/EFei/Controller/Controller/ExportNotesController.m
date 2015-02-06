@@ -45,6 +45,7 @@
     __weak ExportNotesController* weakSelf = self;
     
     NSString* filePath = [NSTemporaryDirectory() stringByAppendingString:[self.pendingTaskUrl lastPathComponent]];
+    self.filePath = filePath;
     _downloader = [[FileDownloader alloc] initWithUrl:self.pendingTaskUrl filePath:filePath];
     _downloader.successBlock = ^(){
         
