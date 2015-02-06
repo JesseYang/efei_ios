@@ -13,6 +13,7 @@ typedef void (^ExportNotesControllerDoneBlock)(BOOL success);
 @interface ExportNotesController : NSObject
 
 @property (nonatomic, copy) NSString* pendingTaskUrl;
+@property (nonatomic, copy) NSString* filePath;
 
 + (ExportNotesController*) instance;
 
