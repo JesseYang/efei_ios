@@ -39,9 +39,9 @@ static NSString* kReqeustClassIdKey           = @"class_id";
     Teacher* teacher = (Teacher*)self.data;
     
     [self.parameterDict setValue:teacher.teacherId forKey:kReqeustTeacherIdKey];
-    if (teacher.classId > 0)
+    if (teacher.classId.length > 0)
     {
-        [self.parameterDict setValue:[NSNumber numberWithInteger:teacher.classId] forKey:kReqeustTeacherIdKey];
+        [self.parameterDict setValue:teacher.classId forKey:kReqeustTeacherIdKey];
     }
 }
 

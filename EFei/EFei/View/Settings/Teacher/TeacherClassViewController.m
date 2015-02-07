@@ -107,8 +107,8 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController popViewControllerAnimated:YES];
-    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self addTeacherWithClassIndex:indexPath.row];
     
 }
 

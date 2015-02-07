@@ -22,7 +22,7 @@
 @interface Teacher : NSObject
 
 @property (nonatomic, copy) NSString* teacherId;
-@property (nonatomic, assign) NSInteger classId;
+@property (nonatomic, copy) NSString* classId;
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, assign) SubjectType subjectType;
 @property (nonatomic, copy) NSString* subjectName;
