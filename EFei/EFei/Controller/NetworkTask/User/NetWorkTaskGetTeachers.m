@@ -25,6 +25,12 @@ static NSString* kResponseDescKey         = @"desc";
 static NSString* kResponseAvatarKey       = @"avatar";
 
 
+static NSString* kResponseTeacherClassesKey      = @"classes";
+static NSString* kResponseTeacherClassIdKey      = @"id";
+static NSString* kResponseTeacherClassNameKey    = @"name";
+static NSString* kResponseTeacherClassDescKey    = @"desc";
+
+
 @implementation NetWorkTaskGetTeachers
 
 + (void) load
@@ -92,6 +98,23 @@ static NSString* kResponseAvatarKey       = @"avatar";
                                            description:desc
                                                 avatar:avatar
                                                classes:nil];
+        
+        NSArray* classes = [teacherDict objectForKey:kResponseTeacherClassesKey];
+        if ([classes isKindOfClass:[NSArray class]])
+        {
+            NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:classes.count];
+            for (NSDictionary* cDict in classes)
+            {
+                TeacherClass* teacherClass = [[TeacherClass alloc] init];
+                teacherClass.classId = [cDict objectForKey:kResponseTeacherClassIdKey];
+                teacherClass.name    = [cDict objectForKey:kResponseTeacherClassNameKey];
+                teacherClass.desc    = [cDict objectForKey:kResponseTeacherClassDescKey];
+                
+                [array addObject:teacherClass];
+            }
+            
+            teacher.classes = array;
+        }
         
         // TODO: save search teacher results.
         

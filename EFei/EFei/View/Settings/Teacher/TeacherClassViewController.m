@@ -9,6 +9,7 @@
 #import "TeacherClassViewController.h"
 #import "Teacher.h"
 #import "UserCommand.h"
+#import "ToastView.h"
 
 #define TeacherClassTableViewCellId @"TeacherClassTableViewCellId"
 
@@ -55,6 +56,7 @@
         
         if (success)
         {
+            [ToastView showMessage:kErrorMessageAddTeacherSuccess];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
         
@@ -86,7 +88,7 @@
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:TeacherClassTableViewCellId forIndexPath:indexPath];
     TeacherClass* tc = [self.teacher.classes objectAtIndex:indexPath.row];
-    cell.textLabel.text = tc.desc;
+    cell.textLabel.text = tc.name;
     
     return cell;
 }
