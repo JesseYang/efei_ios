@@ -57,6 +57,7 @@
 		FC43122D1A20218C0020EA31 /* NetWorkTaskExportNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122C1A20218C0020EA31 /* NetWorkTaskExportNotes.m */; };
 		FC4312301A2022D10020EA31 /* Topics.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43122F1A2022D10020EA31 /* Topics.m */; };
 		FC4ECB161A84B1420002C2DF /* AddTeacherController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4ECB151A84B1420002C2DF /* AddTeacherController.m */; };
+		FC4ECB611A888B450002C2DF /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4ECB601A888B450002C2DF /* FeedbackViewController.m */; };
 		FC5BFF1B1A78A22800A7659C /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF1A1A78A22800A7659C /* NSString+Email.m */; };
 		FC5BFF271A7A0DBB00A7659C /* ExportNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF261A7A0DBB00A7659C /* ExportNotesController.m */; };
 		FC5BFF2A1A7A106E00A7659C /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF291A7A106E00A7659C /* FileDownloader.m */; };
@@ -288,6 +289,8 @@
 		FC43122F1A2022D10020EA31 /* Topics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Topics.m; sourceTree = "<group>"; };
 		FC4ECB141A84B1420002C2DF /* AddTeacherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTeacherController.h; sourceTree = "<group>"; };
 		FC4ECB151A84B1420002C2DF /* AddTeacherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTeacherController.m; sourceTree = "<group>"; };
+		FC4ECB5F1A888B450002C2DF /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		FC4ECB601A888B450002C2DF /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		FC5BFF191A78A22800A7659C /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
 		FC5BFF1A1A78A22800A7659C /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		FC5BFF251A7A0DBB00A7659C /* ExportNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportNotesController.h; sourceTree = "<group>"; };
@@ -1020,6 +1023,8 @@
 				FCF3D20B1A401981009D8722 /* EmailSettingViewController.m */,
 				FCF3D20D1A401AC0009D8722 /* EmailEditingResultViewController.h */,
 				FCF3D20E1A401AC0009D8722 /* EmailEditingResultViewController.m */,
+				FC4ECB5F1A888B450002C2DF /* FeedbackViewController.h */,
+				FC4ECB601A888B450002C2DF /* FeedbackViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1328,6 +1333,7 @@
 				FCF3D1891A3B4FB7009D8722 /* TagCollectionView.m in Sources */,
 				FC4312001A1F61D80020EA31 /* NetWorkTaskChangeMobile.m in Sources */,
 				FC4312061A1F626F0020EA31 /* NetWorkTaskGetTeachers.m in Sources */,
+				FC4ECB611A888B450002C2DF /* FeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

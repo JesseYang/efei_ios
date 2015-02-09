@@ -129,3 +129,17 @@
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////
+
+@implementation SendFeedbackCommand
+
++ (void) executeWithFeedback:(NSString *)feedback completeHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeFeedback
+                                    withData:feedback
+                             completeHandler:handler];
+}
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+

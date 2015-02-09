@@ -26,6 +26,8 @@ NSString* kErrorMessageDownloadSuccess              = @"下载成功";
 NSString* kErrorMessageDownloadFailed               = @"下载失败";
 NSString* kErrorMessageSendToMailSuccess            = @"发送成功";
 NSString* kErrorMessageAddTeacherSuccess            = @"添加教师成功";
+NSString* kErrorMessageSendFeedbackSuccess          = @"提交反馈成功";
+NSString* kErrorMessageSendFeedbackFailed           = @"提交反馈失败";
 
 @interface ToastView()
 

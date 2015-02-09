@@ -9,6 +9,7 @@
 #import "SettinsViewController.h"
 #import "EFei.h"
 #import "MainViewController.h"
+#import "FeedbackViewController.h"
 
 #define NavigationBarTilte @"设置"
 
@@ -20,10 +21,12 @@
 #define TitlePersonal @"个人设置"
 #define TitleMyTeachers @"我的老师"
 #define TitleAbout @"关于易飞"
+#define TitleFeedback @"意见反馈"
 
 #define LogoutButtonTitle @"退出登录"
 
 #define ShowTeacherViewControllerSegueId @"ShowTeacherViewController"
+#define ShowFeedbackViewControllerSegueId @"ShowFeedbackViewController"
 
 @interface SettinsViewController()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -74,10 +77,10 @@
 - (void) setupData
 {
     _titlesArray = @[@[TitlePersonal],
-                     @[TitleMyTeachers, TitleAbout]];
+                     @[TitleMyTeachers, TitleAbout, TitleFeedback]];
     
     _actionArray = @[@[@"onPersonalClicked"],
-                     @[@"onMyTeachersClicked", @"onAboutClicked"]];
+                     @[@"onMyTeachersClicked", @"onAboutClicked", @"onFeedbackClicked"]];
     
 }
 
@@ -173,4 +176,10 @@
 {
 }
 
+- (void) onFeedbackClicked
+{
+    [self performSegueWithIdentifier:ShowFeedbackViewControllerSegueId sender:self];
+}
+
 @end
+
