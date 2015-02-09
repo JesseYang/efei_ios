@@ -26,6 +26,8 @@ extern NSString* kErrorMessageDownloadSuccess;
 extern NSString* kErrorMessageDownloadFailed;
 extern NSString* kErrorMessageSendToMailSuccess;
 extern NSString* kErrorMessageAddTeacherSuccess;
+extern NSString* kErrorMessageSendFeedbackSuccess;
+extern NSString* kErrorMessageSendFeedbackFailed;
 
 @interface ToastView : UIView
 
