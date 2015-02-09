@@ -14,6 +14,8 @@
 #import "UserCommand.h"
 #import "SubjectViewController.h"
 #import "UIColor+Hex.h"
+#import "TeacherClassViewController.h"
+#import "ToastView.h"
 
 #define SubjectLabelTextColor @"#4d71aa"
 
@@ -21,6 +23,7 @@
 
 #define ShowTeacherAddViewControllerSegueId @"ShowTeacherAddViewController"
 #define ShowSubjectViewControllerSegueId @"ShowSubjectViewController"
+#define ShowTeacherClassViewControllerSegueId @"ShowTeacherClassViewController"
 
 @interface TeacherSeachViewController()<SearchBarViewDelegate>
 {
@@ -153,20 +156,29 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
     [[SearchTeacherController instance] selectSearchedTeacher:indexPath.row];
     
-//    [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
-    
     
     Teacher* teacher = [SearchTeacherController instance].teacherToAdd;
-    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
-        
-        if (success)
-        {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-    };
-    [AddTeacherCommand executeWithTeacher:teacher completeHandler:handler];
-
+    
+    if (teacher.classes.count > 1)
+    {
+        [self performSegueWithIdentifier:ShowTeacherClassViewControllerSegueId sender:self];
+    }
+    else
+    {
+        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+            
+            if (success)
+            {
+                [ToastView showMessage:kErrorMessageAddTeacherSuccess];
+                
+                _searchBarView.hidden = YES;
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+        };
+        [AddTeacherCommand executeWithTeacher:teacher completeHandler:handler];
+    }
 }
 
 #pragma mark -- Navigation
@@ -184,6 +196,13 @@
             [self updateRightBarButtonItem];
             
         };
+    }
+    
+    
+    if ([segue.identifier isEqualToString:ShowTeacherClassViewControllerSegueId])
+    {
+        TeacherClassViewController* tcVC = (TeacherClassViewController*)segue.destinationViewController;
+        tcVC.teacher = [SearchTeacherController instance].teacherToAdd;
     }
 }
 

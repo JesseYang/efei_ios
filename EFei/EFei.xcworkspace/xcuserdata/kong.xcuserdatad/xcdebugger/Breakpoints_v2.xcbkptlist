@@ -19,12 +19,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EFei/Controller/NetworkTask/Notebook/NetWorkTaskAddQuestionList.m"
-            timestampString = "444906179.037802"
+            filePath = "EFei/Controller/NetworkTask/User/NetWorkTaskGetTeachers.m"
+            timestampString = "445154913.090264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-parseResultDict:"
             landmarkType = "5">
          </BreakpointContent>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EFei/Controller/NetworkTask/Notebook/NetWorkTaskAddQuestion.m"
-            timestampString = "444993204.756744"
+            filePath = "EFei/Controller/NetworkTask/User/NetWorkTaskAddTeacher.m"
+            timestampString = "445155643.051302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "-parseResultDict:"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-prepareParameter"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EFei/View/Settings/Teacher/TeacherAddViewController.m"
-            timestampString = "444907113.098811"
+            filePath = "EFei/Controller/NetworkTask/User/NetWorkTaskAddTeacher.m"
+            timestampString = "445155647.157741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-onBack:"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-parseResultDict:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

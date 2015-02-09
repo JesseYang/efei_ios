@@ -2532,6 +2532,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="Wft-ux-f3a" kind="show" identifier="ShowTeacherAddViewController" id="mr6-TC-HKo"/>
+                        <segue destination="zDb-hS-E6g" kind="show" identifier="ShowTeacherClassViewController" id="6Vs-7C-Nfb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGl-s5-Azd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3107,7 +3108,34 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfh-WG-MGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="1027"/>
+            <point key="canvasLocation" x="969" y="1027"/>
+        </scene>
+        <!--Teacher Class View Controller-->
+        <scene sceneID="XdT-r9-6Gf">
+            <objects>
+                <tableViewController id="zDb-hS-E6g" customClass="TeacherClassViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WdF-n5-blo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherClassTableViewCellId" id="izD-Tk-sPH">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="izD-Tk-sPH" id="GZb-lq-zpJ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zDb-hS-E6g" id="QtS-0C-FQg"/>
+                            <outlet property="delegate" destination="zDb-hS-E6g" id="Wpc-Cw-y3A"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ifu-EE-VPt"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="800-gZ-Pm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-300" y="5130"/>
         </scene>
     </scenes>
     <resources>

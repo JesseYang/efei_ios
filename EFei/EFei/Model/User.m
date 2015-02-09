@@ -11,7 +11,7 @@
 
 @interface User ()
 {
-    NSMutableArray* _teachers;
+    NSMutableDictionary* _teachersDict;
     
     NSMutableArray* _ignoredTeachers;
 }
@@ -25,7 +25,7 @@
     self = [super init];
     if (self)
     {
-        _teachers = [[NSMutableArray alloc] init];
+        _teachersDict = [[NSMutableDictionary alloc] init];
         
         self.name = @"";
         self.email = @"";
@@ -70,43 +70,35 @@
     }
 }
 
+- (NSArray*)teachers
+{
+    return _teachersDict.allValues;
+}
+
 - (void) clearTeacherList
 {
-    [_teachers removeAllObjects];
+    [_teachersDict removeAllObjects];
 }
 
 - (void) addTeacher:(Teacher*)teacher
 {
-    [_teachers addObject:teacher];
+    _teachersDict[teacher.teacherId] = teacher;
 }
 
 - (void) deleteTeacher:(Teacher *)teacher
 {
-    [_teachers removeObject:teacher];
+    [_teachersDict removeObjectForKey:teacher.teacherId];
 }
 
 - (void) deleteTeacherWithId:(NSString*)teacherId
 {
-    for (Teacher* t in _teachers)
-    {
-        if ([t.teacherId isEqualToString:teacherId])
-        {
-            [_teachers removeObject:t];
-            break;
-        }
-    }
+    [_teachersDict removeObjectForKey:teacherId];
+    
 }
 
 - (Teacher*) teacherWithId:(NSString*)teacherId
 {
-    for (Teacher* t in _teachers)
-    {
-        if ([t.teacherId isEqualToString:teacherId])
-        {
-            return t;
-        }
-    }
-    return nil;
+    return _teachersDict[teacherId];
 }
 
 - (BOOL) hasTeacher:(NSString*)teacherId

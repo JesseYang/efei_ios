@@ -25,6 +25,7 @@ NSString* kErrorMessageNoVerifyCode                 = @"请输入验证码";
 NSString* kErrorMessageDownloadSuccess              = @"下载成功";
 NSString* kErrorMessageDownloadFailed               = @"下载失败";
 NSString* kErrorMessageSendToMailSuccess            = @"发送成功";
+NSString* kErrorMessageAddTeacherSuccess            = @"添加教师成功";
 
 @interface ToastView()
 
