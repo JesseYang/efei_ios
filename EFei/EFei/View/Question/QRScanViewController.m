@@ -224,6 +224,9 @@ typedef enum : NSUInteger {
 
 - (IBAction)onBack:(id)sender
 {
+    [_capture stop];
+    _capture = nil;
+    
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
