@@ -34,6 +34,8 @@
     
     NSDictionary* _textAttributeDict;
     NSDictionary* _imageAttributeDict;
+    
+    CGFloat _maxHeightOfLine;
 }
 
 - (void) setupUI;
@@ -122,6 +124,7 @@
     _attributedString = [[NSMutableAttributedString alloc] initWithString:@""];
     for (NSString* line in contents)
     {
+        _maxHeightOfLine = [self maxHeightOfLine:line];
         [self processLine:line];
         NSAttributedString* lineBreak = [[NSAttributedString alloc] initWithString:@"\n"];
         [_attributedString appendAttributedString:lineBreak];
@@ -141,6 +144,40 @@
     {
         [self.noteDelegate noteTextView:self didClickImage:nil];
     }
+}
+
+- (CGFloat) maxHeightOfLine:(NSString*)line
+{
+    CGFloat maxHeight = 25;
+    
+    NSArray* words = [line componentsSeparatedByString:AttributeSeparator];
+    
+    for (NSInteger index = 1; index < words.count; index++)
+    {
+        NSString* string = [words objectAtIndex:index];
+        
+        NSArray* array = [string componentsSeparatedByString:AttributeSeparatorText];
+        if (array.count > 1)
+        {
+            NSString* content = [array objectAtIndex:1];
+            
+            NSArray* array2 = [content componentsSeparatedByString:AttributeSeparatorImage];
+            if (array2.count > 2)
+            {
+                float width = [[array2 objectAtIndex:1] floatValue];
+                float height = [[array2 objectAtIndex:2] floatValue];
+                
+                NSLog(@"----- %f, %f", width, height);
+                
+                if (height > maxHeight)
+                {
+                    maxHeight = height;
+                }
+            }
+        }
+    }
+    
+    return maxHeight;
 }
 
 
@@ -167,8 +204,14 @@
     {
         return;
     }
+    
+    CGSize size = [string sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:TextFontSize]}];
+    CGFloat baseLine = (_maxHeightOfLine - ceilf(size.height))/2;
+    
     NSDictionary * attributesNormal = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont systemFontOfSize:TextFontSize], NSFontAttributeName, nil];
+                                       [UIFont systemFontOfSize:TextFontSize], NSFontAttributeName,
+                                       [NSNumber numberWithFloat:baseLine], NSBaselineOffsetAttributeName,
+                                       nil];
     NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributesNormal];
     [_attributedString appendAttributedString:attributedString];
 }
@@ -279,7 +322,7 @@
     float scale = [UIScreen mainScreen].scale;
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
     textAttachment.image = image;
-    textAttachment.bounds = CGRectMake(0, -2, image.size.width/scale, image.size.height/scale);
+    textAttachment.bounds = CGRectMake(0, 0, image.size.width/scale, image.size.height/scale);
     
     NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
     
