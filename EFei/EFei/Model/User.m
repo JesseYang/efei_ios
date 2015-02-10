@@ -26,6 +26,7 @@
     if (self)
     {
         _teachersDict = [[NSMutableDictionary alloc] init];
+        _ignoredTeachers = [[NSMutableArray alloc] init];
         
         self.name = @"";
         self.email = @"";

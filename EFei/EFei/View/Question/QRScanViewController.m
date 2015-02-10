@@ -302,7 +302,22 @@ typedef enum : NSUInteger {
 - (void) showScanResultView
 {
     Note* note = [GetQuestionController instance].currentNote;
-    [self.questionView setNoteContent:note.contents];
+    
+    if (note.questionType == QuestionTypeChoice)
+    {
+        NSMutableArray* array = [[NSMutableArray alloc] initWithArray:note.contents];
+        for (int i=0; i<note.items.count; i++)
+        {
+            NSString* item = [note.items objectAtIndex:i];
+            NSString* str = [NSString stringWithFormat:@"(%c) %@", 'A'+i, item];
+            [array addObject:str];
+        }
+        [self.questionView setNoteContent:array];
+    }
+    else
+    {
+        [self.questionView setNoteContent:note.contents];
+    }
     
     self.scanResultView.hidden = NO;
 }

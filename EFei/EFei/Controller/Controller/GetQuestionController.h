@@ -25,6 +25,8 @@
 
 - (BOOL) questionExist:(NSString*)showUrl;
 
+- (Note*) noteWithShortUrl:(NSString*)url;
+
 - (void) addQuestionToList;
 - (void) discardCurrentQuestion;
 - (void) discardQuestionList;

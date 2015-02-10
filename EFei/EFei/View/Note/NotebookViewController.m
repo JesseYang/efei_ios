@@ -211,9 +211,17 @@
 
 - (void) addTeacherIfNeeded
 {
-    if ([AddTeacherController instance].teacherToAdd != nil)
+    NSString* teacherId = [AddTeacherController instance].teacherToAdd.teacherId;
+    if (teacherId.length > 0)
     {
-        [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
+        if ([[EFei instance].user isIgnoreTeacher:teacherId])
+        {
+            [AddTeacherController instance].teacherToAdd = nil;
+        }
+        else
+        {
+            [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
+        }
     }
 }
 
