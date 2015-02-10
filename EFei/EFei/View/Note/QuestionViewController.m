@@ -90,6 +90,8 @@
 
 - (void) setupViews
 {
+    [self updateScrollSize];
+    
     self.noteTableView.dataSource = self;
     self.noteTableView.delegate = self;
     
@@ -138,6 +140,17 @@
     }
 }
 
+- (void) updateScrollSize
+{
+    UIScrollView* scrollView = (UIScrollView*)self.view;
+    
+    if ([scrollView isKindOfClass:[UIScrollView class]])
+    {
+        CGSize size = self.view.frame.size;
+        size.height = self.summaryTextView.frame.origin.y + self.summaryTextView.frame.size.height;
+        scrollView.contentSize = size;
+    }
+}
 
 
 - (UIBarButtonItem*)barItemWithImage:(UIImage*)image title:(NSString*)title target:(id)target action:(SEL)action
@@ -166,7 +179,7 @@
     float height = self.questionView.viewHeight;
     [self.questionViewHeightConstraint setConstant:height];
     
-    NSLog(@"will layout :  %f" , height);
+    [self updateScrollSize];
 }
 
 #pragma mark -- Action
