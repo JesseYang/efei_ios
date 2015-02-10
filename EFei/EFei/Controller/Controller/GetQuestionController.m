@@ -12,8 +12,7 @@
 @interface GetQuestionController()
 {
     NSMutableDictionary* _questionDcit;
-    
-    NSMutableArray* _noteList;
+    NSMutableDictionary* _notesDcit;
 }
 
 - (void) parseUrl;
@@ -41,11 +40,16 @@
     self = [super init];
     if (self)
     {
-        _noteList = [[NSMutableArray alloc] init];
+        _notesDcit = [[NSMutableDictionary alloc] init];
         
         _questionDcit = [[NSMutableDictionary alloc] init];
     }
     return self;
+}
+
+- (NSArray*)noteList
+{
+    return [_notesDcit allValues];
 }
 
 - (BOOL) questionExist:(NSString *)showUrl
@@ -53,12 +57,25 @@
     return [_questionDcit objectForKey:showUrl] != nil;
 }
 
+- (Note*) noteWithShortUrl:(NSString*)url;
+{
+    NSString* questionId = _questionDcit[url];
+    return _notesDcit[questionId];
+}
 
 - (void) addQuestionToList
 {
-    [_noteList addObject:self.currentNote];
+    if (self.currentNote.questionId.length > 0)
+    {
+        _notesDcit[self.currentNote.questionId] = self.currentNote;
+    }
+    else
+    {
+        _notesDcit[self.currentNote.noteId] = self.currentNote;
+    }
     self.currentNote = nil;
 }
+
 
 - (void) discardCurrentQuestion
 {
@@ -67,7 +84,7 @@
 
 - (void) discardQuestionList
 {
-    [_noteList removeAllObjects];
+    [_notesDcit removeAllObjects];
 }
 
 - (void) startGetQuestion

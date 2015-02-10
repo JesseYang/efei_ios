@@ -48,6 +48,12 @@
 {
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"添加教师";
+    
+    UIImage* backImage = [UIImage imageNamed:@"icon_setting_teacher_back.png"];
+    self.navigationItem.leftBarButtonItem = [self barItemWithImage:backImage
+                                                             title:@"返回"
+                                                            target:self
+                                                            action:@selector(onBack:)];
 }
 
 - (void) setupViews
@@ -56,6 +62,26 @@
     self.addButton.backgroundColor = [EFei instance].efeiColor;
     
     self.teacherLabel.text = [NSString stringWithFormat:@"%@  %@  %@", self.teacher.school, self.teacher.subjectName, self.teacher.name];
+}
+
+
+- (UIBarButtonItem*)barItemWithImage:(UIImage*)image title:(NSString*)title target:(id)target action:(SEL)action
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0.0, 0.0, image.size.width + 50, image.size.height);
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [button setImage:image forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
+    CGSize imageSize = button.imageView.frame.size;
+    button.imageEdgeInsets = UIEdgeInsetsMake(0.0, -imageSize.width, 0.0, 0.0);
+    
+    return barButtonItem;
 }
 
 - (IBAction)onAddTeacher:(id)sender

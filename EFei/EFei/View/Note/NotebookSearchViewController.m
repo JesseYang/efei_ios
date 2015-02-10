@@ -78,7 +78,7 @@
 
 - (void) searchNotebookWithKeyword:(NSString*)keyword
 {
-    if (keyword.length > 0)
+//    if (keyword.length > 0)
     {
         [[EFei instance].searchManager addSearch:keyword];
         [self.navigationController popViewControllerAnimated:YES];
