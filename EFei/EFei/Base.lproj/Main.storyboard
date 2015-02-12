@@ -2540,7 +2540,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUC-hg-lls">
-                                            <rect key="frame" x="70" y="0.0" width="410" height="44"/>
+                                            <rect key="frame" x="70" y="0.0" width="388" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="qqR-Cy-AY9"/>
                                             </constraints>
@@ -2549,7 +2549,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swg-cv-UFk">
-                                            <rect key="frame" x="480" y="0.0" width="60" height="44"/>
+                                            <rect key="frame" x="458" y="0.0" width="60" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="5E5-ZI-SQr"/>
                                                 <constraint firstAttribute="height" constant="44" id="swA-LH-Hj7"/>
@@ -2559,10 +2559,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hw7-dr-EGc">
-                                            <rect key="frame" x="560" y="10" width="22" height="22"/>
+                                            <rect key="frame" x="538" y="0.0" width="44" height="44"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="22" id="4bR-wN-Cqw"/>
-                                                <constraint firstAttribute="height" constant="22" id="XYX-jF-mI3"/>
+                                                <constraint firstAttribute="width" constant="44" id="4bR-wN-Cqw"/>
+                                                <constraint firstAttribute="height" constant="44" id="XYX-jF-mI3"/>
                                             </constraints>
                                             <state key="normal" image="icon_setting_teacher_add.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2570,7 +2570,7 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="hw7-dr-EGc" firstAttribute="top" secondItem="2jo-qX-lO0" secondAttribute="top" constant="10" id="3OC-gL-UIu"/>
+                                        <constraint firstItem="hw7-dr-EGc" firstAttribute="top" secondItem="2jo-qX-lO0" secondAttribute="top" id="3OC-gL-UIu"/>
                                         <constraint firstItem="FUC-hg-lls" firstAttribute="top" secondItem="2jo-qX-lO0" secondAttribute="top" id="AUK-7w-DiY"/>
                                         <constraint firstItem="Swg-cv-UFk" firstAttribute="top" secondItem="2jo-qX-lO0" secondAttribute="top" id="E99-b0-jvF"/>
                                         <constraint firstAttribute="trailing" secondItem="hw7-dr-EGc" secondAttribute="trailing" constant="18" id="Efw-5m-eru"/>

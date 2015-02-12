@@ -8,6 +8,7 @@
 
 #import "ToastView.h"
 
+NSString* kErrorMessageNoNetworkConnection          = @"无网络连接，请检查设置";
 NSString* kErrorMessageWrongUserName                = @"请输入用户名";
 NSString* kErrorMessageWrongPhoneNumber             = @"请输入正确的手机号";
 NSString* kErrorMessageWrongPassword                = @"请输入6-16位密码";
@@ -28,6 +29,7 @@ NSString* kErrorMessageSendToMailSuccess            = @"发送成功";
 NSString* kErrorMessageAddTeacherSuccess            = @"添加教师成功";
 NSString* kErrorMessageSendFeedbackSuccess          = @"提交反馈成功";
 NSString* kErrorMessageSendFeedbackFailed           = @"提交反馈失败";
+NSString* kErrorMessageBadQRCode                    = @"错误的二维码";
 
 @interface ToastView()
 
