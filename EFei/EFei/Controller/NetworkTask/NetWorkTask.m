@@ -104,6 +104,11 @@ static NSString* kBaseReqeustMessageKey = @"message";
 {
     NSLog(@"NetworkTask failed. Error code: %ld. %@", self.errorCode, self.error);
     
+    if (self.error == nil)
+    {
+        self.error = @"无网络连接，请检查设置";
+    }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkNotificationName object:self.error];
     
     if (self.completionBlock != nil)

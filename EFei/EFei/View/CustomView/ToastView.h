@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString* kErrorMessageNoNetworkConnection;
 extern NSString* kErrorMessageWrongUserName;
 extern NSString* kErrorMessageWrongPhoneNumber;
 extern NSString* kErrorMessageWrongPassword;
@@ -28,6 +29,7 @@ extern NSString* kErrorMessageSendToMailSuccess;
 extern NSString* kErrorMessageAddTeacherSuccess;
 extern NSString* kErrorMessageSendFeedbackSuccess;
 extern NSString* kErrorMessageSendFeedbackFailed;
+extern NSString* kErrorMessageBadQRCode;
 
 @interface ToastView : UIView
 

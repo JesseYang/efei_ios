@@ -61,6 +61,14 @@
 {
     [self.account signout];
     [self.notebook clearNotes];
+    
+    _database           = [[DataBase alloc] init];
+    self.account        = [[Account alloc] init];
+    self.user           = [[User alloc] init];
+    self.notebook       = [[NoteBook alloc] init];
+    self.settings       = [[Settings alloc] init];
+    self.subjectManager = [[SubjectManager alloc] init];
+    self.searchManager  = [[SearchManager alloc] init];
 }
 
 - (void) saveData

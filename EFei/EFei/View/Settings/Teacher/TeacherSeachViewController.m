@@ -48,6 +48,8 @@
     
     _currentSubjectType = SubjectTypeAll;
     
+    [[SearchTeacherController instance] clearTeacherList];
+    
     [self setupData];
     [self setupNavigator];
     [self setupViews];
@@ -264,6 +266,12 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+
+- (BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
 }
 
 

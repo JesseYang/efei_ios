@@ -12,6 +12,7 @@
 #import "GetQuestionController.h"
 #import "QuestionViewController.h"
 #import "RichTextView.h"
+#import "ToastView.h"
 
 #define ShowResultSegueId @"ShowQuestionViewController"
 
@@ -371,6 +372,12 @@ typedef enum : NSUInteger {
         return;
     }
     
+    if (![content hasPrefix:@"~"])
+    {
+        [ToastView showMessage:kErrorMessageBadQRCode];
+        return;
+    }
+    
     // Ignore scaned question.
 //    if ([[GetQuestionController instance] questionExist:content])
 //    {
@@ -395,23 +402,26 @@ typedef enum : NSUInteger {
     ControllerCompletionBlock handler = ^(BOOL success) {
         NSLog(@"get question %d", success);
         
-        switch (_scanMode)
+        if (success)
         {
-            case ScanModeSingle:
+            switch (_scanMode)
             {
-                _parsing = NO;
-                [self doneWithSingleQuestion];
+                case ScanModeSingle:
+                {
+                    _parsing = NO;
+                    [self doneWithSingleQuestion];
+                }
+                    break;
+                    
+                case ScanModeMultiple:
+                {
+                    [self showScanResultView];
+                }
+                    break;
+                    
+                default:
+                    break;
             }
-                break;
-                
-            case ScanModeMultiple:
-            {
-                [self showScanResultView];
-            }
-                break;
-                
-            default:
-                break;
         }
         
     };

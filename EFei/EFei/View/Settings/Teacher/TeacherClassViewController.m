@@ -57,9 +57,11 @@
         if (success)
         {
             [ToastView showMessage:kErrorMessageAddTeacherSuccess];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+//            [self.navigationController popToRootViewControllerAnimated:YES];
         }
         
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     };
     
     [AddTeacherCommand executeWithTeacher:self.teacher completeHandler:handler];
@@ -109,9 +111,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
     [self addTeacherWithClassIndex:indexPath.row];
-    
 }
 
 
