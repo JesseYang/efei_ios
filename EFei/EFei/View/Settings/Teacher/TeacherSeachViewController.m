@@ -63,6 +63,11 @@
     _searchBarView.hidden = NO;
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    _searchBarView.hidden = YES;
+}
 
 - (void) setupNavigator
 {
@@ -114,7 +119,8 @@
     _searchBarView.delegate = self;
     _searchBarView.editing = YES;
     
-    [self.navigationController.navigationBar addSubview:_searchBarView];
+//    [self.navigationController.navigationBar addSubview:_searchBarView];
+    [self.navigationController.navigationController.navigationBar addSubview:_searchBarView];
 }
 
 - (void) setupData

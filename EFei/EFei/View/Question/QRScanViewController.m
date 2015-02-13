@@ -372,7 +372,7 @@ typedef enum : NSUInteger {
         return;
     }
     
-    if (![content hasPrefix:@"~"])
+    if (![[content lastPathComponent] hasPrefix:@"~"])
     {
         [ToastView showMessage:kErrorMessageBadQRCode];
         return;

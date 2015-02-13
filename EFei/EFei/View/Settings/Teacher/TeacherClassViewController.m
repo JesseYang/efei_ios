@@ -57,11 +57,11 @@
         if (success)
         {
             [ToastView showMessage:kErrorMessageAddTeacherSuccess];
-//            [self.navigationController popToRootViewControllerAnimated:YES];
         }
         
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+//        [self.navigationController popViewControllerAnimated:NO];
+//        [self.navigationController popViewControllerAnimated:YES];
     };
     
     [AddTeacherCommand executeWithTeacher:self.teacher completeHandler:handler];
