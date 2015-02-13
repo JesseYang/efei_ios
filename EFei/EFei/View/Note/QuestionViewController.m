@@ -32,6 +32,8 @@
     PopupMenu* _popupMenu;
     
     BOOL _noteModified;
+    
+    Note* _backupNote;
 }
 
 @property (weak, nonatomic) IBOutlet QuestionView *questionView;
@@ -45,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *questionViewHeightConstraint;
 
 - (IBAction)onDone:(id)sender;
+- (IBAction)onMore:(id)sender;
 - (IBAction)onBack:(id)sender;
 
 @end
@@ -86,6 +89,10 @@
     label2.font = [UIFont systemFontOfSize:15];
     label2.textAlignment = NSTextAlignmentRight;
     _noteTableContentLables = [NSArray arrayWithObjects:label1, label2, nil];
+    
+    _backupNote = [[Note alloc] init];
+    _backupNote.tag = self.note.tag;
+    _backupNote.topics = [NSArray arrayWithArray:self.note.topics];
 }
 
 - (void) setupViews
@@ -124,7 +131,7 @@
     
     if (self.note.noteId.length > 0)
     {
-        self.rightBBI.title = @"操作";
+        self.rightBBI.title = @"保存";
         
         self.summaryTextView.text = self.note.summary;
         
@@ -133,6 +140,15 @@
                                                                  title:@"返回"
                                                                 target:self
                                                                 action:@selector(onBack:)];
+        
+        UIImage* moreImage = [UIImage imageNamed:@"icon_notebook_question_more.png"];
+        UIBarButtonItem* bbi = [[UIBarButtonItem alloc] initWithImage:moreImage
+                                                                style:UIBarButtonItemStylePlain
+                                                               target:self
+                                                               action:@selector(onMore:)];
+        
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:bbi, self.rightBBI, nil];
     }
     else
     {
@@ -186,41 +202,67 @@
 
 - (IBAction)onBack:(id)sender
 {
-    if (![self.note.summary isEqualToString:_summaryTextView.text])
-    {
-        self.note.summary = _summaryTextView.text;
-        self.note.modified = YES;
-    }
+    // recover note
+    self.note.tag = _backupNote.tag;
+    self.note.topics = [NSArray arrayWithArray:_backupNote.topics];
     
-    if (self.note.modified && self.note.noteId.length > 0)
-    {
-        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
-            
-            if (success)
-            {
-                self.note.modified = NO;
-            }
-            
-            [self.navigationController popViewControllerAnimated:YES];
-        };
-        [NotebookUpdateNoteCommand executeWithNote:self.note completeHandler:handler];
-    }
-    else
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
+//    if (![self.note.summary isEqualToString:_summaryTextView.text])
+//    {
+//        self.note.summary = _summaryTextView.text;
+//        self.note.modified = YES;
+//    }
+//    
+//    if (self.note.modified && self.note.noteId.length > 0)
+//    {
+//        CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+//            
+//            if (success)
+//            {
+//                self.note.modified = NO;
+//            }
+//            
+//            [self.navigationController popViewControllerAnimated:YES];
+//        };
+//        [NotebookUpdateNoteCommand executeWithNote:self.note completeHandler:handler];
+//    }
+//    else
+//    {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
 }
 
 - (IBAction)onDone:(id)sender
 {
     if (self.note.noteId.length > 0)
     {
-        [self showNoteOperationMenu];
+        [self updateNote];
     }
     else
     {
         [self addQuestionAsNote];
     }
+}
+
+- (IBAction) onMore:(id)sender
+{
+    [self showNoteOperationMenu];
+}
+
+- (void) updateNote
+{
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+        if (success)
+        {
+            self.note.modified = NO;
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    };
+    [NotebookUpdateNoteCommand executeWithNote:self.note completeHandler:handler];
 }
 
 - (void) addQuestionAsNote
