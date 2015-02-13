@@ -71,6 +71,9 @@
     self.dataSource = self;
     self.delegate = self;
     _titles = [[NSMutableArray alloc] init];
+    
+    UICollectionViewFlowLayout* flowLayout = (UICollectionViewFlowLayout*)self.collectionViewLayout;
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, 12.0, 0, 12.0);
 }
 
 - (void) addTitle:(NSString*)title
