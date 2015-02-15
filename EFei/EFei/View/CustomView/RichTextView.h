@@ -19,6 +19,7 @@
 @interface RichTextView : UITextView
 
 @property (nonatomic, weak) id<RichTextViewDelegate> noteDelegate;
+@property (nonatomic, copy) NSString* imagePath;
 
 - (void) setNoteContent:(NSArray*)contents;
 

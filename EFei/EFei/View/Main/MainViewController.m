@@ -35,6 +35,8 @@
     
     self.delegate = self;
     
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
     UIColor* efeiColor = [UIColor colorWithHexString:NavigationBarBackgroundColor];
     UIColor* unselectedColor = [UIColor colorWithHexString:TabBarNormalColor];
     

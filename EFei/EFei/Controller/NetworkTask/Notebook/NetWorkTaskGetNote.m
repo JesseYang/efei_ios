@@ -36,7 +36,7 @@ static NSString* kResponseTopicStrKey          = @"topic_str";
 static NSString* kResponseTypeKey              = @"type";
 static NSString* kResponseUpdatedAtKey         = @"updated_at";
 static NSString* kResponseUserIdKey            = @"user_id";
-
+static NSString* kResponseImagePathKey         = @"image_path";
 
 
 @implementation NetWorkTaskGetNote
@@ -95,6 +95,7 @@ static NSString* kResponseUserIdKey            = @"user_id";
     note.topicString = [noteDict objectForKey:kResponseTopicStrKey];
     note.createTime = [noteDict objectForKey:kResponseCreatedAtKey];
     note.lastUpdateTime = [noteDict objectForKey:kResponseUpdatedAtKey];
+    note.imagePath = [dict objectForKey:kResponseImagePathKey];
     
     note.updated = YES;
     

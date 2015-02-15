@@ -316,10 +316,12 @@ typedef enum : NSUInteger {
             NSString* str = [NSString stringWithFormat:@"(%c) %@", 'A'+i, item];
             [array addObject:str];
         }
+        self.questionView.imagePath = note.imagePath;
         [self.questionView setNoteContent:array];
     }
     else
     {
+        self.questionView.imagePath = note.imagePath;
         [self.questionView setNoteContent:note.contents];
     }
     
