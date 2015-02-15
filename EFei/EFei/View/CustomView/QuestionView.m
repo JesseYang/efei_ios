@@ -423,6 +423,7 @@
         [array addObject:str];
     }
     
+    _questionContentView.imagePath = _question.imagePath;
     [_questionContentView setNoteContent:array];
     
     if (_question.answerContents.count == 0)
@@ -439,6 +440,7 @@
             [array addObject:ans];
         }
         
+        _questionAnswerView.imagePath = _question.imagePath;
         [_questionAnswerView setNoteContent:_question.answerContents];
     }
 }

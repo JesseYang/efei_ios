@@ -118,6 +118,27 @@
     }
 }
 
+- (void) setImagePath:(NSString *)imagePath
+{
+    if (imagePath.length == 0)
+    {
+        _imagePath = nil;
+        return;
+    }
+    
+    _imagePath = [imagePath copy];
+    
+    if (![_imagePath hasPrefix:@"http://"])
+    {
+        _imagePath = [NSString stringWithFormat:@"http://%@", _imagePath];
+    }
+    
+    if (![_imagePath hasSuffix:@"/"])
+    {
+        _imagePath = [NSString stringWithFormat:@"%@/", _imagePath];
+    }
+    
+}
 
 - (void) setNoteContent:(NSArray *)contents
 {
@@ -162,10 +183,17 @@
             NSString* content = [array objectAtIndex:1];
             
             NSArray* array2 = [content componentsSeparatedByString:AttributeSeparatorImage];
-            if (array2.count > 2)
+            NSInteger widthIndex = 1;
+            NSInteger heightIndex = 2;
+            if (array2.count > 3)
             {
-                float width = [[array2 objectAtIndex:1] floatValue];
-                float height = [[array2 objectAtIndex:2] floatValue];
+                widthIndex ++;
+                heightIndex ++;
+            }
+            if (heightIndex < array2.count)
+            {
+                float width = [[array2 objectAtIndex:widthIndex] floatValue];
+                float height = [[array2 objectAtIndex:heightIndex] floatValue];
                 
                 NSLog(@"----- %f, %f", width, height);
                 
@@ -252,11 +280,29 @@
 - (NSAttributedString*) attributedStringWithImageTag:(NSString*)tag content:(NSString*)content
 {
     NSArray* array = [content componentsSeparatedByString:AttributeSeparatorImage];
-    NSString* fileName = [array objectAtIndex:0];
-    float width = [[array objectAtIndex:1] floatValue];
-    float height = [[array objectAtIndex:2] floatValue];
     
-    NSString* urlString = [NSString stringWithFormat:@"http://dev.image.efei.org/public/download/%@.png", fileName];
+    NSString* fileName = [array objectAtIndex:0];
+    NSString* fileType = [array objectAtIndex:1];
+    
+    NSInteger widthIndex = 2;
+    NSInteger heightIndex = 3;
+    if (array.count <= 3)
+    {
+        widthIndex --;
+        heightIndex --;
+        fileType = @"png";
+    }
+    float width = [[array objectAtIndex:widthIndex] floatValue];
+    float height = [[array objectAtIndex:heightIndex] floatValue];
+    
+    if (self.imagePath.length == 0)
+    {
+        self.imagePath = @"http://dev.image.efei.org/public/download/";
+    }
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@%@.%@", self.imagePath, fileName, fileType];
+    NSLog(@"%@", urlString);
+    
     NSURL* url = [NSURL URLWithString:urlString];
     NSInteger index = _attributedString.length;
     

@@ -369,6 +369,7 @@
 
 - (void) configWithNote:(Note*)note
 {
+    _richTextView.imagePath = note.imagePath;
     [_richTextView setNoteContent:note.contents];
     
     

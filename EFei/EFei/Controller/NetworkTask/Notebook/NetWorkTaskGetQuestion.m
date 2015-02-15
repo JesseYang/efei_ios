@@ -20,6 +20,7 @@ static NSString* kResponseItemsKey             = @"items";
 static NSString* kResponseAnswerKey            = @"answer";
 static NSString* kResponseAnswerContentKey     = @"answer_content";
 static NSString* kResponseTagSetKey            = @"tag_set";
+static NSString* kResponseImagePathKey         = @"image_path";
 
 static NSString* kResponseTagSetSeparator     = @",";
 
@@ -116,6 +117,7 @@ static NSString* kResponseTagSetSeparator     = @",";
     question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
     question.questionTypeString = [dict objectForKey:kResponseQuestionTypeKey];
     question.subjectType = [[dict objectForKey:kResponseSubjectKey] integerValue];
+    question.imagePath = [dict objectForKey:kResponseImagePathKey];
     
     NSString* tagSet = [dict objectForKey:kResponseTagSetKey];
     question.tags = [tagSet componentsSeparatedByString:kResponseTagSetSeparator];
