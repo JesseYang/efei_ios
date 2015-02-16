@@ -225,9 +225,12 @@ typedef enum : NSUInteger {
 
 - (IBAction)onBack:(id)sender
 {
+    [[GetQuestionController instance] discardQuestionList];
+    
     [_capture stop];
     _capture = nil;
     
+    [self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -261,8 +264,7 @@ typedef enum : NSUInteger {
     {
         CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
             
-            [self.navigationController popViewControllerAnimated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self onBack:nil];
             
         };
         [AddQuestionListToNotebookCommand executeWithQuestionList:questions completeHandler:handler];
@@ -270,17 +272,13 @@ typedef enum : NSUInteger {
     }
     else
     {
-        [self.navigationController popViewControllerAnimated:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self onBack:nil];
     }
 }
 
 - (IBAction)onMultipleScanCancel:(id)sender
 {
-    [[GetQuestionController instance] discardQuestionList];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self onBack:nil];
 }
 
 
@@ -394,11 +392,6 @@ typedef enum : NSUInteger {
     
     if (_scanMode == ScanModeSingle)
     {
-        _scaning = NO;
-        [_capture stop];
-        
-        [_capture.layer removeFromSuperlayer];
-        [_indicatorView removeFromSuperview];
     }
     
     ControllerCompletionBlock handler = ^(BOOL success) {
@@ -410,6 +403,12 @@ typedef enum : NSUInteger {
             {
                 case ScanModeSingle:
                 {
+                    _scaning = NO;
+                    [_capture stop];
+                    
+                    [_capture.layer removeFromSuperlayer];
+                    [_indicatorView removeFromSuperview];
+                    
                     _parsing = NO;
                     [self doneWithSingleQuestion];
                 }
@@ -424,6 +423,11 @@ typedef enum : NSUInteger {
                 default:
                     break;
             }
+        }
+        else
+        {
+            _scaning = YES;
+            _parsing = NO;
         }
         
     };

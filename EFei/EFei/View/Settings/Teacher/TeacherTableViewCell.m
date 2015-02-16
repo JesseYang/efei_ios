@@ -35,6 +35,9 @@
     leftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.contentView addGestureRecognizer:leftRecognizer];
     [self.contentView addGestureRecognizer:rightRecognizer];
+    
+    _deleting = NO;
+    self.deleteButton.userInteractionEnabled = _deleting;
 }
 
 
@@ -73,7 +76,8 @@
             
         } completion:^(BOOL finished) {
             
-            _deleting  = !_deleting;
+            _deleting = !_deleting;
+            self.deleteButton.userInteractionEnabled = _deleting;
             
         }];
     }
@@ -99,6 +103,7 @@
         self.nameLabel.frame = rect3;
         
         _deleting = NO;
+        self.deleteButton.userInteractionEnabled = _deleting;
     }
 }
 
