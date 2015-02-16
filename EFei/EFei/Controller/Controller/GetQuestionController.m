@@ -122,12 +122,9 @@
             {
                 [_questionDcit setObject:self.questionId forKey:self.shortUrl];
                 
-                self.completionBlock(success);
             }
-            else
-            {
-                
-            }
+            
+            self.completionBlock(success);
         };
         
         [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetQuestion
