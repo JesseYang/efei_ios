@@ -27,11 +27,14 @@
 
 #define ShowTeacherViewControllerSegueId @"ShowTeacherViewController"
 #define ShowFeedbackViewControllerSegueId @"ShowFeedbackViewController"
+#define ShowAboutViewControllerSegueId @"ShowAboutViewController"
 
 @interface SettinsViewController()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray*      _titlesArray;
     NSArray*      _actionArray;
+    
+    UIImageView*  _updateIndicatorView;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -47,10 +50,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self setupViews];
     [self setupNavigationBar];
     [self setupData];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self updateAboutCell];
+}
+
+- (void) setupViews
+{
+    CGRect rect = CGRectMake(80, 16, 10, 10);
+    _updateIndicatorView = [[UIImageView alloc] initWithFrame:rect];
+    _updateIndicatorView.image = [UIImage imageNamed:@"icon_settings_about_update.png"];
+}
+
+- (void) updateAboutCell
+{
+    float currentVersion = [[EFei instance].account.appVersion floatValue];
+    float lastestVersion = [[EFei instance].account.lastestVersion floatValue];
+    _updateIndicatorView.hidden = (currentVersion == lastestVersion);
+}
 
 - (void) setupNavigationBar
 {
@@ -129,9 +153,14 @@
         icon.frame = CGRectMake(0, 0, cell.frame.size.height, cell.frame.size.height);
         cell.accessoryView = icon;
     }
-    else
+    else if (indexPath.section == 1)
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        if (indexPath.row == 1)
+        {
+            [cell addSubview:_updateIndicatorView];
+        }
     }
     
     return cell;
@@ -174,6 +203,7 @@
 
 - (void) onAboutClicked
 {
+    [self performSegueWithIdentifier:ShowAboutViewControllerSegueId sender:self];
 }
 
 - (void) onFeedbackClicked

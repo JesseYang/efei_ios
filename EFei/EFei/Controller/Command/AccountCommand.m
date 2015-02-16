@@ -100,5 +100,15 @@
 }
 
 @end
+//////////////////////////////////////////////////////////////////////////////////////
+
+@implementation GetAppVersionCommand
+
++ (void) executeCompleteHandler:(CompletionBlock)handler
+{
+    [[TaskManager instance] startNetworkTask:NetWorkTaskTypeGetAppVersion withData:nil completeHandler:handler];
+}
+
+@end
 
 //////////////////////////////////////////////////////////////////////////////////////

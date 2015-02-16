@@ -59,6 +59,10 @@
 		FC4ECB161A84B1420002C2DF /* AddTeacherController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4ECB151A84B1420002C2DF /* AddTeacherController.m */; };
 		FC4ECB611A888B450002C2DF /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4ECB601A888B450002C2DF /* FeedbackViewController.m */; };
 		FC4ECB9D1A8E583D0002C2DF /* icon_notebook_question_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4ECB9C1A8E583D0002C2DF /* icon_notebook_question_more@2x.png */; };
+		FC4ECBB61A91F0BF0002C2DF /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4ECBB51A91F0BF0002C2DF /* AboutViewController.m */; };
+		FC4ECBB91A91F14E0002C2DF /* icon_settings_about_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4ECBB71A91F14E0002C2DF /* icon_settings_about_logo@2x.png */; };
+		FC4ECBBA1A91F14E0002C2DF /* icon_settings_about_update@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4ECBB81A91F14E0002C2DF /* icon_settings_about_update@2x.png */; };
+		FC4ECBBD1A91F6D80002C2DF /* NetWorkTaskGetAppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4ECBBC1A91F6D80002C2DF /* NetWorkTaskGetAppVersion.m */; };
 		FC5BFF1B1A78A22800A7659C /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF1A1A78A22800A7659C /* NSString+Email.m */; };
 		FC5BFF271A7A0DBB00A7659C /* ExportNotesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF261A7A0DBB00A7659C /* ExportNotesController.m */; };
 		FC5BFF2A1A7A106E00A7659C /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5BFF291A7A106E00A7659C /* FileDownloader.m */; };
@@ -293,6 +297,12 @@
 		FC4ECB5F1A888B450002C2DF /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		FC4ECB601A888B450002C2DF /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		FC4ECB9C1A8E583D0002C2DF /* icon_notebook_question_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_notebook_question_more@2x.png"; sourceTree = "<group>"; };
+		FC4ECBB41A91F0BF0002C2DF /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		FC4ECBB51A91F0BF0002C2DF /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		FC4ECBB71A91F14E0002C2DF /* icon_settings_about_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_settings_about_logo@2x.png"; sourceTree = "<group>"; };
+		FC4ECBB81A91F14E0002C2DF /* icon_settings_about_update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_settings_about_update@2x.png"; sourceTree = "<group>"; };
+		FC4ECBBB1A91F6D80002C2DF /* NetWorkTaskGetAppVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskGetAppVersion.h; sourceTree = "<group>"; };
+		FC4ECBBC1A91F6D80002C2DF /* NetWorkTaskGetAppVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskGetAppVersion.m; sourceTree = "<group>"; };
 		FC5BFF191A78A22800A7659C /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
 		FC5BFF1A1A78A22800A7659C /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		FC5BFF251A7A0DBB00A7659C /* ExportNotesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportNotesController.h; sourceTree = "<group>"; };
@@ -584,6 +594,8 @@
 				FC4311ED1A1F45E10020EA31 /* NetWorkTaskGetResetPasswordToken.m */,
 				FC4311EF1A1F45F40020EA31 /* NetWorkTaskResetPassword.h */,
 				FC4311F01A1F45F40020EA31 /* NetWorkTaskResetPassword.m */,
+				FC4ECBBB1A91F6D80002C2DF /* NetWorkTaskGetAppVersion.h */,
+				FC4ECBBC1A91F6D80002C2DF /* NetWorkTaskGetAppVersion.m */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -929,6 +941,8 @@
 		FCC98BE71A4708B600D9567D /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				FC4ECBB71A91F14E0002C2DF /* icon_settings_about_logo@2x.png */,
+				FC4ECBB81A91F14E0002C2DF /* icon_settings_about_update@2x.png */,
 				FCC98BE81A4708B600D9567D /* icon_setting_teacher_add@2x.png */,
 				FCC98BE91A4708B600D9567D /* icon_setting_teacher_arrow@2x.png */,
 				FCC98BEA1A4708B600D9567D /* icon_setting_teacher_back@2x.png */,
@@ -1028,6 +1042,8 @@
 				FCF3D20E1A401AC0009D8722 /* EmailEditingResultViewController.m */,
 				FC4ECB5F1A888B450002C2DF /* FeedbackViewController.h */,
 				FC4ECB601A888B450002C2DF /* FeedbackViewController.m */,
+				FC4ECBB41A91F0BF0002C2DF /* AboutViewController.h */,
+				FC4ECBB51A91F0BF0002C2DF /* AboutViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1142,6 +1158,7 @@
 				FCC98C191A4708B700D9567D /* icon_scan_rect_right_bottom@2x.png in Resources */,
 				FCC98BFC1A4708B600D9567D /* icon_main_settings_on@2x.png in Resources */,
 				FCC98BFA1A4708B600D9567D /* icon_main_scan_on@2x.png in Resources */,
+				FC4ECBB91A91F14E0002C2DF /* icon_settings_about_logo@2x.png in Resources */,
 				FCC98BF71A4708B600D9567D /* icon_main_notebook_off@2x.png in Resources */,
 				FC4ECB9D1A8E583D0002C2DF /* icon_notebook_question_more@2x.png in Resources */,
 				FCC98C181A4708B700D9567D /* icon_scan_rect_left_top@2x.png in Resources */,
@@ -1182,6 +1199,7 @@
 				FCC98C231A4708B700D9567D /* icon_setting_teacher_delete@2x.png in Resources */,
 				FCC98C021A4708B600D9567D /* icon_notebook_select@2x.png in Resources */,
 				FC2311211A74C75900639106 /* icon_notebook_export_email@2x.png in Resources */,
+				FC4ECBBA1A91F14E0002C2DF /* icon_settings_about_update@2x.png in Resources */,
 				FCC2B8CD1A18D0D800B3DC24 /* Images.xcassets in Resources */,
 				FCC98C111A4708B600D9567D /* icon_question_topic_delete@2x.png in Resources */,
 				FCC98C1C1A4708B700D9567D /* icon_scan_switch_first_on@2x.png in Resources */,
@@ -1237,6 +1255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC4ECB161A84B1420002C2DF /* AddTeacherController.m in Sources */,
+				FC4ECBBD1A91F6D80002C2DF /* NetWorkTaskGetAppVersion.m in Sources */,
 				FC66F43C1A5F9C22008E93D7 /* TeacherClassViewController.m in Sources */,
 				FC4311F11A1F45F40020EA31 /* NetWorkTaskResetPassword.m in Sources */,
 				FC4312151A2020A20020EA31 /* NetWorkTaskParseShortUrl.m in Sources */,
@@ -1293,6 +1312,7 @@
 				FCD8291A1A2EB0FD00F6E0CA /* RichTextView.m in Sources */,
 				FC3808D11A1B4418007A73E4 /* Account.m in Sources */,
 				FC5BFF271A7A0DBB00A7659C /* ExportNotesController.m in Sources */,
+				FC4ECBB61A91F0BF0002C2DF /* AboutViewController.m in Sources */,
 				FCF3D1FB1A3FD1A8009D8722 /* NameEditingViewController.m in Sources */,
 				FC4311EB1A1F45710020EA31 /* NetWorkTaskSendVerifyCode.m in Sources */,
 				FC3808D71A1B4440007A73E4 /* Question.m in Sources */,

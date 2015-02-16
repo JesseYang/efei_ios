@@ -19,6 +19,7 @@ typedef enum : NSUInteger
     NetWorkTaskTypeSendVerifyCode,
     NetWorkTaskTypeGetResetPasswordToken,
     NetWorkTaskTypeResetPassword,
+    NetWorkTaskTypeGetAppVersion,
     
     // User
     NetWorkTaskTypeGetUserInfo,

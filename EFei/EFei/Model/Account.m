@@ -36,6 +36,9 @@
 - (void) initClientVersion
 {
     _client = [[UIDevice currentDevice].systemName copy];
+    
+    self.appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    self.lastestVersion = self.appVersion;
 }
 
 - (BOOL) needSignIn

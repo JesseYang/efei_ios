@@ -38,23 +38,6 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-//    
-//    CGRect frame = self.textView.frame;
-//    frame.origin.y = 20;
-//    self.textView.frame = frame;
-//    NSLog(@"%f, %f, %f, %f ", frame.size.width, frame.size.height, frame.origin.x, frame.origin.y );
-//    
-//    frame = self.textView.frame;
-//    NSLog(@"%f, %f, %f, %f ", frame.size.width, frame.size.height, frame.origin.x, frame.origin.y );
-//    
-//    [self.textView scrollRectToVisible:CGRectZero animated:NO];
-//    [self.textView setNeedsDisplay];
-//    [self.textView layoutIfNeeded];
-//    
-//    [self.view setNeedsDisplay];
-//    [self.view layoutIfNeeded];
-//    
 }
 
 
