@@ -19,6 +19,9 @@
 
 @property (nonatomic, readonly) BOOL needSignIn;
 
+@property (nonatomic, copy) NSString* appVersion;
+@property (nonatomic, copy) NSString* lastestVersion;
+
 - (void) save;
 - (void) load;
 
