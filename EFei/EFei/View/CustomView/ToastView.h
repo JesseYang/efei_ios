@@ -30,6 +30,7 @@ extern NSString* kErrorMessageAddTeacherSuccess;
 extern NSString* kErrorMessageSendFeedbackSuccess;
 extern NSString* kErrorMessageSendFeedbackFailed;
 extern NSString* kErrorMessageBadQRCode;
+extern NSString* kErrorMessageNoNoteToExport;
 
 @interface ToastView : UIView
 

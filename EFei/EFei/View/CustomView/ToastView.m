@@ -30,6 +30,7 @@ NSString* kErrorMessageAddTeacherSuccess            = @"添加教师成功";
 NSString* kErrorMessageSendFeedbackSuccess          = @"提交反馈成功";
 NSString* kErrorMessageSendFeedbackFailed           = @"提交反馈失败";
 NSString* kErrorMessageBadQRCode                    = @"错误的二维码";
+NSString* kErrorMessageNoNoteToExport               = @"请先选择题目";
 
 @interface ToastView()
 

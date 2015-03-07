@@ -19,6 +19,7 @@
 #import <IQKeyboardManager.h>
 #import "AddTeacherController.h"
 #import "TeacherAddViewController.h"
+#import "ToastView.h"
 
 #define NoteCellIdentifier @"NoteCellIdentifier"
 
@@ -116,6 +117,8 @@
     
     [self addQuestionIfNeeded];
     [self addTeacherIfNeeded];
+    
+    [self updateAllFilterLabel];
 }
 
 - (void) setupNavigationBar
@@ -329,6 +332,13 @@
         NSIndexPath* indexPath = [NSIndexPath indexPathForItem:i inSection:0];
         [self.noteCollectionView deselectItemAtIndexPath:indexPath animated:NO];
     }
+    
+    if (array.count == 0)
+    {
+        [ToastView showMessage:kErrorMessageNoNoteToExport];
+        return;
+    }
+    
     _exportNotes = array;
     
     
@@ -484,6 +494,18 @@
         default:
             break;
     }
+}
+
+- (void) updateAllFilterLabel
+{
+    DataFilter* filter = [[EFei instance].notebook fileterWithType:DataFilterTypeSubject];
+    self.subjectFilterLabel.text = filter.selectedName;
+    
+    filter = [[EFei instance].notebook fileterWithType:DataFilterTypeTime];
+    self.timeFilterLabel.text = filter.selectedName;
+    
+    filter = [[EFei instance].notebook fileterWithType:DataFilterTypeTag];
+    self.tagFilterLabel.text = filter.selectedName;
 }
 
 - (void) updateSelectAllButton
