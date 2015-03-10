@@ -14,6 +14,7 @@
 static NSString* kRequestShortUrlKey        = @"short_url";
 
 static NSString* kResponseQuestionIdKey        = @"question_id";
+static NSString* kResponseHomeworkIdKey        = @"homework_id";
 
 
 @implementation NetWorkTaskParseShortUrl
@@ -50,7 +51,9 @@ static NSString* kResponseQuestionIdKey        = @"question_id";
 {
     GetQuestionController* controller = (GetQuestionController*)self.data;
     NSString* question = [dict objectForKey:kResponseQuestionIdKey];
+    NSString* homework = [dict objectForKey:kResponseHomeworkIdKey];
     controller.questionId = [question copy];
+    controller.homeworkId = [homework copy];
     
     return YES;
 }
