@@ -96,6 +96,9 @@
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];
+            
+            [self getUserInfo];
+            
         }
         else
         {
@@ -108,4 +111,15 @@
                        completeHandler:handler];
 
 }
+
+
+- (void) getUserInfo
+{
+    CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
+        
+    };
+    [GetUserInfoCommand executeWithCompleteHandler:handler];
+}
+
+
 @end

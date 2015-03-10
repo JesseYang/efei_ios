@@ -75,9 +75,16 @@
                           @"包含答案",
                           @"包含笔记",nil];
     
+    NSString* email = @"发送至邮箱（未设置）";
+    if ([EFei instance].user.email.length > 0)
+    {
+        email = [NSString stringWithFormat:@"发送至 %@", [EFei instance].user.email];
+    }
+    
     _exportDestinationArray = [NSArray arrayWithObjects:
                           @"直接下载",
-                          @"发送至邮箱",nil];
+                          email,nil];
+    
 
     _fileType = @"word";
     
@@ -377,7 +384,7 @@
         {
             _destination = ExportDestinationDownload;
         }
-        else if(indexPath.row == 1)
+        else if(indexPath.row == 1 && [EFei instance].user.email.length > 0)
         {
             _destination = ExportDestinationEmail;
         }
