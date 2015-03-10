@@ -30,6 +30,8 @@ typedef enum : NSUInteger
 @property (nonatomic, copy) NSString* tagsetString;
 @property (nonatomic, copy) NSString* imagePath;
 
+@property (nonatomic, copy) NSString* homeworkId;
+
 @end
 
 @interface QuestionList : NSObject

@@ -17,6 +17,7 @@ static NSString* kRequestQuestionIdsKey       = @"question_ids";
 static NSString* kRequestNoteTagKey           = @"tag";
 static NSString* kRequestNoteTopicsKey        = @"topics";
 static NSString* kRequestNoteSummaryKey       = @"summary";
+static NSString* kRequestHomeworkIdKey        = @"homework_id";
 
 
 static NSString* kResponseNoteKey              = @"note";
@@ -93,6 +94,7 @@ static NSString* kResponseImagePathKey         = @"image_path";
     [self.parameterDict setObject:note.tag forKey:kRequestNoteTagKey];
     [self.parameterDict setObject:note.topicString forKey:kRequestNoteTopicsKey];
     [self.parameterDict setObject:note.summary forKey:kRequestNoteSummaryKey];
+    [self.parameterDict setObject:note.homeworkId forKey:kRequestHomeworkIdKey];
 }
 
 

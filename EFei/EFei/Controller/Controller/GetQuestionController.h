@@ -15,6 +15,7 @@
 
 @property (nonatomic, copy) NSString* shortUrl;
 @property (nonatomic, copy) NSString* questionId;
+@property (nonatomic, copy) NSString* homeworkId;
 @property (nonatomic, copy) ControllerCompletionBlock completionBlock;
 @property (nonatomic, strong) NSArray* noteList;
 @property (nonatomic, strong) Note* currentNote;

@@ -16,6 +16,7 @@ static NSString* kRequestQuestionIdsKey       = @"question_ids";
 static NSString* kRequestNoteTagKey           = @"tag";
 static NSString* kRequestNoteTopicsKey        = @"topics";
 static NSString* kRequestNoteSummaryKey       = @"summary";
+static NSString* kRequestHomeworkIdsKey       = @"homework_ids";
 
 
 static NSString* kResponseNoteKey              = @"note";
@@ -72,12 +73,15 @@ static NSString* kResponseTeacherClassDescKey    = @"desc";
     NSArray* array = (NSArray*)self.data;
     
     NSMutableArray* ids = [[NSMutableArray alloc] initWithCapacity:array.count];
+    NSMutableArray* hIds = [[NSMutableArray alloc] initWithCapacity:array.count];
     for (Question* q in array)
     {
         [ids addObject:q.questionId];
+        [hIds addObject:q.homeworkId];
     }
     
     [self.parameterDict setObject:ids forKey:kRequestQuestionIdsKey];
+    [self.parameterDict setObject:hIds forKey:kRequestHomeworkIdsKey];
 }
 
 

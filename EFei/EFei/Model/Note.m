@@ -28,6 +28,7 @@
         self.answerContents = [question.answerContents copy];
         self.tags = [question.tags copy];
         self.imagePath = [question.imagePath copy];
+        self.homeworkId = [question.homeworkId copy];
         
         self.tag = @"";
         self.topicString = @"";

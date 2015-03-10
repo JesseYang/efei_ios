@@ -80,7 +80,7 @@ static NSString* kResponseTagSetSeparator     = @",";
 - (void) prepareParameter
 {
     GetQuestionController* controller = (GetQuestionController*)self.data;
-    self.path = [NSString stringWithFormat:@"%@/%@", self.path, controller.questionId];
+    self.path = [NSString stringWithFormat:@"%@/%@?homework_id=%@", self.path, controller.questionId, controller.homeworkId];
 }
 
 
@@ -99,6 +99,7 @@ static NSString* kResponseTagSetSeparator     = @",";
     
     Question* question = [[Question alloc] init];
     question.questionId = [dict objectForKey:kResponseIdKey];
+    question.homeworkId = controller.homeworkId;
     
     NSLog(@"--------------------------------------------");
     NSLog(@"%@", [dict objectForKey:kResponseIdKey]);
