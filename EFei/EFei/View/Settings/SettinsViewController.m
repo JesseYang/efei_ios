@@ -10,6 +10,7 @@
 #import "EFei.h"
 #import "MainViewController.h"
 #import "FeedbackViewController.h"
+#import "SetEmailController.h"
 
 #define NavigationBarTilte @"设置"
 
@@ -60,6 +61,7 @@
     [super viewDidAppear:animated];
     
     [self updateAboutCell];
+    [self autoJumpIfNeeded];
 }
 
 - (void) setupViews
@@ -112,6 +114,14 @@
 {
     MainViewController* mainVC = (MainViewController*)self.tabBarController;
     [mainVC signOut];
+}
+
+- (void) autoJumpIfNeeded
+{
+    if ([SetEmailController instance].autoSet)
+    {
+        [self onPersonalClicked];
+    }
 }
 
 

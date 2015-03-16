@@ -12,6 +12,8 @@
 #import "ToastView.h"
 #import "ExportNotesController.h"
 
+#import "SetEmailController.h"
+
 @interface NotebookExportViewController()<UITableViewDataSource, UITableViewDelegate, UIDocumentInteractionControllerDelegate>
 {
     NSArray* _exportFormatArray;
@@ -122,14 +124,16 @@
         return;
     }
     
-    if (self.emailTextFeild.enabled)
-    {
-        _email = self.emailTextFeild.text;
-    }
-    else
-    {
-        _email = @"";
-    }
+//    if (self.emailTextFeild.enabled)
+//    {
+//        _email = self.emailTextFeild.text;
+//    }
+//    else
+//    {
+//        _email = @"";
+//    }
+    
+    _email = [EFei instance].user.email;
     
     if (![self checkSetting])
     {
@@ -215,18 +219,18 @@
         return NO;
     }
     
-    if (_destination == ExportDestinationEmail)
-    {
-        if ([self isValidEmail:_email])
-        {
-            return YES;
-        }
-        else
-        {
-            [ToastView showMessage:kErrorMessageWrongEmail];
-            return NO;
-        }
-    }
+//    if (_destination == ExportDestinationEmail)
+//    {
+//        if ([self isValidEmail:_email])
+//        {
+//            return YES;
+//        }
+//        else
+//        {
+//            [ToastView showMessage:kErrorMessageWrongEmail];
+//            return NO;
+//        }
+//    }
     
     return YES;
 }
@@ -241,6 +245,15 @@
     return [emailTest evaluateWithObject:checkString];
 }
 
+- (void) gotoEmailSetting
+{
+    NSArray* vcs = self.tabBarController.viewControllers;
+    if (vcs.count >= 3)
+    {
+        [SetEmailController instance].autoSet = YES;
+        self.tabBarController.selectedIndex = 2;
+    }
+}
 
 -(void)viewDidLayoutSubviews
 {
@@ -384,9 +397,17 @@
         {
             _destination = ExportDestinationDownload;
         }
-        else if(indexPath.row == 1 && [EFei instance].user.email.length > 0)
+        else if(indexPath.row == 1)
         {
-            _destination = ExportDestinationEmail;
+            if ([EFei instance].user.email.length > 0)
+            {
+                _destination = ExportDestinationEmail;
+            }
+            else
+            {
+                [self gotoEmailSetting];
+                return;
+            }
         }
         
         if (self.emailTextFeild.enabled)

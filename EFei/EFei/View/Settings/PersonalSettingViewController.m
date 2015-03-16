@@ -10,6 +10,7 @@
 #import "EFei.h"
 #import "PersonalSettingController.h"
 #import "UserCommand.h"
+#import "SetEmailController.h"
 
 #define NavigationBarTilte @"个人设置"
 
@@ -51,7 +52,16 @@
     [super viewDidAppear:animated];
     
     [self getUserInfo];
+    [self autoJumpIfNeeded];
+    
+    self.tabBarController.tabBar.hidden = YES;
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 
 - (void) setupNavigationBar
 {
@@ -81,6 +91,15 @@
     [GetUserInfoCommand executeWithCompleteHandler:handler];
 }
 
+
+- (void) autoJumpIfNeeded
+{
+    if ([SetEmailController instance].autoSet)
+    {
+        [SetEmailController instance].autoSet = NO;
+        [self onEmailClicked];
+    }
+}
 
 #pragma mark - UITableView
 
