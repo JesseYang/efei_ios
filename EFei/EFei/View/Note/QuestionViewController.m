@@ -253,6 +253,8 @@
 
 - (void) updateNote
 {
+    self.note.summary = _summaryTextView.text;
+    
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
         if (success)

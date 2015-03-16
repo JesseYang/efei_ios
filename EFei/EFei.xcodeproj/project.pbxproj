@@ -30,6 +30,7 @@
 		FC3809021A1C6DDD007A73E4 /* NotebookCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3809011A1C6DDD007A73E4 /* NotebookCommand.m */; };
 		FC3809051A1C6EE5007A73E4 /* Infos.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3809041A1C6EE5007A73E4 /* Infos.m */; };
 		FC3809081A1C738F007A73E4 /* NetWorkTaskSignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3809071A1C738F007A73E4 /* NetWorkTaskSignUp.m */; };
+		FC3CA46F1AB70DC500D97D87 /* SetEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3CA46E1AB70DC500D97D87 /* SetEmailController.m */; };
 		FC4311C21A1DAB960020EA31 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4311C11A1DAB960020EA31 /* SignInViewController.m */; };
 		FC4311C51A1DABA40020EA31 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4311C41A1DABA40020EA31 /* SignUpViewController.m */; };
 		FC4311EB1A1F45710020EA31 /* NetWorkTaskSendVerifyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4311EA1A1F45710020EA31 /* NetWorkTaskSendVerifyCode.m */; };
@@ -240,6 +241,8 @@
 		FC3809041A1C6EE5007A73E4 /* Infos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Infos.m; sourceTree = "<group>"; };
 		FC3809061A1C738F007A73E4 /* NetWorkTaskSignUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTaskSignUp.h; sourceTree = "<group>"; };
 		FC3809071A1C738F007A73E4 /* NetWorkTaskSignUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTaskSignUp.m; sourceTree = "<group>"; };
+		FC3CA46D1AB70DC500D97D87 /* SetEmailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetEmailController.h; sourceTree = "<group>"; };
+		FC3CA46E1AB70DC500D97D87 /* SetEmailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetEmailController.m; sourceTree = "<group>"; };
 		FC4311C01A1DAB960020EA31 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		FC4311C11A1DAB960020EA31 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		FC4311C31A1DABA40020EA31 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				FC5BFF291A7A106E00A7659C /* FileDownloader.m */,
 				FC4ECB141A84B1420002C2DF /* AddTeacherController.h */,
 				FC4ECB151A84B1420002C2DF /* AddTeacherController.m */,
+				FC3CA46D1AB70DC500D97D87 /* SetEmailController.h */,
+				FC3CA46E1AB70DC500D97D87 /* SetEmailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1355,6 +1360,7 @@
 				FC3808FF1A1C6DB8007A73E4 /* UserCommand.m in Sources */,
 				FCF3D1481A3AE699009D8722 /* UIColor+Hex.m in Sources */,
 				FCF3D1891A3B4FB7009D8722 /* TagCollectionView.m in Sources */,
+				FC3CA46F1AB70DC500D97D87 /* SetEmailController.m in Sources */,
 				FC4312001A1F61D80020EA31 /* NetWorkTaskChangeMobile.m in Sources */,
 				FC4312061A1F626F0020EA31 /* NetWorkTaskGetTeachers.m in Sources */,
 				FC4ECB611A888B450002C2DF /* FeedbackViewController.m in Sources */,
