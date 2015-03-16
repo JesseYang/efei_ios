@@ -111,9 +111,13 @@ static NSString* kResponseTagSetSeparator     = @",";
     {
         question.answer = [[dict objectForKey:kResponseAnswerKey] integerValue];
     }
+    if([dict objectForKey:kResponseItemsKey] != [NSNull null])
+    {
+        question.items = [dict objectForKey:kResponseItemsKey];
+    }
     question.contents = [dict objectForKey:kResponseContentKey];
     question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
-    question.items = [dict objectForKey:kResponseItemsKey];
+    
     question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
     question.answerContents = [dict objectForKey:kResponseAnswerContentKey];
     question.questionTypeString = [dict objectForKey:kResponseQuestionTypeKey];
