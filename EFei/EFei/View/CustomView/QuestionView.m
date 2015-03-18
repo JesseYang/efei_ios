@@ -103,11 +103,13 @@
     CGRect contentRect = CGRectMake(0, 55, 320, 100);
     _questionContentView = [[RichTextView alloc] initWithFrame:contentRect];
     _questionContentView.translatesAutoresizingMaskIntoConstraints = NO;
+    _questionContentView.scrollEnabled = NO;
     [self addSubview:_questionContentView];
     
     CGRect answerRect = CGRectMake(0, 55, 320, 100);
     _questionAnswerView = [[RichTextView alloc] initWithFrame:answerRect];
     _questionAnswerView.translatesAutoresizingMaskIntoConstraints = NO;
+    _questionAnswerView.scrollEnabled = NO;
     [self addSubview:_questionAnswerView];
     
     _questionContentView.text = @"测试，这是一个问题";
