@@ -1752,6 +1752,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UZH-CL-r11"/>
                     <connections>
+                        <outlet property="lightButton" destination="KU3-Ij-3v0" id="3ta-24-oUd"/>
                         <outlet property="multipleScanLabel" destination="MrK-CJ-2xA" id="GSD-DJ-5JE"/>
                         <outlet property="multipleScanView" destination="Smo-Mf-OAM" id="Jfb-fO-0xu"/>
                         <outlet property="questionView" destination="YE5-Fr-vtx" id="SPS-Ti-e6x"/>

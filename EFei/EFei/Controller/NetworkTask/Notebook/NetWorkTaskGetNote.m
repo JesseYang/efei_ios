@@ -83,9 +83,17 @@ static NSString* kResponseImagePathKey         = @"image_path";
     {
         note.answer = [[noteDict objectForKey:kResponseAnswerKey] integerValue];
     }
+    
+    
+    if([dict objectForKey:kResponseItemsKey] != [NSNull null])
+    {
+        note.items = [dict objectForKey:kResponseItemsKey];
+    }
+    
+    
     note.contents = [noteDict objectForKey:kResponseContentKey];
     note.answerContents = [noteDict objectForKey:kResponseAnswerContentKey];
-    note.items = [noteDict objectForKey:kResponseItemsKey];
+
     note.updateTime = [[noteDict objectForKey:kResponseLastUpdateTimeKey] integerValue];
     note.questionType = [[noteDict objectForKey:kResponseQuestionTypeKey] integerValue];
     note.subjectType = [[noteDict objectForKey:kResponseSubjectKey] integerValue];
@@ -95,7 +103,7 @@ static NSString* kResponseImagePathKey         = @"image_path";
     note.topicString = [noteDict objectForKey:kResponseTopicStrKey];
     note.createTime = [noteDict objectForKey:kResponseCreatedAtKey];
     note.lastUpdateTime = [noteDict objectForKey:kResponseUpdatedAtKey];
-    note.imagePath = [dict objectForKey:kResponseImagePathKey];
+    note.imagePath = [noteDict objectForKey:kResponseImagePathKey];
     
     note.updated = YES;
     

@@ -44,7 +44,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIView *scanResultView;
 @property (weak, nonatomic) IBOutlet RichTextView *questionView;
 
-
+@property (weak, nonatomic) IBOutlet UIButton *lightButton;
 
 - (IBAction)onLight:(UIButton *)sender;
 
@@ -96,6 +96,12 @@ typedef enum : NSUInteger {
         [self initCapture];
         [self initViews];
         
+    }
+    
+    if (self.lightButton.selected)
+    {
+        self.lightButton.selected = NO;
+        [self onLight:self.lightButton];
     }
     
     [self startIndicatorAnimation];
@@ -320,7 +326,16 @@ typedef enum : NSUInteger {
     else
     {
         self.questionView.imagePath = note.imagePath;
-        [self.questionView setNoteContent:note.contents];
+        
+        NSMutableArray* array = [[NSMutableArray alloc] initWithArray:note.contents];
+        for (int i=0; i<note.items.count; i++)
+        {
+            NSString* item = [note.items objectAtIndex:i];
+            NSString* str = [NSString stringWithFormat:@"(%c) %@", 'A'+i, item];
+            [array addObject:str];
+        }
+        
+        [self.questionView setNoteContent:array];
     }
     
     self.scanResultView.hidden = NO;
