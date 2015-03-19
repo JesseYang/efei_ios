@@ -54,6 +54,16 @@
     }
     
     return array;
+    
+//    NSArray *sortedArray;
+//    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+//        NSDate *first = [(Note*)a createDate];
+//        NSDate *second = [(Note*)b createDate];
+//        BOOL res = [second compare:first];
+//        return res;
+//    }];
+//    
+//    return sortedArray;
 }
 
 - (void) addNote:(Note*)note
