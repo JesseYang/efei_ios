@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) NSString* noteId;
 @property (nonatomic, copy) NSString* createTime;
+@property (nonatomic, copy) NSDate* createDate;
 @property (nonatomic, copy) NSString* lastUpdateTime;
 @property (nonatomic, assign) NSInteger updateTime;
 @property (nonatomic, assign) BOOL updated;

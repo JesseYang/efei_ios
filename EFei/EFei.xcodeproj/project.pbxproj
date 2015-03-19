@@ -1494,7 +1494,7 @@
 				INFOPLIST_FILE = EFei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "af92be98-7ad7-4a0b-9fb1-f1b2178d59c3";
+				PROVISIONING_PROFILE = "86519016-dbe1-4ae7-adb0-7c503d094dd3";
 			};
 			name = Debug;
 		};
@@ -1509,7 +1509,7 @@
 				INFOPLIST_FILE = EFei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "af92be98-7ad7-4a0b-9fb1-f1b2178d59c3";
+				PROVISIONING_PROFILE = "86519016-dbe1-4ae7-adb0-7c503d094dd3";
 			};
 			name = Release;
 		};

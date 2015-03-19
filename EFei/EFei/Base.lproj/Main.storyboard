@@ -462,6 +462,7 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aQd-aX-QTQ" firstAttribute="top" secondItem="aQe-rj-g2b" secondAttribute="bottom" id="1nd-uq-luD"/>
+                            <constraint firstItem="aQd-aX-QTQ" firstAttribute="leading" secondItem="eUD-H8-1ey" secondAttribute="leading" id="2VN-ji-vRe"/>
                             <constraint firstAttribute="width" secondItem="uK2-IP-zG1" secondAttribute="width" id="8C2-JW-vJt"/>
                             <constraint firstItem="uK2-IP-zG1" firstAttribute="leading" secondItem="eUD-H8-1ey" secondAttribute="leadingMargin" constant="-16" id="BXp-aY-jq7"/>
                             <constraint firstItem="aQe-rj-g2b" firstAttribute="top" secondItem="uK2-IP-zG1" secondAttribute="bottom" id="Cl2-CH-3Hl"/>
@@ -475,6 +476,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="o2h-Rd-uOD"/>
                                 <exclude reference="Cl2-CH-3Hl"/>
                             </mask>
                         </variation>

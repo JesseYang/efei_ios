@@ -113,4 +113,15 @@
     return NO;
 }
 
+- (void) setCreateTime:(NSString *)createTime
+{
+    _createTime = [createTime copy];
+    
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
+    
+    self.createDate = [formatter dateFromString:_createTime];
+    NSLog(@"---  %@", self.createDate);
+}
+
 @end
