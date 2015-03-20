@@ -262,7 +262,7 @@
             self.note.modified = NO;
         }
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     };
     [NotebookUpdateNoteCommand executeWithNote:self.note completeHandler:handler];
 }

@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSArray* filetedNotes;
 
 - (void) addNote:(Note*)note;
+- (void) appendNote:(Note*)note;
 - (void) deleteNote:(Note*)note;
 - (void) addNoteWithId:(NSString*)noteId lastUpdateTime:(NSInteger)updateTime;
 - (Note*) noteWithId:(NSString*)noteId;

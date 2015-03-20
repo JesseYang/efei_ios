@@ -74,10 +74,13 @@ static NSString* kResponseTeacherClassDescKey    = @"desc";
     
     NSMutableArray* ids = [[NSMutableArray alloc] initWithCapacity:array.count];
     NSMutableArray* hIds = [[NSMutableArray alloc] initWithCapacity:array.count];
-    for (Question* q in array)
+    for (Note* q in array)
     {
-        [ids addObject:q.questionId];
-        [hIds addObject:q.homeworkId];
+        if (q.noteId.length == 0)
+        {
+            [ids addObject:q.questionId];
+            [hIds addObject:q.homeworkId];
+        }
     }
     
     [self.parameterDict setObject:ids forKey:kRequestQuestionIdsKey];
