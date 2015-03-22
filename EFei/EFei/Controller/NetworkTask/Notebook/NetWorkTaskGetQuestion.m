@@ -98,6 +98,9 @@ static NSString* kResponseTagSetSeparator     = @",";
         
         Note* note = [[EFei instance].notebook noteWithId:noteId];
         controller.currentNote = note;
+        
+        note.questionId = controller.questionId;
+        note.homeworkId = controller.homeworkId;
         return YES;
     }
     

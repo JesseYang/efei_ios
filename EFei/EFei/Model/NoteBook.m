@@ -103,6 +103,11 @@
     return [_notes objectAtIndex:index];
 }
 
+- (BOOL) hasNote:(NSString *)noteId
+{
+    return [self noteWithId:noteId] != nil;
+}
+
 - (NSArray*) searchNotesWithText:(NSString *)text
 {
     NSArray* array = self.filetedNotes;
