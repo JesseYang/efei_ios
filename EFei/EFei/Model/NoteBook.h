@@ -21,6 +21,7 @@
 - (void) addNoteWithId:(NSString*)noteId lastUpdateTime:(NSInteger)updateTime;
 - (Note*) noteWithId:(NSString*)noteId;
 - (Note*) noteAtIndex:(NSInteger)index;
+- (BOOL) hasNote:(NSString*)noteId;
 
 - (DataFilter*) fileterWithType:(DataFilterType)type;
 

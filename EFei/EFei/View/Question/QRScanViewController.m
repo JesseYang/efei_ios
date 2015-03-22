@@ -231,6 +231,7 @@ typedef enum : NSUInteger {
 
 - (IBAction)onBack:(id)sender
 {
+    [[GetQuestionController instance] discardCurrentQuestion];
     [[GetQuestionController instance] discardQuestionList];
     
     [_capture stop];
