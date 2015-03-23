@@ -33,7 +33,7 @@ static NSString* kResponseVersionKey = @"ios";
 
 - (void) start
 {
-    NSString* urlString = @"http://dev.efei.org/welcome/app_version";
+    NSString* urlString = @"http://portal.efei.org/welcome/app_version";
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"url: %@", url);
     

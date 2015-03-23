@@ -154,7 +154,7 @@ static NSString* kResponseTeacherClassDescKey    = @"desc";
         Note* note = [array objectAtIndex:i];
         if (note.noteId.length > 0)
         {
-            return;
+            continue;
         }
         
 //        Question* q = [array objectAtIndex:i];

@@ -236,6 +236,8 @@
 
 - (IBAction)onDone:(id)sender
 {
+    self.rightBBI.enabled = NO;
+    
     if (self.note.noteId.length > 0)
     {
         [self updateNote];
@@ -261,8 +263,10 @@
         {
             self.note.modified = NO;
         }
+        self.rightBBI.enabled = YES;
         
         [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     };
     [NotebookUpdateNoteCommand executeWithNote:self.note completeHandler:handler];
 }
@@ -280,6 +284,7 @@
     {
         CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
             
+            self.rightBBI.enabled = YES;
             if (success)
             {
                 [self dismissViewControllerAnimated:YES completion:nil];
