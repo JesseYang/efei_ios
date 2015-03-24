@@ -19,7 +19,7 @@ static NSString* kRequestEmailKey            = @"email";
 
 static NSString* kResponseFilePathKey        = @"file_path";
 
-static NSString* kHostName                   = @"http://dev.efei.org/";
+static NSString* kHostName                   = @"http://portal.efei.org/";
 
 @implementation NetWorkTaskExportNotes
 
