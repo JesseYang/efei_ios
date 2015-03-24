@@ -119,7 +119,7 @@
 
 - (void) onDone:(id)sender
 {
-    if (self.notes.count == 0)
+    if (self.notes.count == 0)  
     {
         return;
     }
