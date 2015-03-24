@@ -10,6 +10,6 @@
 
 @interface NotebookExportViewController : UIViewController
 
-@property (nonatomic, weak) NSArray* notes;
+@property (nonatomic, strong) NSArray* notes;
 
 @end
