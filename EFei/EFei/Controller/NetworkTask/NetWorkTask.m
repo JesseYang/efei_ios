@@ -13,7 +13,7 @@
 
 NSString* kNetworkNotificationName = @"EFeiNetworkNotificationName";
 
-static NSString* kBaseUrl = @"http://dev.efei.org";
+static NSString* kBaseUrl = @"http://efei.org";
 
 static NSString* kBaseResponseSuccessKey = @"success";
 static NSString* kBaseResponseTokenKey = @"auth_key";

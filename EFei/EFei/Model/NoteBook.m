@@ -68,6 +68,11 @@
 
 - (void) addNote:(Note*)note
 {
+    [_notes insertObject:note atIndex:0];
+}
+
+- (void) appendNote:(Note *)note
+{
     [_notes addObject:note];
 }
 
@@ -79,7 +84,7 @@
 - (void) addNoteWithId:(NSString*)noteId lastUpdateTime:(NSInteger)updateTime
 {
     Note* note = [[Note alloc] initWithNoteId:noteId updateTime:updateTime];
-    [self addNote:note];
+    [self appendNote:note];
 }
 - (Note*) noteWithId:(NSString*)noteId
 {
@@ -96,6 +101,11 @@
 - (Note*) noteAtIndex:(NSInteger)index
 {
     return [_notes objectAtIndex:index];
+}
+
+- (BOOL) hasNote:(NSString *)noteId
+{
+    return [self noteWithId:noteId] != nil;
 }
 
 - (NSArray*) searchNotesWithText:(NSString *)text

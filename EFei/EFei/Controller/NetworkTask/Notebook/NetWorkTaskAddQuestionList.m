@@ -74,10 +74,13 @@ static NSString* kResponseTeacherClassDescKey    = @"desc";
     
     NSMutableArray* ids = [[NSMutableArray alloc] initWithCapacity:array.count];
     NSMutableArray* hIds = [[NSMutableArray alloc] initWithCapacity:array.count];
-    for (Question* q in array)
+    for (Note* q in array)
     {
-        [ids addObject:q.questionId];
-        [hIds addObject:q.homeworkId];
+//        if (q.noteId.length == 0)
+        {
+            [ids addObject:q.questionId];
+            [hIds addObject:q.homeworkId];
+        }
     }
     
     [self.parameterDict setObject:ids forKey:kRequestQuestionIdsKey];
@@ -148,9 +151,17 @@ static NSString* kResponseTeacherClassDescKey    = @"desc";
 
     for (int i=0; i<array.count; i++)
     {
-        Question* q = [array objectAtIndex:i];
-        Note* note = [[Note alloc] initWithQuestion:q];
+        Note* note = [array objectAtIndex:i];
+        if (note.noteId.length > 0)
+        {
+            continue;
+        }
+        
+//        Question* q = [array objectAtIndex:i];
+//        Note* note = [[Note alloc] initWithQuestion:q];
+        
         [[EFei instance].notebook addNote:note];
+        
         if (i < _noteIds.count)
         {
             note.noteId = [_noteIds objectAtIndex:i];

@@ -469,7 +469,7 @@
     if (_question.answerContents.count == 0)
     {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:@"答案未上传"
+                                                        message:@"答案未上传或未公开"
                                                        delegate:nil
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil, nil];

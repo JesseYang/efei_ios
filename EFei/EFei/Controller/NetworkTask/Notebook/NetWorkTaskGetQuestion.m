@@ -11,6 +11,8 @@
 #import "TaskManager.h"
 #import "GetQuestionController.h"
 
+static NSString* kRequestHomeworkIdKey        = @"homework_id";
+
 static NSString* kResponseNoteIdKey            = @"note_id";
 static NSString* kResponseIdKey                = @"_id";
 static NSString* kResponseSubjectKey           = @"subject";
@@ -80,7 +82,9 @@ static NSString* kResponseTagSetSeparator     = @",";
 - (void) prepareParameter
 {
     GetQuestionController* controller = (GetQuestionController*)self.data;
-    self.path = [NSString stringWithFormat:@"%@/%@?homework_id=%@", self.path, controller.questionId, controller.homeworkId];
+    self.path = [NSString stringWithFormat:@"%@/%@", self.path, controller.questionId];
+    
+    [self.parameterDict setObject:controller.homeworkId forKey:kRequestHomeworkIdKey];
 }
 
 
@@ -94,6 +98,9 @@ static NSString* kResponseTagSetSeparator     = @",";
         
         Note* note = [[EFei instance].notebook noteWithId:noteId];
         controller.currentNote = note;
+        
+        note.questionId = controller.questionId;
+        note.homeworkId = controller.homeworkId;
         return YES;
     }
     
