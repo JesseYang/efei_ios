@@ -353,7 +353,7 @@
 		FCA0967E1A59370400D0520A /* NotebookSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookSearchViewController.m; sourceTree = "<group>"; };
 		FCA096801A5A28D100D0520A /* NotebookExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookExportViewController.h; sourceTree = "<group>"; };
 		FCA096811A5A28D100D0520A /* NotebookExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookExportViewController.m; sourceTree = "<group>"; };
-		FCC2B8BC1A18D0D800B3DC24 /* EFei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFei.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC2B8BC1A18D0D800B3DC24 /* 易飞.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "易飞.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC2B8C01A18D0D800B3DC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCC2B8C11A18D0D800B3DC24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCC2B8C31A18D0D800B3DC24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -738,7 +738,7 @@
 		FCC2B8BD1A18D0D800B3DC24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FCC2B8BC1A18D0D800B3DC24 /* EFei.app */,
+				FCC2B8BC1A18D0D800B3DC24 /* 易飞.app */,
 				FCC2B8D51A18D0D800B3DC24 /* EFeiTests.xctest */,
 			);
 			name = Products;
@@ -1081,7 +1081,7 @@
 			);
 			name = EFei;
 			productName = EFei;
-			productReference = FCC2B8BC1A18D0D800B3DC24 /* EFei.app */;
+			productReference = FCC2B8BC1A18D0D800B3DC24 /* 易飞.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FCC2B8D41A18D0D800B3DC24 /* EFeiTests */ = {
@@ -1493,7 +1493,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EFei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "易飞";
 				PROVISIONING_PROFILE = "86519016-dbe1-4ae7-adb0-7c503d094dd3";
 			};
 			name = Debug;
@@ -1508,7 +1508,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EFei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "易飞";
 				PROVISIONING_PROFILE = "86519016-dbe1-4ae7-adb0-7c503d094dd3";
 			};
 			name = Release;
