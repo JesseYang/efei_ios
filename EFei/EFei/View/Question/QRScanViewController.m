@@ -366,6 +366,7 @@ typedef enum : NSUInteger {
 - (void) doneWithSingleQuestion
 {
     [self performSegueWithIdentifier:ShowResultSegueId sender:self];
+    _parsing = NO;
 }
 
 - (void) doneWithMultipleQuestion
@@ -425,7 +426,6 @@ typedef enum : NSUInteger {
                     [_capture.layer removeFromSuperlayer];
                     [_indicatorView removeFromSuperview];
                     
-                    _parsing = NO;
                     [self doneWithSingleQuestion];
                 }
                     break;
