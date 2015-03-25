@@ -166,7 +166,8 @@ static NSString* kResponseImagePathKey         = @"image_path";
         if (![[EFei instance].user hasTeacher:teacher.teacherId] &&
             ![[EFei instance].user isIgnoreTeacher:teacher.teacherId] )
         {
-            [AddTeacherController instance].teacherToAdd = teacher;
+            [[AddTeacherController instance] clearTeachers];
+            [[AddTeacherController instance] addTeacher:teacher];
         }
     }
     

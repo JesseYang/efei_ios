@@ -234,7 +234,7 @@
     }
     
     CGSize size = [string sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:TextFontSize]}];
-    CGFloat baseLine = (_maxHeightOfLine - ceilf(size.height))/2;
+    CGFloat baseLine = MAX(0.0, (_maxHeightOfLine - ceilf(size.height))/2+5);
     
     NSDictionary * attributesNormal = [NSDictionary dictionaryWithObjectsAndKeys:
                                        [UIFont systemFontOfSize:TextFontSize], NSFontAttributeName,
@@ -368,7 +368,9 @@
     float scale = [UIScreen mainScreen].scale;
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
     textAttachment.image = image;
-    textAttachment.bounds = CGRectMake(0, 0, image.size.width/scale, image.size.height/scale);
+    
+    float y = MAX(0.0f, (_maxHeightOfLine - image.size.height/scale)/2.0);
+    textAttachment.bounds = CGRectMake(0, y, image.size.width/scale, image.size.height/scale);
     
     NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
     

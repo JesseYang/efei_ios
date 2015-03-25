@@ -106,34 +106,47 @@ static NSString* kResponseTeacherClassDescKey    = @"desc";
     NSLog(@"NetWorkTaskAddQuestionList ids: %@", _noteIds);
     
     // Teacher
-    NSDictionary* teacherDict = [dict objectForKey:kResponseTeacherKey];
-    if ([teacherDict isKindOfClass:[NSDictionary class]])
+    NSArray* teachers = [dict objectForKey:kResponseTeachersKey];
+    if ([teachers isKindOfClass:[NSArray class]])
     {
-        Teacher* teacher = [[Teacher alloc] init];
-        teacher.teacherId   = [teacherDict objectForKey:kResponseTeacherIdKey];
-        teacher.name        = [teacherDict objectForKey:kResponseTeacherIdKey];
-        teacher.subjectType = [[teacherDict objectForKey:kResponseTeacherIdKey] integerValue];
-        teacher.school      = [teacherDict objectForKey:kResponseTeacherIdKey];
+        [[AddTeacherController instance] clearTeachers];
         
-        NSArray* classes = [teacherDict objectForKey:kResponseTeacherClassesKey];
-        if ([classes isKindOfClass:[NSArray class]])
+        for (NSDictionary* teacherDict in teachers)
         {
-            NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:classes.count];
-            for (NSDictionary* cDict in classes)
+            if ([teacherDict isKindOfClass:[NSDictionary class]])
             {
-                TeacherClass* teacherClass = [[TeacherClass alloc] init];
-                teacherClass.classId = [cDict objectForKey:kResponseTeacherClassIdKey];
-                teacherClass.name    = [cDict objectForKey:kResponseTeacherClassNameKey];
-                teacherClass.desc    = [cDict objectForKey:kResponseTeacherClassDescKey];
+                Teacher* teacher = [[Teacher alloc] init];
+                teacher.teacherId   = [teacherDict objectForKey:kResponseTeacherIdKey];
+                teacher.name        = [teacherDict objectForKey:kResponseTeacherIdKey];
+                teacher.subjectType = [[teacherDict objectForKey:kResponseTeacherIdKey] integerValue];
+                teacher.school      = [teacherDict objectForKey:kResponseTeacherIdKey];
                 
-                [array addObject:teacherClass];
+                NSArray* classes = [teacherDict objectForKey:kResponseTeacherClassesKey];
+                if ([classes isKindOfClass:[NSArray class]])
+                {
+                    NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:classes.count];
+                    for (NSDictionary* cDict in classes)
+                    {
+                        TeacherClass* teacherClass = [[TeacherClass alloc] init];
+                        teacherClass.classId = [cDict objectForKey:kResponseTeacherClassIdKey];
+                        teacherClass.name    = [cDict objectForKey:kResponseTeacherClassNameKey];
+                        teacherClass.desc    = [cDict objectForKey:kResponseTeacherClassDescKey];
+                        
+                        [array addObject:teacherClass];
+                    }
+                    
+                    teacher.classes = array;
+                }
+                
+                if (![[EFei instance].user hasTeacher:teacher.teacherId] &&
+                    ![[EFei instance].user isIgnoreTeacher:teacher.teacherId] )
+                {
+                    [[AddTeacherController instance] addTeacher:teacher];
+                }
             }
-            
-            teacher.classes = array;
         }
-        
-        [AddTeacherController instance].teacherToAdd = teacher;
     }
+    
     
     return YES;
 }

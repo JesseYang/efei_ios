@@ -54,12 +54,13 @@ static NSString* kReqeustClassIdKey           = @"class_id";
 
 - (void) sucess
 {
-    [AddTeacherController instance].teacherToAdd = nil;
+    Teacher* teacher = (Teacher*)self.data;
+    
+    [[AddTeacherController instance] removeTeacher:teacher];
     
     [super sucess];
     
     
-    Teacher* teacher = (Teacher*)self.data;
     [[EFei instance].user addTeacher:teacher];
 }
 

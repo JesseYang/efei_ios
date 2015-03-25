@@ -11,8 +11,12 @@
 
 @interface AddTeacherController : NSObject
 
-@property (nonatomic, strong) Teacher* teacherToAdd;
+@property (nonatomic, strong) NSMutableArray* teachersToAdd;
 
 + (AddTeacherController*) instance;
+
+- (void) addTeacher:(Teacher*)teacherToAdd;
+- (void) removeTeacher:(Teacher*)teacher;
+- (void) clearTeachers;
 
 @end

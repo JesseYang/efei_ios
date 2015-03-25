@@ -55,6 +55,7 @@
 {
     [super viewDidAppear:animated];
     
+    [self updateDestinationTableIfNeeded];
 }
 
 
@@ -117,6 +118,21 @@
     self.noteCountLabel.text = [NSString stringWithFormat:@"导出选中的 %ld 道题目", self.notes.count];
 }
 
+- (void) updateDestinationTableIfNeeded
+{
+    NSString* email = @"发送至邮箱（未设置）";
+    if ([EFei instance].user.email.length > 0)
+    {
+        email = [NSString stringWithFormat:@"发送至 %@", [EFei instance].user.email];
+    }
+    
+    _exportDestinationArray = [NSArray arrayWithObjects:
+                               @"直接下载",
+                               email,nil];
+    
+    [_exprotDestinationTableView reloadData];
+}
+
 - (void) onDone:(id)sender
 {
     if (self.notes.count == 0)  
@@ -124,16 +140,15 @@
         return;
     }
     
-//    if (self.emailTextFeild.enabled)
-//    {
-//        _email = self.emailTextFeild.text;
-//    }
-//    else
-//    {
-//        _email = @"";
-//    }
+    if (_destination == ExportDestinationEmail)
+    {
+        _email = [EFei instance].user.email;
+    }
+    else
+    {
+        _email = @"";
+    }
     
-    _email = [EFei instance].user.email;
     
     if (![self checkSetting])
     {

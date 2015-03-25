@@ -22,4 +22,29 @@
     return _instance;
 }
 
+- (id) init
+{
+    self = [super init];
+    if (self)
+    {
+        self.teachersToAdd = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (void) addTeacher:(Teacher *)teacherToAdd
+{
+    [self.teachersToAdd addObject:teacherToAdd];
+}
+
+- (void) removeTeacher:(Teacher *)teacher
+{
+    [self.teachersToAdd removeObject:teacher];
+}
+
+- (void) clearTeachers
+{
+    [self.teachersToAdd removeAllObjects];
+}
+
 @end
