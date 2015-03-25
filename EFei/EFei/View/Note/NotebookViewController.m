@@ -214,6 +214,14 @@
 
 - (void) addTeacherIfNeeded
 {
+    for (Teacher* teacher in [AddTeacherController instance].teachersToAdd)
+    {
+        if ([[EFei instance].user isIgnoreTeacher:teacher.teacherId])
+        {
+            [[AddTeacherController instance] removeTeacher:teacher];
+        }
+    }
+    
     if ([AddTeacherController instance].teachersToAdd.count > 0)
     {
         Teacher* teacher = [[AddTeacherController instance].teachersToAdd objectAtIndex:0];
