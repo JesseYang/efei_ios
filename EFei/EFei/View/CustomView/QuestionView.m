@@ -428,22 +428,27 @@
     _questionContentView.imagePath = _question.imagePath;
     [_questionContentView setNoteContent:array];
     
-    if (_question.answerContents.count == 0)
+    if (_question.answerContents.count == 0 && _question.answer == -1)
     {
         [self hideAnswer];
     }
     else
     {
-        NSMutableArray* array = [[NSMutableArray alloc] initWithArray:_question.answerContents];
-        if (_question.questionType == QuestionTypeChoice)
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:(_question.answerContents.count+1)];
+        if (_question.answer != -1)
         {
             char c = _question.answer + 'A';
             NSString* ans = [[NSString alloc] initWithFormat:@"%c", c];
             [array addObject:ans];
         }
         
+        if (_question.answerContents.count > 0)
+        {
+            [array addObjectsFromArray:_question.answerContents];
+        }
+        
         _questionAnswerView.imagePath = _question.imagePath;
-        [_questionAnswerView setNoteContent:_question.answerContents];
+        [_questionAnswerView setNoteContent:array];
     }
 }
 
@@ -466,7 +471,7 @@
 
 - (void) showAnswer
 {
-    if (_question.answerContents.count == 0)
+    if (_question.answerContents.count == 0 && _question.answer == -1)
     {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:@"答案未上传或未公开"

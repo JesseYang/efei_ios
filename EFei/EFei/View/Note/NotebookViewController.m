@@ -214,14 +214,11 @@
 
 - (void) addTeacherIfNeeded
 {
-    NSString* teacherId = [AddTeacherController instance].teacherToAdd.teacherId;
-    if (teacherId.length > 0)
+    if ([AddTeacherController instance].teachersToAdd.count > 0)
     {
-        if ([[EFei instance].user isIgnoreTeacher:teacherId])
-        {
-            [AddTeacherController instance].teacherToAdd = nil;
-        }
-        else
+        Teacher* teacher = [[AddTeacherController instance].teachersToAdd objectAtIndex:0];
+        NSString* teacherId = teacher.teacherId;
+        if (teacherId.length > 0)
         {
             [self performSegueWithIdentifier:ShowTeacherAddViewControllerSegueId sender:self];
         }
@@ -593,10 +590,13 @@
     
     if ([segue.identifier isEqualToString:ShowTeacherAddViewControllerSegueId])
     {
-        _searchBarView.hidden = YES;
-        
-        TeacherAddViewController* tVC = (TeacherAddViewController*)segue.destinationViewController;
-        tVC.teacher = [AddTeacherController instance].teacherToAdd;
+        if ([AddTeacherController instance].teachersToAdd.count > 0)
+        {
+            _searchBarView.hidden = YES;
+            
+            TeacherAddViewController* tVC = (TeacherAddViewController*)segue.destinationViewController;
+            tVC.teacher = [[AddTeacherController instance].teachersToAdd objectAtIndex:0];
+        }
     }
 }
 
