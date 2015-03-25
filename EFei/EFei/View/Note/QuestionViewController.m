@@ -313,8 +313,11 @@
 {
     CompletionBlock handler = ^(NetWorkTaskType taskType, BOOL success) {
         
-        [self.navigationController popViewControllerAnimated:YES];
-        
+        if (success)
+        {
+            [EFei instance].newNotesAdded = YES;
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     };
     
     [NotebookDeleteNoteCommand executeWithNote:self.note completeHandler:handler];
