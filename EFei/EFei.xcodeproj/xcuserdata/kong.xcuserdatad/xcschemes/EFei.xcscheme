@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FCC2B8BB1A18D0D800B3DC24"
-               BuildableName = "EFei.app"
+               BuildableName = "&#x6613;&#x98de;.app"
                BlueprintName = "EFei"
                ReferencedContainer = "container:EFei.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FCC2B8BB1A18D0D800B3DC24"
-            BuildableName = "EFei.app"
+            BuildableName = "&#x6613;&#x98de;.app"
             BlueprintName = "EFei"
             ReferencedContainer = "container:EFei.xcodeproj">
          </BuildableReference>
@@ -72,11 +72,12 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FCC2B8BB1A18D0D800B3DC24"
-            BuildableName = "EFei.app"
+            BuildableName = "&#x6613;&#x98de;.app"
             BlueprintName = "EFei"
             ReferencedContainer = "container:EFei.xcodeproj">
          </BuildableReference>
@@ -90,11 +91,12 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FCC2B8BB1A18D0D800B3DC24"
-            BuildableName = "EFei.app"
+            BuildableName = "&#x6613;&#x98de;.app"
             BlueprintName = "EFei"
             ReferencedContainer = "container:EFei.xcodeproj">
          </BuildableReference>

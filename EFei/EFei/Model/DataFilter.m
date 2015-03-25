@@ -67,7 +67,7 @@
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZ"];
         
-        self.initialDisplayName = @"最近";
+        self.initialDisplayName = @"全部时间";
     }
     
     return self;
