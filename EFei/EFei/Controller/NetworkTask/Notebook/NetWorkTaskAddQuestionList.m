@@ -117,9 +117,9 @@ static NSString* kResponseTeacherClassDescKey    = @"desc";
             {
                 Teacher* teacher = [[Teacher alloc] init];
                 teacher.teacherId   = [teacherDict objectForKey:kResponseTeacherIdKey];
-                teacher.name        = [teacherDict objectForKey:kResponseTeacherIdKey];
-                teacher.subjectType = [[teacherDict objectForKey:kResponseTeacherIdKey] integerValue];
-                teacher.school      = [teacherDict objectForKey:kResponseTeacherIdKey];
+                teacher.name        = [teacherDict objectForKey:kResponseTeacherNameKey];
+                teacher.subjectType = [[teacherDict objectForKey:kResponseTeacherSubjectKey] integerValue];
+                teacher.school      = [teacherDict objectForKey:kResponseTeacherSchoolKey];
                 
                 NSArray* classes = [teacherDict objectForKey:kResponseTeacherClassesKey];
                 if ([classes isKindOfClass:[NSArray class]])
