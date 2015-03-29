@@ -94,9 +94,9 @@ static NSString* kResponseImagePathKey         = @"image_path";
     }
     
     
-    if([dict objectForKey:kResponseItemsKey] != [NSNull null])
+    if([noteDict objectForKey:kResponseItemsKey] != [NSNull null])
     {
-        note.items = [dict objectForKey:kResponseItemsKey];
+        note.items = [noteDict objectForKey:kResponseItemsKey];
     }
     
     
