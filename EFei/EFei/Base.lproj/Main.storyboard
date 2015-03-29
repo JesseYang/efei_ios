@@ -3351,7 +3351,7 @@
         <image name="icon_setttings_phone.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o6R-FQ-MA7"/>
+        <segue reference="3a6-J8-poF"/>
         <segue reference="lJ7-wF-fmM"/>
         <segue reference="eVa-ta-b50"/>
         <segue reference="IMU-TW-lqa"/>
